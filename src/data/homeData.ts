@@ -111,7 +111,7 @@ export const heroData: HeroData = {
     label: "Hubungi Sales Representatif",
     href: "#contact",
   },
-  image: "/images/hero.jpg",
+  image: "/images/BG_CV%20ASIA.webp",
   stats: [
     { value: "20+", label: "Tahun Pengalaman", sublabel: "Sejak tahun 2004" },
     { value: "500+", label: "Ton Kapasitas / Bulan", sublabel: "Produksi stabil & tepat waktu" },

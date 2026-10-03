@@ -46,7 +46,8 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative w-full h-[78vh] min-h-[520px] max-h-[660px] flex flex-col justify-between overflow-hidden bg-[url('/images/fotopt.png')] bg-cover bg-center bg-no-repeat font-sans"
+      style={{ backgroundImage: "url('/images/BG_CV%20ASIA.webp')" }}
+      className="relative w-full h-[78vh] min-h-[520px] max-h-[660px] flex flex-col justify-between overflow-hidden bg-cover bg-center bg-no-repeat font-sans"
     >
       {/* 1. NATURAL, BRIGHT BACKGROUND OVERLAYS (NO EXCESSIVE DARKNESS) */}
       {/* Targeted soft left-to-right gradient: ensures text readability on the left while leaving the building & sky bright & visible */}
