@@ -1,5 +1,4 @@
 import React from "react";
-import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
 import { aboutSnippet, productHighlights } from "@/data/homeData";
@@ -25,12 +24,9 @@ const iconMap = {
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 font-sans selection:bg-blue-600 selection:text-white">
-      {/* 1. Sticky Navigation Bar */}
-      <Navbar />
-
       {/* Main Page Container */}
       <main className="flex-1 space-y-16 sm:space-y-24">
-        {/* 2. Hero Section */}
+        {/* 1. Hero Section with Top Bar & Navbar Overlay */}
         <Hero />
 
         {/* 3. About Us Snippet Section */}
