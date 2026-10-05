@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     "CV. Asia Plastik adalah produsen manufaktur produk plastik terkemuka: Injection Molding, Blow Molding, dan Kemasan Industri berkualitas tinggi & presisi.",
 };
 
-import WhatsAppFloating from "@/components/WhatsAppFloating";
+import FloatingActions from "@/components/FloatingActions";
 
 export default function RootLayout({
   children,
@@ -61,8 +61,8 @@ export default function RootLayout({
           }}
         />
         {children}
-        {/* Floating WhatsApp Action Button */}
-        <WhatsAppFloating />
+        {/* Floating Quick Contact & AI Assistant Actions */}
+        <FloatingActions />
       </body>
     </html>
   );
