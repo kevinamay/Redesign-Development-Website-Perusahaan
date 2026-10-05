@@ -1,5 +1,6 @@
 import React from "react";
 import Hero from "@/components/Hero";
+import AboutPreview from "@/components/AboutPreview";
 import NewProduct from "@/components/NewProduct";
 import Footer from "@/components/Footer";
 
@@ -11,11 +12,14 @@ export default function Home() {
         {/* 1. Main Header & Hero Section (includes integrated Top Bar & Navbar) */}
         <Hero />
 
-        {/* 2. New Product Flagship Showcase (Bento-box style) */}
+        {/* 2. About Us Preview Section with Parallax Overlapping Card */}
+        <AboutPreview />
+
+        {/* 3. New Product Flagship Showcase (Bento-box style) */}
         <NewProduct />
       </main>
 
-      {/* 3. Corporate Footer */}
+      {/* 4. Corporate Footer */}
       <Footer />
     </div>
   );
