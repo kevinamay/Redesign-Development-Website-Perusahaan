@@ -1,401 +1,399 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ShieldCheck, Award, Target, Sparkles, CheckCircle2 } from "lucide-react";
+import {
+  Sparkles,
+  ArrowRight,
+  ShieldCheck,
+  Award,
+  Target,
+  Factory,
+  CheckCircle2,
+  Cpu,
+  Layers,
+  Building2,
+  ChevronRight,
+} from "lucide-react";
 import { useLanguage } from "@/data/translations";
 
 export default function AboutPreview() {
   const { lang } = useLanguage();
-  const [activeSection, setActiveSection] = useState<string>("about-intro");
+  const [activeTab, setActiveTab] = useState<number>(0);
 
-  // Track active section via IntersectionObserver for the sticky timeline
-  useEffect(() => {
-    const sectionIds = ["about-intro", "about-iso", "about-vision"];
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY + 250;
-
-      for (let i = sectionIds.length - 1; i >= 0; i--) {
-        const section = document.getElementById(sectionIds[i]);
-        if (section && section.offsetTop <= scrollPosition) {
-          setActiveSection(sectionIds[i]);
-          break;
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-    e.preventDefault();
-    const element = document.getElementById(id);
-    if (element) {
-      const topOffset = 100;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - topOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
-      setActiveSection(id);
-    }
-  };
-
-  // Multilingual content fallbacks
+  // Multilingual tab data & content specifications
   const content = {
     id: {
       badge: "GAMBARAN PERUSAHAAN",
       heading: "Membangun Masa Depan Industri Plastik",
+      subheading:
+        "Solusi manufaktur kemasan plastik presisi injection dan blow molding dengan dedikasi standar kualitas berkelas dunia.",
       readMore: "SELENGKAPNYA",
-      timeline: [
-        { id: "about-intro", number: "01", title: "Tentang Kami", subtitle: "Dedikasi sejak 1985" },
-        { id: "about-iso", number: "02", title: "Sertifikat ISO", subtitle: "Standar Mutu ISO 9001:2015" },
-        { id: "about-vision", number: "03", title: "Visi & Nilai", subtitle: "Inovasi & Integritas" },
+      tabs: [
+        {
+          id: "tentang-kami",
+          step: "01",
+          navTitle: "Tentang Kami",
+          navSubtitle: "Dedikasi Manufaktur Sejak 1985",
+          title: "Pionir Manufaktur Plastik Sejak 1985",
+          description:
+            "Asia Plastik adalah perusahaan manufaktur kemasan plastik yang mengkhususkan diri pada bidang injection dan blow molding sejak tahun 1985. Dengan komitmen presisi dan efisiensi tinggi, kami menjadi mitra strategis ratusan industri terkemuka nasional.",
+          image: "/images/assets/about-1.png",
+          imageAlt: "Fasilitas Produksi Manufaktur Asia Plastik",
+          imageTag: "Pabrik Produksi Modern • Skala Massal",
+          badges: [
+            { icon: Factory, title: "30+ Tahun Dedikasi", desc: "Spesialis Injection & Blow" },
+            { icon: Cpu, title: "Otomasi Presisi", desc: "Parameter Suhu & Siklus Mikro" },
+            { icon: Layers, title: "Material Food Grade", desc: "Resin Standar Industri Aman" },
+          ],
+        },
+        {
+          id: "sertifikat-iso",
+          step: "02",
+          navTitle: "Sertifikat ISO",
+          navSubtitle: "Standar Mutu ISO 9001:2015",
+          title: "Sertifikasi Standar Mutu ISO 9001:2015",
+          description:
+            "Sejak tahun 2005 Asia Plastik berhasil meraih ISO 9001:2000 yang kini telah dikembangkan menjadi ISO 9001:2015. Seluruh rantai operasional dijalankan melalui inspeksi toleransi ketat guna memastikan zero-defect.",
+          image: "/images/assets/iso-bg.png",
+          imageAlt: "Fasilitas Bangunan dan Sertifikasi ISO Asia Plastik",
+          imageTag: "Terakreditasi ISO 9001:2015 • Audit Berkala",
+          badges: [
+            { icon: ShieldCheck, title: "Manajemen Mutu Terpadu", desc: "Sistem Terintegrasi Penuh" },
+            { icon: Award, title: "Inspeksi Toleransi Ketat", desc: "Pengujian Dimensi & Tekanan" },
+            { icon: CheckCircle2, title: "Audit Berkala Konsisten", desc: "Kepatuhan Regulasi Penuh" },
+          ],
+        },
+        {
+          id: "visi-nilai",
+          step: "03",
+          navTitle: "Visi & Nilai",
+          navSubtitle: "Inovasi & Komitmen Berkelanjutan",
+          title: "Visi & Prinsip Nilai Perusahaan",
+          description:
+            "Visi & Nilai: Menjadi perusahaan manufaktur plastik terkemuka secara nasional dan internasional dengan menyediakan kemasan yang inovatif, ramah lingkungan, dan andal demi kepuasan mitra bisnis.",
+          image: "/images/assets/visi.png",
+          imageAlt: "Visi dan Nilai Mutu Asia Plastik",
+          imageTag: "Inovasi Berkelanjutan • Integritas Kemitraan",
+          badges: [
+            { icon: Target, title: "Kualitas Presisi", desc: "Konsistensi di Setiap Batch" },
+            { icon: Building2, title: "Integritas Kemitraan", desc: "Transparansi & Pasokan Stabil" },
+            { icon: Sparkles, title: "Inovasi Ramah Lingkungan", desc: "Efisiensi Energi & Daur Ulang" },
+          ],
+        },
       ],
-      s1: {
-        title: "TENTANG KAMI",
-        p1: "Asia Plastik adalah perusahaan manufaktur kemasan plastik yang mengkhususkan diri pada bidang injection dan blow molding sejak tahun 1985. Dengan komitmen kuat terhadap presisi dan kualitas, kami telah menjadi mitra terpercaya bagi ratusan merek terkemuka di berbagai sektor industri seperti makanan, minuman, farmasi, kosmetik, hingga bahan kimia industri.",
-        p2: "Didukung armada mesin mutakhir berteknologi tinggi dan tim teknisi berpengalaman, setiap siklus produksi dikontrol secara ketat untuk menjamin ketahanan, estetika, serta keamanan produk akhir.",
-      },
-      s2: {
-        badge: "Standar Mutu Internasional",
-        title: "SERTIFIKAT ISO",
-        text: "Sejak tahun 2005 Asia Plastik berhasil meraih ISO 9001:2000 yang kini telah dikembangkan menjadi ISO 9001:2015.",
-        features: ["Sistem Manajemen Mutu Terintegrasi", "Inspeksi Toleransi Mikro Ketat", "Audit Berkala & Konsisten"],
-      },
-      s3: {
-        title: "VISI & NILAI",
-        vision:
-          "Visi & Nilai: Menjadi perusahaan manufaktur plastik terkemuka secara nasional dan internasional dengan menyediakan solusi kemasan yang inovatif, ramah lingkungan, dan andal.",
-        values: [
-          {
-            title: "Kualitas Presisi",
-            desc: "Standar ketelitian tinggi di setiap proses injection & blow molding tanpa kompromi.",
-          },
-          {
-            title: "Integritas & Kemitraan",
-            desc: "Menjaga transparansi, konsistensi suplai, dan kolaborasi jangka panjang dengan mitra bisnis.",
-          },
-          {
-            title: "Inovasi Berkelanjutan",
-            desc: "Pemanfaatan formulasi resin ramah lingkungan serta efisiensi energi dalam proses produksi.",
-          },
-        ],
-      },
     },
     en: {
       badge: "COMPANY OVERVIEW",
       heading: "Building the Future of Plastic Industry",
+      subheading:
+        "Precision injection and blow molding packaging solutions engineered to international quality standards.",
       readMore: "LEARN MORE",
-      timeline: [
-        { id: "about-intro", number: "01", title: "About Us", subtitle: "Dedicated since 1985" },
-        { id: "about-iso", number: "02", title: "ISO Certification", subtitle: "ISO 9001:2015 Quality Standard" },
-        { id: "about-vision", number: "03", title: "Vision & Values", subtitle: "Innovation & Integrity" },
+      tabs: [
+        {
+          id: "about-us",
+          step: "01",
+          navTitle: "About Us",
+          navSubtitle: "Manufacturing Legacy Since 1985",
+          title: "Pioneering Plastic Manufacturing Since 1985",
+          description:
+            "Asia Plastik specializes in precision injection and blow molding packaging since 1985. Through dedicated craftsmanship and continuous engineering advances, we remain the trusted supplier to top national industries.",
+          image: "/images/assets/about-1.png",
+          imageAlt: "Asia Plastik Production Plant",
+          imageTag: "Advanced Manufacturing Plant • Mass Scale",
+          badges: [
+            { icon: Factory, title: "30+ Years Experience", desc: "Injection & Blow Specialist" },
+            { icon: Cpu, title: "Precision Automation", desc: "Micro Cycle & Thermal Control" },
+            { icon: Layers, title: "Food Grade Certified", desc: "Safe Resin Formulations" },
+          ],
+        },
+        {
+          id: "iso-cert",
+          step: "02",
+          navTitle: "ISO Certification",
+          navSubtitle: "ISO 9001:2015 Quality Standard",
+          title: "ISO 9001:2015 Quality Certification",
+          description:
+            "Since 2005, Asia Plastik achieved ISO 9001:2000 which has evolved into ISO 9001:2015 compliance. Every production process adheres to stringent tolerance audits ensuring zero defects.",
+          image: "/images/assets/iso-bg.png",
+          imageAlt: "Asia Plastik ISO Certified Facility",
+          imageTag: "ISO 9001:2015 Certified • Periodic Audits",
+          badges: [
+            { icon: ShieldCheck, title: "Integrated QMS", desc: "Comprehensive Standard" },
+            { icon: Award, title: "Micro Tolerance Check", desc: "Rigid Dimension Inspection" },
+            { icon: CheckCircle2, title: "Audited Compliance", desc: "Consistent Verification" },
+          ],
+        },
+        {
+          id: "vision-values",
+          step: "03",
+          navTitle: "Vision & Values",
+          navSubtitle: "Innovation & Sustainable Growth",
+          title: "Corporate Vision & Core Values",
+          description:
+            "Vision & Values: To stand as a premier plastic manufacturing enterprise nationally and globally by delivering innovative, eco-conscious, and durable packaging tailored for client satisfaction.",
+          image: "/images/assets/visi.png",
+          imageAlt: "Corporate Values Asia Plastik",
+          imageTag: "Eco Innovation • Trusted Partnership",
+          badges: [
+            { icon: Target, title: "Precision Standards", desc: "Batch Consistency" },
+            { icon: Building2, title: "Partner Integrity", desc: "Stable Supply Chain" },
+            { icon: Sparkles, title: "Green Sustainability", desc: "Recyclable Options" },
+          ],
+        },
       ],
-      s1: {
-        title: "ABOUT US",
-        p1: "Asia Plastik is a plastic packaging manufacturing company specializing in injection and blow molding since 1985. With an unwavering commitment to precision and superior quality, we have become the trusted strategic partner for hundreds of reputable brands across food & beverage, pharmaceutical, cosmetic, and chemical sectors.",
-        p2: "Powered by cutting-edge automated machinery and seasoned engineering professionals, every production cycle is rigorously monitored to ensure optimum strength, visual aesthetics, and flawless safety.",
-      },
-      s2: {
-        badge: "International Quality Benchmark",
-        title: "ISO CERTIFICATION",
-        text: "Since 2005, Asia Plastik has successfully attained ISO 9001:2000 certification, which has now evolved into ISO 9001:2015.",
-        features: ["Integrated Quality Management System", "Strict Micro-Tolerance Inspection", "Continuous Audits & Compliance"],
-      },
-      s3: {
-        title: "VISION & VALUES",
-        vision:
-          "Vision & Values: To become a leading plastic manufacturing enterprise nationally and internationally by delivering innovative, sustainable, and dependable packaging solutions.",
-        values: [
-          {
-            title: "Precision Quality",
-            desc: "Uncompromising precision and tolerance across every injection & blow mold cycle.",
-          },
-          {
-            title: "Integrity & Partnership",
-            desc: "Fostering long-term transparency, delivery reliability, and collaborative trust.",
-          },
-          {
-            title: "Sustainable Innovation",
-            desc: "Embracing eco-conscious resin options and high-efficiency manufacturing technologies.",
-          },
-        ],
-      },
     },
     zh: {
       badge: "企业概况",
       heading: "打造塑料制造产业的美好未来",
+      subheading: "专注于精密注塑与吹塑成型包装，坚持国际高标准质量管理。",
       readMore: "了解更多",
-      timeline: [
-        { id: "about-intro", number: "01", title: "关于我们", subtitle: "始创于1985年" },
-        { id: "about-iso", number: "02", title: "ISO 认证", subtitle: "ISO 9001:2015 质量管理标准" },
-        { id: "about-vision", number: "03", title: "愿景与核心价值", subtitle: "创新与诚信" },
+      tabs: [
+        {
+          id: "about-us",
+          step: "01",
+          navTitle: "关于我们",
+          navSubtitle: "始创于1985年",
+          title: "深耕塑料制造数十载（始创于1985年）",
+          description:
+            "Asia Plastik 自1985年成立至今，专业从事注塑与吹塑塑料包装制造。凭借高精密度与高效产能，成为众多国家重点企业的长期信赖合作伙伴。",
+          image: "/images/assets/about-1.png",
+          imageAlt: "Asia Plastik 现代化生产基地",
+          imageTag: "现代化制造车间 • 规模化量产",
+          badges: [
+            { icon: Factory, title: "30余年制造经验", desc: "注塑与吹塑行业专家" },
+            { icon: Cpu, title: "高精度自动化", desc: "微公差温控成型" },
+            { icon: Layers, title: "食品级标准材料", desc: "合规安全树脂原料" },
+          ],
+        },
+        {
+          id: "iso-cert",
+          step: "02",
+          navTitle: "ISO 认证",
+          navSubtitle: "ISO 9001:2015 质量体系",
+          title: "ISO 9001:2015 国际质量体系认证",
+          description:
+            "自2005年荣获 ISO 9001:2000 起，现已全面推行 ISO 9001:2015 标准。全流程微公差严格检验，确保零缺陷交付。",
+          image: "/images/assets/iso-bg.png",
+          imageAlt: "ISO 认证现代化厂房",
+          imageTag: "ISO 9001:2015 权威认证 • 定期审核",
+          badges: [
+            { icon: ShieldCheck, title: "一体化质管系统", desc: "标准化全流程质控" },
+            { icon: Award, title: "严苛微公差检测", desc: "尺寸与抗压双重检验" },
+            { icon: CheckCircle2, title: "规范审计达标", desc: "持续合规稳定生产" },
+          ],
+        },
+        {
+          id: "vision-values",
+          step: "03",
+          navTitle: "愿景与核心价值",
+          navSubtitle: "创新驱动与可持续发展",
+          title: "企业愿景与核心价值观",
+          description:
+            "愿景与价值观：通过持续技术革新与环保制造，成为国内外领先且深受信赖的塑料包装标杆企业，为合作伙伴创造长久价值。",
+          image: "/images/assets/visi.png",
+          imageAlt: "企业愿景与发展理念",
+          imageTag: "绿色环保创新 • 诚信稳健合作",
+          badges: [
+            { icon: Target, title: "严苛精度品质", desc: "每一批次稳定可靠" },
+            { icon: Building2, title: "诚信合作伙伴", desc: "稳定高效供应链" },
+            { icon: Sparkles, title: "绿色环保创新", desc: "节能减排可回收树脂" },
+          ],
+        },
       ],
-      s1: {
-        title: "关于我们",
-        p1: "Asia Plastik 是一家专注于注塑（Injection）和吹塑（Blow Molding）领域的塑料包装制造企业，自1985年成立至今深耕数十年。凭借对高精度与卓越品质的不懈追求，我们已成为食品饮料、医药、化妆品及工业化学品等众多知名企业的长期战略合作伙伴。",
-        p2: "依托先进的高科技自动化生产设备与经验丰富的工程团队，每个生产周期均经过严格质检，确保最终产品的坚固性、美观度与安全性。",
-      },
-      s2: {
-        badge: "国际标准品质认可",
-        title: "ISO 认证",
-        text: "自2005年起，Asia Plastik 成功荣获 ISO 9001:2000 认证，目前已升级全面推行 ISO 9001:2015 质量管理体系。",
-        features: ["一体化质量管理控制系统", "严格的微公差精准检测", "持续规范的质量监督审计"],
-      },
-      s3: {
-        title: "愿景与核心价值",
-        vision:
-          "愿景与价值观：通过持续的技术创新、环保意识与精益求精的质量承诺，成为国内外领先且值得信赖的塑料包装制造标杆企业。",
-        values: [
-          {
-            title: "精密品质",
-            desc: "在注塑与吹塑制造的每一个环节严控精度，坚守卓越品质。",
-          },
-          {
-            title: "诚信共赢",
-            desc: "秉持诚信与稳定供应，与广大合作伙伴建立持久信赖关系。",
-          },
-          {
-            title: "绿色创新",
-            desc: "积极采用环保树脂原料与节能减排制造工艺，践行可持续发展。",
-          },
-        ],
-      },
     },
   };
 
   const t = content[lang] || content.id;
+  const currentTab = t.tabs[activeTab] || t.tabs[0];
 
   return (
     <section
       id="about"
-      className="relative bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 transition-colors duration-300"
+      className="relative w-full bg-slate-50/70 dark:bg-slate-950 py-20 sm:py-24 border-t border-slate-100 dark:border-slate-800/80 transition-colors duration-300"
     >
-      {/* 1. LAYOUT STRUCTURE (Sticky Left, Scrolling Right) */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 flex flex-col lg:flex-row gap-12 relative">
-        {/* LEFT COLUMN (Sticky Navigation) */}
-        <div className="w-full lg:w-1/3 lg:sticky lg:top-32 h-fit">
-          {/* Label */}
-          <div className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-bold tracking-widest text-sm mb-4 uppercase">
-            <Sparkles className="w-4 h-4" />
-            <span>{t.badge}</span>
-          </div>
+      {/* Background Accent Gradients */}
+      <div className="absolute top-1/4 left-1/10 w-96 h-96 bg-blue-500/5 dark:bg-blue-600/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/10 w-96 h-96 bg-indigo-500/5 dark:bg-indigo-600/5 rounded-full blur-3xl pointer-events-none" />
 
-          {/* Heading */}
-          <h2 className="text-4xl font-extrabold text-slate-900 dark:text-white mb-6 leading-tight tracking-tight">
-            {t.heading}
-          </h2>
+      {/* 1. SECTION LAYOUT (TWO-COLUMN SPLIT CONTAINER) */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          {/* ========================================================================= */}
+          {/* 2. LEFT COLUMN: INTERACTIVE NAVIGATION & INTRO (5 cols)                   */}
+          {/* ========================================================================= */}
+          <div className="lg:col-span-5 flex flex-col justify-between space-y-8">
+            {/* Header Area */}
+            <div>
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 dark:bg-blue-950/60 border border-blue-200/60 dark:border-blue-800/60 text-blue-600 dark:text-blue-400 text-xs font-bold tracking-widest uppercase mb-4 shadow-2xs">
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>{t.badge}</span>
+              </div>
 
-          {/* Vertical Timeline / Visual Guide */}
-          <div className="space-y-4 my-8 pl-1 relative">
-            {/* Continuous vertical connecting line */}
-            <div className="absolute left-[19px] top-4 bottom-4 w-0.5 bg-slate-200 dark:bg-slate-800" />
+              {/* Bold Title */}
+              <h2 className="text-3xl sm:text-4xl lg:text-4xl font-extrabold text-slate-900 dark:text-white leading-tight tracking-tight mb-4">
+                {t.heading}
+              </h2>
 
-            {t.timeline.map((item) => {
-              const isActive = activeSection === item.id;
-              return (
-                <a
-                  key={item.id}
-                  href={`#${item.id}`}
-                  onClick={(e) => scrollToSection(e, item.id)}
-                  className={`group relative flex items-start gap-4 p-2.5 rounded-2xl transition-all duration-300 cursor-pointer ${
-                    isActive
-                      ? "bg-blue-50/80 dark:bg-blue-950/40 translate-x-1"
-                      : "hover:bg-slate-50 dark:hover:bg-slate-800/60"
-                  }`}
-                >
-                  {/* Indicator Node */}
-                  <div
-                    className={`relative z-10 w-9 h-9 rounded-xl flex items-center justify-center text-xs font-bold transition-all duration-300 shadow-2xs ${
+              {/* Subheading */}
+              <p className="text-base text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
+                {t.subheading}
+              </p>
+            </div>
+
+            {/* Interactive Steps List (Cards / Tabs) */}
+            <div className="space-y-3.5" role="tablist" aria-label="Company Overview Tabs">
+              {t.tabs.map((tab, index) => {
+                const isActive = activeTab === index;
+                return (
+                  <button
+                    key={tab.id}
+                    type="button"
+                    role="tab"
+                    aria-selected={isActive}
+                    aria-controls={`panel-${tab.id}`}
+                    onClick={() => setActiveTab(index)}
+                    className={`w-full text-left p-4 rounded-2xl transition-all duration-300 flex items-center justify-between group cursor-pointer ${
                       isActive
-                        ? "bg-blue-600 text-white shadow-md shadow-blue-500/30 scale-105"
-                        : "bg-white dark:bg-slate-800 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700 group-hover:border-blue-400 group-hover:text-blue-600"
+                        ? "bg-white dark:bg-slate-900 shadow-md shadow-slate-200/80 dark:shadow-none border border-slate-200/90 dark:border-slate-700/80 translate-x-1.5"
+                        : "bg-transparent hover:bg-white/60 dark:hover:bg-slate-900/40 border border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200"
                     }`}
                   >
-                    {item.number}
-                  </div>
+                    <div className="flex items-center gap-4">
+                      {/* Step Number Indicator */}
+                      <div
+                        className={`w-10 h-10 rounded-xl flex items-center justify-center font-bold text-xs transition-all duration-300 shrink-0 ${
+                          isActive
+                            ? "bg-blue-600 text-white shadow-md shadow-blue-500/30 scale-105"
+                            : "bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 group-hover:bg-slate-200 dark:group-hover:bg-slate-700 group-hover:text-slate-700 dark:group-hover:text-slate-200"
+                        }`}
+                      >
+                        {tab.step}
+                      </div>
 
-                  {/* Text details */}
-                  <div className="flex-1 min-w-0">
-                    <p
-                      className={`text-base font-bold transition-colors ${
-                        isActive
-                          ? "text-blue-600 dark:text-blue-400"
-                          : "text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white"
-                      }`}
-                    >
-                      {item.title}
-                    </p>
-                    <p className="text-xs text-slate-500 dark:text-slate-400 truncate">
-                      {item.subtitle}
-                    </p>
-                  </div>
-                </a>
-              );
-            })}
+                      {/* Tab Text */}
+                      <div>
+                        <p
+                          className={`text-base font-bold transition-colors ${
+                            isActive
+                              ? "text-slate-900 dark:text-white"
+                              : "text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white"
+                          }`}
+                        >
+                          {tab.navTitle}
+                        </p>
+                        <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-1 mt-0.5">
+                          {tab.navSubtitle}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Active Accent Indicator */}
+                    <div className="flex items-center gap-2">
+                      {isActive ? (
+                        <div className="w-2 h-2 rounded-full bg-blue-600 dark:bg-blue-400 animate-pulse" />
+                      ) : (
+                        <ChevronRight className="w-4 h-4 text-slate-300 dark:text-slate-600 group-hover:text-slate-500 dark:group-hover:text-slate-400 transition-colors" />
+                      )}
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Action Button: SELENGKAPNYA */}
+            <div className="pt-2">
+              <Link
+                href="/about"
+                className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full border-2 border-slate-900 dark:border-slate-100 text-slate-900 dark:text-white hover:bg-slate-900 hover:text-white dark:hover:bg-white dark:hover:text-slate-900 text-sm font-semibold transition-all duration-300 group shadow-xs cursor-pointer"
+              >
+                <span>{t.readMore}</span>
+                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+            </div>
           </div>
 
-          {/* SELENGKAPNYA Button */}
-          <Link
-            href="/about"
-            className="border-2 border-slate-900 dark:border-slate-100 text-slate-900 dark:text-white hover:bg-slate-900 hover:text-white dark:hover:bg-white dark:hover:text-slate-900 rounded-full px-8 py-3 font-semibold transition-all mt-8 inline-flex items-center gap-2 group shadow-xs cursor-pointer"
-          >
-            <span>{t.readMore}</span>
-            <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-          </Link>
-        </div>
-
-        {/* 2. RIGHT COLUMN (Scrolling Content & Parallax Effect) */}
-        <div className="w-full lg:w-2/3 flex flex-col gap-24">
-          {/* SECTION 1: TENTANG KAMI */}
-          <article id="about-intro" className="scroll-mt-36 space-y-6">
-            <div className="space-y-4">
-              <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
-                {t.s1.title}
-              </h3>
-              <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-                {t.s1.p1}
-              </p>
-              {t.s1.p2 && (
-                <p className="text-base text-slate-500 dark:text-slate-400 leading-relaxed">
-                  {t.s1.p2}
-                </p>
-              )}
-            </div>
-
-            {/* Rounded Hero Image */}
-            <div className="relative overflow-hidden rounded-3xl shadow-xl group">
-              <Image
-                src="/images/assets/about-1.png"
-                alt="Tentang CV Asia Plastik"
-                width={1200}
-                height={600}
-                className="rounded-3xl shadow-xl object-cover h-[400px] w-full transition-transform duration-700 group-hover:scale-105"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent pointer-events-none" />
-              <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between text-white drop-shadow-md">
-                <span className="text-xs sm:text-sm font-medium bg-slate-900/70 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/20">
-                  Established 1985 • Injection & Blow Molding Specialist
-                </span>
-              </div>
-            </div>
-          </article>
-
-          {/* SECTION 2: SERTIFIKAT ISO (CLEAN & AESTHETIC LAYOUT) */}
-          <article id="about-iso" className="scroll-mt-36 space-y-6">
-            <div className="space-y-4">
-              <div className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-bold tracking-widest text-xs uppercase">
-                <Award className="w-4 h-4" />
-                <span>{t.s2.badge}</span>
-              </div>
-
-              <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
-                {t.s2.title}
-              </h3>
-
-              <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
-                {t.s2.text}
-              </p>
-
-              {/* Key Certification Points Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
-                {t.s2.features.map((feat, idx) => (
-                  <div
-                    key={idx}
-                    className="flex items-center gap-2.5 p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-200 shadow-2xs"
-                  >
-                    <div className="w-6 h-6 rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 border border-emerald-200 dark:border-emerald-800/80">
-                      <ShieldCheck className="w-3.5 h-3.5" />
-                    </div>
-                    <span>{feat}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Clean Full-Width Rounded Image (No Overlapping Card) */}
-            <div className="relative overflow-hidden rounded-3xl shadow-xl group">
-              <Image
-                src="/images/assets/iso-bg.png"
-                alt="Fasilitas Pabrik CV Asia Plastik Berstandar ISO 9001:2015"
-                width={1200}
-                height={600}
-                className="rounded-3xl shadow-xl object-cover h-[400px] w-full transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/50 via-transparent to-transparent pointer-events-none" />
-              <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between text-white drop-shadow-md">
-                <span className="text-xs sm:text-sm font-semibold bg-slate-900/80 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
-                  Sertifikasi ISO 9001:2015 • Standar Mutu Manufaktur
-                </span>
-                <span className="hidden sm:inline-flex text-xs font-medium bg-blue-600/90 backdrop-blur-md px-3.5 py-2 rounded-full text-white">
-                  Audit Berkala Konsisten
-                </span>
-              </div>
-            </div>
-          </article>
-
-          {/* SECTION 3: VISI & NILAI */}
-          <article id="about-vision" className="scroll-mt-36 space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-              {/* Text Left */}
-              <div className="space-y-5">
-                <div className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-bold tracking-widest text-xs uppercase">
-                  <Target className="w-4 h-4" />
-                  <span>Arah & Prinsip Perusahaan</span>
+          {/* ========================================================================= */}
+          {/* 3. RIGHT COLUMN: DYNAMIC CONTENT & IMAGE PLACEMENT (7 cols)               */}
+          {/* ========================================================================= */}
+          <div className="lg:col-span-7">
+            {/* Dedicated Showcase Card */}
+            <div
+              id={`panel-${currentTab.id}`}
+              role="tabpanel"
+              className="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xl border border-slate-200/80 dark:border-slate-800 transition-all duration-500 ease-in-out flex flex-col justify-between space-y-7"
+            >
+              {/* Header Info Area */}
+              <div className="space-y-3.5 transition-opacity duration-500">
+                {/* Active Indicator Tag */}
+                <div className="flex items-center gap-2 text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider">
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-600 dark:bg-blue-400" />
+                  <span>{currentTab.navTitle}</span>
                 </div>
 
-                <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
-                  {t.s3.title}
+                {/* Main Showcase Title */}
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-snug">
+                  {currentTab.title}
                 </h3>
 
-                <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
-                  {t.s3.vision}
+                {/* Description Paragraph */}
+                <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
+                  {currentTab.description}
                 </p>
-
-                {/* Values Cards */}
-                <div className="space-y-3 pt-2">
-                  {t.s3.values.map((val, idx) => (
-                    <div
-                      key={idx}
-                      className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-800 transition-all hover:border-blue-500/40"
-                    >
-                      <div className="flex items-center gap-2 font-bold text-slate-800 dark:text-slate-100 text-sm mb-1">
-                        <CheckCircle2 className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0" />
-                        <span>{val.title}</span>
-                      </div>
-                      <p className="text-xs text-slate-500 dark:text-slate-400 pl-6 leading-relaxed">
-                        {val.desc}
-                      </p>
-                    </div>
-                  ))}
-                </div>
               </div>
 
-              {/* Image Right */}
-              <div className="relative overflow-hidden rounded-3xl shadow-xl group">
+              {/* Row of Feature Badges / Micro-Cards */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+                {currentTab.badges.map((badge, idx) => {
+                  const Icon = badge.icon;
+                  return (
+                    <div
+                      key={idx}
+                      className="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-800 transition-all hover:border-blue-500/40"
+                    >
+                      <div className="flex items-center gap-2 text-slate-900 dark:text-white font-bold text-xs mb-1">
+                        <Icon className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 shrink-0" />
+                        <span className="truncate">{badge.title}</span>
+                      </div>
+                      <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
+                        {badge.desc}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* The Dedicated Image Showcase Container (NO MORE IMAGES BELOW TEXT) */}
+              <div className="relative h-[320px] sm:h-[380px] md:h-[420px] w-full rounded-3xl overflow-hidden shadow-2xl border border-slate-100 dark:border-slate-800 group">
                 <Image
-                  src="/images/assets/visi.png"
-                  alt="Visi dan Nilai Asia Plastik"
-                  width={800}
-                  height={600}
-                  className="rounded-3xl shadow-xl object-cover h-[380px] w-full transition-transform duration-700 group-hover:scale-105"
+                  key={currentTab.image}
+                  src={currentTab.image}
+                  alt={currentTab.imageAlt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 50vw"
+                  priority
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent pointer-events-none" />
-                <div className="absolute bottom-5 left-5 right-5 text-white">
-                  <span className="text-xs font-semibold bg-blue-600/85 backdrop-blur-md px-3 py-1 rounded-full">
-                    Excellence & Sustainability
+
+                {/* Bottom Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/30 to-transparent pointer-events-none" />
+
+                {/* Dashboard-style Floating Badge at Bottom */}
+                <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between text-white drop-shadow-md">
+                  <div className="inline-flex items-center gap-2 bg-slate-900/80 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 text-xs sm:text-sm font-semibold">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    <span>{currentTab.imageTag}</span>
+                  </div>
+
+                  <span className="hidden sm:inline-flex text-xs font-medium text-slate-300 bg-black/40 backdrop-blur-xs px-3 py-1.5 rounded-full border border-white/10">
+                    CV. Asia Plastik
                   </span>
                 </div>
               </div>
             </div>
-          </article>
+          </div>
         </div>
       </div>
     </section>
