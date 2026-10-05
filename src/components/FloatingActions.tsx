@@ -7,7 +7,6 @@ import {
   Sparkles,
   Bot,
   User,
-  Key,
   RotateCcw,
   ExternalLink,
   ChevronDown,
@@ -33,15 +32,6 @@ export default function FloatingActions() {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [inputMessage, setInputMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [apiKey, setApiKey] = useState(() => {
-    if (typeof window !== "undefined") {
-      try {
-        return localStorage.getItem("gemini_user_api_key") || "";
-      } catch {}
-    }
-    return "";
-  });
-  const [showKeyModal, setShowKeyModal] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   // WhatsApp Admin Configuration
@@ -94,7 +84,6 @@ export default function FloatingActions() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           messages: newMessages,
-          apiKey: apiKey.trim() || undefined,
         }),
       });
 
@@ -122,18 +111,6 @@ export default function FloatingActions() {
 
   const handleClearChat = () => {
     setMessages(initialMessages);
-  };
-
-  const handleSaveApiKey = (key: string) => {
-    setApiKey(key);
-    try {
-      if (key) {
-        localStorage.setItem("gemini_user_api_key", key);
-      } else {
-        localStorage.removeItem("gemini_user_api_key");
-      }
-    } catch {}
-    setShowKeyModal(false);
   };
 
   // Helper to render basic markdown (bold, lists, links) safely
@@ -307,17 +284,6 @@ export default function FloatingActions() {
             </div>
 
             <div className="flex items-center gap-1 text-white/90">
-              {/* Optional Custom API Key Button */}
-              <button
-                type="button"
-                onClick={() => setShowKeyModal(!showKeyModal)}
-                title="Konfigurasi Gemini API Key"
-                className="p-2 rounded-xl hover:bg-white/15 transition-colors cursor-pointer"
-                aria-label="Konfigurasi API Key"
-              >
-                <Key className="w-4 h-4" />
-              </button>
-
               {/* Reset Chat Button */}
               <button
                 type="button"
@@ -340,44 +306,6 @@ export default function FloatingActions() {
               </button>
             </div>
           </div>
-
-          {/* Optional API Key Input Banner */}
-          {showKeyModal && (
-            <div className="p-3.5 bg-blue-50 dark:bg-slate-800/90 border-b border-blue-200 dark:border-slate-700 text-xs text-slate-800 dark:text-slate-200 flex flex-col gap-2">
-              <div className="flex items-center justify-between">
-                <span className="font-bold flex items-center gap-1.5">
-                  <Key className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
-                  <span>Google Gemini API Key (Opsional)</span>
-                </span>
-                <button
-                  type="button"
-                  onClick={() => setShowKeyModal(false)}
-                  className="text-slate-400 hover:text-slate-600"
-                >
-                  <X className="w-3.5 h-3.5" />
-                </button>
-              </div>
-              <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
-                Secara default bot telah terintegrasi dengan knowledge base resmi CV. Asia Plastik. Anda juga dapat memasukkan API Key pribadi jika diinginkan:
-              </p>
-              <div className="flex gap-2">
-                <input
-                  type="password"
-                  value={apiKey}
-                  onChange={(e) => setApiKey(e.target.value)}
-                  placeholder="AIzaSy..."
-                  className="flex-1 px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-xs focus:outline-hidden focus:ring-2 focus:ring-blue-500"
-                />
-                <button
-                  type="button"
-                  onClick={() => handleSaveApiKey(apiKey)}
-                  className="px-3 py-1.5 rounded-lg bg-blue-600 text-white font-semibold text-xs hover:bg-blue-700 transition-colors"
-                >
-                  Simpan
-                </button>
-              </div>
-            </div>
-          )}
 
           {/* Messages Container */}
           <div className="flex-1 p-4 overflow-y-auto space-y-3.5 text-xs text-slate-700 dark:text-slate-200">
