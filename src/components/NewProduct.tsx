@@ -78,10 +78,10 @@ export default function NewProduct() {
   ];
 
   return (
-    <section className="w-full bg-slate-50 py-16 sm:py-24">
+    <section className="w-full bg-slate-50 dark:bg-slate-950 py-16 sm:py-24 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Product Showcase Card */}
-        <div className="bg-white rounded-[2rem] shadow-xl overflow-hidden border border-slate-100 grid grid-cols-1 lg:grid-cols-2">
+        <div className="bg-white dark:bg-slate-900 rounded-[2rem] shadow-xl overflow-hidden border border-slate-100 dark:border-slate-800 grid grid-cols-1 lg:grid-cols-2 transition-colors duration-300">
           
           {/* ========================================================================= */}
           {/* LEFT COLUMN: TYPOGRAPHY & PRODUCT DETAILS                                 */}
@@ -89,18 +89,18 @@ export default function NewProduct() {
           <div className="p-8 sm:p-12 lg:p-16 flex flex-col justify-between">
             <div>
               {/* Aesthetic Badge */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-bold tracking-widest uppercase mb-6 shadow-2xs">
-                <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 text-xs font-bold tracking-widest uppercase mb-6 shadow-2xs">
+                <span className="w-2 h-2 rounded-full bg-blue-600 dark:bg-blue-400 animate-pulse" />
                 <span>NEW PRODUCT</span>
               </div>
 
               {/* Product Title */}
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight mb-4 tracking-tight">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight mb-4 tracking-tight">
                 Solid Foldable Industrial Basket
               </h2>
 
               {/* Subtitle / Product Narrative */}
-              <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-8">
+              <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed mb-8">
                 Wadah krat industri lipat multifungsi dengan struktur kokoh dan material food-grade presisi. Dirancang untuk efisiensi ruang penyimpanan hingga 75% saat dilipat, ideal untuk distribusi logistik pergudangan modern dan rantai pasok industri.
               </p>
 
@@ -111,15 +111,15 @@ export default function NewProduct() {
                   return (
                     <div
                       key={index}
-                      className="bg-slate-50 p-4 rounded-xl border border-slate-100 hover:border-blue-200 hover:bg-slate-50/80 transition-colors"
+                      className="bg-slate-50 dark:bg-slate-800/60 p-4 rounded-xl border border-slate-100 dark:border-slate-700/60 hover:border-blue-200 dark:hover:border-blue-500/40 hover:bg-slate-50/80 dark:hover:bg-slate-800 transition-colors"
                     >
-                      <div className="w-8 h-8 rounded-lg bg-blue-100/60 text-blue-600 flex items-center justify-center mb-2.5">
+                      <div className="w-8 h-8 rounded-lg bg-blue-100/60 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-2.5">
                         <Icon className="w-4 h-4" />
                       </div>
-                      <span className="text-xs sm:text-sm text-slate-500 block">
+                      <span className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 block">
                         {spec.label}
                       </span>
-                      <span className="font-semibold text-slate-900 text-xs sm:text-sm md:text-base block mt-0.5">
+                      <span className="font-semibold text-slate-900 dark:text-white text-xs sm:text-sm md:text-base block mt-0.5">
                         {spec.value}
                       </span>
                     </div>
@@ -130,7 +130,7 @@ export default function NewProduct() {
 
             {/* Bottom Highlights */}
             <div className="pt-2 flex items-center">
-              <span className="text-xs text-slate-500 flex items-center gap-1.5">
+              <span className="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4 text-emerald-500" />
                 <span>Ready Stock & Kontrak B2B</span>
               </span>
@@ -140,7 +140,7 @@ export default function NewProduct() {
           {/* ========================================================================= */}
           {/* RIGHT COLUMN: NATIVE SMOOTH SWIPE CAROUSEL (CSS SCROLL SNAP)               */}
           {/* ========================================================================= */}
-          <div className="bg-[#F3F4F6] relative flex items-center justify-center p-4 sm:p-8 lg:p-10 overflow-hidden">
+          <div className="bg-slate-100 dark:bg-slate-800/50 relative flex items-center justify-center p-4 sm:p-8 lg:p-10 overflow-hidden transition-colors duration-300">
             {/* Scroll Container with CSS Scroll Snap & Mouse Drag */}
             <div
               ref={scrollRef}
