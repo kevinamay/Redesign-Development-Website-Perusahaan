@@ -35,7 +35,7 @@ export default function Hero() {
       {/* LAYER 1: THE IMAGE (MAKE IT VISIBLE, Z-0)                                 */}
       {/* ========================================================================= */}
       <Image
-        src="/images/fotopt.png"
+        src="/images/fotobangunan (1).jpg"
         alt="Fasilitas Pabrik CV. Asia Plastik"
         fill
         priority
