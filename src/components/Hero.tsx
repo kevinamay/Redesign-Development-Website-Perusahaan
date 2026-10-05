@@ -45,13 +45,13 @@ export default function Hero() {
         priority
         quality={100}
         sizes="100vw"
-        className="object-cover object-[75%_15%] z-0"
+        className="object-cover object-[95%_15%] z-0"
       />
 
       {/* ========================================================================= */}
       {/* 2. LAYER 2: THE WHITE GRADIENT OVERLAY (SPLIT SCREEN EFFECT)              */}
       {/* ========================================================================= */}
-      <div className="absolute inset-0 z-10 bg-gradient-to-r from-white via-white/95 via-45% to-transparent pointer-events-none" />
+      <div className="absolute inset-0 z-10 bg-gradient-to-r from-white via-white/90 via-40% to-transparent to-70% pointer-events-none" />
 
       {/* ========================================================================= */}
       {/* 3. LAYER 3: CONTENT & NAVBAR (BRING TO FRONT, Z-20)                       */}
