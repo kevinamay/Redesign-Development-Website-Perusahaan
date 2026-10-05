@@ -45,7 +45,7 @@ export default function Hero() {
         priority
         quality={100}
         sizes="100vw"
-        className="object-cover object-right lg:object-center z-0"
+        className="object-cover object-[75%_15%] z-0"
       />
 
       {/* ========================================================================= */}
