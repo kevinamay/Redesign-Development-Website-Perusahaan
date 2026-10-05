@@ -34,18 +34,19 @@ export default function Hero() {
   ];
 
   return (
-    <section id="hero" className="relative min-h-[100vh] w-full overflow-hidden bg-white font-sans">
+    <section id="hero" className="relative min-h-[100vh] w-full overflow-hidden isolate font-sans">
       {/* ========================================================================= */}
       {/* 1. LAYER 1: THE BACKGROUND IMAGE                                          */}
       {/* ========================================================================= */}
       <Image
         src="/images/fotopt.png"
-        alt="Fasilitas Pabrik CV. Asia Plastik"
         fill
         priority
         quality={100}
         sizes="100vw"
-        className="object-cover object-[100%_0%] z-0"
+        className="object-cover -z-10"
+        style={{ objectPosition: 'right top' }}
+        alt="Asia Plastik Background"
       />
 
       {/* ========================================================================= */}
