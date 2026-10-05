@@ -1,8 +1,8 @@
 import React from "react";
 import Hero from "@/components/Hero";
 import AboutPreview from "@/components/AboutPreview";
-import NewProduct from "@/components/NewProduct";
 import GlobalDistribution from "@/components/GlobalDistribution";
+import NewProduct from "@/components/NewProduct";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -16,11 +16,11 @@ export default function Home() {
         {/* 2. About Us Preview Section with Interactive Steps */}
         <AboutPreview />
 
-        {/* 3. New Product Flagship Showcase (Bento-box style) */}
-        <NewProduct />
-
-        {/* 4. Global Distribution & Clients Section */}
+        {/* 3. Global Distribution & Clients Section (World Map) */}
         <GlobalDistribution />
+
+        {/* 4. New Product Flagship Showcase (Bento-box style) */}
+        <NewProduct />
       </main>
 
       {/* 5. Corporate Footer */}
