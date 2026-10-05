@@ -13,6 +13,9 @@ import {
   ChevronDown,
   ChevronRight,
   ShieldCheck,
+  Cpu,
+  Layers,
+  Sparkles,
 } from "lucide-react";
 
 export default function Hero() {
@@ -30,12 +33,12 @@ export default function Hero() {
   ];
 
   return (
-    <section id="hero" className="relative min-h-[100vh] w-full overflow-hidden font-sans">
+    <section className="relative min-h-[100vh] w-full overflow-hidden font-sans">
       {/* ========================================================================= */}
       {/* LAYER 1: THE IMAGE (MAKE IT VISIBLE, Z-0)                                 */}
       {/* ========================================================================= */}
       <Image
-        src="/images/fotobangunan (1).jpg"
+        src="/images/fotopt.png"
         alt="Fasilitas Pabrik CV. Asia Plastik"
         fill
         priority
@@ -45,7 +48,7 @@ export default function Hero() {
       />
 
       {/* ========================================================================= */}
-      {/* LAYER 2: ULTRA-LIGHT OVERLAY (BRIGHT SKY & BUILDING VISIBLE, Z-10)        */}
+      {/* LAYER 2: ULTRA-LIGHT OVERLAY                                              */}
       {/* ========================================================================= */}
       <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/10 to-transparent z-10 pointer-events-none" />
 
@@ -56,35 +59,42 @@ export default function Hero() {
         {/* TOP BAR & MAIN NAVBAR */}
         <header className="w-full">
           {/* Top Bar */}
-          <div className="w-full border-b border-white/10 backdrop-blur-xs">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-2.5 flex justify-end items-center text-xs sm:text-sm text-gray-200">
-              <div className="flex items-center gap-3 sm:gap-6">
-                {/* Email Link */}
+          <div className="w-full border-b border-white/15 bg-black/20 backdrop-blur-xs">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex justify-between items-center text-xs sm:text-sm text-gray-200">
+              {/* Top Bar Left Tagline */}
+              <div className="hidden md:flex items-center gap-2 text-xs text-gray-200 drop-shadow-sm">
+                <Sparkles className="w-3.5 h-3.5 text-blue-400" />
+                <span>Solusi Manufaktur & Cetak Plastik Industri Terpercaya Sejak 1990</span>
+              </div>
+
+              {/* Top Bar Right: Contact & Language */}
+              <div className="flex items-center gap-3 sm:gap-6 ml-auto">
+                {/* Email */}
                 <a
                   href="mailto:marketing@asiaplastik.com"
-                  className="flex items-center gap-1.5 text-gray-200 hover:text-white transition-colors duration-150 drop-shadow-sm"
+                  className="flex items-center gap-1.5 text-gray-200 hover:text-white transition-colors drop-shadow-sm"
                   aria-label="Email Asia Plastik"
                 >
-                  <Mail className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-400 shrink-0" />
+                  <Mail className="w-3.5 h-3.5 text-blue-400 shrink-0" />
                   <span className="hidden sm:inline">marketing@asiaplastik.com</span>
                   <span className="inline sm:hidden">Email</span>
                 </a>
 
                 <span className="text-white/20 select-none">|</span>
 
-                {/* Phone Link */}
+                {/* Phone */}
                 <a
                   href="tel:+62318433078"
-                  className="flex items-center gap-1.5 text-gray-200 hover:text-white transition-colors duration-150 font-medium drop-shadow-sm"
+                  className="flex items-center gap-1.5 text-gray-200 hover:text-white transition-colors font-medium drop-shadow-sm"
                   aria-label="Telepon Asia Plastik"
                 >
-                  <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-400 shrink-0" />
+                  <Phone className="w-3.5 h-3.5 text-blue-400 shrink-0" />
                   <span>+6231 8433078</span>
                 </a>
 
                 <span className="text-white/20 select-none">|</span>
 
-                {/* Language Toggle Dropdown */}
+                {/* Language Toggle */}
                 <div className="relative">
                   <button
                     type="button"
@@ -146,9 +156,9 @@ export default function Hero() {
           </div>
 
           {/* Main Navbar */}
-          <nav className="w-full bg-transparent backdrop-blur-sm border-b border-white/5 transition-all duration-300">
+          <nav className="w-full bg-transparent backdrop-blur-xs border-b border-white/10 transition-all duration-300">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 sm:py-4 flex items-center justify-between">
-              {/* Left Side: Corporate Logo using next/image */}
+              {/* Left: Corporate Logo (no text) */}
               <Link
                 href="/"
                 className="inline-flex items-center focus:outline-hidden hover:opacity-95 transition-opacity"
@@ -157,31 +167,29 @@ export default function Hero() {
                 <Image
                   src="/images/logo.webp"
                   alt="Logo CV. Asia Plastik"
-                  width={175}
-                  height={59}
+                  width={180}
+                  height={60}
                   priority
                   className="h-9 sm:h-11 md:h-12 w-auto object-contain drop-shadow-md"
                 />
               </Link>
 
-              {/* Right Side: Search Icon + MENU with Hamburger Icon */}
+              {/* Right: Search Icon + MENU with Hamburger */}
               <div className="flex items-center gap-2 sm:gap-3.5">
-                {/* Search Toggle Button */}
                 <button
                   type="button"
                   onClick={() => setIsSearchOpen(!isSearchOpen)}
-                  className="p-2 sm:p-2.5 rounded-lg text-gray-200 hover:text-white hover:bg-white/10 transition-colors focus:outline-hidden drop-shadow-sm"
+                  className="p-2 sm:p-2.5 rounded-lg text-gray-200 hover:text-white hover:bg-white/15 transition-colors focus:outline-hidden drop-shadow-sm"
                   aria-label="Cari Produk atau Kebutuhan Manufaktur"
                 >
                   <Search className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
 
-                {/* Word MENU + Hamburger Menu Icon */}
                 <button
                   type="button"
                   onClick={() => setIsMenuOpen(true)}
-                  className="flex items-center gap-2 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-lg bg-black/25 hover:bg-black/40 border border-white/25 hover:border-white/40 text-white transition-all duration-200 focus:outline-hidden group shadow-xs backdrop-blur-xs"
-                  aria-label="Buka Menu"
+                  className="flex items-center gap-2 px-3.5 py-1.5 sm:py-2 rounded-lg bg-black/30 hover:bg-black/45 border border-white/25 hover:border-white/40 text-white transition-all duration-200 focus:outline-hidden group shadow-xs backdrop-blur-xs"
+                  aria-label="Buka Menu Navigasi"
                 >
                   <span className="text-xs sm:text-sm font-bold tracking-wider uppercase group-hover:text-blue-300 transition-colors">
                     MENU
@@ -191,7 +199,7 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Quick Search Dropdown / Bar */}
+            {/* Quick Search Overlay Bar */}
             {isSearchOpen && (
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-3.5 animate-fade-in-up">
                 <div className="relative">
@@ -217,22 +225,28 @@ export default function Hero() {
 
         {/* HERO TYPOGRAPHY & LAYOUT (VERTICALLY CENTERED, LEFT-ALIGNED) */}
         <div className="flex-1 flex items-center">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-12 sm:py-16 lg:py-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-10 sm:py-16">
             {/* Visual Accent: Thin, elegant vertical line */}
             <div className="border-l-4 border-white/80 pl-5 sm:pl-7 lg:pl-9 max-w-3xl lg:max-w-4xl animate-fade-in-up">
+              
+              {/* Category Pill Tagline */}
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-600/80 border border-blue-400/30 text-white text-xs font-bold uppercase tracking-wider mb-4 shadow-sm backdrop-blur-xs">
+                <span>MANUFACTURING & PACKAGING SOLUTIONS</span>
+              </div>
+
               {/* Main Headline (H1) */}
-              <h1 className="font-extrabold text-white text-4xl sm:text-5xl lg:text-6xl leading-tight tracking-tight uppercase drop-shadow-[0_2px_14px_rgba(0,0,0,0.95)]">
+              <h1 className="font-extrabold text-white text-3xl sm:text-5xl lg:text-6xl leading-tight tracking-tight uppercase drop-shadow-[0_2px_14px_rgba(0,0,0,0.95)]">
                 PERUSAHAAN MANUFAKTUR PENGEMASAN PLASTIK
               </h1>
 
               {/* Sub-headline (p) */}
-              <p className="mt-4 sm:mt-5 font-bold text-white text-lg sm:text-xl tracking-wide uppercase drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)]">
+              <p className="mt-3.5 sm:mt-5 font-bold text-white text-base sm:text-lg lg:text-xl tracking-wide uppercase drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)]">
                 KAMI ADALAH AHLI DALAM INJECTION DAN BLOW MOLDING
               </p>
 
               {/* Call-to-Action Buttons */}
-              <div className="mt-8 sm:mt-10 flex flex-wrap items-center gap-3.5 sm:gap-4">
-                {/* 1. Solid Blue Button */}
+              <div className="mt-7 sm:mt-9 flex flex-wrap items-center gap-3.5 sm:gap-4">
+                {/* Solid Blue Button */}
                 <Link
                   href="#products"
                   className="inline-flex items-center justify-center px-6 sm:px-7 py-3 sm:py-3.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm sm:text-base shadow-lg shadow-blue-600/40 hover:shadow-blue-600/60 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
@@ -240,32 +254,65 @@ export default function Hero() {
                   <span>Lihat Produk Kami →</span>
                 </Link>
 
-                {/* 2. Outlined Button */}
+                {/* Outlined Button */}
                 <Link
                   href="#contact"
-                  className="inline-flex items-center justify-center px-6 sm:px-7 py-3 sm:py-3.5 rounded-lg bg-black/25 border border-white hover:bg-white/15 text-white font-medium text-sm sm:text-base backdrop-blur-xs hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 shadow-md"
+                  className="inline-flex items-center justify-center px-6 sm:px-7 py-3 sm:py-3.5 rounded-lg bg-black/30 border border-white hover:bg-white/15 text-white font-medium text-sm sm:text-base backdrop-blur-xs hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 shadow-md"
                 >
                   <span>Hubungi Penjualan</span>
                 </Link>
+              </div>
+
+              {/* Value Badges (Inspired by the Clean Corporate Reference Layout) */}
+              <div className="mt-8 pt-6 border-t border-white/20 grid grid-cols-2 sm:grid-cols-4 gap-4 text-white text-xs sm:text-sm drop-shadow-sm">
+                <div className="flex items-center gap-2">
+                  <Cpu className="w-4 h-4 text-blue-400 shrink-0" />
+                  <span className="font-medium text-gray-100">Presisi Cetak Tinggi</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <ShieldCheck className="w-4 h-4 text-blue-400 shrink-0" />
+                  <span className="font-medium text-gray-100">Quality Control Teruji</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Layers className="w-4 h-4 text-blue-400 shrink-0" />
+                  <span className="font-medium text-gray-100">Resin Standar Industri</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-blue-400 shrink-0" />
+                  <span className="font-medium text-gray-100">Kapasitas Produksi Massal</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* BOTTOM ACCENT STRIP */}
-        <div className="w-full border-t border-white/10 bg-black/25 backdrop-blur-xs py-3 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-xs sm:text-sm text-gray-200">
-            <div className="flex items-center gap-2 drop-shadow-sm">
-              <ShieldCheck className="w-4 h-4 text-blue-400 shrink-0" />
-              <span>Presisi Tinggi • Injection & Blow Moulding Standard Industri</span>
+        {/* BOTTOM METRICS & ACCENT STRIP */}
+        <div className="w-full border-t border-white/15 bg-black/30 backdrop-blur-xs py-3 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3 text-xs sm:text-sm text-gray-200">
+            {/* Key Stats Counter */}
+            <div className="flex items-center gap-6 sm:gap-10">
+              <div className="flex items-center gap-2">
+                <span className="text-base sm:text-lg font-extrabold text-blue-400">30+</span>
+                <span className="text-gray-300 text-xs">Tahun Pengalaman</span>
+              </div>
+              <div className="hidden xs:flex items-center gap-2">
+                <span className="text-base sm:text-lg font-extrabold text-blue-400">100+</span>
+                <span className="text-gray-300 text-xs">Klien Industri</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-base sm:text-lg font-extrabold text-blue-400">99.8%</span>
+                <span className="text-gray-300 text-xs">Tingkat Akurasi</span>
+              </div>
             </div>
-            <div className="flex items-center gap-4 sm:gap-6">
+
+            {/* Quick Link */}
+            <div className="flex items-center gap-4">
               <a
                 href="#about"
-                className="text-blue-300 hover:text-white font-medium inline-flex items-center gap-1 transition-colors drop-shadow-sm"
+                className="text-blue-300 hover:text-white font-semibold inline-flex items-center gap-1 transition-colors drop-shadow-sm"
               >
-                <span>Pelajari Profil Fasilitas</span>
-                <ChevronRight className="w-3.5 h-3.5" />
+                <span>Pelajari Profil Fasilitas Pabrik</span>
+                <ChevronRight className="w-4 h-4" />
               </a>
             </div>
           </div>
