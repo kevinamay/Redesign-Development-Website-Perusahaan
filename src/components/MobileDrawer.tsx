@@ -74,11 +74,18 @@ export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
             {/* Company Logo */}
             <Link href="/" onClick={onClose} className="flex items-center gap-2.5 focus:outline-none">
               <Image
+                src="/images/logo-dark.webp"
+                alt="Logo CV. Asia Plastik"
+                width={271}
+                height={92}
+                className="h-8 sm:h-9 w-auto object-contain block dark:hidden"
+              />
+              <Image
                 src="/images/logo.webp"
                 alt="Logo CV. Asia Plastik"
-                width={140}
-                height={45}
-                className="h-8 sm:h-9 w-auto object-contain dark:brightness-110"
+                width={271}
+                height={92}
+                className="h-8 sm:h-9 w-auto object-contain hidden dark:block"
               />
             </Link>
 

@@ -170,13 +170,23 @@ export default function Hero() {
                 className="inline-flex items-center focus:outline-hidden hover:opacity-95 transition-opacity"
                 aria-label="Beranda CV. Asia Plastik"
               >
+                {/* Light Mode Corporate Slate Logo */}
+                <Image
+                  src="/images/logo-dark.webp"
+                  alt="Logo CV. Asia Plastik"
+                  width={271}
+                  height={92}
+                  priority
+                  className="h-9 sm:h-10 md:h-11 lg:h-12 w-auto object-contain block dark:hidden"
+                />
+                {/* Dark Mode Crisp White Logo */}
                 <Image
                   src="/images/logo.webp"
                   alt="Logo CV. Asia Plastik"
-                  width={180}
-                  height={60}
+                  width={271}
+                  height={92}
                   priority
-                  className="h-9 sm:h-11 md:h-12 w-auto object-contain dark:brightness-110"
+                  className="h-9 sm:h-10 md:h-11 lg:h-12 w-auto object-contain hidden dark:block"
                 />
               </Link>
 
