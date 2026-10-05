@@ -1,5 +1,6 @@
 import React from "react";
 import Hero from "@/components/Hero";
+import NewProduct from "@/components/NewProduct";
 import Footer from "@/components/Footer";
 import { aboutSnippet, productHighlights } from "@/data/homeData";
 import {
@@ -105,6 +106,9 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* New Product Flagship Showcase */}
+        <NewProduct />
 
         {/* 4. Products & Capabilities Highlights Section */}
         <section id="products" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
