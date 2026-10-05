@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import ThemeToggle from "@/components/ThemeToggle";
@@ -26,15 +26,6 @@ export default function Hero() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 80);
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const languageOptions: { code: Language; label: string; badge: string }[] = [
     { code: "id", label: "Bahasa (ID)", badge: "ID" },
@@ -56,18 +47,6 @@ export default function Hero() {
 
   return (
     <section id="hero" className="relative min-h-[100vh] w-full overflow-hidden isolate font-sans">
-      {/* Floating Theme Toggle Switch: Stays fixed in the top right corner when scrolled */}
-      <div
-        className={`fixed top-3 sm:top-4 right-3 sm:right-6 z-50 transition-all duration-300 ${
-          isScrolled
-            ? "opacity-100 translate-y-0 pointer-events-auto"
-            : "opacity-0 -translate-y-4 pointer-events-none"
-        }`}
-      >
-        <div className="p-1 rounded-full bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border border-slate-200/80 dark:border-slate-700/80 shadow-2xl flex items-center">
-          <ThemeToggle />
-        </div>
-      </div>
 
       {/* ========================================================================= */}
       {/* 1. LAYER 1: THE BACKGROUND IMAGE                                          */}
@@ -216,11 +195,6 @@ export default function Hero() {
 
               {/* Right: Search + Direct Contact / Menu Toggle */}
               <div className="flex items-center gap-2 sm:gap-3">
-                {/* Theme Toggle in Main Navbar */}
-                <div className="hidden sm:flex items-center">
-                  <ThemeToggle />
-                </div>
-
                 {/* Search Toggle Button */}
                 <button
                   type="button"
