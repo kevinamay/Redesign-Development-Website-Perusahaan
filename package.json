@@ -1,6 +1,8 @@
 {
   "name": "asia-plastik",
   "version": "0.1.0",
+  "description": "Website Resmi CV. ASIA PLASTIK - Manufaktur & Cetak Plastik Presisi Tinggi (Injection & Blow Moulding) Sejak 1985.",
+  "homepage": "https://redesign-development-website-perusa.vercel.app/",
   "private": true,
   "scripts": {
     "dev": "next dev",
