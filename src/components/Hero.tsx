@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import ThemeToggle from "@/components/ThemeToggle";
+import MobileDrawer from "@/components/MobileDrawer";
 import { useLanguage, Language } from "@/data/translations";
 import {
   Mail,
@@ -11,7 +12,6 @@ import {
   Globe,
   Search,
   Menu,
-  X,
   ChevronDown,
   ChevronRight,
   ShieldCheck,
@@ -354,80 +354,7 @@ export default function Hero() {
       {/* ========================================================================= */}
       {/* SLIDE-OUT FLYOUT NAVIGATION MENU (DRAWER, FIXED Z-50)                     */}
       {/* ========================================================================= */}
-      {isMenuOpen && (
-        <div className="fixed inset-0 z-50 flex justify-end animate-fade-in-up">
-          {/* Backdrop */}
-          <div
-            onClick={() => setIsMenuOpen(false)}
-            className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity duration-300"
-            aria-hidden="true"
-          />
-
-          {/* Drawer Content */}
-          <div className="relative w-full max-w-sm sm:max-w-md bg-white dark:bg-slate-900 border-l border-slate-200 dark:border-slate-800 p-6 sm:p-8 flex flex-col justify-between z-10 shadow-2xl">
-            <div>
-              {/* Drawer Header */}
-              <div className="flex items-center justify-between pb-6 border-b border-slate-200 dark:border-slate-800">
-                <Image
-                  src="/images/logo.webp"
-                  alt="Logo CV. Asia Plastik"
-                  width={150}
-                  height={50}
-                  className="h-8 sm:h-9 w-auto object-contain dark:brightness-110"
-                />
-
-                <div className="flex items-center gap-2">
-                  <ThemeToggle />
-                  <button
-                    type="button"
-                    onClick={() => setIsMenuOpen(false)}
-                    className="p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus:outline-hidden"
-                    aria-label={t.navbar.closeMenu}
-                  >
-                    <X className="w-6 h-6" />
-                  </button>
-                </div>
-              </div>
-
-              {/* Navigation Links */}
-              <nav className="mt-8 space-y-2">
-                {navMenuItems.map((item, index) => (
-                  <Link
-                    key={index}
-                    href={item.href}
-                    onClick={() => setIsMenuOpen(false)}
-                    className="flex items-center justify-between py-3 px-4 rounded-xl text-sm sm:text-base font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50/70 dark:hover:bg-slate-800 hover:translate-x-1 transition-all duration-150"
-                  >
-                    <span>{item.label}</span>
-                    <ChevronRight className="w-4 h-4 text-blue-600" />
-                  </Link>
-                ))}
-              </nav>
-            </div>
-
-            {/* Drawer Footer Contact */}
-            <div className="pt-6 border-t border-slate-200 dark:border-slate-800 space-y-3">
-              <div className="text-xs text-slate-400 uppercase tracking-wider font-semibold">
-                {t.navbar.repContact}
-              </div>
-              <a
-                href="mailto:marketing@asiaplastik.com"
-                className="flex items-center gap-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-              >
-                <Mail className="w-4 h-4 text-blue-600 shrink-0" />
-                <span>marketing@asiaplastik.com</span>
-              </a>
-              <a
-                href="tel:+62318433078"
-                className="flex items-center gap-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-              >
-                <Phone className="w-4 h-4 text-blue-600 shrink-0" />
-                <span>+6231 8433078</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      )}
+      <MobileDrawer isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
     </section>
   );
 }
