@@ -35,30 +35,27 @@ export default function Hero() {
       className="relative w-full min-h-[100vh] flex flex-col justify-between overflow-hidden bg-slate-950 font-sans"
     >
       {/* ========================================================================= */}
-      {/* 1. HERO BACKGROUND IMAGE & OPTIMIZED PROPORTIONS (NEXT/IMAGE)             */}
+      {/* 1. FIX IMAGE QUALITY (BLURRY/PIXELATED FIX)                                */}
       {/* ========================================================================= */}
       <Image
         src="/images/fotopt.png"
         alt="Fasilitas Pabrik CV. Asia Plastik"
         fill
         priority
+        quality={100}
         sizes="100vw"
-        className="object-cover object-center select-none"
+        className="object-cover object-center -z-10 select-none"
       />
 
-      {/* Dark overlay: High-contrast gradient to ensure typography legibility */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/40 pointer-events-none" />
-
-      {/* Subtle top shade for top bar & navbar readability */}
-      <div className="absolute top-0 inset-x-0 h-36 bg-gradient-to-b from-black/80 via-black/35 to-transparent pointer-events-none" />
-
-      {/* Subtle bottom edge gradient for smooth page transition */}
-      <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-slate-950/75 to-transparent pointer-events-none" />
+      {/* ========================================================================= */}
+      {/* 2. FIX BACKGROUND OVERLAY (TOO DARK FIX: BRIGHT SKY & BUILDING VISIBLE)   */}
+      {/* ========================================================================= */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/20 to-transparent z-0 pointer-events-none" />
 
       {/* ========================================================================= */}
-      {/* 2. TOP BAR & MAIN NAVBAR (OVERLAY WITH GLASSMORPHISM)                     */}
+      {/* 3. TOP BAR & MAIN NAVBAR (OVERLAY WITH GLASSMORPHISM, Z-20)               */}
       {/* ========================================================================= */}
-      <header className="relative z-40 w-full">
+      <header className="relative z-20 w-full">
         {/* Top Bar */}
         <div className="w-full border-b border-white/10 backdrop-blur-xs">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-2.5 flex justify-end items-center text-xs sm:text-sm text-gray-200 z-50 relative">
@@ -220,9 +217,9 @@ export default function Hero() {
       </header>
 
       {/* ========================================================================= */}
-      {/* 3. HERO TYPOGRAPHY & LAYOUT (VERTICALLY CENTERED, LEFT-ALIGNED)           */}
+      {/* 4. HERO TYPOGRAPHY & LAYOUT (VERTICALLY CENTERED, LEFT-ALIGNED, Z-10)     */}
       {/* ========================================================================= */}
-      <div className="relative z-30 flex-1 flex items-center">
+      <div className="relative z-10 flex-1 flex items-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-12 sm:py-16 lg:py-20">
           {/* Visual Accent: Thin, elegant vertical line immediately to the left */}
           <div className="border-l-4 border-white/80 pl-5 sm:pl-7 lg:pl-9 max-w-3xl lg:max-w-4xl animate-fade-in-up">
@@ -259,9 +256,9 @@ export default function Hero() {
       </div>
 
       {/* ========================================================================= */}
-      {/* 4. BOTTOM ACCENT STRIP                                                    */}
+      {/* 5. BOTTOM ACCENT STRIP (Z-10)                                             */}
       {/* ========================================================================= */}
-      <div className="relative z-30 w-full border-t border-white/10 bg-black/40 backdrop-blur-xs py-3 px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 w-full border-t border-white/10 bg-black/30 backdrop-blur-xs py-3 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-xs sm:text-sm text-gray-200">
           <div className="flex items-center gap-2 drop-shadow-sm">
             <ShieldCheck className="w-4 h-4 text-blue-400 shrink-0" />
@@ -280,7 +277,7 @@ export default function Hero() {
       </div>
 
       {/* ========================================================================= */}
-      {/* 5. SLIDE-OUT FLYOUT NAVIGATION MENU (DRAWER)                              */}
+      {/* 6. SLIDE-OUT FLYOUT NAVIGATION MENU (DRAWER)                              */}
       {/* ========================================================================= */}
       {isMenuOpen && (
         <div className="fixed inset-0 z-50 flex justify-end animate-fade-in-up">
