@@ -2,6 +2,7 @@
 
 import React, { useRef, useState } from "react";
 import Image from "next/image";
+import { useLanguage } from "@/data/translations";
 import {
   Box,
   Scale,
@@ -11,14 +12,16 @@ import {
 } from "lucide-react";
 
 export default function NewProduct() {
+  const { t } = useLanguage();
+
   const productImages = [
-    '/images/product/product1.webp',
-    '/images/product/product2.webp',
-    '/images/product/product3.webp',
-    '/images/product/product4.webp',
-    '/images/product/product5.webp',
-    '/images/product/product6.webp',
-    '/images/product/basket.png'
+    "/images/product/product1.webp",
+    "/images/product/product2.webp",
+    "/images/product/product3.webp",
+    "/images/product/product4.webp",
+    "/images/product/product5.webp",
+    "/images/product/product6.webp",
+    "/images/product/basket.png",
   ];
 
   // Mouse drag support for desktop horizontal scrolling
@@ -56,33 +59,32 @@ export default function NewProduct() {
 
   const specs = [
     {
-      label: "Dimensi",
-      value: "600 x 400 x 320 mm",
+      label: t.newProduct.specs.dimensions,
+      value: t.newProduct.specs.dimensionsVal,
       icon: Box,
     },
     {
-      label: "Berat",
-      value: "2.6 Kg",
+      label: t.newProduct.specs.weight,
+      value: t.newProduct.specs.weightVal,
       icon: Scale,
     },
     {
-      label: "Sertifikasi",
-      value: "ISO 9001:2015",
+      label: t.newProduct.specs.certification,
+      value: t.newProduct.specs.certificationVal,
       icon: ShieldCheck,
     },
     {
-      label: "Kapasitas Beban",
-      value: "40 Kg (Dinamis)",
+      label: t.newProduct.specs.capacity,
+      value: t.newProduct.specs.capacityVal,
       icon: Layers,
     },
   ];
 
   return (
-    <section className="w-full bg-slate-50 dark:bg-slate-950 py-16 sm:py-24 transition-colors duration-300">
+    <section id="products" className="w-full bg-slate-50 dark:bg-slate-950 py-16 sm:py-24 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Product Showcase Card */}
         <div className="bg-white dark:bg-slate-900 rounded-[2rem] shadow-xl overflow-hidden border border-slate-100 dark:border-slate-800 grid grid-cols-1 lg:grid-cols-2 transition-colors duration-300">
-          
           {/* ========================================================================= */}
           {/* LEFT COLUMN: TYPOGRAPHY & PRODUCT DETAILS                                 */}
           {/* ========================================================================= */}
@@ -91,17 +93,17 @@ export default function NewProduct() {
               {/* Aesthetic Badge */}
               <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 text-xs font-bold tracking-widest uppercase mb-6 shadow-2xs">
                 <span className="w-2 h-2 rounded-full bg-blue-600 dark:bg-blue-400 animate-pulse" />
-                <span>NEW PRODUCT</span>
+                <span>{t.newProduct.badge}</span>
               </div>
 
               {/* Product Title */}
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight mb-4 tracking-tight">
-                Solid Foldable Industrial Basket
+                {t.newProduct.title}
               </h2>
 
               {/* Subtitle / Product Narrative */}
               <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed mb-8">
-                Wadah krat industri lipat multifungsi dengan struktur kokoh dan material food-grade presisi. Dirancang untuk efisiensi ruang penyimpanan hingga 75% saat dilipat, ideal untuk distribusi logistik pergudangan modern dan rantai pasok industri.
+                {t.newProduct.description}
               </p>
 
               {/* Product Specs (Bento-style 2x2 grid) */}
@@ -132,7 +134,7 @@ export default function NewProduct() {
             <div className="pt-2 flex items-center">
               <span className="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-                <span>Ready Stock & Kontrak B2B</span>
+                <span>{t.newProduct.highlights}</span>
               </span>
             </div>
           </div>
@@ -162,7 +164,7 @@ export default function NewProduct() {
                 >
                   <Image
                     src={src}
-                    alt={`Solid Foldable Industrial Basket - Tampilan ${index + 1}`}
+                    alt={`${t.newProduct.carouselAlt} ${index + 1}`}
                     fill
                     priority={index === 0}
                     sizes="(max-width: 1024px) 100vw, 50vw"
@@ -173,7 +175,6 @@ export default function NewProduct() {
               ))}
             </div>
           </div>
-
         </div>
       </div>
     </section>

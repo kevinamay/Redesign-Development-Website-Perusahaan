@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState, useRef, useCallback, useSyncExternalStore } from "react";
 import { Moon, Sun } from "lucide-react";
+import { useLanguage } from "@/data/translations";
 
 interface ThemeToggleProps {
   className?: string;
@@ -42,6 +43,7 @@ function getServerSnapshot(): "light" | "dark" {
 export default function ThemeToggle({ className = "", showLabels = false }: ThemeToggleProps) {
   const mounted = useMounted();
   const theme = useSyncExternalStore(subscribeTheme, getThemeSnapshot, getServerSnapshot);
+  const { t } = useLanguage();
 
   const [isDragging, setIsDragging] = useState(false);
   const [dragOffset, setDragOffset] = useState<number | null>(null);
@@ -188,7 +190,7 @@ export default function ThemeToggle({ className = "", showLabels = false }: Them
             isDark ? "text-blue-400 font-bold" : "text-slate-400"
           }`}
         >
-          Gelap
+          {t.common.darkMode}
         </span>
       )}
 
@@ -198,12 +200,8 @@ export default function ThemeToggle({ className = "", showLabels = false }: Them
         role="switch"
         tabIndex={0}
         aria-checked={!isDark}
-        aria-label="Pengalih Mode Gelap (Kiri) dan Mode Terang (Kanan)"
-        title={
-          isDark
-            ? "Mode Gelap aktif (Geser ke KANAN untuk Mode Terang)"
-            : "Mode Terang aktif (Geser ke KIRI untuk Mode Gelap)"
-        }
+        aria-label={`${t.common.darkMode} / ${t.common.lightMode}`}
+        title={isDark ? t.common.themeTooltipDark : t.common.themeTooltipLight}
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
@@ -225,7 +223,7 @@ export default function ThemeToggle({ className = "", showLabels = false }: Them
           className={`absolute left-[9px] top-1/2 -translate-y-1/2 flex items-center justify-center transition-opacity duration-200 pointer-events-auto ${
             isDark ? "opacity-20 text-blue-400" : "opacity-70 text-slate-600 hover:opacity-100"
           }`}
-          title="Klik atau geser ke kiri: Mode Gelap"
+          title={t.common.themeTooltipLight}
         >
           <Moon className="w-3.5 h-3.5" />
         </div>
@@ -239,7 +237,7 @@ export default function ThemeToggle({ className = "", showLabels = false }: Them
           className={`absolute right-[9px] top-1/2 -translate-y-1/2 flex items-center justify-center transition-opacity duration-200 pointer-events-auto ${
             !isDark ? "opacity-20 text-amber-500" : "opacity-70 text-slate-400 hover:opacity-100"
           }`}
-          title="Klik atau geser ke kanan: Mode Terang"
+          title={t.common.themeTooltipDark}
         >
           <Sun className="w-3.5 h-3.5" />
         </div>
@@ -275,7 +273,7 @@ export default function ThemeToggle({ className = "", showLabels = false }: Them
             !isDark ? "text-amber-600 font-bold" : "text-slate-400"
           }`}
         >
-          Terang
+          {t.common.lightMode}
         </span>
       )}
     </div>

@@ -37,6 +37,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                   } else {
                     document.documentElement.classList.remove('dark');
                   }
+                  var savedLang = localStorage.getItem('language');
+                  if (savedLang === 'zh') {
+                    document.documentElement.lang = 'zh-CN';
+                  } else if (savedLang === 'en') {
+                    document.documentElement.lang = 'en';
+                  } else if (savedLang === 'id') {
+                    document.documentElement.lang = 'id';
+                  }
                 } catch (e) {}
               })();
             `,
