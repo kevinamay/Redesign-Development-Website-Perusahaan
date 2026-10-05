@@ -288,39 +288,55 @@ export default function AboutPreview() {
             </div>
           </article>
 
-          {/* SECTION 2: SERTIFIKAT ISO (THE VIDEO PARALLAX EFFECT - CRITICAL) */}
-          <article id="about-iso" className="scroll-mt-36">
-            <div className="relative w-full h-[600px] bg-[url('/images/assets/iso-bg.png')] bg-fixed bg-cover bg-center rounded-3xl overflow-hidden shadow-2xl">
-              {/* Subtle dark overlay for contrast */}
-              <div className="absolute inset-0 bg-slate-950/20 pointer-events-none" />
+          {/* SECTION 2: SERTIFIKAT ISO (CLEAN & AESTHETIC LAYOUT) */}
+          <article id="about-iso" className="scroll-mt-36 space-y-6">
+            <div className="space-y-4">
+              <div className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-bold tracking-widest text-xs uppercase">
+                <Award className="w-4 h-4" />
+                <span>{t.s2.badge}</span>
+              </div>
 
-              {/* Solid dark-blue content box that slides up over the fixed background image */}
-              <div className="absolute bottom-0 left-0 w-[85%] md:w-[60%] bg-[#1e3a5f] p-10 md:p-14 rounded-tr-3xl shadow-2xl border-t border-r border-blue-400/20">
-                {/* ISO Badge */}
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-200 text-xs font-semibold uppercase tracking-wider mb-4">
-                  <Award className="w-4 h-4 text-blue-300" />
-                  <span>{t.s2.badge}</span>
-                </div>
+              <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
+                {t.s2.title}
+              </h3>
 
-                {/* ISO Title */}
-                <h3 className="text-3xl font-bold text-white mb-4 tracking-tight">
-                  {t.s2.title}
-                </h3>
+              <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
+                {t.s2.text}
+              </p>
 
-                {/* ISO Text */}
-                <p className="text-blue-100 text-lg leading-relaxed mb-6">
-                  {t.s2.text}
-                </p>
+              {/* Key Certification Points Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+                {t.s2.features.map((feat, idx) => (
+                  <div
+                    key={idx}
+                    className="flex items-center gap-2.5 p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-200 shadow-2xs"
+                  >
+                    <div className="w-6 h-6 rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 border border-emerald-200 dark:border-emerald-800/80">
+                      <ShieldCheck className="w-3.5 h-3.5" />
+                    </div>
+                    <span>{feat}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
 
-                {/* Key Certification Points */}
-                <ul className="space-y-2.5 pt-2 border-t border-blue-400/20">
-                  {t.s2.features.map((feat, idx) => (
-                    <li key={idx} className="flex items-center gap-2.5 text-sm text-blue-200">
-                      <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
-                      <span>{feat}</span>
-                    </li>
-                  ))}
-                </ul>
+            {/* Clean Full-Width Rounded Image (No Overlapping Card) */}
+            <div className="relative overflow-hidden rounded-3xl shadow-xl group">
+              <Image
+                src="/images/assets/iso-bg.png"
+                alt="Fasilitas Pabrik CV Asia Plastik Berstandar ISO 9001:2015"
+                width={1200}
+                height={600}
+                className="rounded-3xl shadow-xl object-cover h-[400px] w-full transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/50 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between text-white drop-shadow-md">
+                <span className="text-xs sm:text-sm font-semibold bg-slate-900/80 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
+                  Sertifikasi ISO 9001:2015 • Standar Mutu Manufaktur
+                </span>
+                <span className="hidden sm:inline-flex text-xs font-medium bg-blue-600/90 backdrop-blur-md px-3.5 py-2 rounded-full text-white">
+                  Audit Berkala Konsisten
+                </span>
               </div>
             </div>
           </article>
