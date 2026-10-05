@@ -140,7 +140,10 @@ export default function NewProduct() {
           {/* ========================================================================= */}
           {/* RIGHT COLUMN: NATIVE SMOOTH SWIPE CAROUSEL (CSS SCROLL SNAP)               */}
           {/* ========================================================================= */}
-          <div className="bg-slate-100 dark:bg-slate-800/50 relative flex items-center justify-center p-4 sm:p-8 lg:p-10 overflow-hidden transition-colors duration-300">
+          <div className="bg-slate-100 dark:bg-slate-950 relative flex items-center justify-center p-4 sm:p-8 lg:p-10 overflow-hidden transition-colors duration-300 border-t lg:border-t-0 lg:border-l border-slate-200/60 dark:border-slate-800/80">
+            {/* Ambient Studio Lighting (Dark Mode Subtle Glow) */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.12),transparent_70%)] pointer-events-none opacity-0 dark:opacity-100 transition-opacity duration-500" />
+
             {/* Scroll Container with CSS Scroll Snap & Mouse Drag */}
             <div
               ref={scrollRef}
@@ -148,7 +151,7 @@ export default function NewProduct() {
               onMouseLeave={handleMouseLeave}
               onMouseUp={handleMouseUp}
               onMouseMove={handleMouseMove}
-              className={`flex w-full h-[400px] lg:h-[500px] overflow-x-auto snap-x snap-mandatory scroll-smooth cursor-grab active:cursor-grabbing [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] ${
+              className={`relative z-10 flex w-full h-[400px] lg:h-[500px] overflow-x-auto snap-x snap-mandatory scroll-smooth cursor-grab active:cursor-grabbing [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] ${
                 isDragging ? "cursor-grabbing select-none" : ""
               }`}
             >
@@ -164,7 +167,7 @@ export default function NewProduct() {
                     priority={index === 0}
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     draggable={false}
-                    className="object-contain hover:scale-105 transition-transform duration-500 select-none"
+                    className="object-contain hover:scale-105 transition-transform duration-500 select-none dark:drop-shadow-[0_12px_24px_rgba(0,0,0,0.6)]"
                   />
                 </div>
               ))}
