@@ -17,9 +17,9 @@ export const metadata: Metadata = {
       "Spesifikasi teknis lengkap Pallet Industri P Series unggulan CV. Asia Plastik.",
     images: [
       {
-        url: "/images/product/Pallet/pallet-warehouse-crop.jpg",
+        url: "/images/product/Pallet/pallet-product-full.jpg",
         width: 1200,
-        height: 630,
+        height: 700,
         alt: "Pallet P Series CV. Asia Plastik",
       },
     ],

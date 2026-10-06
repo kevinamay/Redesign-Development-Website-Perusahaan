@@ -70,21 +70,21 @@ const categories: CategoryItem[] = [
   },
 ];
 
-// Slides untuk produk PALLET P SERIES (2 Slide: Aplikasi Lapangan & Detail Struktur)
+// Slides untuk produk PALLET P SERIES (Hanya Foto Produk Murni - 2 Slide)
 const palletSlides = [
   {
     id: "slide-1",
-    title: "Pallet P Series - Aplikasi Pergudangan & Forklift",
-    shortTitle: "Aplikasi Lapangan",
-    caption: "Aplikasi Forklift & Gudang",
-    image: "/images/product/Pallet/pallet-warehouse-crop.jpg",
+    title: "Pallet P Series - Tampak Keseluruhan Produk",
+    shortTitle: "Tampak Penuh",
+    caption: "Tampak Depan (Full Product)",
+    image: "/images/product/Pallet/pallet-product-full.jpg",
   },
   {
     id: "slide-2",
     title: "Pallet P Series - Detail Struktur & Honeycomb Grid",
     shortTitle: "Detail Struktur",
     caption: "Detail Grid & Kaki Kokoh",
-    image: "/images/product/Pallet/pallet-detail-crop.jpg",
+    image: "/images/product/Pallet/pallet-product-detail.jpg",
   },
 ];
 
