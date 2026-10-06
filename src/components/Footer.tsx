@@ -34,11 +34,11 @@ export default function Footer() {
   ];
 
   const quickNavLinks = t.footer?.quickNavLinks || [
-    { label: "Beranda", href: "#hero" },
-    { label: "Profil Perusahaan", href: "#about" },
-    { label: "Katalog Produk", href: "#products" },
-    { label: "Standar Mutu (QC)", href: "#quality" },
-    { label: "Hubungi Kami", href: "#contact" },
+    { label: "Beranda", href: "/" },
+    { label: "Profil Perusahaan", href: "/about" },
+    { label: "Katalog Produk", href: "/products" },
+    { label: "Standar Mutu (QC)", href: "/about#iso-sertifikat" },
+    { label: "Hubungi Kami", href: "/#contact" },
   ];
 
   const solutionsLinks = t.footer?.solutionsLinks || [

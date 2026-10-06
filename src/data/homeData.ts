@@ -89,12 +89,12 @@ export interface FooterData {
 // -------------------------------------------------------------
 
 export const navLinks: NavLink[] = [
-  { label: "Beranda", href: "#hero" },
-  { label: "Tentang Kami", href: "#about" },
-  { label: "Produk & Layanan", href: "#products" },
-  { label: "Mesin & Fasilitas", href: "#facilities" },
-  { label: "Kontak", href: "#contact" },
-  { label: "Minta Penawaran", href: "#contact", isCta: true },
+  { label: "Beranda", href: "/" },
+  { label: "Tentang Kami", href: "/about" },
+  { label: "Produk & Layanan", href: "/products" },
+  { label: "Mesin & Fasilitas", href: "/about#mesin-produksi" },
+  { label: "Kontak", href: "/#contact" },
+  { label: "Minta Penawaran", href: "/#contact", isCta: true },
 ];
 
 export const heroData: HeroData = {

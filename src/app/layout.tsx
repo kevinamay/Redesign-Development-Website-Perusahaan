@@ -13,6 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://asiaplastik.com"),
   title: "CV. ASIA PLASTIK - Solusi Manufaktur & Cetak Plastik Industri Presisi",
   description:
     "CV. Asia Plastik adalah produsen manufaktur produk plastik terkemuka: Injection Molding, Blow Molding, dan Kemasan Industri berkualitas tinggi & presisi.",

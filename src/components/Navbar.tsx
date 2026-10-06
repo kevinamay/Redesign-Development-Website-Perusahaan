@@ -2,12 +2,15 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { navLinks, footerData } from "@/data/homeData";
 import { Menu, X, PhoneCall, ArrowRight, ShieldCheck } from "lucide-react";
+import ThemeToggle from "@/components/ThemeToggle";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,27 +25,27 @@ export default function Navbar() {
   const standardLinks = navLinks.filter((item) => !item.isCta);
   const ctaLink = navLinks.find((item) => item.isCta) || {
     label: "Minta Penawaran",
-    href: "#contact",
+    href: "/#contact",
   };
 
   return (
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-100"
-          : "bg-white/90 backdrop-blur-sm border-b border-slate-100/80"
+          ? "bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-sm border-b border-slate-200/80 dark:border-slate-800"
+          : "bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm border-b border-slate-100 dark:border-slate-800/80"
       }`}
     >
       {/* Top micro-bar for corporate credibility */}
-      <div className="hidden lg:block bg-slate-900 text-slate-300 text-xs py-2 px-4">
+      <div className="hidden lg:block bg-slate-900 dark:bg-slate-950 text-slate-300 text-xs py-2 px-4 border-b border-slate-800">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex items-center gap-6">
             <span className="flex items-center gap-1.5 text-slate-300">
               <ShieldCheck className="w-3.5 h-3.5 text-blue-400" />
               Sertifikasi ISO 9001:2015 & Standar Mutu Manufaktur
             </span>
-            <span className="text-slate-500">|</span>
-            <span>{footerData.contact.workingHours}</span>
+            <span className="text-slate-600">|</span>
+            <span className="text-slate-300">{footerData.contact.workingHours}</span>
           </div>
           <div className="flex items-center gap-4">
             <a
@@ -51,7 +54,7 @@ export default function Navbar() {
             >
               {footerData.contact.email}
             </a>
-            <span className="text-slate-500">|</span>
+            <span className="text-slate-600">|</span>
             <a
               href={`tel:${footerData.contact.phone.replace(/[^0-9+]/g, "")}`}
               className="text-blue-400 font-medium hover:text-blue-300 transition-colors"
@@ -71,10 +74,10 @@ export default function Navbar() {
               <span className="text-white font-extrabold text-xl tracking-tight">AP</span>
             </div>
             <div className="flex flex-col">
-              <span className="text-lg font-bold text-slate-900 tracking-tight leading-tight group-hover:text-blue-700 transition-colors">
+              <span className="text-lg font-bold text-slate-900 dark:text-white tracking-tight leading-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                 {footerData.company.legalName}
               </span>
-              <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-widest">
+              <span className="text-[11px] font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-widest">
                 Plastic Manufacturing
               </span>
             </div>
@@ -82,25 +85,42 @@ export default function Navbar() {
 
           {/* Desktop Navigation Links */}
           <div className="hidden md:flex items-center gap-8">
-            {standardLinks.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                className="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors relative py-1 group"
-              >
-                {item.label}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-200 group-hover:w-full" />
-              </Link>
-            ))}
+            {standardLinks.map((item) => {
+              const isActive =
+                pathname === item.href ||
+                (item.href !== "/" && pathname?.startsWith(item.href));
+
+              return (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className={`text-sm transition-colors relative py-1 group ${
+                    isActive
+                      ? "text-blue-600 dark:text-blue-400 font-bold"
+                      : "text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium"
+                  }`}
+                >
+                  {item.label}
+                  <span
+                    className={`absolute bottom-0 left-0 h-0.5 bg-blue-600 transition-all duration-200 ${
+                      isActive ? "w-full" : "w-0 group-hover:w-full"
+                    }`}
+                  />
+                </Link>
+              );
+            })}
           </div>
 
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center gap-4">
+            {/* Theme Toggle */}
+            <ThemeToggle />
+
             <a
               href={`https://wa.me/${footerData.contact.whatsapp.replace(/[^0-9]/g, "")}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden lg:flex items-center gap-2 text-sm font-medium text-slate-700 hover:text-blue-600 transition-colors px-3 py-2 rounded-lg hover:bg-slate-50"
+              className="hidden lg:flex items-center gap-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors px-3 py-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800"
             >
               <PhoneCall className="w-4 h-4 text-emerald-600" />
               <span>WhatsApp Sales</span>
@@ -115,12 +135,13 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Mobile Hamburger Button */}
-          <div className="flex md:hidden">
+          {/* Mobile Right Controls: ThemeToggle + Hamburger Button */}
+          <div className="flex md:hidden items-center gap-2">
+            <ThemeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
               type="button"
-              className="p-2.5 rounded-lg text-slate-700 hover:text-slate-900 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+              className="p-2.5 rounded-lg text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
               aria-expanded={isOpen}
               aria-label="Toggle navigation menu"
             >
@@ -132,28 +153,38 @@ export default function Navbar() {
 
       {/* Mobile Navigation Dropdown Drawer */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out border-b border-slate-100 bg-white ${
+        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out border-b border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 ${
           isOpen ? "max-h-[450px] opacity-100 shadow-xl" : "max-h-0 opacity-0"
         }`}
       >
         <div className="px-5 pt-3 pb-6 space-y-3">
-          {standardLinks.map((item) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              onClick={() => setIsOpen(false)}
-              className="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-700 hover:text-blue-600 hover:bg-slate-50 transition-colors"
-            >
-              {item.label}
-            </Link>
-          ))}
+          {standardLinks.map((item) => {
+            const isActive =
+              pathname === item.href ||
+              (item.href !== "/" && pathname?.startsWith(item.href));
 
-          <div className="pt-4 border-t border-slate-100 space-y-3">
+            return (
+              <Link
+                key={item.label}
+                href={item.href}
+                onClick={() => setIsOpen(false)}
+                className={`block px-3 py-2.5 rounded-lg text-base font-medium transition-colors ${
+                  isActive
+                    ? "text-blue-600 dark:text-blue-400 bg-blue-50/70 dark:bg-blue-950/60 font-semibold"
+                    : "text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-slate-50 dark:hover:bg-slate-800"
+                }`}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
+
+          <div className="pt-4 border-t border-slate-100 dark:border-slate-800 space-y-3">
             <a
               href={`https://wa.me/${footerData.contact.whatsapp.replace(/[^0-9]/g, "")}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 w-full px-4 py-3 rounded-lg border border-slate-200 text-slate-700 text-sm font-semibold hover:bg-slate-50 transition-colors"
+              className="flex items-center justify-center gap-2 w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 text-sm font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
             >
               <PhoneCall className="w-4 h-4 text-emerald-600" />
               <span>Hubungi via WhatsApp</span>

@@ -37,9 +37,9 @@ export default function Hero() {
 
   const navMenuItems = [
     { label: t.navbar.home, href: "#hero" },
-    { label: t.navbar.about, href: "#about" },
-    { label: t.navbar.products, href: "#products" },
-    { label: t.navbar.facilities, href: "#about" },
+    { label: t.navbar.about, href: "/about" },
+    { label: t.navbar.products, href: "/products" },
+    { label: t.navbar.facilities, href: "/about#mesin-produksi" },
     { label: t.navbar.contact, href: "#contact" },
   ];
 
