@@ -11,7 +11,11 @@ import {
 } from "lucide-react";
 import ProductCard from "@/components/ProductCard";
 import { footerData } from "@/data/homeData";
-import { keranjangProducts, boxLipatProducts } from "@/data/catalogData";
+import {
+  keranjangProducts,
+  boxLipatProducts,
+  laluLintasProducts,
+} from "@/data/catalogData";
 
 interface CategoryItem {
   id: string;
@@ -41,9 +45,9 @@ const categories: CategoryItem[] = [
   },
   {
     id: "blok-lalu-lintas",
-    name: "Blok Lalu Lintas",
-    displayName: "BLOK LALU LINTAS",
-    subtitle: "Pembatas Jalan & Alat Keselamatan Rekayasa Jalan",
+    name: "Blok & Kerucut Lalu Lintas",
+    displayName: "BLOK LALU LINTAS & KERUCUT LALU LINTAS",
+    subtitle: "Road Barrier Pembatas Jalan & Kerucut Pengaman Rekayasa Lalu Lintas",
   },
   {
     id: "botol-pupuk-pet",
@@ -172,6 +176,19 @@ export default function ProductCatalog() {
           ) : activeCategoryId === "box-lipat" ? (
             <div className="flex flex-col gap-12">
               {boxLipatProducts.map((product) => (
+                <ProductCard
+                  key={product.title}
+                  title={product.title}
+                  dimensi={product.dimensi}
+                  berat={product.berat}
+                  deskripsi={product.deskripsi}
+                  imagePath={product.imagePath}
+                />
+              ))}
+            </div>
+          ) : activeCategoryId === "blok-lalu-lintas" ? (
+            <div className="flex flex-col gap-12">
+              {laluLintasProducts.map((product) => (
                 <ProductCard
                   key={product.title}
                   title={product.title}
