@@ -11,8 +11,6 @@ import {
   Mail,
   Clock,
   ArrowUp,
-  ShoppingBag,
-  Store,
 } from "lucide-react";
 import { useLanguage } from "@/data/translations";
 
@@ -56,13 +54,45 @@ export default function Footer() {
       name: "Tokopedia",
       href: "https://www.tokopedia.com/asia-plastik-official",
       isExternal: true,
-      icon: <ShoppingBag className="w-6 h-6 shrink-0" />,
+      icon: (
+        <svg
+          className="w-8 h-8 text-[#03AC0E] shrink-0"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path d="M21.94 13.56a5.6 5.6 0 0 0-4.06-2.58l.64-1.42A3.24 3.24 0 0 0 17 5.17l-1.39.63A7.47 7.47 0 0 0 12 5.09a7.47 7.47 0 0 0-3.61.71L7 5.17A3.24 3.24 0 0 0 5.48 9.56l.64 1.42a5.6 5.6 0 0 0-4.06 2.58A5.94 5.94 0 0 0 1 17.15C1 20.93 4.29 24 8.35 24h7.3C19.71 24 23 20.93 23 17.15a5.94 5.94 0 0 0-1.06-3.59zM12 21.65c-3.14 0-5.7-2.34-5.7-5.23s2.56-5.23 5.7-5.23 5.7 2.34 5.7 5.23-2.56 5.23-5.7 5.23z" />
+          <circle cx="9.25" cy="15.8" r="1.5" fill="#FFFFFF" />
+          <circle cx="14.75" cy="15.8" r="1.5" fill="#FFFFFF" />
+        </svg>
+      ),
     },
     {
       name: "Shopee",
       href: "https://shopee.co.id/asiaplastik52?smtt=0.27476852-1652338218.9&is_from_login=true",
       isExternal: true,
-      icon: <Store className="w-6 h-6 shrink-0" />,
+      icon: (
+        <svg
+          className="w-8 h-8 text-[#EE4D2D] shrink-0"
+          viewBox="0 0 24 24"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M8.25 6.375A3.75 3.75 0 0 1 12 2.625a3.75 3.75 0 0 1 3.75 3.75V7.5H8.25V6.375z"
+            stroke="#EE4D2D"
+            strokeWidth="2"
+          />
+          <path
+            d="M4.5 7.5h15l1.35 13.5a1.8 1.8 0 0 1-1.8 1.95H4.95a1.8 1.8 0 0 1-1.8-1.95L4.5 7.5z"
+            fill="#EE4D2D"
+          />
+          <path
+            d="M14 15.8c0 1.2-.9 2-2.3 2a3.8 3.8 0 0 1-2.2-.7l.5-1.4a3 3 0 0 0 1.7.5c.7 0 1.1-.3 1.1-.7 0-.4-.3-.6-1.1-1-1.1-.4-1.9-.9-1.9-2 0-1.1.9-1.9 2.2-1.9.7 0 1.4.2 2 .5l-.5 1.4a2.6 2.6 0 0 0-1.5-.4c-.6 0-1 .3-1 .7 0 .4.3.6 1.1.9 1.1.4 2 1 2 2.2z"
+            fill="#FFFFFF"
+          />
+        </svg>
+      ),
     },
     {
       name: "YouTube",
@@ -70,11 +100,16 @@ export default function Footer() {
       isExternal: true,
       icon: (
         <svg
-          className="w-6 h-6 fill-current shrink-0"
+          className="w-8 h-8 text-[#FF0000] shrink-0"
           viewBox="0 0 24 24"
+          fill="currentColor"
           aria-hidden="true"
         >
-          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+          <path
+            d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"
+            fill="#FF0000"
+          />
+          <path d="M9.545 15.568V8.432L15.818 12l-6.273 3.568z" fill="#FFFFFF" />
         </svg>
       ),
     },
@@ -84,15 +119,33 @@ export default function Footer() {
       isExternal: true,
       icon: (
         <svg
-          className="w-6 h-6 fill-none stroke-current stroke-2 shrink-0"
+          className="w-8 h-8 shrink-0"
           viewBox="0 0 24 24"
-          strokeLinecap="round"
-          strokeLinejoin="round"
+          fill="none"
           aria-hidden="true"
         >
-          <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-          <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+          <defs>
+            <radialGradient id="footerIgGradient" cx="20%" cy="105%" r="120%">
+              <stop offset="0%" stopColor="#fdf497" />
+              <stop offset="10%" stopColor="#fdf497" />
+              <stop offset="50%" stopColor="#fd5949" />
+              <stop offset="70%" stopColor="#d6249f" />
+              <stop offset="100%" stopColor="#285AEB" />
+            </radialGradient>
+          </defs>
+          <rect x="2" y="2" width="20" height="20" rx="5.5" fill="url(#footerIgGradient)" />
+          <rect
+            x="5.2"
+            y="5.2"
+            width="13.6"
+            height="13.6"
+            rx="3.8"
+            stroke="#FFFFFF"
+            strokeWidth="1.6"
+            fill="none"
+          />
+          <circle cx="12" cy="12" r="3.4" stroke="#FFFFFF" strokeWidth="1.6" />
+          <circle cx="15.8" cy="8.2" r="0.9" fill="#FFFFFF" />
         </svg>
       ),
     },
@@ -102,7 +155,7 @@ export default function Footer() {
       isExternal: true,
       icon: (
         <svg
-          className="w-6 h-6 fill-current shrink-0"
+          className="w-8 h-8 text-white fill-current shrink-0"
           viewBox="0 0 24 24"
           aria-hidden="true"
         >
@@ -114,7 +167,23 @@ export default function Footer() {
       name: "Email",
       href: "mailto:marketing@asiaplastik.com",
       isExternal: false,
-      icon: <Mail className="w-6 h-6 shrink-0" />,
+      icon: (
+        <svg
+          className="w-8 h-8 text-[#FF6600] shrink-0"
+          viewBox="0 0 24 24"
+          fill="none"
+          aria-hidden="true"
+        >
+          <rect x="2" y="4" width="20" height="16" rx="3.5" fill="#FF6600" />
+          <path
+            d="M3 6L12 13L21 6"
+            stroke="#FFFFFF"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      ),
     },
   ];
 
@@ -170,8 +239,8 @@ export default function Footer() {
                 ))}
               </div>
 
-              {/* Social Media & Marketplace Links */}
-              <div className="mt-5 flex flex-wrap items-center gap-3">
+              {/* Standalone Colored Social Media & Marketplace Links */}
+              <div className="mt-5 flex flex-wrap items-center gap-4">
                 {socialLinks.map((item, idx) => (
                   <a
                     key={idx}
@@ -181,7 +250,7 @@ export default function Footer() {
                       : {})}
                     aria-label={item.name}
                     title={item.name}
-                    className="w-12 h-12 flex items-center justify-center rounded-full bg-slate-900 border border-slate-800 text-slate-400 hover:bg-blue-600 hover:text-white hover:border-blue-500 transition-all duration-300 group [&>svg]:w-6 [&>svg]:h-6"
+                    className="hover:scale-110 transition-transform duration-300 inline-block focus:outline-none"
                   >
                     {item.icon}
                   </a>
