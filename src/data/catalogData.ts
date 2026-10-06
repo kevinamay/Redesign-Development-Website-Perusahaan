@@ -85,6 +85,25 @@ export const keranjangProducts = [
   },
 ];
 
+export const boxLipatProducts = [
+  {
+    title: "BOX LIPAT",
+    dimensi: "400 X 600 X 320 MM",
+    berat: "2,6 KG",
+    deskripsi:
+      "Box Lipat Plastik dari Asia Plastik adalah solusi penyimpanan inovatif yang mengutamakan efisiensi dan kepraktisan. Dirancang dengan sistem lipat yang mudah digunakan, keranjang ini dapat dilipat saat tidak digunakan untuk menghemat ruang penyimpanan. Terbuat dari bahan plastik berkualitas tinggi yang kokoh dan tahan lama, box ini cocok untuk kebutuhan industri, logistik, maupun penggunaan sehari-hari. Desain modern dan fungsional menjadikannya pilihan tepat untuk penyimpanan cerdas di era praktis dan dinamis.",
+    imagePath: "/images/product/Box Lipat/box-lipat.png",
+  },
+  {
+    title: "BOX LIPAT LUBANG",
+    dimensi: "400 X 600 X 320 MM",
+    berat: "2,6 KG",
+    deskripsi:
+      "Box Lipat Plastik Berlubang Samping dari Asia Plastik adalah keranjang serbaguna dengan desain inovatif yang dapat dilipat untuk menghemat ruang penyimpanan. Dilengkapi lubang di sisi kanan dan kiri untuk sirkulasi udara serta kemudahan saat diangkat, box ini ideal untuk kebutuhan distribusi, penyimpanan, maupun display produk. Terbuat dari plastik berkualitas tinggi yang kokoh dan tahan lama, produk ini menawarkan solusi praktis dan modern untuk berbagai keperluan industri maupun sehari-hari.",
+    imagePath: "/images/product/Box Lipat/box-lipat-lubang.png",
+  },
+];
+
 export const catalogCategories: ProductCategory[] = [
   {
     id: "pallet-industri",
@@ -114,7 +133,16 @@ export const catalogCategories: ProductCategory[] = [
     name: "Box Lipat",
     displayName: "BOX LIPAT",
     subtitle: "Kontainer Lipat Pintar Hemat Ruang Pergudangan",
-    products: [],
+    products: boxLipatProducts.map((p, idx) => ({
+      id: `box-lipat-${idx + 1}`,
+      name: p.title,
+      image: p.imagePath,
+      specs: [
+        { icon: "Ruler", label: "Dimensi", value: p.dimensi },
+        { icon: "Weight", label: "Berat", value: p.berat },
+      ],
+      description: p.deskripsi,
+    })),
   },
   {
     id: "blok-lalu-lintas",

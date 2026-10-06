@@ -13,7 +13,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
 import { footerData } from "@/data/homeData";
-import { keranjangProducts } from "@/data/catalogData";
+import { keranjangProducts, boxLipatProducts } from "@/data/catalogData";
 
 // Daftar Kategori di Sidebar Kiri
 interface CategoryItem {
@@ -173,6 +173,19 @@ export default function ProductsPage() {
           ) : activeCategoryId === "keranjang-industri" ? (
             <div className="flex flex-col gap-12">
               {keranjangProducts.map((product) => (
+                <ProductCard
+                  key={product.title}
+                  title={product.title}
+                  dimensi={product.dimensi}
+                  berat={product.berat}
+                  deskripsi={product.deskripsi}
+                  imagePath={product.imagePath}
+                />
+              ))}
+            </div>
+          ) : activeCategoryId === "box-lipat" ? (
+            <div className="flex flex-col gap-12">
+              {boxLipatProducts.map((product) => (
                 <ProductCard
                   key={product.title}
                   title={product.title}

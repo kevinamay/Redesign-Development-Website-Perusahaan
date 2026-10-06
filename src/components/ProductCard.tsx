@@ -62,11 +62,11 @@ export default function ProductCard({
           </div>
         )}
 
-        <h2 className="text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white mb-2 tracking-tight">
+        <h2 className="text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
           {title}
         </h2>
         {subtitle && (
-          <p className="text-slate-500 dark:text-slate-400 text-sm sm:text-base">
+          <p className="text-slate-500 dark:text-slate-400 text-sm sm:text-base -mt-4 mb-2">
             {subtitle}
           </p>
         )}
