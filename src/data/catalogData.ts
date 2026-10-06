@@ -111,7 +111,7 @@ export const laluLintasProducts = [
     berat: "1,8 KG",
     deskripsi:
       "Kerucut Lalu Lintas 50 cm (Traffic Cone 50 cm) dari Asia Plastik dirancang khusus untuk manajemen lalu lintas jalan, pembatas zonasi area proyek, serta pengamanan area parkir. Dibuat dari material komposit plastik dan karet berkualitas tinggi yang fleksibel, tahan benturan, serta tidak mudah pecah saat tertabrak kendaraan. Dilengkapi dengan dua lapis stiker reflektif prismatik berdaya pantul tinggi untuk visibilitas maksimal di malam hari dan kondisi cuaca ekstrem. Alas dasar persegi yang stabil memberikan daya tahan terhadap hembusan angin jalan raya.",
-    imagePath: "/images/product/Lalu Lintas/cone50.jpg",
+    imagePath: "/images/product/Lalu Lintas/cone50.png",
   },
   {
     title: "ROAD BARRIER / TRAFFIC BLOCK",
@@ -119,7 +119,7 @@ export const laluLintasProducts = [
     berat: "16 - 17 KG",
     deskripsi:
       "Traffic Block / Road Barrier Plastik dari Asia Plastik adalah pembatas jalan portabel berstandar industri yang dirancang untuk rekayasa lalu lintas, pembatas jalur jalan raya, serta pengamanan zona konstruksi. Diproduksi dari bahan HDPE (High Density Polyethylene) murni yang tahan cuaca tropis, radiasi UV, dan benturan keras kendaraan. Dilengkapi lubang pengisian (inlet) untuk air atau pasir guna memberikan bobot serta stabilitas kokoh saat dipasang di lapangan, pengait interkoneksi antar-blok, dan stiker reflektif panah pengarah chevron untuk visibilitas optimal.",
-    imagePath: "/images/product/Lalu Lintas/trafficblock1.jpg",
+    imagePath: "/images/product/Lalu Lintas/trafficblock1.png",
   },
   {
     title: "KERUCUT LALU LINTAS STANDAR (RING TOP)",
@@ -127,7 +127,7 @@ export const laluLintasProducts = [
     berat: "3,0 KG",
     deskripsi:
       "Kerucut Lalu Lintas Standar Ring Top dari Asia Plastik merupakan traffic cone spesifikasi berat (heavy duty) dengan alas lebar 500 x 500 mm untuk stabilitas maksimal di area jalan bertrafik tinggi dan berangin kencang. Terbuat dari material karet (rubber) sintetis berkualitas yang lentur, tahan tekanan, dan anti penyok saat terlindas. Dilengkapi lubang cincin (ring top) pada bagian ujung atas yang memudahkan pemasangan rantai pembatas, tali barikade, atau lampu peringatan (warning light), serta dua garis pita reflektif sarang lebah untuk visibilitas optimal.",
-    imagePath: "/images/product/Lalu Lintas/cone1.jpg",
+    imagePath: "/images/product/Lalu Lintas/cone1.png",
   },
 ];
 
