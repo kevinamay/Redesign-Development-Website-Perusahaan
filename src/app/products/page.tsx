@@ -70,24 +70,17 @@ const categories: CategoryItem[] = [
   },
 ];
 
-// Slides untuk produk PALLET P SERIES (Cropped close-up agar produk kelihatan besar & jelas)
+// Slides untuk produk PALLET P SERIES (2 Slide: Aplikasi Lapangan & Detail Struktur)
 const palletSlides = [
   {
     id: "slide-1",
-    title: "Pallet P Series - Tampak Depan Studio",
-    shortTitle: "Tampak Depan",
-    caption: "Tampilan Studio (Close-up)",
-    image: "/images/product/Pallet/pallet1.png",
-  },
-  {
-    id: "slide-2",
     title: "Pallet P Series - Aplikasi Pergudangan & Forklift",
     shortTitle: "Aplikasi Lapangan",
     caption: "Aplikasi Forklift & Gudang",
     image: "/images/product/Pallet/pallet-warehouse-crop.jpg",
   },
   {
-    id: "slide-3",
+    id: "slide-2",
     title: "Pallet P Series - Detail Struktur & Honeycomb Grid",
     shortTitle: "Detail Struktur",
     caption: "Detail Grid & Kaki Kokoh",
@@ -325,8 +318,8 @@ export default function ProductsPage() {
                   </div>
                 </div>
 
-                {/* 3 Thumbnail Previews Row */}
-                <div className="grid grid-cols-3 gap-3 sm:gap-4">
+                {/* 2 Thumbnail Previews Row */}
+                <div className="grid grid-cols-2 gap-3 sm:gap-4 max-w-xl mx-auto w-full">
                   {palletSlides.map((slide, idx) => (
                     <button
                       key={slide.id}
