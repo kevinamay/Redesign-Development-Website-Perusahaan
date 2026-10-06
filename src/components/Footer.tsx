@@ -1,171 +1,234 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
-import { footerData } from "@/data/homeData";
-import { useLanguage } from "@/data/translations";
 import {
+  ShieldCheck,
   MapPin,
   Phone,
+  MessageCircle,
   Mail,
   Clock,
-  MessageSquare,
-  ShieldCheck,
-  ChevronRight,
   ArrowUp,
 } from "lucide-react";
+import { useLanguage } from "@/data/translations";
 
 export default function Footer() {
   const { t } = useLanguage();
+  const [logoError, setLogoError] = useState(false);
+
+  const scrollToTop = () => {
+    if (typeof window !== "undefined") {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const certifications = t.footer?.certifications || [
+    "ISO 9001:2015 Quality Management",
+    "Food Grade Safety Compliance",
+    "Eco-Friendly Recyclable Resins",
+  ];
+
+  const quickNavLinks = t.footer?.quickNavLinks || [
+    { label: "Beranda", href: "#hero" },
+    { label: "Profil Perusahaan", href: "#about" },
+    { label: "Katalog Produk", href: "#products" },
+    { label: "Standar Mutu (QC)", href: "#quality" },
+    { label: "Hubungi Kami", href: "#contact" },
+  ];
+
+  const solutionsLinks = t.footer?.solutionsLinks || [
+    { label: "Injection Molding", href: "#products" },
+    { label: "Blow Molding & Botol", href: "#products" },
+    { label: "Pembuatan Cetakan (Mold)", href: "#products" },
+    { label: "Kemasan Industri HDPE", href: "#products" },
+    { label: "Komponen Plastik Kustom", href: "#products" },
+  ];
 
   return (
-    <footer id="contact" className="bg-slate-900 dark:bg-slate-950 text-slate-300 pt-16 pb-12 border-t border-slate-800 dark:border-slate-800/80 transition-colors duration-300">
+    <footer
+      id="contact"
+      className="bg-slate-950 text-slate-400 py-16 border-t border-slate-900"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Main Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 border-b border-slate-800">
-          {/* Col 1: Corporate Brand & Profile */}
-          <div className="lg:col-span-4 space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white font-extrabold text-lg shadow-md shadow-blue-500/20">
-                AP
-              </div>
-              <div>
-                <span className="text-xl font-bold text-white tracking-tight">
-                  {t.footer.legalName}
+        {/* Modern CSS Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8">
+          {/* Column 1 (Brand & About): lg:col-span-4 */}
+          <div className="lg:col-span-4">
+            <Link href="/" className="inline-block focus:outline-none">
+              {!logoError ? (
+                <Image
+                  src="/images/logo.webp"
+                  alt="CV. ASIA PLASTIK"
+                  width={200}
+                  height={68}
+                  className="h-10 w-auto object-contain"
+                  onError={() => setLogoError(true)}
+                  priority
+                />
+              ) : (
+                <span className="text-white font-bold text-xl tracking-tight">
+                  CV. ASIA PLASTIK
                 </span>
-                <p className="text-xs text-blue-400 font-medium tracking-wider uppercase">
-                  {t.footer.tagline}
-                </p>
-              </div>
-            </div>
+              )}
+            </Link>
 
-            <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
-              {t.footer.description}
+            <p className="text-blue-500 text-xs font-bold tracking-widest mt-2 uppercase">
+              {t.footer?.tagline ||
+                "Precision Plastic Manufacturing & Industrial Packaging"}
             </p>
 
-            {/* Certifications badges */}
-            <div className="pt-2">
-              <div className="text-xs font-semibold text-slate-200 uppercase tracking-wider mb-2 flex items-center gap-1.5">
-                <ShieldCheck className="w-4 h-4 text-blue-400" />
-                <span>{t.footer.certificationsTitle}</span>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {t.footer.certifications.map((cert, index) => (
-                  <span
-                    key={index}
-                    className="inline-flex items-center text-xs px-2.5 py-1 rounded bg-slate-800/80 text-slate-300 border border-slate-700 font-sans"
-                  >
-                    {cert}
-                  </span>
-                ))}
-              </div>
+            <p className="mt-6 text-sm leading-relaxed text-slate-400">
+              {t.footer?.description ||
+                "Produsen manufaktur produk plastik terkemuka yang melayani sektor industri, agrikultur, farmasi, serta kebutuhan kemasan konsumen dengan standar keunggulan teruji."}
+            </p>
+
+            {/* Badges (Standar & Akreditasi Mutu) */}
+            <div className="mt-8 flex flex-wrap gap-3">
+              {certifications.map((badge, index) => (
+                <span
+                  key={index}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-slate-800 bg-slate-900/50 text-slate-300 text-xs font-medium hover:border-blue-500/50 transition-colors"
+                >
+                  <ShieldCheck className="w-3.5 h-3.5 text-blue-500 shrink-0" />
+                  <span>{badge}</span>
+                </span>
+              ))}
             </div>
           </div>
 
-          {/* Col 2: Quick Navigation */}
-          <div className="lg:col-span-2 space-y-4">
-            <h3 className="text-sm font-bold text-white tracking-wider uppercase border-l-2 border-blue-500 pl-2.5">
-              {t.footer.quickNavTitle}
+          {/* Column 2 (Navigasi Cepat): lg:col-span-2 */}
+          <div className="lg:col-span-2">
+            <h3 className="text-white font-semibold text-sm tracking-wider mb-6 uppercase">
+              {t.footer?.quickNavTitle || "NAVIGASI CEPAT"}
             </h3>
-            <ul className="space-y-2.5 text-sm">
-              {t.footer.quickNavLinks.map((link, linkIdx) => (
-                <li key={linkIdx}>
+            <ul className="flex flex-col gap-4">
+              {quickNavLinks.map((link, idx) => (
+                <li key={idx}>
                   <Link
                     href={link.href}
-                    className="inline-flex items-center gap-1.5 text-slate-400 hover:text-white hover:translate-x-1 transition-all duration-150"
+                    className="text-sm hover:text-white hover:translate-x-1 transition-all duration-300 flex items-center"
                   >
-                    <ChevronRight className="w-3.5 h-3.5 text-blue-500/70" />
-                    <span>{link.label}</span>
+                    {link.label}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Col 3: Manufacturing Solutions */}
-          <div className="lg:col-span-2 space-y-4">
-            <h3 className="text-sm font-bold text-white tracking-wider uppercase border-l-2 border-blue-500 pl-2.5">
-              {t.footer.solutionsTitle}
+          {/* Column 3 (Solusi Manufaktur): lg:col-span-3 */}
+          <div className="lg:col-span-3">
+            <h3 className="text-white font-semibold text-sm tracking-wider mb-6 uppercase">
+              {t.footer?.solutionsTitle || "SOLUSI MANUFAKTUR"}
             </h3>
-            <ul className="space-y-2.5 text-sm">
-              {t.footer.solutionsLinks.map((link, linkIdx) => (
-                <li key={linkIdx}>
+            <ul className="flex flex-col gap-4">
+              {solutionsLinks.map((link, idx) => (
+                <li key={idx}>
                   <Link
                     href={link.href}
-                    className="inline-flex items-center gap-1.5 text-slate-400 hover:text-white hover:translate-x-1 transition-all duration-150"
+                    className="text-sm hover:text-white hover:translate-x-1 transition-all duration-300 flex items-center"
                   >
-                    <ChevronRight className="w-3.5 h-3.5 text-blue-500/70" />
-                    <span>{link.label}</span>
+                    {link.label}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Col 4: Contact Information */}
-          <div className="lg:col-span-4 space-y-4">
-            <h3 className="text-sm font-bold text-white tracking-wider uppercase border-l-2 border-blue-500 pl-2.5">
-              {t.footer.contactTitle}
+          {/* Column 4 (Contact): lg:col-span-3 */}
+          <div className="lg:col-span-3">
+            <h3 className="text-white font-semibold text-sm tracking-wider mb-6 uppercase">
+              {t.footer?.contactTitle || "HUBUNGI KANTOR & PABRIK"}
             </h3>
-            <ul className="space-y-3.5 text-sm text-slate-400">
+            <ul className="flex flex-col gap-4 text-sm">
+              {/* 1. MapPin */}
               <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-blue-400 shrink-0 mt-0.5" />
-                <span>{t.footer.address}</span>
+                <MapPin className="text-blue-500 w-5 h-5 shrink-0 mt-0.5" />
+                <span className="leading-relaxed">
+                  {t.footer?.address ||
+                    "Kawasan Industri & Pergudangan, Jl. Raya Industri No. 88, Tangerang, Banten, 15138, Indonesia"}
+                </span>
               </li>
+
+              {/* 2. Phone */}
               <li className="flex items-center gap-3">
-                <Phone className="w-4 h-4 text-blue-400 shrink-0" />
+                <Phone className="text-blue-500 w-5 h-5 shrink-0" />
                 <a
-                  href={`tel:${footerData.contact.phone.replace(/[^0-9+]/g, "")}`}
+                  href="tel:+62215558901"
                   className="hover:text-white transition-colors"
                 >
-                  {footerData.contact.phone}
+                  +62 21 555-8901
                 </a>
               </li>
+
+              {/* 3. WhatsApp MessageCircle */}
               <li className="flex items-center gap-3">
-                <MessageSquare className="w-4 h-4 text-emerald-400 shrink-0" />
+                <MessageCircle className="text-blue-500 w-5 h-5 shrink-0" />
                 <a
-                  href={`https://wa.me/${footerData.contact.whatsapp.replace(/[^0-9]/g, "")}`}
+                  href="https://wa.me/6281234567890"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-emerald-400 hover:text-emerald-300 font-medium transition-colors"
+                  className="text-emerald-400 hover:text-emerald-300 transition-colors"
                 >
-                  WhatsApp: {footerData.contact.whatsapp}
+                  WhatsApp: +62 812-3456-7890
                 </a>
               </li>
+
+              {/* 4. Mail */}
               <li className="flex items-center gap-3">
-                <Mail className="w-4 h-4 text-blue-400 shrink-0" />
+                <Mail className="text-blue-500 w-5 h-5 shrink-0" />
                 <a
-                  href={`mailto:${footerData.contact.email}`}
+                  href="mailto:sales@asiaplastik.com"
                   className="hover:text-white transition-colors"
                 >
-                  {footerData.contact.email}
+                  sales@asiaplastik.com
                 </a>
               </li>
+
+              {/* 5. Clock */}
               <li className="flex items-center gap-3">
-                <Clock className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>{t.footer.workingHours}</span>
+                <Clock className="text-blue-500 w-5 h-5 shrink-0" />
+                <span>
+                  {t.footer?.workingHours || "Senin - Sabtu: 08.00 - 17.00 WIB"}
+                </span>
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Bottom Bar: Copyright & Back to Top */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <div>{t.footer.copyright}</div>
-          <div className="flex items-center gap-6">
-            <span className="hover:text-slate-400 cursor-pointer transition-colors">
-              {t.footer.privacyPolicy}
-            </span>
-            <span className="hover:text-slate-400 cursor-pointer transition-colors">
-              {t.footer.termsOfService}
-            </span>
-            <a
-              href="#hero"
-              className="inline-flex items-center gap-1.5 text-blue-400 hover:text-blue-300 font-medium transition-colors"
+        {/* Bottom Bar (Copyright & Extra Links) */}
+        <div className="mt-16 pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-xs">
+            {t.footer?.copyright ||
+              "© 2026 CV. ASIA PLASTIK. Seluruh Hak Cipta Dilindungi Undang-Undang."}
+          </p>
+
+          <div className="flex flex-wrap items-center gap-6 text-xs">
+            <Link
+              href="#privacy"
+              className="hover:text-white transition-colors cursor-pointer"
             >
-              <span>{t.footer.backToTop}</span>
-              <ArrowUp className="w-3.5 h-3.5" />
-            </a>
+              {t.footer?.privacyPolicy || "Kebijakan Privasi"}
+            </Link>
+            <Link
+              href="#terms"
+              className="hover:text-white transition-colors cursor-pointer"
+            >
+              {t.footer?.termsOfService || "Syarat & Ketentuan"}
+            </Link>
+            <button
+              type="button"
+              onClick={scrollToTop}
+              className="inline-flex items-center gap-1.5 hover:text-white transition-colors cursor-pointer"
+              aria-label="Kembali ke Atas"
+            >
+              <span>{t.footer?.backToTop || "Kembali ke Atas"}</span>
+              <ArrowUp className="w-4 h-4 text-blue-500" />
+            </button>
           </div>
         </div>
       </div>
