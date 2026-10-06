@@ -75,13 +75,6 @@ const palletSlides = [
     caption: "Tampak Depan (3D Floating)",
     image: "/images/product/Pallet/pallet-floating.png",
   },
-  {
-    id: "slide-2",
-    title: "Pallet P Series - Detail Struktur & Honeycomb Grid",
-    shortTitle: "Detail Struktur",
-    caption: "Detail Grid & Kaki Kokoh",
-    image: "/images/product/Pallet/pallet-product-detail.jpg",
-  },
 ];
 
 const palletPSeriesProduct = {
@@ -176,8 +169,8 @@ export default function ProductCatalog() {
 
                   <div className="relative w-full h-full flex items-center justify-center">
                     <Image
-                      src={palletSlides[currentSlide].image}
-                      alt={palletSlides[currentSlide].title}
+                      src={palletSlides[currentSlide]?.image || palletSlides[0].image}
+                      alt={palletSlides[currentSlide]?.title || palletSlides[0].title}
                       fill
                       priority
                       sizes="(max-width: 1024px) 100vw, 40vw"
@@ -185,52 +178,58 @@ export default function ProductCatalog() {
                     />
                   </div>
 
-                  <button
-                    onClick={prevSlide}
-                    type="button"
-                    aria-label="Foto sebelumnya"
-                    className="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white/90 dark:bg-slate-900/90 text-slate-700 dark:text-slate-200 shadow-md border border-slate-200/80 dark:border-slate-700/80 flex items-center justify-center hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 transition-all opacity-80 hover:opacity-100 hover:scale-105 cursor-pointer"
-                  >
-                    <ChevronLeft className="w-5 h-5" />
-                  </button>
+                  {palletSlides.length > 1 && (
+                    <>
+                      <button
+                        onClick={prevSlide}
+                        type="button"
+                        aria-label="Foto sebelumnya"
+                        className="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white/90 dark:bg-slate-900/90 text-slate-700 dark:text-slate-200 shadow-md border border-slate-200/80 dark:border-slate-700/80 flex items-center justify-center hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 transition-all opacity-80 hover:opacity-100 hover:scale-105 cursor-pointer"
+                      >
+                        <ChevronLeft className="w-5 h-5" />
+                      </button>
 
-                  <button
-                    onClick={nextSlide}
-                    type="button"
-                    aria-label="Foto berikutnya"
-                    className="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white/90 dark:bg-slate-900/90 text-slate-700 dark:text-slate-200 shadow-md border border-slate-200/80 dark:border-slate-700/80 flex items-center justify-center hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 transition-all opacity-80 hover:opacity-100 hover:scale-105 cursor-pointer"
-                  >
-                    <ChevronRight className="w-5 h-5" />
-                  </button>
+                      <button
+                        onClick={nextSlide}
+                        type="button"
+                        aria-label="Foto berikutnya"
+                        className="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white/90 dark:bg-slate-900/90 text-slate-700 dark:text-slate-200 shadow-md border border-slate-200/80 dark:border-slate-700/80 flex items-center justify-center hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 transition-all opacity-80 hover:opacity-100 hover:scale-105 cursor-pointer"
+                      >
+                        <ChevronRight className="w-5 h-5" />
+                      </button>
 
-                  <div className="absolute bottom-3 right-3 z-10 px-2.5 py-1 rounded-lg bg-white/90 dark:bg-slate-900/90 text-[11px] font-bold text-slate-600 dark:text-slate-300 backdrop-blur-xs border border-slate-200/60 dark:border-slate-700/60">
-                    {currentSlide + 1} / {palletSlides.length}
+                      <div className="absolute bottom-3 right-3 z-10 px-2.5 py-1 rounded-lg bg-white/90 dark:bg-slate-900/90 text-[11px] font-bold text-slate-600 dark:text-slate-300 backdrop-blur-xs border border-slate-200/60 dark:border-slate-700/60">
+                        {currentSlide + 1} / {palletSlides.length}
+                      </div>
+                    </>
+                  )}
+                </div>
+
+                {/* Clean Thumbnails below (only if multiple images) */}
+                {palletSlides.length > 1 && (
+                  <div className="flex gap-3 overflow-x-auto pb-1">
+                    {palletSlides.map((slide, idx) => (
+                      <button
+                        key={slide.id}
+                        type="button"
+                        onClick={() => setCurrentSlide(idx)}
+                        className={`relative w-20 h-20 shrink-0 rounded-xl overflow-hidden border-2 transition-all p-1 bg-slate-50 dark:bg-slate-800/50 cursor-pointer ${
+                          currentSlide === idx
+                            ? "border-blue-600 ring-2 ring-blue-500/20 shadow-sm"
+                            : "border-slate-200 dark:border-slate-800 opacity-60 hover:opacity-100"
+                        }`}
+                      >
+                        <Image
+                          src={slide.image}
+                          alt={slide.title}
+                          fill
+                          sizes="80px"
+                          className="object-contain mix-blend-multiply dark:mix-blend-normal p-1"
+                        />
+                      </button>
+                    ))}
                   </div>
-                </div>
-
-                {/* Clean Thumbnails below */}
-                <div className="flex gap-3 overflow-x-auto pb-1">
-                  {palletSlides.map((slide, idx) => (
-                    <button
-                      key={slide.id}
-                      type="button"
-                      onClick={() => setCurrentSlide(idx)}
-                      className={`relative w-20 h-20 shrink-0 rounded-xl overflow-hidden border-2 transition-all p-1 bg-slate-50 dark:bg-slate-800/50 cursor-pointer ${
-                        currentSlide === idx
-                          ? "border-blue-600 ring-2 ring-blue-500/20 shadow-sm"
-                          : "border-slate-200 dark:border-slate-800 opacity-60 hover:opacity-100"
-                      }`}
-                    >
-                      <Image
-                        src={slide.image}
-                        alt={slide.title}
-                        fill
-                        sizes="80px"
-                        className="object-contain mix-blend-multiply dark:mix-blend-normal p-1"
-                      />
-                    </button>
-                  ))}
-                </div>
+                )}
               </div>
 
               {/* Right Column: Details & Description (lg:col-span-7) */}

@@ -23,7 +23,7 @@ export interface ProductCategory {
 export const palletPSeries: ProductItem = {
   id: "pallet-p-series",
   name: "PALLET P SERIES",
-  image: "/images/product/Pallet/pallet-product-full.jpg",
+  image: "/images/product/Pallet/pallet-floating.png",
   specs: [
     {
       icon: "Ruler",
