@@ -56,13 +56,13 @@ export default function Footer() {
       name: "Tokopedia",
       href: "https://www.tokopedia.com/asia-plastik-official",
       isExternal: true,
-      icon: <ShoppingBag className="w-4 h-4 shrink-0" />,
+      icon: <ShoppingBag className="w-6 h-6 shrink-0" />,
     },
     {
       name: "Shopee",
       href: "https://shopee.co.id/asiaplastik52?smtt=0.27476852-1652338218.9&is_from_login=true",
       isExternal: true,
-      icon: <Store className="w-4 h-4 shrink-0" />,
+      icon: <Store className="w-6 h-6 shrink-0" />,
     },
     {
       name: "YouTube",
@@ -70,7 +70,7 @@ export default function Footer() {
       isExternal: true,
       icon: (
         <svg
-          className="w-4 h-4 fill-current shrink-0"
+          className="w-6 h-6 fill-current shrink-0"
           viewBox="0 0 24 24"
           aria-hidden="true"
         >
@@ -84,7 +84,7 @@ export default function Footer() {
       isExternal: true,
       icon: (
         <svg
-          className="w-4 h-4 fill-none stroke-current stroke-2 shrink-0"
+          className="w-6 h-6 fill-none stroke-current stroke-2 shrink-0"
           viewBox="0 0 24 24"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -102,7 +102,7 @@ export default function Footer() {
       isExternal: true,
       icon: (
         <svg
-          className="w-4 h-4 fill-current shrink-0"
+          className="w-6 h-6 fill-current shrink-0"
           viewBox="0 0 24 24"
           aria-hidden="true"
         >
@@ -114,7 +114,7 @@ export default function Footer() {
       name: "Email",
       href: "mailto:marketing@asiaplastik.com",
       isExternal: false,
-      icon: <Mail className="w-4 h-4 shrink-0" />,
+      icon: <Mail className="w-6 h-6 shrink-0" />,
     },
   ];
 
@@ -171,7 +171,7 @@ export default function Footer() {
               </div>
 
               {/* Social Media & Marketplace Links */}
-              <div className="mt-5 flex flex-wrap items-center gap-2.5">
+              <div className="mt-5 flex flex-wrap items-center gap-3">
                 {socialLinks.map((item, idx) => (
                   <a
                     key={idx}
@@ -181,7 +181,7 @@ export default function Footer() {
                       : {})}
                     aria-label={item.name}
                     title={item.name}
-                    className="w-9 h-9 flex items-center justify-center rounded-full bg-slate-900 border border-slate-800 text-slate-400 hover:bg-blue-600 hover:text-white hover:border-blue-500 transition-all duration-300 group"
+                    className="w-12 h-12 flex items-center justify-center rounded-full bg-slate-900 border border-slate-800 text-slate-400 hover:bg-blue-600 hover:text-white hover:border-blue-500 transition-all duration-300 group [&>svg]:w-6 [&>svg]:h-6"
                   >
                     {item.icon}
                   </a>
