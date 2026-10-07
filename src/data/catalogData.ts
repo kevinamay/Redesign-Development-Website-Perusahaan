@@ -138,7 +138,7 @@ export const botolPupukProducts = [
     berat: "23 GR",
     deskripsi:
       "Botol kecil berbahan PET berkualitas untuk pupuk cair atau nutrisi tanaman dalam skala kecil. Desainnya yang ringkas sangat ideal untuk produk sampel atau kemasan ritel, dengan material yang memastikan keamanan dan keawetan cairan di dalamnya.",
-    imagePath: "/images/product/Botol Pupuk/pupuk100.jpg",
+    imagePath: "/images/product/Botol Pupuk/pupuk100.png",
   },
   {
     title: "BOTOL PUPUK PET 250 CC",
@@ -146,7 +146,7 @@ export const botolPupukProducts = [
     berat: "30 GR",
     deskripsi:
       "Dirancang untuk kebutuhan pertanian dalam kemasan sedang, botol ini ideal untuk produk pupuk cair. Material PET memberikan tingkat kejernihan dan ketahanan yang baik terhadap bahan kimia pertanian, menjaga kualitas produk Anda hingga ke tangan konsumen.",
-    imagePath: "/images/product/Botol Pupuk/pupuk250.jpg",
+    imagePath: "/images/product/Botol Pupuk/pupuk250.png",
   },
   {
     title: "BOTOL PUPUK PET 250 CC WITH LINING",
@@ -154,7 +154,7 @@ export const botolPupukProducts = [
     berat: "30 GR",
     deskripsi:
       "Alternatif bentuk botol 250 cc dengan desain bergaris (lining) untuk memberikan cengkeraman yang lebih baik dan tampilan estetika yang berbeda. Botol ini mempertahankan standar kualitas PET yang kuat dan aman untuk berbagai formulasi pupuk cair.",
-    imagePath: "/images/product/Botol Pupuk/pupuk250w.jpg",
+    imagePath: "/images/product/Botol Pupuk/pupuk250w.png",
   },
   {
     title: "BOTOL PUPUK PET 500 CC NATURAL",
@@ -162,7 +162,7 @@ export const botolPupukProducts = [
     berat: "55 GR",
     deskripsi:
       "Botol pupuk setengah liter berbahan PET kokoh, cocok untuk pupuk cair dan produk pertanian. Warna naturalnya memudahkan pengguna untuk melihat sisa volume cairan, sementara ketebalannya menjamin keamanan selama proses distribusi.",
-    imagePath: "/images/product/Botol Pupuk/pupuk500.jpg",
+    imagePath: "/images/product/Botol Pupuk/pupuk500.png",
   },
   {
     title: "BOTOL PUPUK PET 1 LITER NATURAL",
@@ -170,7 +170,7 @@ export const botolPupukProducts = [
     berat: "55 GR",
     deskripsi:
       "Ukuran besar untuk kebutuhan distribusi pupuk cair dalam volume lebih banyak. Botol ini ringan namun sangat kuat, dirancang khusus untuk menahan tekanan dan benturan, menjadikannya kemasan andalan untuk produk pertanian komersial.",
-    imagePath: "/images/product/Botol Pupuk/pupuk1l.jpg",
+    imagePath: "/images/product/Botol Pupuk/pupuk1l.png",
   },
 ];
 
