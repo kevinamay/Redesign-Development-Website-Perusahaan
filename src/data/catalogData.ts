@@ -174,6 +174,33 @@ export const botolPupukProducts = [
   },
 ];
 
+export const kosmetikProducts = [
+  {
+    title: "BOTOL KOSMETIK PET 100 ML",
+    dimensi: "HUBUNGI KAMI UNTUK DETAIL",
+    berat: "MENYESUAIKAN",
+    deskripsi:
+      "Botol kemasan kosmetik berbahan PET berkualitas tinggi dengan kapasitas 100 ml. Dilengkapi dengan pompa dispenser yang presisi, sangat cocok untuk produk perawatan wajah seperti toner, serum, atau facial wash. Material PET memastikan keamanan isi produk dari kontaminasi luar dan memberikan tampilan premium yang menawan untuk brand kosmetik Anda.",
+    imagePath: "/images/product/Kosmetik/kosmetik100.png",
+  },
+  {
+    title: "BOTOL KOSMETIK PET 300 ML GOLD",
+    dimensi: "HUBUNGI KAMI UNTUK DETAIL",
+    berat: "MENYESUAIKAN",
+    deskripsi:
+      "Kemasan botol kosmetik eksklusif berkapasitas 300 ml dengan warna emas (gold) yang mewah. Didesain khusus untuk produk perawatan tubuh premium seperti body lotion, sabun cair, atau shampoo. Dilengkapi dengan pompa hitam elegan yang kokoh, botol ini tidak hanya melindungi formulasi produk Anda tetapi juga meningkatkan nilai jual dan estetika di rak pajangan.",
+    imagePath: "/images/product/Kosmetik/kosmetik300.png",
+  },
+  {
+    title: "BOTOL KOSMETIK PET 500 ML BENING",
+    dimensi: "HUBUNGI KAMI UNTUK DETAIL",
+    berat: "MENYESUAIKAN",
+    deskripsi:
+      "Botol pump berkapasitas besar 500 ml dengan tingkat kejernihan (clarity) yang sangat baik. Sangat ideal untuk produk kosmetik dan personal care bervolume besar seperti sabun mandi cair, hand sanitizer, atau body wash. Struktur botol yang tebal dan kuat memastikan ketahanan terhadap benturan selama proses distribusi logistik.",
+    imagePath: "/images/product/Kosmetik/kosmetik500.png",
+  },
+];
+
 export const catalogCategories: ProductCategory[] = [
   {
     id: "pallet-industri",
@@ -251,7 +278,16 @@ export const catalogCategories: ProductCategory[] = [
     name: "Kosmetik",
     displayName: "KOSMETIK",
     subtitle: "Kemasan Botol & Pot Kosmetik, Skincare, dan Personal Care Higienis",
-    products: [],
+    products: kosmetikProducts.map((p, idx) => ({
+      id: `kosmetik-${idx + 1}`,
+      name: p.title,
+      image: p.imagePath,
+      specs: [
+        { icon: "Ruler", label: "Dimensi", value: p.dimensi },
+        { icon: "Weight", label: "Berat", value: p.berat },
+      ],
+      description: p.deskripsi,
+    })),
   },
   {
     id: "botol-minyak-goreng",
