@@ -45,8 +45,8 @@ const categories: CategoryItem[] = [
   },
   {
     id: "blok-lalu-lintas",
-    name: "Blok & Kerucut Lalu Lintas",
-    displayName: "BLOK LALU LINTAS & KERUCUT LALU LINTAS",
+    name: "Blok Lalu Lintas dan Kerucut Lalu Lintas",
+    displayName: "BLOK LALU LINTAS DAN KERUCUT LALU LINTAS",
     subtitle: "Road Barrier Pembatas Jalan & Kerucut Pengaman Rekayasa Lalu Lintas",
   },
   {
@@ -56,16 +56,64 @@ const categories: CategoryItem[] = [
     subtitle: "Kemasan Botol Kedap Udara Agrokimia & Cairan Kimia",
   },
   {
-    id: "kemasan-pet",
-    name: "Kemasan PET",
-    displayName: "KEMASAN PET",
-    subtitle: "Galon Air Minum & Wadah Higienis Food Grade",
+    id: "kosmetik",
+    name: "Kosmetik",
+    displayName: "KOSMETIK",
+    subtitle: "Kemasan Botol & Pot Kosmetik, Skincare, dan Personal Care Higienis",
+  },
+  {
+    id: "botol-minyak-goreng",
+    name: "Botol Minyak Goreng",
+    displayName: "BOTOL MINYAK GORENG",
+    subtitle: "Botol Plastik PET Food Grade Higienis untuk Minyak Goreng & Minyak Nabati",
+  },
+  {
+    id: "beragam-kemasan-pet",
+    name: "Beragam Kemasan PET",
+    displayName: "BERAGAM KEMASAN PET",
+    subtitle: "Galon Air Minum, Toples Bumbu, & Beragam Wadah Higienis Food Grade",
   },
   {
     id: "jerigen-hdpe",
     name: "Jerigen HDPE",
     displayName: "JERIGEN HDPE",
     subtitle: "Wadah Jerigen Blow Moulding Anti Bocor",
+  },
+  {
+    id: "jerigen-chemical-hdpe",
+    name: "Jerigen Chemical HDPE",
+    displayName: "JERIGEN CHEMICAL HDPE",
+    subtitle: "Jerigen Khusus Bahan Kimia Industri Standar Heavy Duty",
+  },
+  {
+    id: "jerigen-oli",
+    name: "Jerigen Oli",
+    displayName: "JERIGEN OLI",
+    subtitle: "Kemasan Jerigen Pelumas, Oli Mesin, & Cairan Otomotif",
+  },
+  {
+    id: "jerigen-lipat",
+    name: "Jerigen Lipat",
+    displayName: "JERIGEN LIPAT",
+    subtitle: "Jerigen Lipat Praktis Fleksibel untuk Air & Kebutuhan Darurat",
+  },
+  {
+    id: "botol-hdpe",
+    name: "Botol HDPE",
+    displayName: "BOTOL HDPE",
+    subtitle: "Botol Plastik High-Density Polyethylene untuk Industri, Farmasi & Kimia",
+  },
+  {
+    id: "kaleng-pail-plastik",
+    name: "Kaleng & Pail Plastik",
+    displayName: "KALENG & PAIL PLASTIK",
+    subtitle: "Pail & Ember Industri Bersegel Rapat untuk Cat, Bahan Kimia, & Pasta",
+  },
+  {
+    id: "perikanan-dan-kelautan",
+    name: "Perikanan dan Kelautan",
+    displayName: "PERIKANAN DAN KELAUTAN",
+    subtitle: "Pelampung Jaring Nelayan, Pelampung Keramba, & Wadah Hasil Laut",
   },
 ];
 
