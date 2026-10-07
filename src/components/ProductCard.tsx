@@ -31,6 +31,7 @@ export default function ProductCard({
   badges,
 }: ProductCardProps) {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
+  const isPng = imagePath.toLowerCase().endsWith(".png");
 
   const getWhatsAppLink = (productTitle: string) => {
     const rawNumber = footerData.contact.whatsapp.replace(/[^0-9]/g, "");
@@ -87,7 +88,9 @@ export default function ProductCard({
                 alt={title}
                 fill
                 sizes="(max-width: 1024px) 100vw, 55vw"
-                className="object-contain mix-blend-multiply dark:mix-blend-normal drop-shadow-2xl hover:scale-105 transition-transform duration-500 select-none p-2"
+                className={`object-contain ${
+                  isPng ? "" : "mix-blend-multiply dark:mix-blend-normal"
+                } drop-shadow-2xl hover:scale-105 transition-transform duration-500 select-none p-2`}
               />
             </div>
           </div>
