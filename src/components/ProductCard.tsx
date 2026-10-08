@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { Ruler, Weight, PhoneCall } from "lucide-react";
 import { footerData } from "@/data/homeData";
+import { useLanguage } from "@/data/translations";
+import { catalogUiTranslations } from "@/data/catalogTranslations";
 
 export interface ProductBadge {
   label: string;
@@ -31,13 +33,29 @@ export default function ProductCard({
   badges,
 }: ProductCardProps) {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
+  const { lang } = useLanguage();
+  const ui = catalogUiTranslations[lang] || catalogUiTranslations.id;
   const isPng = imagePath.toLowerCase().endsWith(".png");
+
+  const getBadgeLabel = (rawLabel: string) => {
+    const lower = rawLabel.toLowerCase();
+    if (lower.includes("flagship") || lower.includes("b2b")) {
+      return ui.badges.flagship;
+    }
+    if (
+      lower.includes("pabrik") ||
+      lower.includes("factory") ||
+      lower.includes("resmi") ||
+      lower.includes("official")
+    ) {
+      return ui.badges.factoryOfficial;
+    }
+    return rawLabel;
+  };
 
   const getWhatsAppLink = (productTitle: string) => {
     const rawNumber = footerData.contact.whatsapp.replace(/[^0-9]/g, "");
-    const message = encodeURIComponent(
-      `Halo CV. Asia Plastik, saya tertarik dengan produk ${productTitle} dari katalog website dan ingin menanyakan penawaran harga serta spesifikasi.`
-    );
+    const message = encodeURIComponent(ui.whatsappMessage(productTitle));
     return `https://wa.me/${rawNumber}?text=${message}`;
   };
 
@@ -57,7 +75,7 @@ export default function ProductCard({
                 }`}
               >
                 {b.icon}
-                <span>{b.label}</span>
+                <span>{getBadgeLabel(b.label)}</span>
               </span>
             ))}
           </div>
@@ -109,7 +127,7 @@ export default function ProductCard({
               onClick={() => setIsExpanded(!isExpanded)}
               className="text-blue-600 dark:text-blue-400 font-semibold text-sm mt-2 hover:underline cursor-pointer inline-flex items-center gap-1"
             >
-              {isExpanded ? "Tampilkan Lebih Sedikit" : "Baca Selengkapnya"}
+              {isExpanded ? ui.actions.showLess : ui.actions.readMore}
             </button>
           </div>
         </div>
@@ -123,7 +141,7 @@ export default function ProductCard({
               <div className="flex items-center gap-2 mb-1.5 text-blue-600 dark:text-blue-400">
                 <Ruler className="w-4 h-4 shrink-0" />
                 <span className="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wider font-semibold">
-                  Dimensi
+                  {ui.specsLabels.dimensions}
                 </span>
               </div>
               <div className="text-base sm:text-lg font-bold text-slate-900 dark:text-white break-words">
@@ -136,7 +154,7 @@ export default function ProductCard({
               <div className="flex items-center gap-2 mb-1.5 text-blue-600 dark:text-blue-400">
                 <Weight className="w-4 h-4 shrink-0" />
                 <span className="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wider font-semibold">
-                  Berat
+                  {ui.specsLabels.weight}
                 </span>
               </div>
               <div className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">
@@ -154,14 +172,14 @@ export default function ProductCard({
               className="w-full justify-center bg-blue-600 text-white px-8 py-3.5 rounded-full hover:bg-blue-700 transition-colors inline-flex items-center gap-2 font-semibold text-sm shadow-md shadow-blue-600/20 hover:shadow-lg hover:shadow-blue-600/30 cursor-pointer text-center"
             >
               <PhoneCall className="w-4 h-4" />
-              <span>Hubungi Penjualan</span>
+              <span>{ui.actions.contactSales}</span>
             </a>
 
             <a
               href={`tel:${footerData.contact.phone.replace(/[^0-9+]/g, "")}`}
               className="w-full justify-center bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 px-6 py-3.5 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors inline-flex items-center gap-2 font-semibold text-sm cursor-pointer text-center"
             >
-              <span>Hotline: {footerData.contact.phone}</span>
+              <span>{ui.actions.hotline}</span>
             </a>
           </div>
         </div>
