@@ -469,6 +469,33 @@ export const jerigenChemicalProducts = [
   },
 ];
 
+export const jerigenOliProducts = [
+  {
+    title: "JERIGEN OLI 5 LITER",
+    dimensi: "209 X 101 X 324,5 MM",
+    berat: "360 GR",
+    deskripsi:
+      "Jerigen oli 5 liter dirancang khusus untuk kebutuhan industri pelumas maupun otomotif. Terbuat dari plastik berkualitas tinggi yang tahan terhadap cairan berminyak dan tidak mudah rusak, jerigen ini dilengkapi desain ergonomis dengan pegangan kokoh untuk memudahkan pemindahan. Kapasitas 5 liter sangat ideal untuk kemasan oli kendaraan pribadi hingga usaha bengkel.",
+    imagePath: "/images/product/jerigen Oli/5l.png",
+  },
+  {
+    title: "JERIGEN OLI 4,5 LITER",
+    dimensi: "207,3 X 101,4 X 305,4 MM",
+    berat: "240 GR",
+    deskripsi:
+      "Dengan kapasitas 4,5 liter, jerigen oli ini menawarkan ukuran yang lebih ringkas namun tetap cukup untuk kebutuhan distribusi dan penjualan oli. Bentuknya dirancang praktis dengan mulut jerigen yang pas untuk tuangan, sehingga memudahkan saat digunakan oleh konsumen maupun teknisi bengkel.",
+    imagePath: "/images/product/jerigen Oli/4.5l.png",
+  },
+  {
+    title: "JERIGEN OLI 4 LITER",
+    dimensi: "209 X 101 X 287 MM",
+    berat: "240 GR",
+    deskripsi:
+      "Jerigen oli 4 liter merupakan pilihan kemasan standar yang banyak digunakan untuk berbagai merek oli kendaraan. Ukurannya pas untuk sekali penggantian oli mobil, sementara bahan plastiknya tahan terhadap sifat pelumas dan menjaga kualitas isi tetap terjamin. Desain kokoh dengan tampilan profesional menjadikan jerigen ini cocok untuk produk oli kemasan premium.",
+    imagePath: "/images/product/jerigen Oli/4l.png",
+  },
+];
+
 export const catalogCategories: ProductCategory[] = [
   {
     id: "pallet-industri",
@@ -626,7 +653,16 @@ export const catalogCategories: ProductCategory[] = [
     name: "Jerigen Oli",
     displayName: "JERIGEN OLI",
     subtitle: "Kemasan Jerigen Pelumas, Oli Mesin, & Cairan Otomotif",
-    products: [],
+    products: jerigenOliProducts.map((p, idx) => ({
+      id: `jerigen-oli-${idx + 1}`,
+      name: p.title,
+      image: p.imagePath,
+      specs: [
+        { icon: "Ruler", label: "Dimensi", value: p.dimensi },
+        { icon: "Weight", label: "Berat", value: p.berat },
+      ],
+      description: p.deskripsi,
+    })),
   },
   {
     id: "jerigen-lipat",

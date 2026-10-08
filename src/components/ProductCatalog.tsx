@@ -21,6 +21,7 @@ import {
   kemasanPETProducts,
   jerigenHdpeProducts,
   jerigenChemicalProducts,
+  jerigenOliProducts,
 } from "@/data/catalogData";
 
 interface CategoryItem {
@@ -321,6 +322,19 @@ export default function ProductCatalog() {
           ) : activeCategoryId === "jerigen-chemical-hdpe" ? (
             <div className="flex flex-col gap-12">
               {jerigenChemicalProducts.map((product) => (
+                <ProductCard
+                  key={product.title}
+                  title={product.title}
+                  dimensi={product.dimensi}
+                  berat={product.berat}
+                  deskripsi={product.deskripsi}
+                  imagePath={product.imagePath}
+                />
+              ))}
+            </div>
+          ) : activeCategoryId === "jerigen-oli" ? (
+            <div className="flex flex-col gap-12">
+              {jerigenOliProducts.map((product) => (
                 <ProductCard
                   key={product.title}
                   title={product.title}
