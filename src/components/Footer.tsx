@@ -39,7 +39,7 @@ export default function Footer() {
     { label: "PRODUK", href: "/products" },
     { label: "ARTIKEL", href: "/about#artikel" },
     { label: "FAQ", href: "/faq" },
-    { label: "PARTNER", href: "/about#partner" },
+    { label: "PARTNER", href: "/partner" },
     { label: "PRODUK CUSTOM", href: "/products#custom" },
     { label: "KONTAK", href: "/#contact" },
   ];
