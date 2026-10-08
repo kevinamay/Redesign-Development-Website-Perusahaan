@@ -606,6 +606,65 @@ export const botolHdpeProducts = [
   },
 ];
 
+export const kalengPailProducts = [
+  {
+    title: "KALENG PLASTIK 0,75 KG",
+    dimensi: "DIAMETER 114 MM - TINGGI 108,5 MM",
+    berat: "55 GR",
+    deskripsi:
+      "Kaleng plastik 0,75 kg dirancang khusus sebagai wadah kemasan untuk industri cat dinding, plamir, wood polish, dan produk sejenisnya. Terbuat dari plastik berkualitas tinggi yang kuat dan tahan lama, kaleng ini menjaga isi tetap aman, tidak mudah bocor, serta memiliki tutup rapat untuk mencegah penguapan.",
+    imagePath: "/images/product/kaleng&pail/0.75kg.png",
+  },
+  {
+    title: "KALENG PLASTIK 1 KG",
+    dimensi: "DIAMETER 114 MM - TINGGI 132 MM",
+    berat: "58 GR",
+    deskripsi:
+      "Ukuran Kaleng Plastik 1 kg sangat ideal untuk penjualan ritel hingga skala proyek kecil, dengan tutup rapat yang menjaga kualitas isi tetap konsisten hingga digunakan. Kaleng ini juga mudah dilabeli untuk branding produk sesuai kebutuhan industri.",
+    imagePath: "/images/product/kaleng&pail/1kg.png",
+  },
+  {
+    title: "PAIL 1 KG MB2 NATURAL",
+    dimensi: "DIAMETER 132,2 MM - TINGGI 121,4 MM",
+    berat: "55 GR",
+    deskripsi:
+      "Pail plastik 1 kg food grade dirancang aman untuk kemasan makanan seperti snack, kurma, bumbu, dan produk pangan lainnya. Terbuat dari plastik berkualitas tinggi yang tidak berbau, bebas racun, dan sudah memenuhi standar keamanan pangan.",
+    imagePath: "/images/product/kaleng&pail/1kgmb2.png",
+  },
+  {
+    title: "PAIL 1 KG MB2 PUTIH SUSU",
+    dimensi: "DIAMETER 114 MM - TINGGI 108,5 MM",
+    berat: "55 GR",
+    deskripsi:
+      "Dengan ukuran praktis 1 kg, pail ini sangat cocok untuk kemasan ritel, menjaga produk tetap higienis, segar, dan terlindung dari kontaminasi. Tutup rapatnya memastikan isi tidak mudah tumpah dan tetap terjaga kualitasnya.",
+    imagePath: "/images/product/kaleng&pail/1kgmb2Ssusu.png",
+  },
+  {
+    title: "PAIL 5 KG PANJANG",
+    dimensi: "DIAMETER 167 MM - TINGGI 199 MM",
+    berat: "200 GR",
+    deskripsi:
+      "Pail plastik 5 kg adalah kemasan serbaguna yang bisa digunakan baik untuk industri makanan (seperti margarin, saus, atau adonan) maupun produk non-pangan seperti cat, lem, atau bahan kimia. Dengan kapasitas sedang, pail ini mudah diangkut dan disimpan, serta dilengkapi tutup rapat agar isi tetap aman dari kebocoran dan kontaminasi.",
+    imagePath: "/images/product/kaleng&pail/5kg.png",
+  },
+  {
+    title: "PAIL 10 KG MB2",
+    dimensi: "DIAMETER 322 MM - TINGGI 263,5 MM",
+    berat: "365 GR",
+    deskripsi:
+      "Pail plastik 10 kg sangat cocok untuk kebutuhan industri skala menengah. Kapasitasnya cukup besar untuk menyimpan cat, bahan bangunan, margarin, hingga produk kimia cair maupun padat. Terbuat dari plastik tebal yang kuat, pail ini tahan terhadap benturan, mudah ditumpuk, serta aman untuk transportasi jarak jauh.",
+    imagePath: "/images/product/kaleng&pail/10kg.png",
+  },
+  {
+    title: "PAIL 25 KG MB5",
+    dimensi: "DIAMETER 322 MM - TINGGI 370 MM",
+    berat: "760 GR",
+    deskripsi:
+      "Pail plastik 25 kg dirancang untuk kebutuhan industri berskala besar. Kapasitas besar ini ideal digunakan untuk penyimpanan cat, bahan kimia, bahan baku makanan, atau produk pabrikan lainnya. Dengan material plastik berkualitas tinggi, pail ini memiliki kekuatan ekstra, tidak mudah pecah, dan mampu melindungi isi dari kebocoran. Desainnya memungkinkan penyimpanan efisien di gudang maupun kontainer, menjadikannya solusi ideal untuk distribusi massal.",
+    imagePath: "/images/product/kaleng&pail/25kg.png",
+  },
+];
+
 export const catalogCategories: ProductCategory[] = [
   {
     id: "pallet-industri",
@@ -811,7 +870,16 @@ export const catalogCategories: ProductCategory[] = [
     name: "Kaleng & Pail Plastik",
     displayName: "KALENG & PAIL PLASTIK",
     subtitle: "Pail & Ember Industri Bersegel Rapat untuk Cat, Bahan Kimia, & Pasta",
-    products: [],
+    products: kalengPailProducts.map((p, idx) => ({
+      id: `kaleng-pail-${idx + 1}`,
+      name: p.title,
+      image: p.imagePath,
+      specs: [
+        { icon: "Ruler", label: "Dimensi", value: p.dimensi },
+        { icon: "Weight", label: "Berat", value: p.berat },
+      ],
+      description: p.deskripsi,
+    })),
   },
   {
     id: "perikanan-dan-kelautan",

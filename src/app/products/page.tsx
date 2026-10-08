@@ -26,6 +26,7 @@ import {
   jerigenOliProducts,
   jerigenLipatProducts,
   botolHdpeProducts,
+  kalengPailProducts,
 } from "@/data/catalogData";
 
 // Daftar Kategori di Sidebar Kiri
@@ -377,6 +378,19 @@ export default function ProductsPage() {
           ) : activeCategoryId === "botol-hdpe" ? (
             <div className="flex flex-col gap-12">
               {botolHdpeProducts.map((product) => (
+                <ProductCard
+                  key={product.title}
+                  title={product.title}
+                  dimensi={product.dimensi}
+                  berat={product.berat}
+                  deskripsi={product.deskripsi}
+                  imagePath={product.imagePath}
+                />
+              ))}
+            </div>
+          ) : activeCategoryId === "kaleng-pail-plastik" ? (
+            <div className="flex flex-col gap-12">
+              {kalengPailProducts.map((product) => (
                 <ProductCard
                   key={product.title}
                   title={product.title}
