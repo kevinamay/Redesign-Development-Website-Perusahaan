@@ -507,6 +507,105 @@ export const jerigenLipatProducts = [
   },
 ];
 
+export const botolHdpeProducts = [
+  {
+    title: "BOTOL M 1 LITER PANJANG",
+    dimensi: "DIAMETER 85 MM - TINGGI 230 MM",
+    berat: "80 GR",
+    deskripsi:
+      "Botol HDPE 1 liter panjang hadir dengan desain ramping sehingga mudah disimpan dan ditangani. Cocok digunakan untuk cairan industri, pembersih rumah tangga, hingga kebutuhan laboratorium. Material HDPE membuat botol ini tahan terhadap bahan kimia ringan dan menjaga isi tetap aman.",
+    imagePath: "/images/product/botol HDPE/1l.png",
+  },
+  {
+    title: "BOTOL M 1000 MK TUTUP TAKAR",
+    dimensi: "205 X 181 X 181 MM",
+    berat: "140 GR",
+    deskripsi:
+      "Botol M1000 MK dilengkapi dengan tutup takar yang memudahkan pengguna dalam mengukur cairan sesuai kebutuhan. Ideal untuk produk kimia cair, deterjen, pembersih, maupun pupuk cair. Terbuat dari HDPE berkualitas tinggi yang kuat, tahan bocor, dan praktis digunakan.",
+    imagePath: "/images/product/botol HDPE/1000mk.png",
+  },
+  {
+    title: "BOTOL M 1000",
+    dimensi: "DIAMETER 98,5 MM - TINGGI 216 MM",
+    berat: "80 GR",
+    deskripsi:
+      "Botol M1000 adalah pilihan serbaguna untuk berbagai aplikasi. Dengan kapasitas 1 liter, botol ini cocok untuk cairan pembersih, produk kimia, maupun kebutuhan industri lainnya. Desain ergonomis dan tutup rapat menjaga isi tetap aman saat penyimpanan maupun distribusi.",
+    imagePath: "/images/product/botol HDPE/1000m.png",
+  },
+  {
+    title: "BOTOL KOTAK 0,5 KG",
+    dimensi: "72,5 X 72,5 X 130 MM",
+    berat: "35 GR",
+    deskripsi:
+      "Botol HDPE berbentuk kotak dengan kapasitas 0,5 kg ini praktis untuk produk cair maupun semi-cair. Desain kotak memudahkan penyusunan di rak atau gudang, serta efisien dalam distribusi. Cocok untuk kemasan kecil produk industri, farmasi, maupun rumah tangga.",
+    imagePath: "/images/product/botol HDPE/0.5kg.png",
+  },
+  {
+    title: "BOTOL KOTAK 1 KG",
+    dimensi: "89 X 89 X 161 MM",
+    berat: "75 GR",
+    deskripsi:
+      "Dengan kapasitas lebih besar, botol kotak 1 kg memberikan fleksibilitas lebih untuk berbagai kebutuhan. Bentuk kotak menjadikannya mudah ditata, hemat ruang, dan efisien untuk pengiriman maupun penyimpanan berskala besar.",
+    imagePath: "/images/product/botol HDPE/1kg.png",
+  },
+  {
+    title: "BOTOL BIOCLIN",
+    dimensi: "DIAMETER 87,5 MM - TINGGI 244 MM",
+    berat: "65 GR",
+    deskripsi:
+      "Botol Bioclin didesain khusus untuk produk cairan pembersih dan desinfektan. Bentuknya ergonomis dengan leher botol yang memudahkan pemasangan tutup flip top atau trigger sprayer. HDPE yang digunakan menjamin ketahanan terhadap bahan kimia pembersih.",
+    imagePath: "/images/product/botol HDPE/bioclin.png",
+  },
+  {
+    title: "BOTOL LYSOL 1 LITER",
+    dimensi: "DIAMETER 97,2 MM - TINGGI 200 MM",
+    berat: "110 GR",
+    deskripsi:
+      "Botol ini cocok untuk kemasan cairan pembersih dan disinfektan rumah tangga maupun industri. Dengan kapasitas 1 liter, botol Lysol dibuat dari HDPE yang kuat, tahan benturan, dan aman untuk penyimpanan cairan berbasis kimia.",
+    imagePath: "/images/product/botol HDPE/lysol.png",
+  },
+  {
+    title: "BOTOL HYDRO",
+    dimensi: "DIAMETER 82 MM - TINGGI 147 MM",
+    berat: "57,2 GR",
+    deskripsi:
+      "Botol Hydro dirancang untuk produk cair seperti pupuk cair, nutrisi tanaman, maupun bahan kimia pertanian lainnya. Kapasitas ideal dan desain praktis menjadikan botol ini mudah dibawa, disimpan, dan digunakan.",
+    imagePath: "/images/product/botol HDPE/hydro.png",
+  },
+  {
+    title: "BOTOL 500 CC NECK 24 MM WITH PUMP",
+    dimensi: "DIAMETER 65,5 MM - TINGGI 133 MM",
+    berat: "53,4 GR",
+    deskripsi:
+      "Botol HDPE kapasitas 500 cc ini dilengkapi dengan pump berleher 24 mm, ideal untuk cairan pembersih, sabun cair, sanitizer, atau produk kosmetik. Desainnya praktis, higienis, dan memudahkan pengeluaran isi secara terukur.",
+    imagePath: "/images/product/botol HDPE/24mm.png",
+  },
+  {
+    title: "BOTOL 500 CC NECK 28 MM WITH PUMP",
+    dimensi: "DIAMETER 74 MM - TINGGI 169 MM",
+    berat: "58,4 GR",
+    deskripsi:
+      "Mirip dengan versi 24 mm, botol 500 cc ini menggunakan pump berleher 28 mm untuk cairan dengan viskositas lebih tinggi. Cocok untuk lotion, cairan pembersih, hingga produk kesehatan. Material HDPE membuatnya tahan lama dan aman digunakan.",
+    imagePath: "/images/product/botol HDPE/28mm.png",
+  },
+  {
+    title: "BOTOL OLI 900 ML",
+    dimensi: "129,5 X 81,3 X 215,5 MM",
+    berat: "80 GR",
+    deskripsi:
+      "Botol oli 900 ml hadir dengan desain khusus untuk cairan pelumas otomotif. Bentuk ergonomis memudahkan menuang, sementara HDPE yang digunakan menjamin ketahanan terhadap sifat kimia oli. Kapasitasnya pas untuk kebutuhan servis kendaraan roda dua maupun empat.",
+    imagePath: "/images/product/botol HDPE/oli.png",
+  },
+  {
+    title: "BOTOL M 50-500 ML",
+    dimensi: "DIAMETER 36,5 S/D 70 MM - TINGGI 68,8 SD 181 MM",
+    berat: "9 - 40 GR",
+    deskripsi:
+      "Botol plastik Seri M tersedia dalam berbagai ukuran mulai dari 50 ml, 100 ml, 250 ml, hingga 500 ml, sehingga fleksibel digunakan sesuai kebutuhan. Terbuat dari bahan plastik berkualitas tinggi yang aman, kuat, dan tahan lama.",
+    imagePath: "/images/product/botol HDPE/500ml.png",
+  },
+];
+
 export const catalogCategories: ProductCategory[] = [
   {
     id: "pallet-industri",
@@ -696,7 +795,16 @@ export const catalogCategories: ProductCategory[] = [
     name: "Botol HDPE",
     displayName: "BOTOL HDPE",
     subtitle: "Botol Plastik High-Density Polyethylene untuk Industri, Farmasi & Kimia",
-    products: [],
+    products: botolHdpeProducts.map((p, idx) => ({
+      id: `botol-hdpe-${idx + 1}`,
+      name: p.title,
+      image: p.imagePath,
+      specs: [
+        { icon: "Ruler", label: "Dimensi", value: p.dimensi },
+        { icon: "Weight", label: "Berat", value: p.berat },
+      ],
+      description: p.deskripsi,
+    })),
   },
   {
     id: "kaleng-pail-plastik",
