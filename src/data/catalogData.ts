@@ -260,6 +260,65 @@ export const minyakGorengProducts = [
   },
 ];
 
+export const kemasanPETProducts = [
+  {
+    title: "GALON PET 19 LITER",
+    dimensi: "DIAMETER 270 MM - TINGGI 490 MM",
+    berat: "650 GR",
+    deskripsi:
+      "Galon PET 19 Liter (5 Gallon) standar industri air minum dalam kemasan (AMDK) dan depot air minum isi ulang. Diproduksi dari material Virgin PET murni berstandar Food Grade, bebas BPA, dengan kejernihan kristal tinggi serta dinding ribbed kokoh yang tahan benturan dan tahan tumpuk untuk distribusi logistik skala besar.",
+    imagePath: "/images/product/kemasan PET/galon19.png",
+  },
+  {
+    title: "GALON PET 15 LITER WITH HANDLE",
+    dimensi: "DIAMETER 250 MM - TINGGI 410 MM",
+    berat: "450 GR",
+    deskripsi:
+      "Galon PET 15 Liter dengan tutup pegangan (handle) ergonomis yang memudahkan pengangkatan dan mobilitas distribusi. Sangat ideal untuk kebutuhan air minum keluarga, perkantoran, maupun depot isi ulang modern dengan bahan PET food grade higienis dan tidak berbau.",
+    imagePath: "/images/product/kemasan PET/galon15.png",
+  },
+  {
+    title: "GALON PET KOTAK 5 LITER WITH HANDLE",
+    dimensi: "160 X 160 X 330 MM",
+    berat: "140 GR",
+    deskripsi:
+      "Galon PET 5 Liter desain kotak hemat ruang (space-saving) dengan pegangan jinjing kokoh dan tutup ulir anti-bocor. Cocok untuk kemasan air minum higienis, minyak kelapa, sabun isi ulang, maupun produk cairan industri retail.",
+    imagePath: "/images/product/kemasan PET/galon5.png",
+  },
+  {
+    title: "BOTOL PET MINUMAN BULAT 350 ML / 500 ML",
+    dimensi: "DIAMETER 65 MM - TINGGI 180 MM",
+    berat: "28 GR",
+    deskripsi:
+      "Botol kemasan minuman PET silinder bulat dengan tutup ulir segel tamper-evident hitam. Didesain dengan kejernihan premium untuk memperlihatkan warna alami produk minuman segar seperti jus buah, kopi susu cold brew, teh tarik, susu kedelai, dan minuman kekinian.",
+    imagePath: "/images/product/kemasan PET/minuman.png",
+  },
+  {
+    title: "BOTOL PET SABUN CAIR 450 ML (PUSH PULL CAP)",
+    dimensi: "75 X 50 X 195 MM",
+    berat: "32 GR",
+    deskripsi:
+      "Botol PET ergonomis dengan grip samping anti-slip dan tutup push-pull praktis yang presisi dalam mengatur aliran cairan. Sangat sesuai untuk kemasan produk pembersih rumah tangga, sabun cuci piring, sabun tangan cair, deterjen, dan pembersih higienis.",
+    imagePath: "/images/product/kemasan PET/sabun.png",
+  },
+  {
+    title: "BOTOL PET AIR ZAM-ZAM 250 ML",
+    dimensi: "DIAMETER 55 MM - TINGGI 135 MM",
+    berat: "22 GR",
+    deskripsi:
+      "Botol PET 250 ml model ringkas dengan tutup ulir bersegel rapat dan leher kuat. Pilihan utama untuk kemasan air zam-zam oleh-oleh haji dan umroh, madu cair, jamu herbal, minyak habbatussauda, dan sirup konsentrat berkualitas.",
+    imagePath: "/images/product/kemasan PET/zamzam.png",
+  },
+  {
+    title: "TOPLES PET BUMBU 200 ML DENGAN FLIP-TOP SHAKER",
+    dimensi: "DIAMETER 50 MM - TINGGI 115 MM",
+    berat: "24 GR",
+    deskripsi:
+      "Toples silinder berbahan PET food grade jernih dilengkapi tutup shaker dwifungsi (lubang tabur bumbu halus dan bukaan tuang takar). Sangat cocok untuk mengemas garam dapur, lada bubuk, bumbu tabur instan, penyedap rasa, dan rempah-rempah kuliner.",
+    imagePath: "/images/product/kemasan PET/bumbu.png",
+  },
+];
+
 export const catalogCategories: ProductCategory[] = [
   {
     id: "pallet-industri",
@@ -369,7 +428,16 @@ export const catalogCategories: ProductCategory[] = [
     name: "Beragam Kemasan PET",
     displayName: "BERAGAM KEMASAN PET",
     subtitle: "Galon Air Minum, Toples Bumbu, & Beragam Wadah Higienis Food Grade",
-    products: [],
+    products: kemasanPETProducts.map((p, idx) => ({
+      id: `kemasan-pet-${idx + 1}`,
+      name: p.title,
+      image: p.imagePath,
+      specs: [
+        { icon: "Ruler", label: "Dimensi", value: p.dimensi },
+        { icon: "Weight", label: "Berat", value: p.berat },
+      ],
+      description: p.deskripsi,
+    })),
   },
   {
     id: "jerigen-hdpe",
