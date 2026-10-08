@@ -34,11 +34,14 @@ export default function Footer() {
   ];
 
   const quickNavLinks = t.footer?.quickNavLinks || [
-    { label: "Beranda", href: "/" },
-    { label: "Profil Perusahaan", href: "/about" },
-    { label: "Katalog Produk", href: "/products" },
-    { label: "Standar Mutu (QC)", href: "/about#iso-sertifikat" },
-    { label: "Hubungi Kami", href: "/#contact" },
+    { label: "BERANDA", href: "/" },
+    { label: "TENTANG KAMI", href: "/about" },
+    { label: "PRODUK", href: "/products" },
+    { label: "ARTIKEL", href: "/about#artikel" },
+    { label: "FAQ", href: "/#faq" },
+    { label: "PARTNER", href: "/about#partner" },
+    { label: "PRODUK CUSTOM", href: "/products#custom" },
+    { label: "KONTAK", href: "/#contact" },
   ];
 
   const solutionsLinks = t.footer?.solutionsLinks || [
@@ -253,27 +256,43 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Column 2 (Navigasi Cepat): lg:col-span-2 */}
-          <div className="lg:col-span-2">
+          {/* Column 2 (Navigasi Menu - 2 Kolom Sesuai Desain): lg:col-span-3 */}
+          <div className="lg:col-span-3">
             <h3 className="text-white font-semibold text-sm tracking-wider mb-4 uppercase">
-              {t.footer?.quickNavTitle || "NAVIGASI CEPAT"}
+              {t.footer?.quickNavTitle || "NAVIGASI"}
             </h3>
-            <ul className="flex flex-col gap-2.5">
-              {quickNavLinks.map((link, idx) => (
-                <li key={idx}>
-                  <Link
-                    href={link.href}
-                    className="text-xs sm:text-sm hover:text-white hover:translate-x-1 transition-all duration-300 flex items-center"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <div className="grid grid-cols-2 gap-x-6 gap-y-3">
+              {/* Kolom Kiri: BERANDA, TENTANG KAMI, PRODUK, ARTIKEL */}
+              <ul className="flex flex-col gap-3">
+                {quickNavLinks.slice(0, 4).map((link, idx) => (
+                  <li key={idx}>
+                    <Link
+                      href={link.href}
+                      className="text-xs sm:text-sm font-bold tracking-wider text-slate-200 hover:text-blue-400 hover:translate-x-0.5 uppercase transition-all duration-300 block"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              {/* Kolom Kanan: FAQ, PARTNER, PRODUK CUSTOM, KONTAK */}
+              <ul className="flex flex-col gap-3">
+                {quickNavLinks.slice(4, 8).map((link, idx) => (
+                  <li key={idx}>
+                    <Link
+                      href={link.href}
+                      className="text-xs sm:text-sm font-bold tracking-wider text-slate-200 hover:text-blue-400 hover:translate-x-0.5 uppercase transition-all duration-300 block"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
-          {/* Column 3 (Solusi Manufaktur): lg:col-span-3 */}
-          <div className="lg:col-span-3">
+          {/* Column 3 (Solusi Manufaktur): lg:col-span-2 */}
+          <div className="lg:col-span-2">
             <h3 className="text-white font-semibold text-sm tracking-wider mb-4 uppercase">
               {t.footer?.solutionsTitle || "SOLUSI MANUFAKTUR"}
             </h3>

@@ -216,13 +216,16 @@ export const footerData: FooterData = {
   },
   sections: [
     {
-      title: "Navigasi Cepat",
+      title: "Navigasi",
       links: [
-        { label: "Beranda", href: "#hero" },
-        { label: "Profil Perusahaan", href: "#about" },
-        { label: "Katalog Produk", href: "#products" },
-        { label: "Standar Mutu (QC)", href: "#quality" },
-        { label: "Hubungi Kami", href: "#contact" },
+        { label: "BERANDA", href: "/" },
+        { label: "TENTANG KAMI", href: "/about" },
+        { label: "PRODUK", href: "/products" },
+        { label: "ARTIKEL", href: "/about#artikel" },
+        { label: "FAQ", href: "/#faq" },
+        { label: "PARTNER", href: "/about#partner" },
+        { label: "PRODUK CUSTOM", href: "/products#custom" },
+        { label: "KONTAK", href: "/#contact" },
       ],
     },
     {
