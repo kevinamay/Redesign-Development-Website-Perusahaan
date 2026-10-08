@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import AboutPreview from "@/components/AboutPreview";
 import GlobalDistribution from "@/components/GlobalDistribution";
 import NewProduct from "@/components/NewProduct";
+import FAQSection from "@/components/FAQSection";
 import CareerBanner from "@/components/CareerBanner";
 import Footer from "@/components/Footer";
 
@@ -23,14 +24,18 @@ export default function Home() {
         {/* 4. New Product Flagship Showcase (Bento-box style) */}
         <NewProduct />
 
-        {/* 5. Career / Recruitment Banner */}
+        {/* 5. Frequently Asked Questions (FAQ Accordion) */}
+        <FAQSection />
+
+        {/* 6. Career / Recruitment Banner */}
         <CareerBanner />
       </main>
 
-      {/* 6. Corporate Footer */}
+      {/* 7. Corporate Footer */}
       <Footer />
     </div>
   );
 }
+
 
 
