@@ -496,6 +496,17 @@ export const jerigenOliProducts = [
   },
 ];
 
+export const jerigenLipatProducts = [
+  {
+    title: "JERIGEN LIPAT 5 LITER",
+    dimensi: "205 X 181 X 181 MM",
+    berat: "140 GR",
+    deskripsi:
+      "Jerigen lipat 5 liter ini terbuat dari bahan plastik LDPE (Low Density Polyethylene) yang fleksibel namun tetap kuat. Desain lipatnya membuat jerigen mudah disimpan saat tidak digunakan, sehingga sangat praktis untuk kebutuhan rumah tangga, perjalanan, camping, hingga darurat air.",
+    imagePath: "/images/product/jerikan Lipat/5l.png",
+  },
+];
+
 export const catalogCategories: ProductCategory[] = [
   {
     id: "pallet-industri",
@@ -669,7 +680,16 @@ export const catalogCategories: ProductCategory[] = [
     name: "Jerigen Lipat",
     displayName: "JERIGEN LIPAT",
     subtitle: "Jerigen Lipat Praktis Fleksibel untuk Air & Kebutuhan Darurat",
-    products: [],
+    products: jerigenLipatProducts.map((p, idx) => ({
+      id: `jerigen-lipat-${idx + 1}`,
+      name: p.title,
+      image: p.imagePath,
+      specs: [
+        { icon: "Ruler", label: "Dimensi", value: p.dimensi },
+        { icon: "Weight", label: "Berat", value: p.berat },
+      ],
+      description: p.deskripsi,
+    })),
   },
   {
     id: "botol-hdpe",

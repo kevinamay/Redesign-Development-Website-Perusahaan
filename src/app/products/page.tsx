@@ -24,6 +24,7 @@ import {
   jerigenHdpeProducts,
   jerigenChemicalProducts,
   jerigenOliProducts,
+  jerigenLipatProducts,
 } from "@/data/catalogData";
 
 // Daftar Kategori di Sidebar Kiri
@@ -349,6 +350,19 @@ export default function ProductsPage() {
           ) : activeCategoryId === "jerigen-oli" ? (
             <div className="flex flex-col gap-12">
               {jerigenOliProducts.map((product) => (
+                <ProductCard
+                  key={product.title}
+                  title={product.title}
+                  dimensi={product.dimensi}
+                  berat={product.berat}
+                  deskripsi={product.deskripsi}
+                  imagePath={product.imagePath}
+                />
+              ))}
+            </div>
+          ) : activeCategoryId === "jerigen-lipat" ? (
+            <div className="flex flex-col gap-12">
+              {jerigenLipatProducts.map((product) => (
                 <ProductCard
                   key={product.title}
                   title={product.title}
