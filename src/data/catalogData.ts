@@ -434,6 +434,41 @@ export const jerigenHdpeProducts = [
   },
 ];
 
+export const jerigenChemicalProducts = [
+  {
+    title: "JERIGEN 32,5 LITER CHEMICAL BIRU",
+    dimensi: "345 X 272 X 443 MM",
+    berat: "1500 GR",
+    deskripsi:
+      "Jerigen 32,5 liter didesain khusus untuk kebutuhan industri dengan kapasitas besar. Terbuat dari plastik HDPE berkualitas tinggi yang tahan terhadap bahan kimia agresif, jerigen ini ideal digunakan untuk penyimpanan maupun distribusi cairan kimia, bahan baku industri, atau cairan berbahaya. Dengan konstruksi tebal dan tutup yang rapat, produk ini menjamin keamanan isi dari kebocoran maupun kontaminasi.",
+    imagePath: "/images/product/jerigen chemical/32.5l.png",
+  },
+  {
+    title: "JERIGEN 30 KG CHEMICAL BIRU",
+    dimensi: "298 X 290 X 516 MM",
+    berat: "1400 GR",
+    deskripsi:
+      "Jerigen 30 kg Chemical Blue merupakan pilihan utama untuk industri yang memerlukan wadah tangguh dalam menyimpan cairan kimia. Warna biru berfungsi sebagai identifikasi khusus untuk produk chemical dan membantu melindungi isi dari paparan cahaya. Dengan material yang kuat dan tahan lama, jerigen ini memastikan keamanan dalam transportasi maupun penyimpanan jangka panjang.",
+    imagePath: "/images/product/jerigen chemical/30kg.png",
+  },
+  {
+    title: "JERIGEN 25 KG CHEMICAL BIRU",
+    dimensi: "295 X 290 X 455 MM",
+    berat: "1200 GR",
+    deskripsi:
+      "Dengan kapasitas 25 kg, jerigen Chemical Blue ini praktis digunakan untuk kebutuhan distribusi dan penyimpanan bahan kimia dalam skala menengah. Terbuat dari plastik berkualitas tinggi, jerigen ini tahan terhadap berbagai jenis zat kimia, serta dilengkapi tutup rapat untuk mencegah kebocoran. Cocok untuk industri kimia, farmasi, hingga pertanian.",
+    imagePath: "/images/product/jerigen chemical/25kg.png",
+  },
+  {
+    title: "JERIGEN 20 KG CHEMICAL",
+    dimensi: "287 X 287 X 381 MM",
+    berat: "900 GR",
+    deskripsi:
+      "Jerigen 20 kg Chemical dirancang sebagai solusi wadah serbaguna untuk cairan kimia dengan kapasitas sedang. Desain ergonomis memudahkan pengangkutan, sementara material HDPE yang digunakan memberikan ketahanan optimal terhadap reaksi kimia. Aman digunakan untuk penyimpanan cairan pembersih, bahan industri, maupun produk berbasis kimia lainnya.",
+    imagePath: "/images/product/jerigen chemical/20kg.png",
+  },
+];
+
 export const catalogCategories: ProductCategory[] = [
   {
     id: "pallet-industri",
@@ -575,7 +610,16 @@ export const catalogCategories: ProductCategory[] = [
     name: "Jerigen Chemical HDPE",
     displayName: "JERIGEN CHEMICAL HDPE",
     subtitle: "Jerigen Khusus Bahan Kimia Industri Standar Heavy Duty",
-    products: [],
+    products: jerigenChemicalProducts.map((p, idx) => ({
+      id: `jerigen-chemical-${idx + 1}`,
+      name: p.title,
+      image: p.imagePath,
+      specs: [
+        { icon: "Ruler", label: "Dimensi", value: p.dimensi },
+        { icon: "Weight", label: "Berat", value: p.berat },
+      ],
+      description: p.deskripsi,
+    })),
   },
   {
     id: "jerigen-oli",
