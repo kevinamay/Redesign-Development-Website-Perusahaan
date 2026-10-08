@@ -256,34 +256,38 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Column 2 (Navigasi Menu - 2 Kolom Sesuai Desain): lg:col-span-3 */}
-          <div className="lg:col-span-3">
-            <h3 className="text-white font-semibold text-sm tracking-wider mb-4 uppercase">
-              {t.footer?.quickNavTitle || "NAVIGASI"}
-            </h3>
-            <div className="grid grid-cols-2 gap-x-6 gap-y-3">
+          {/* Column 2 (Menu Navigasi 2 Kolom Tanpa Judul - Estetis & Presisi): lg:col-span-3 */}
+          <div className="lg:col-span-3 pt-1">
+            <div className="grid grid-cols-2 gap-x-8 sm:gap-x-10">
               {/* Kolom Kiri: BERANDA, TENTANG KAMI, PRODUK, ARTIKEL */}
-              <ul className="flex flex-col gap-3">
+              <ul className="flex flex-col gap-4">
                 {quickNavLinks.slice(0, 4).map((link, idx) => (
-                  <li key={idx}>
+                  <li key={idx} className="h-6 flex items-center">
                     <Link
                       href={link.href}
-                      className="text-xs sm:text-sm font-bold tracking-wider text-slate-200 hover:text-blue-400 hover:translate-x-0.5 uppercase transition-all duration-300 block"
+                      className="group inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold tracking-wider text-slate-200 hover:text-white uppercase transition-all duration-200 whitespace-nowrap"
                     >
-                      {link.label}
+                      <span className="w-1.5 h-1.5 rounded-full bg-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-200 shrink-0" />
+                      <span className="group-hover:text-blue-400 group-hover:translate-x-1 transition-transform duration-200">
+                        {link.label}
+                      </span>
                     </Link>
                   </li>
                 ))}
               </ul>
+
               {/* Kolom Kanan: FAQ, PARTNER, PRODUK CUSTOM, KONTAK */}
-              <ul className="flex flex-col gap-3">
+              <ul className="flex flex-col gap-4">
                 {quickNavLinks.slice(4, 8).map((link, idx) => (
-                  <li key={idx}>
+                  <li key={idx} className="h-6 flex items-center">
                     <Link
                       href={link.href}
-                      className="text-xs sm:text-sm font-bold tracking-wider text-slate-200 hover:text-blue-400 hover:translate-x-0.5 uppercase transition-all duration-300 block"
+                      className="group inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold tracking-wider text-slate-200 hover:text-white uppercase transition-all duration-200 whitespace-nowrap"
                     >
-                      {link.label}
+                      <span className="w-1.5 h-1.5 rounded-full bg-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-200 shrink-0" />
+                      <span className="group-hover:text-blue-400 group-hover:translate-x-1 transition-transform duration-200">
+                        {link.label}
+                      </span>
                     </Link>
                   </li>
                 ))}
