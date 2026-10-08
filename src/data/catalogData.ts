@@ -176,27 +176,27 @@ export const botolPupukProducts = [
 
 export const kosmetikProducts = [
   {
-    title: "BOTOL KOSMETIK PET 100 ML",
-    dimensi: "HUBUNGI KAMI UNTUK DETAIL",
-    berat: "MENYESUAIKAN",
+    title: "BOTOL PET 100 CC WITH PUMP",
+    dimensi: "DIAMETER 47,60 MM - TINGGI 104 MM",
+    berat: "28 GR",
     deskripsi:
-      "Botol kemasan kosmetik berbahan PET berkualitas tinggi dengan kapasitas 100 ml. Dilengkapi dengan pompa dispenser yang presisi, sangat cocok untuk produk perawatan wajah seperti toner, serum, atau facial wash. Material PET memastikan keamanan isi produk dari kontaminasi luar dan memberikan tampilan premium yang menawan untuk brand kosmetik Anda.",
+      "Botol Kosmetik PET 100 CC dari Asia Plastik dilengkapi dengan foam pump yang praktis dan higienis, ideal untuk produk perawatan wajah seperti facial wash atau sabun cair. Terbuat dari bahan PET berkualitas, botol ini ringan, kuat, dan tampil elegan dengan desain modern, cocok untuk brand kosmetik yang mengutamakan tampilan profesional dan kemudahan penggunaan.",
     imagePath: "/images/product/Kosmetik/kosmetik100.png",
   },
   {
-    title: "BOTOL KOSMETIK PET 300 ML GOLD",
-    dimensi: "HUBUNGI KAMI UNTUK DETAIL",
-    berat: "MENYESUAIKAN",
+    title: "BOTOL PET GOLD 300 CC WITH PUMP",
+    dimensi: "DIAMETER 60 MM - TINGGI 138 MM",
+    berat: "30 GR",
     deskripsi:
-      "Kemasan botol kosmetik eksklusif berkapasitas 300 ml dengan warna emas (gold) yang mewah. Didesain khusus untuk produk perawatan tubuh premium seperti body lotion, sabun cair, atau shampoo. Dilengkapi dengan pompa hitam elegan yang kokoh, botol ini tidak hanya melindungi formulasi produk Anda tetapi juga meningkatkan nilai jual dan estetika di rak pajangan.",
+      "Botol PET 300 CC dengan tutup pump dari Asia Plastik cocok untuk berbagai produk cair, termasuk kosmetik seperti lotion, serum tubuh, atau toner. Terbuat dari bahan PET yang bening, ringan, dan tahan lama, botol ini tampil elegan dan profesional. Dilengkapi dengan pump yang praktis dan higienis, sangat ideal untuk kemasan produk skincare dan personal care.",
     imagePath: "/images/product/Kosmetik/kosmetik300.png",
   },
   {
-    title: "BOTOL KOSMETIK PET 500 ML BENING",
-    dimensi: "HUBUNGI KAMI UNTUK DETAIL",
-    berat: "MENYESUAIKAN",
+    title: "BOTOL PET 500 ML WITH PUMP",
+    dimensi: "DIAMETER 76 MM - TINGGI 167 MM",
+    berat: "55 GR",
     deskripsi:
-      "Botol pump berkapasitas besar 500 ml dengan tingkat kejernihan (clarity) yang sangat baik. Sangat ideal untuk produk kosmetik dan personal care bervolume besar seperti sabun mandi cair, hand sanitizer, atau body wash. Struktur botol yang tebal dan kuat memastikan ketahanan terhadap benturan selama proses distribusi logistik.",
+      "Botol PET 500 ml transparan dengan tutup pump dari Asia Plastik ideal untuk produk cair berukuran besar seperti sabun mandi, sampo, hand sanitizer, atau skincare tubuh. Terbuat dari bahan PET yang kuat dan jernih, botol ini menampilkan isi produk dengan menarik sekaligus menjaga kualitasnya. Dilengkapi pump yang praktis dan higienis, cocok untuk kebutuhan industri kosmetik, perawatan pribadi, maupun rumah tangga.",
     imagePath: "/images/product/Kosmetik/kosmetik500.png",
   },
 ];
