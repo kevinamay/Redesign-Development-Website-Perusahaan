@@ -115,7 +115,7 @@ export default function ProductCard({
         </div>
 
         {/* Right Column (lg:col-span-5): Specs & Action Buttons */}
-        <div className="lg:col-span-5 lg:sticky lg:top-32 self-start h-fit flex flex-col gap-6 z-10">
+        <div className="lg:col-span-5 flex flex-col gap-6">
           {/* 2-Column Grid for Specs */}
           <div className="grid grid-cols-2 gap-4">
             {/* Dimensi */}
