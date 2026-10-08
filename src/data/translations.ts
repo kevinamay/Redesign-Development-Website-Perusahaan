@@ -69,6 +69,7 @@ export interface TranslationSchema {
     };
     highlights: string;
     carouselAlt: string;
+    ctaButton: string;
   };
   footer: {
     legalName: string;
@@ -159,6 +160,7 @@ export const translations: Record<Language, TranslationSchema> = {
       },
       highlights: "Ready Stock & Kontrak B2B",
       carouselAlt: "Solid Foldable Industrial Basket - Tampilan",
+      ctaButton: "Lihat Produk Selengkapnya",
     },
     footer: {
       legalName: "CV. ASIA PLASTIK",
@@ -264,6 +266,7 @@ export const translations: Record<Language, TranslationSchema> = {
       },
       highlights: "Ready Stock & B2B Supply Contracts",
       carouselAlt: "Solid Foldable Industrial Basket - View",
+      ctaButton: "View All Products",
     },
     footer: {
       legalName: "CV. ASIA PLASTIK",
@@ -369,6 +372,7 @@ export const translations: Record<Language, TranslationSchema> = {
       },
       highlights: "现货常备 & 支持企业B2B批量采购",
       carouselAlt: "高强度折叠工业周转筐 - 展示角度",
+      ctaButton: "查看全部产品",
     },
     footer: {
       legalName: "亚洲塑料有限公司 (CV. ASIA PLASTIK)",

@@ -2,6 +2,7 @@
 
 import React, { useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { useLanguage } from "@/data/translations";
 import {
   Box,
@@ -9,6 +10,7 @@ import {
   ShieldCheck,
   Layers,
   CheckCircle2,
+  ArrowRight,
 } from "lucide-react";
 
 export default function NewProduct() {
@@ -130,12 +132,20 @@ export default function NewProduct() {
               </div>
             </div>
 
-            {/* Bottom Highlights */}
-            <div className="pt-2 flex items-center">
-              <span className="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-emerald-500" />
+            {/* Bottom Highlights & CTA Navigation */}
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mt-8 pt-6 border-t border-slate-100 dark:border-slate-800/80">
+              <span className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
                 <span>{t.newProduct.highlights}</span>
               </span>
+
+              <Link
+                href="/products"
+                className="inline-flex items-center justify-center gap-2.5 px-6 py-3 lg:px-8 lg:py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm lg:text-base rounded-xl shadow-md hover:shadow-lg hover:shadow-blue-600/20 hover:-translate-y-0.5 transition-all duration-300 group cursor-pointer w-full sm:w-auto"
+              >
+                <span>{t.newProduct.ctaButton}</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300 shrink-0" />
+              </Link>
             </div>
           </div>
 
