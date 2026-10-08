@@ -17,6 +17,7 @@ import {
   laluLintasProducts,
   botolPupukProducts,
   kosmetikProducts,
+  minyakGorengProducts,
 } from "@/data/catalogData";
 
 interface CategoryItem {
@@ -265,6 +266,19 @@ export default function ProductCatalog() {
           ) : activeCategoryId === "kosmetik" ? (
             <div className="flex flex-col gap-12">
               {kosmetikProducts.map((product) => (
+                <ProductCard
+                  key={product.title}
+                  title={product.title}
+                  dimensi={product.dimensi}
+                  berat={product.berat}
+                  deskripsi={product.deskripsi}
+                  imagePath={product.imagePath}
+                />
+              ))}
+            </div>
+          ) : activeCategoryId === "botol-minyak-goreng" ? (
+            <div className="flex flex-col gap-12">
+              {minyakGorengProducts.map((product) => (
                 <ProductCard
                   key={product.title}
                   title={product.title}

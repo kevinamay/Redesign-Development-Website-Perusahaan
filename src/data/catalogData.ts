@@ -201,6 +201,65 @@ export const kosmetikProducts = [
   },
 ];
 
+export const minyakGorengProducts = [
+  {
+    title: "BOTOL MINYAK GORENG PET 2 LITER ULIR",
+    dimensi: "320 X 102 X 102 MM",
+    berat: "38 GR",
+    deskripsi:
+      "Botol PET Minyak Goreng 2 Liter kemasan volume tinggi untuk pasar grosir dan distribusi luas. Struktur kokoh, tahan tekanan, dan hemat ruang penyimpanan.",
+    imagePath: "/images/product/minyak goreng/2liter.png",
+  },
+  {
+    title: "BOTOL MINYAK GORENG PET 1,5 LITER",
+    dimensi: "255 X 98 X 82 MM",
+    berat: "32 GR",
+    deskripsi:
+      "Botol PET Minyak Goreng 1,5 Liter kapasitas lebih besar untuk meningkatkan efisiensi distribusi. Cocok untuk pengisian otomatis dan penggunaan skala industri.",
+    imagePath: "/images/product/minyak goreng/1.5liter.png",
+  },
+  {
+    title: "BOTOL MINYAK GORENG PET 1 LITER A",
+    dimensi: "261,5 X 72,2 X 72,2 MM",
+    berat: "28 GR",
+    deskripsi:
+      "Botol PET Minyak Goreng 1 Liter standar industri untuk distribusi minyak goreng. Tersedia dalam desain ergonomis dan siap memenuhi kebutuhan produksi massal.",
+    imagePath: "/images/product/minyak goreng/1literA.png",
+  },
+  {
+    title: "BOTOL MINYAK GORENG PET 900 ML",
+    dimensi: "257 X 70 X 70 MM",
+    berat: "28 GR",
+    deskripsi:
+      "Botol PET Minyak Goreng 900 ml hampir setara 1 liter, ideal untuk efisiensi logistik dan distribusi retail. Kuat, aman, dan memiliki tampilan yang profesional di rak penjualan.",
+    imagePath: "/images/product/minyak goreng/900ml.png",
+  },
+  {
+    title: "BOTOL MINYAK GORENG PET 800 ML",
+    dimensi: "255 X 66 X 66 MM",
+    berat: "28 GR",
+    deskripsi:
+      "Botol PET Minyak Goreng 800 ml cocok untuk kebutuhan pengemasan skala menengah. Stabil secara struktur dan kompatibel dengan berbagai jenis tutup dan mesin filling.",
+    imagePath: "/images/product/minyak goreng/800ml.png",
+  },
+  {
+    title: "BOTOL MINYAK GORENG PET 620 ML",
+    dimensi: "250 X 65 X 65 MM",
+    berat: "28 GR",
+    deskripsi:
+      "Botol PET Minyak Goreng 620 ml, ukuran menengah yang ideal untuk pasar retail modern. Desain ergonomis dan material PET berkualitas tinggi menjamin keamanan produk selama pengiriman.",
+    imagePath: "/images/product/minyak goreng/620ml.png",
+  },
+  {
+    title: "BOTOL MINYAK GORENG PET 250 ML",
+    dimensi: "152 X 47 X 47 MM",
+    berat: "11,5 GR",
+    deskripsi:
+      "Botol PET Minyak Goreng 250 ml solusi efisien untuk sampel produk atau kemasan retail kecil. Ringan, kuat, dan mudah didistribusikan dalam jumlah besar.",
+    imagePath: "/images/product/minyak goreng/250ml.png",
+  },
+];
+
 export const catalogCategories: ProductCategory[] = [
   {
     id: "pallet-industri",
@@ -294,7 +353,16 @@ export const catalogCategories: ProductCategory[] = [
     name: "Botol Minyak Goreng",
     displayName: "BOTOL MINYAK GORENG",
     subtitle: "Botol Plastik PET Food Grade Higienis untuk Minyak Goreng & Minyak Nabati",
-    products: [],
+    products: minyakGorengProducts.map((p, idx) => ({
+      id: `minyak-goreng-${idx + 1}`,
+      name: p.title,
+      image: p.imagePath,
+      specs: [
+        { icon: "Ruler", label: "Dimensi", value: p.dimensi },
+        { icon: "Weight", label: "Berat", value: p.berat },
+      ],
+      description: p.deskripsi,
+    })),
   },
   {
     id: "beragam-kemasan-pet",
