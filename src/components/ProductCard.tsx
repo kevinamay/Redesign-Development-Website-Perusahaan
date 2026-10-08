@@ -115,56 +115,54 @@ export default function ProductCard({
         </div>
 
         {/* Right Column (lg:col-span-5): Specs & Action Buttons */}
-        <div className="lg:col-span-5">
-          <div className="lg:sticky lg:top-24 h-fit flex flex-col gap-6">
-            {/* 2-Column Grid for Specs */}
-            <div className="grid grid-cols-2 gap-4">
-              {/* Dimensi */}
-              <div className="bg-slate-50 dark:bg-slate-800/60 p-5 rounded-2xl border border-slate-100 dark:border-slate-700/60">
-                <div className="flex items-center gap-2 mb-1.5 text-blue-600 dark:text-blue-400">
-                  <Ruler className="w-4 h-4 shrink-0" />
-                  <span className="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wider font-semibold">
-                    Dimensi
-                  </span>
-                </div>
-                <div className="text-base sm:text-lg font-bold text-slate-900 dark:text-white break-words">
-                  {dimensi}
-                </div>
+        <div className="lg:col-span-5 lg:sticky lg:top-32 self-start h-fit flex flex-col gap-6 z-10">
+          {/* 2-Column Grid for Specs */}
+          <div className="grid grid-cols-2 gap-4">
+            {/* Dimensi */}
+            <div className="bg-slate-50 dark:bg-slate-800/60 p-5 rounded-2xl border border-slate-100 dark:border-slate-700/60">
+              <div className="flex items-center gap-2 mb-1.5 text-blue-600 dark:text-blue-400">
+                <Ruler className="w-4 h-4 shrink-0" />
+                <span className="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wider font-semibold">
+                  Dimensi
+                </span>
               </div>
-
-              {/* Berat */}
-              <div className="bg-slate-50 dark:bg-slate-800/60 p-5 rounded-2xl border border-slate-100 dark:border-slate-700/60">
-                <div className="flex items-center gap-2 mb-1.5 text-blue-600 dark:text-blue-400">
-                  <Weight className="w-4 h-4 shrink-0" />
-                  <span className="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wider font-semibold">
-                    Berat
-                  </span>
-                </div>
-                <div className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">
-                  {berat}
-                </div>
+              <div className="text-base sm:text-lg font-bold text-slate-900 dark:text-white break-words">
+                {dimensi}
               </div>
             </div>
 
-            {/* Action Buttons */}
-            <div className="flex flex-col gap-3">
-              <a
-                href={getWhatsAppLink(title)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full justify-center bg-blue-600 text-white px-8 py-3.5 rounded-full hover:bg-blue-700 transition-colors inline-flex items-center gap-2 font-semibold text-sm shadow-md shadow-blue-600/20 hover:shadow-lg hover:shadow-blue-600/30 cursor-pointer text-center"
-              >
-                <PhoneCall className="w-4 h-4" />
-                <span>Hubungi Penjualan</span>
-              </a>
-
-              <a
-                href={`tel:${footerData.contact.phone.replace(/[^0-9+]/g, "")}`}
-                className="w-full justify-center bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 px-6 py-3.5 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors inline-flex items-center gap-2 font-semibold text-sm cursor-pointer text-center"
-              >
-                <span>Hotline: {footerData.contact.phone}</span>
-              </a>
+            {/* Berat */}
+            <div className="bg-slate-50 dark:bg-slate-800/60 p-5 rounded-2xl border border-slate-100 dark:border-slate-700/60">
+              <div className="flex items-center gap-2 mb-1.5 text-blue-600 dark:text-blue-400">
+                <Weight className="w-4 h-4 shrink-0" />
+                <span className="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wider font-semibold">
+                  Berat
+                </span>
+              </div>
+              <div className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">
+                {berat}
+              </div>
             </div>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="flex flex-col gap-3">
+            <a
+              href={getWhatsAppLink(title)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full justify-center bg-blue-600 text-white px-8 py-3.5 rounded-full hover:bg-blue-700 transition-colors inline-flex items-center gap-2 font-semibold text-sm shadow-md shadow-blue-600/20 hover:shadow-lg hover:shadow-blue-600/30 cursor-pointer text-center"
+            >
+              <PhoneCall className="w-4 h-4" />
+              <span>Hubungi Penjualan</span>
+            </a>
+
+            <a
+              href={`tel:${footerData.contact.phone.replace(/[^0-9+]/g, "")}`}
+              className="w-full justify-center bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 px-6 py-3.5 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors inline-flex items-center gap-2 font-semibold text-sm cursor-pointer text-center"
+            >
+              <span>Hotline: {footerData.contact.phone}</span>
+            </a>
           </div>
         </div>
       </div>
