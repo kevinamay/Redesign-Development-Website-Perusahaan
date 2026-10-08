@@ -17,15 +17,16 @@ import {
   Cpu,
   Layers,
   Award,
+  CheckCircle2,
 } from "lucide-react";
 import { useLanguage } from "@/data/translations";
 
 export const partnersList = [
   {
     name: "Greenfields",
-    logo: "/images/logo/greenfileds.jpg",
+    logo: "/images/logo/greenfileds.png",
     sector: {
-      id: "Industri Susu & Produk Olahan",
+      id: "Industri Susu & Olahan Pangan",
       en: "Dairy & Beverage Industry",
       zh: "乳制品与饮品产业",
     },
@@ -41,7 +42,7 @@ export const partnersList = [
   },
   {
     name: "Kelaya Hair Treatment",
-    logo: "/images/logo/kelaya.jpg",
+    logo: "/images/logo/kelaya.png",
     sector: {
       id: "Perawatan Pribadi & Kosmetik",
       en: "Personal Care & Cosmetics",
@@ -50,9 +51,9 @@ export const partnersList = [
   },
   {
     name: "Kimia Farma",
-    logo: "/images/logo/kimia farma.jpg",
+    logo: "/images/logo/kimia farma.png",
     sector: {
-      id: "Farmasi & Kesehatan",
+      id: "Farmasi & Layanan Kesehatan",
       en: "Pharmaceutical & Healthcare",
       zh: "制药与健康医疗",
     },
@@ -113,7 +114,7 @@ export const partnersList = [
   },
   {
     name: "PT. Pupuk Kujang Cikampek",
-    logo: "/images/logo/pomal.jpg",
+    logo: "/images/logo/pomal.png",
     sector: {
       id: "Produsen Pupuk Nasional BUMN",
       en: "National Fertilizer SOE",
@@ -133,7 +134,7 @@ export const partnersList = [
     name: "Sinarmas Agribusiness and Food",
     logo: "/images/logo/sinarmas.png",
     sector: {
-      id: "Agribisnis Terbesar & FMCG",
+      id: "Agribisnis Global & FMCG",
       en: "Agribusiness & Global FMCG",
       zh: "金光集团农业与日化",
     },
@@ -287,8 +288,8 @@ export default function PartnerPage() {
 
       <main className="flex-grow">
         {/* 1. HERO SECTION */}
-        <section className="bg-slate-900 relative py-24 lg:py-32 overflow-hidden text-center">
-          {/* Subtle background glow effect & dot grid */}
+        <section className="bg-slate-900 relative py-20 lg:py-28 overflow-hidden text-center">
+          {/* Subtle background dot grid pattern */}
           <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
 
           {/* Ambient luminous glow circles */}
@@ -305,7 +306,7 @@ export default function PartnerPage() {
                 <Home className="w-3.5 h-3.5" />
                 {content.breadcrumbHome}
               </Link>
-              <ChevronRight className="w-3.5 h-3.5 text-slate-600" />
+              <ChevronRight className="w-3 h-3 text-slate-600" />
               <span className="text-blue-400 font-medium">
                 {content.breadcrumbCurrent}
               </span>
@@ -327,9 +328,10 @@ export default function PartnerPage() {
             </p>
 
             {/* Hero Partner Stats Badge */}
-            <div className="inline-flex items-center gap-3 px-4 py-2 bg-slate-800/80 border border-slate-700/60 rounded-full text-xs sm:text-sm text-slate-300 shadow-inner">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="font-semibold text-white">16+</span>
+            <div className="inline-flex items-center gap-3 px-5 py-2.5 bg-slate-800/80 border border-slate-700/60 rounded-full text-xs sm:text-sm text-slate-300 shadow-inner">
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="font-bold text-white">16 Mitra Korporat</span>
+              <span className="text-slate-400">|</span>
               <span>{content.trustBadge}</span>
             </div>
           </div>
@@ -337,7 +339,7 @@ export default function PartnerPage() {
 
         {/* 2. PARTNERS LOGO GRID SECTION */}
         <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
-          <div className="text-center mb-16">
+          <div className="text-center mb-14">
             <span className="text-xs font-bold tracking-widest text-blue-600 uppercase mb-2 block">
               {content.gridEyebrow}
             </span>
@@ -347,30 +349,37 @@ export default function PartnerPage() {
             <div className="w-16 h-1 bg-blue-600 mx-auto mt-4 rounded-full" />
           </div>
 
-          {/* Grid Layout (2 col mobile, 3 sm, 4 md, 5 lg) */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 lg:gap-8">
+          {/* Symmetrical 4-Column Grid: 16 items = 4 rows of 4 cards perfectly balanced */}
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 sm:gap-6 lg:gap-7">
             {partnersList.map((partner, index) => (
               <div
                 key={index}
-                className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl p-6 flex flex-col items-center justify-center aspect-[3/2] shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group relative overflow-hidden"
+                className="bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 rounded-2xl p-6 sm:p-7 flex flex-col items-center justify-between min-h-[190px] sm:min-h-[210px] shadow-xs hover:shadow-xl hover:border-blue-500/50 hover:-translate-y-1.5 transition-all duration-300 group relative overflow-hidden"
               >
-                {/* Subtle top indicator on hover */}
-                <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                {/* Subtle top indicator hover line */}
+                <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                <div className="relative w-full h-full flex items-center justify-center">
+                {/* Ambient hover glow inside card */}
+                <div className="absolute inset-0 bg-radial from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+
+                {/* Big, Clear, Transparent Logo Container */}
+                <div className="relative w-full h-24 sm:h-28 flex items-center justify-center my-auto">
                   <Image
                     src={partner.logo}
                     alt={partner.name}
                     fill
-                    sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 20vw"
-                    className="object-contain max-h-16 grayscale group-hover:grayscale-0 transition-all duration-300 p-2"
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    className="object-contain p-1.5 transition-transform duration-300 group-hover:scale-108 drop-shadow-xs"
                   />
                 </div>
 
-                {/* Micro tooltip pill on hover with partner name */}
-                <div className="absolute inset-x-0 bottom-0 py-1.5 px-2 bg-gradient-to-t from-slate-900/90 via-slate-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center pointer-events-none">
-                  <p className="text-[11px] font-semibold text-white truncate px-1 drop-shadow-sm">
+                {/* Brand Name & Industry Sector */}
+                <div className="w-full pt-3 mt-2 border-t border-slate-100 dark:border-slate-800/80 text-center relative z-10">
+                  <h3 className="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors truncate">
                     {partner.name}
+                  </h3>
+                  <p className="text-[11px] text-slate-500 dark:text-slate-400 truncate mt-0.5">
+                    {partner.sector[lang]}
                   </p>
                 </div>
               </div>
@@ -397,7 +406,7 @@ export default function PartnerPage() {
                 return (
                   <div
                     key={idx}
-                    className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-300"
+                    className="bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 rounded-2xl p-6 sm:p-8 shadow-xs hover:shadow-md transition-all duration-300"
                   >
                     <div className="w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-5">
                       <IconComponent className="w-6 h-6" />
@@ -415,7 +424,7 @@ export default function PartnerPage() {
           </div>
 
           {/* 4. CALL TO ACTION (CTA) SECTION */}
-          <div className="mt-20 text-center bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-3xl p-10 lg:p-14 shadow-sm relative overflow-hidden">
+          <div className="mt-20 text-center bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 rounded-3xl p-10 lg:p-14 shadow-xs relative overflow-hidden">
             {/* Background subtle radial gradient */}
             <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#2563eb_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
 
