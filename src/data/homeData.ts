@@ -222,7 +222,7 @@ export const footerData: FooterData = {
         { label: "TENTANG KAMI", href: "/about" },
         { label: "PRODUK", href: "/products" },
         { label: "ARTIKEL", href: "/about#artikel" },
-        { label: "FAQ", href: "/#faq" },
+        { label: "FAQ", href: "/faq" },
         { label: "PARTNER", href: "/about#partner" },
         { label: "PRODUK CUSTOM", href: "/products#custom" },
         { label: "KONTAK", href: "/#contact" },
