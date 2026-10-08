@@ -25,6 +25,7 @@ import {
   jerigenLipatProducts,
   botolHdpeProducts,
   kalengPailProducts,
+  perikananProducts,
 } from "@/data/catalogData";
 
 interface CategoryItem {
@@ -377,6 +378,19 @@ export default function ProductCatalog() {
           ) : activeCategoryId === "kaleng-pail-plastik" ? (
             <div className="flex flex-col gap-12">
               {kalengPailProducts.map((product) => (
+                <ProductCard
+                  key={product.title}
+                  title={product.title}
+                  dimensi={product.dimensi}
+                  berat={product.berat}
+                  deskripsi={product.deskripsi}
+                  imagePath={product.imagePath}
+                />
+              ))}
+            </div>
+          ) : activeCategoryId === "perikanan-dan-kelautan" ? (
+            <div className="flex flex-col gap-12">
+              {perikananProducts.map((product) => (
                 <ProductCard
                   key={product.title}
                   title={product.title}

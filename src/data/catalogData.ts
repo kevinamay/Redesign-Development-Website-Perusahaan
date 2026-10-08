@@ -665,6 +665,57 @@ export const kalengPailProducts = [
   },
 ];
 
+export const perikananProducts = [
+  {
+    title: "FLOAT BALL 30 CM",
+    dimensi: "DIAMETER 300 MM",
+    berat: "1300 GR",
+    deskripsi:
+      "Pelampung plastik berdiameter 30 cm yang kuat dan tahan cuaca, cocok untuk kebutuhan perikanan, tambak, dan aplikasi perairan ringan.",
+    imagePath: "/images/product/perikanan/30cm.png",
+  },
+  {
+    title: "FLOAT BALL 36 CM",
+    dimensi: "DIAMETER 360 MM",
+    berat: "2000 GR",
+    deskripsi:
+      "Pelampung 36 cm dengan daya apung stabil, dirancang untuk penggunaan outdoor dan area perairan jangka panjang.",
+    imagePath: "/images/product/perikanan/36cm.png",
+  },
+  {
+    title: "FLOAT BALL 40 CM",
+    dimensi: "DIAMETER 400 MM",
+    berat: "2300 GR",
+    deskripsi:
+      "Pelampung besar 40 cm yang memberikan daya apung maksimal, ideal untuk tambak, keramba, atau kebutuhan industri perairan.",
+    imagePath: "/images/product/perikanan/40cm.png",
+  },
+  {
+    title: "CONTAINER SOFT SHELLED CRAB",
+    dimensi: "260 X 207 X 105 MM",
+    berat: "232 GR",
+    deskripsi:
+      "Wadah khusus untuk penyimpanan dan transportasi kepiting lunak menggunakan material plastik berkualitas, aman, kuat, dan mudah dibersihkan.",
+    imagePath: "/images/product/perikanan/crab.png",
+  },
+  {
+    title: "CLAM BASKET TYPE 01",
+    dimensi: "700 X 200 X 200 MM",
+    berat: "1,41 KG",
+    deskripsi:
+      "Keranjang kerang berdimensi 700x200x200 mm dengan ventilasi optimal untuk sortir, panen, dan penyimpanan hasil laut.",
+    imagePath: "/images/product/perikanan/type1.png",
+  },
+  {
+    title: "CLAM BASKET TYPE 02",
+    dimensi: "850 X 150 X 150 MM",
+    berat: "1,2 KG",
+    deskripsi:
+      "Keranjang kerang ukuran 850x150x150 mm yang ramping dan ringan, cocok untuk budidaya serta penanganan hasil panen di area perairan.",
+    imagePath: "/images/product/perikanan/type2.png",
+  },
+];
+
 export const catalogCategories: ProductCategory[] = [
   {
     id: "pallet-industri",
@@ -886,6 +937,15 @@ export const catalogCategories: ProductCategory[] = [
     name: "Perikanan dan Kelautan",
     displayName: "PERIKANAN DAN KELAUTAN",
     subtitle: "Pelampung Jaring Nelayan, Pelampung Keramba, & Wadah Hasil Laut",
-    products: [],
+    products: perikananProducts.map((p, idx) => ({
+      id: `perikanan-${idx + 1}`,
+      name: p.title,
+      image: p.imagePath,
+      specs: [
+        { icon: "Ruler", label: "Dimensi", value: p.dimensi },
+        { icon: "Weight", label: "Berat", value: p.berat },
+      ],
+      description: p.deskripsi,
+    })),
   },
 ];
