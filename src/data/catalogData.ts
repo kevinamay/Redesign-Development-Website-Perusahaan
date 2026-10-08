@@ -319,6 +319,121 @@ export const kemasanPETProducts = [
   },
 ];
 
+export const jerigenHdpeProducts = [
+  {
+    title: "JERIGEN 27 LITER",
+    dimensi: "291 X 232 X 497 MM",
+    berat: "1200 GR",
+    deskripsi:
+      "Jerigen 27 liter merupakan pilihan terbaik untuk kebutuhan penyimpanan cairan dalam jumlah besar. Terbuat dari plastik berkualitas tinggi yang tebal dan kuat, jerigen ini dirancang untuk menampung cairan industri, bahan kimia, maupun kebutuhan distribusi air dan minyak dalam skala besar. Dengan kapasitas maksimal, jerigen ini cocok digunakan oleh industri, pabrik, maupun usaha distribusi.",
+    imagePath: "/images/product/jerigen HDPE/27l.png",
+  },
+  {
+    title: "JERIGEN 22 LITER",
+    dimensi: "290 X 232 X 419,5 MM",
+    berat: "1200 GR",
+    deskripsi:
+      "Ukuran 22 liter memberikan keseimbangan antara daya tampung besar dan kemudahan mobilitas. Jerigen ini praktis digunakan untuk usaha menengah, seperti penyimpanan air minum isi ulang, cairan pembersih, maupun kebutuhan pertanian. Bahan plastiknya tahan lama dan tidak mudah bocor, sehingga aman digunakan berulang kali.",
+    imagePath: "/images/product/jerigen HDPE/22l.png",
+  },
+  {
+    title: "JERIGEN 20 LITER",
+    dimensi: "288 X 225 X 398,5 MM",
+    berat: "870 GR",
+    deskripsi:
+      "Jerigen 20 liter adalah ukuran paling populer yang serbaguna untuk berbagai kebutuhan. Cocok untuk usaha depot air, industri makanan dan minuman, hingga penyimpanan cairan rumah tangga. Dengan desain ergonomis, jerigen ini mudah dibawa dan dipindahkan, meski berisi penuh.",
+    imagePath: "/images/product/jerigen HDPE/20l.png",
+  },
+  {
+    title: "JERIGEN 20 LITER MGE",
+    dimensi: "260 X 230 X 400 MM",
+    berat: "1000 GR",
+    deskripsi:
+      "Varian MGE hadir dengan desain dan kekuatan ekstra untuk kebutuhan khusus. Jerigen ini dirancang lebih kokoh, sehingga sangat cocok digunakan dalam industri minyak goreng atau cairan yang membutuhkan keamanan lebih. Kapasitas besar dengan perlindungan ekstra membuatnya menjadi pilihan tepat untuk sektor profesional.",
+    imagePath: "/images/product/jerigen HDPE/20lMGE.png",
+  },
+  {
+    title: "JERIGEN 18 LITER",
+    dimensi: "135 X 85 X 232 MM",
+    berat: "860 GR",
+    deskripsi:
+      "Jerigen 18 liter adalah solusi praktis untuk kebutuhan penyimpanan cairan dalam kapasitas cukup besar, tetapi tetap hemat ruang. Cocok untuk usaha rumah tangga, pertanian, maupun keperluan sehari-hari. Dengan bahan plastik tebal, jerigen ini awet digunakan dalam jangka panjang.",
+    imagePath: "/images/product/jerigen HDPE/18L.png",
+  },
+  {
+    title: "JERIGEN 5 LITER LEBAR",
+    dimensi: "240 X 100 X 273 MM",
+    berat: "340 GR",
+    deskripsi:
+      "Jerigen 5 liter lebar memiliki bentuk khusus yang lebih stabil dan mudah ditata. Kapasitas sedang membuatnya ideal untuk penyimpanan air, minyak, atau cairan pembersih dalam skala rumah tangga maupun usaha kecil. Desain lebar juga memudahkan penempatan dan penyimpanan.",
+    imagePath: "/images/product/jerigen HDPE/5llebar.png",
+  },
+  {
+    title: "JERIGEN 5 LITER",
+    dimensi: "181 X 126 X 327 MM",
+    berat: "180 GR",
+    deskripsi:
+      "Jerigen serbaguna dengan ukuran sedang ini menjadi pilihan favorit untuk pemakaian sehari-hari. Ringan, mudah dibawa, dan praktis digunakan untuk kebutuhan rumah tangga maupun usaha kecil, seperti kuliner, pertanian, atau perbengkelan.",
+    imagePath: "/images/product/jerigen HDPE/5l.png",
+  },
+  {
+    title: "JERIGEN 4,5 LITER",
+    dimensi: "180 X 120 X 320 MM",
+    berat: "180 GR",
+    deskripsi:
+      "Dengan kapasitas hampir sama dengan jerigen 5 liter, jerigen 4,5 liter hadir dengan desain ringkas yang membuatnya lebih mudah disimpan. Cocok untuk cairan rumah tangga, kebutuhan traveling, maupun untuk usaha yang memerlukan kemasan sedang.",
+    imagePath: "/images/product/jerigen HDPE/4.5l.png",
+  },
+  {
+    title: "JERIGEN 4 LITER",
+    dimensi: "193 X 123 X 291 MM",
+    berat: "170 GR",
+    deskripsi:
+      "Jerigen 4 liter dirancang dengan kapasitas pas untuk kebutuhan industri dan rumah tangga, seperti menyimpan air, minyak, maupun cairan pembersih. Ukurannya yang tidak terlalu besar membuatnya mudah dibawa dan digunakan siapa saja.",
+    imagePath: "/images/product/jerigen HDPE/4l.png",
+  },
+  {
+    title: "JERIGEN 2 LITER",
+    dimensi: "135 X 85 X 232 MM",
+    berat: "99,6 GR",
+    deskripsi:
+      "Jerigen ukuran 2 liter adalah pilihan praktis untuk penyimpanan cairan dalam jumlah kecil hingga sedang. Mudah dibawa bepergian, cocok untuk pemakaian pribadi, usaha kecil, atau kebutuhan harian.",
+    imagePath: "/images/product/jerigen HDPE/2l.png",
+  },
+  {
+    title: "JERIGEN 1,8 LITER",
+    dimensi: "142 X 86 X 236 MM",
+    berat: "90 GR",
+    deskripsi:
+      "Dengan kapasitas yang sedikit lebih kecil dari 2 liter, jerigen ini sangat praktis untuk penggunaan ringan. Cocok digunakan untuk cairan konsumsi maupun non-konsumsi, baik di rumah maupun untuk usaha sampel produk.",
+    imagePath: "/images/product/jerigen HDPE/1.8l.png",
+  },
+  {
+    title: "JERIGEN 1 LITER TINGGI",
+    dimensi: "89 X 64 X 225 MM",
+    berat: "72 GR",
+    deskripsi:
+      "Desain ramping dan tinggi membuat jerigen ini lebih mudah disimpan dalam rak atau ruang terbatas. Cocok untuk cairan kemasan seperti minyak, gula cair, pembersih, atau cairan konsumsi dalam jumlah kecil.",
+    imagePath: "/images/product/jerigen HDPE/1l.png",
+  },
+  {
+    title: "JERIGEN 1 LITER LEBAR",
+    dimensi: "128 X 71 X 178 MM",
+    berat: "65 GR",
+    deskripsi:
+      "Berbeda dengan versi tinggi, jerigen 1 liter lebar memiliki bentuk lebih pendek dan stabil. Ideal untuk penggunaan sehari-hari, dengan kemudahan menuang cairan tanpa khawatir tumpah.",
+    imagePath: "/images/product/jerigen HDPE/1llebar.png",
+  },
+  {
+    title: "JERIGEN 500 ML",
+    dimensi: "90 X 64,5 X 129,6 MM",
+    berat: "40 GR",
+    deskripsi:
+      "Jerigen 500 ml adalah ukuran paling kecil dan sangat praktis untuk kebutuhan pribadi maupun produk sampel. Cocok digunakan untuk cairan rumah tangga, kosmetik cair, atau produk kemasan usaha kecil. Ringkas, ringan, dan mudah dibawa ke mana saja.",
+    imagePath: "/images/product/jerigen HDPE/500ml.png",
+  },
+];
+
 export const catalogCategories: ProductCategory[] = [
   {
     id: "pallet-industri",
@@ -444,7 +559,16 @@ export const catalogCategories: ProductCategory[] = [
     name: "Jerigen HDPE",
     displayName: "JERIGEN HDPE",
     subtitle: "Wadah Jerigen Blow Moulding Anti Bocor",
-    products: [],
+    products: jerigenHdpeProducts.map((p, idx) => ({
+      id: `jerigen-hdpe-${idx + 1}`,
+      name: p.title,
+      image: p.imagePath,
+      specs: [
+        { icon: "Ruler", label: "Dimensi", value: p.dimensi },
+        { icon: "Weight", label: "Berat", value: p.berat },
+      ],
+      description: p.deskripsi,
+    })),
   },
   {
     id: "jerigen-chemical-hdpe",
