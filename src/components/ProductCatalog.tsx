@@ -5,7 +5,6 @@ import {
   ChevronRight,
   ChevronDown,
   Sparkles,
-  CheckCircle2,
   PackageOpen,
   ArrowRight,
   PhoneCall,
@@ -408,22 +407,6 @@ export default function ProductCatalog() {
                           icon: <Tag className="w-3.5 h-3.5 text-blue-500" />,
                           variant: "blue",
                         },
-                        ...(p.isPallet
-                          ? [
-                              {
-                                label: ui.badges.flagship,
-                                icon: <Sparkles className="w-3.5 h-3.5" />,
-                                variant: "blue" as const,
-                              },
-                              {
-                                label: ui.badges.factoryOfficial,
-                                icon: (
-                                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-                                ),
-                                variant: "emerald" as const,
-                              },
-                            ]
-                          : []),
                       ]}
                     />
                   );
@@ -487,24 +470,6 @@ export default function ProductCatalog() {
                       deskripsi={localized.deskripsi}
                       imagePath={p.imagePath}
                       subtitle={localized.subtitle}
-                      badges={
-                        p.isPallet
-                          ? [
-                              {
-                                label: ui.badges.flagship,
-                                icon: <Sparkles className="w-3.5 h-3.5" />,
-                                variant: "blue",
-                              },
-                              {
-                                label: ui.badges.factoryOfficial,
-                                icon: (
-                                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-                                ),
-                                variant: "emerald",
-                              },
-                            ]
-                          : undefined
-                      }
                     />
                   );
                 })}
