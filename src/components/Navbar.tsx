@@ -41,22 +41,22 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="w-full sticky top-0 z-50 shadow-xs">
+      <header className="w-full max-w-[100vw] sticky top-0 z-50 shadow-xs overflow-hidden">
         {/* Top Bar (Dark Navy bar identical to Beranda Hero) */}
-        <div className="w-full bg-slate-950 text-slate-300 border-b border-slate-800">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex justify-between items-center text-xs">
+        <div className="w-full bg-slate-950 text-slate-300 border-b border-slate-800 overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-1.5 sm:py-2 flex flex-wrap items-center justify-between w-full text-xs overflow-hidden box-border">
             {/* Top Bar Left Tagline */}
             <div className="hidden md:flex items-center gap-2 text-slate-300">
-              <Sparkles className="w-3.5 h-3.5 text-blue-400" />
-              <span>{t.topBar.tagline}</span>
+              <Sparkles className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+              <span className="truncate">{t.topBar.tagline}</span>
             </div>
 
             {/* Top Bar Right: Contact & Language */}
-            <div className="flex items-center gap-2.5 sm:gap-6 ml-auto">
-              {/* Email */}
+            <div className="flex items-center gap-2 sm:gap-4 md:gap-6 ml-auto flex-wrap overflow-hidden">
+              {/* Email - hidden on small mobile screen to prevent stretching */}
               <a
                 href="mailto:marketing@asiaplastik.com"
-                className="flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors"
+                className="hidden sm:flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors text-xs"
                 aria-label="Email Asia Plastik"
               >
                 <Mail className="w-3.5 h-3.5 text-blue-400 shrink-0" />
@@ -64,12 +64,12 @@ export default function Navbar() {
                 <span className="inline md:hidden">{t.topBar.emailLabel}</span>
               </a>
 
-              <span className="text-slate-700 select-none">|</span>
+              <span className="hidden sm:inline text-slate-700 select-none">|</span>
 
               {/* Phone */}
               <a
                 href="tel:+62318433078"
-                className="flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors font-medium"
+                className="flex items-center gap-1 text-slate-300 hover:text-white transition-colors font-medium text-xs shrink-0"
                 aria-label="Telepon Asia Plastik"
               >
                 <Phone className="w-3.5 h-3.5 text-blue-400 shrink-0" />
@@ -80,7 +80,7 @@ export default function Navbar() {
               <span className="text-slate-700 select-none">|</span>
 
               {/* Language Toggle (ID, EN, ZH) */}
-              <div className="relative">
+              <div className="relative shrink-0">
                 <button
                   type="button"
                   onClick={() => setIsLangOpen(!isLangOpen)}

@@ -85,7 +85,7 @@ export default function GlobalDistribution() {
   const locations = t.locations;
 
   return (
-    <section className="w-full bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 transition-colors duration-300">
+    <section className="w-full max-w-[100vw] overflow-hidden bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 transition-colors duration-300">
       {/* 1. SECTION LAYOUT & AESTHETICS */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">

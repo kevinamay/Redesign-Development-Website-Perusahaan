@@ -266,7 +266,7 @@ export default function ProductsPage() {
             </div>
 
             {/* Horizontal Swipeable Category Chips */}
-            <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0">
+            <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none w-full max-w-full">
               {categories.map((cat) => {
                 const isActive = !isSearching && activeCategoryId === cat.id;
                 return (
@@ -319,7 +319,7 @@ export default function ProductsPage() {
             </div>
 
             {/* Quick Filter Pills (Pencarian Cepat dengan scroll halus) */}
-            <div className="flex items-center gap-1.5 sm:gap-2 mt-2.5 sm:mt-3 overflow-x-auto pb-1 scrollbar-none text-[11px] sm:text-xs -mx-4 px-4 sm:mx-0 sm:px-0">
+            <div className="flex items-center gap-1.5 sm:gap-2 mt-2.5 sm:mt-3 overflow-x-auto pb-1 scrollbar-none text-[11px] sm:text-xs w-full max-w-full">
               <span className="text-slate-500 dark:text-slate-400 font-semibold shrink-0 mr-1 flex items-center gap-1">
                 <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-blue-500 shrink-0" />
                 <span>{ui.search?.popularSearches || "Pencarian Populer:"}</span>

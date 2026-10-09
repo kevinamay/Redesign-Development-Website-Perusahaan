@@ -187,7 +187,7 @@ export default function Footer() {
   return (
     <footer
       id="contact"
-      className="bg-slate-950 text-slate-400 pt-12 pb-6 border-t border-slate-900"
+      className="w-full max-w-[100vw] overflow-hidden bg-slate-950 text-slate-400 pt-12 pb-6 border-t border-slate-900"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Compact Modern CSS Grid */}

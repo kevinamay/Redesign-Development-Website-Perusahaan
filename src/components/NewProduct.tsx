@@ -83,7 +83,7 @@ export default function NewProduct() {
   ];
 
   return (
-    <section id="products" className="w-full bg-slate-50 dark:bg-slate-950 py-16 sm:py-24 transition-colors duration-300">
+    <section id="products" className="w-full max-w-[100vw] overflow-hidden bg-slate-50 dark:bg-slate-950 py-16 sm:py-24 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Product Showcase Card */}
         <div className="bg-white dark:bg-slate-900 rounded-[2rem] shadow-xl overflow-hidden border border-slate-100 dark:border-slate-800 grid grid-cols-1 lg:grid-cols-2 transition-colors duration-300">

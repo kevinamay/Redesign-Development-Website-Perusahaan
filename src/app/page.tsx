@@ -8,9 +8,9 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950 font-sans selection:bg-blue-600 selection:text-white transition-colors duration-300">
+    <div className="min-h-screen w-full max-w-[100vw] overflow-x-hidden flex flex-col bg-slate-50 dark:bg-slate-950 font-sans selection:bg-blue-600 selection:text-white transition-colors duration-300">
       {/* Main Page Container */}
-      <main className="flex-1">
+      <main className="flex-1 w-full max-w-[100vw] overflow-x-hidden">
         {/* 1. Main Header & Hero Section (includes integrated Top Bar & Navbar) */}
         <Hero />
 
@@ -32,7 +32,3 @@ export default function Home() {
     </div>
   );
 }
-
-
-
-

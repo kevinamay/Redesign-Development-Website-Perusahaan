@@ -38,7 +38,7 @@ export default function CareerBanner() {
   const content = careerContent[lang] || careerContent.id;
 
   return (
-    <section className="w-full max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+    <section className="w-full max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* 1. MODERN B2B CARD CONTAINER */}
       <div className="bg-slate-900 rounded-3xl overflow-hidden shadow-2xl flex flex-col lg:flex-row border border-slate-800/80 relative group">
         {/* Ambient Subtle Glow */}

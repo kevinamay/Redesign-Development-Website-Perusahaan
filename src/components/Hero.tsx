@@ -46,7 +46,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-[100svh] w-full overflow-hidden overflow-x-hidden isolate font-sans"
+      className="relative min-h-[100svh] w-full max-w-[100vw] overflow-hidden overflow-x-hidden isolate font-sans box-border"
     >
       {/* ========================================================================= */}
       {/* 1. LAYER 1: THE BACKGROUND IMAGE                                          */}
@@ -71,24 +71,24 @@ export default function Hero() {
       {/* ========================================================================= */}
       {/* 3. LAYER 3: CONTENT & NAVBAR (BRING TO FRONT, Z-20)                       */}
       {/* ========================================================================= */}
-      <div className="relative z-20 flex flex-col justify-between min-h-[100svh] w-full">
+      <div className="relative z-20 flex flex-col justify-between min-h-[100svh] w-full max-w-[100vw] overflow-x-hidden box-border">
         {/* TOP BAR & MAIN NAVBAR */}
-        <header className="w-full">
+        <header className="w-full max-w-[100vw] overflow-hidden">
           {/* Top Bar (Dark Navy bar inspired by the reference design) */}
-          <div className="w-full bg-slate-950 text-slate-300 border-b border-slate-800">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex justify-between items-center text-xs">
+          <div className="w-full bg-slate-950 text-slate-300 border-b border-slate-800 overflow-hidden">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-1.5 sm:py-2 flex flex-wrap items-center justify-between w-full text-xs overflow-hidden box-border">
               {/* Top Bar Left Tagline */}
               <div className="hidden md:flex items-center gap-2 text-slate-300">
-                <Sparkles className="w-3.5 h-3.5 text-blue-400" />
-                <span>{t.topBar.tagline}</span>
+                <Sparkles className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+                <span className="truncate">{t.topBar.tagline}</span>
               </div>
 
-              {/* Top Bar Right: Contact & Language */}
-              <div className="flex items-center gap-2.5 sm:gap-6 ml-auto">
-                {/* Email */}
+              {/* Top Bar Right: Contact & Language (strictly prevents overflow on mobile) */}
+              <div className="flex items-center gap-2 sm:gap-4 md:gap-6 ml-auto flex-wrap overflow-hidden">
+                {/* Email - hidden on small mobile screen to prevent stretching */}
                 <a
                   href="mailto:marketing@asiaplastik.com"
-                  className="flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors"
+                  className="hidden sm:flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors text-xs"
                   aria-label="Email Asia Plastik"
                 >
                   <Mail className="w-3.5 h-3.5 text-blue-400 shrink-0" />
@@ -96,12 +96,12 @@ export default function Hero() {
                   <span className="inline md:hidden">{t.topBar.emailLabel}</span>
                 </a>
 
-                <span className="text-slate-700 select-none">|</span>
+                <span className="hidden sm:inline text-slate-700 select-none">|</span>
 
                 {/* Phone */}
                 <a
                   href="tel:+62318433078"
-                  className="flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors font-medium"
+                  className="flex items-center gap-1 text-slate-300 hover:text-white transition-colors font-medium text-xs shrink-0"
                   aria-label="Telepon Asia Plastik"
                 >
                   <Phone className="w-3.5 h-3.5 text-blue-400 shrink-0" />
@@ -112,15 +112,15 @@ export default function Hero() {
                 <span className="text-slate-700 select-none">|</span>
 
                 {/* Language Toggle (ID, EN, ZH) */}
-                <div className="relative">
+                <div className="relative shrink-0">
                   <button
                     type="button"
                     onClick={() => setIsLangOpen(!isLangOpen)}
-                    className="flex items-center gap-1 px-2 py-0.5 rounded hover:bg-slate-800 text-white font-semibold transition-colors focus:outline-hidden cursor-pointer"
+                    className="flex items-center gap-1 px-1.5 py-0.5 rounded hover:bg-slate-800 text-white font-semibold transition-colors focus:outline-hidden cursor-pointer text-xs"
                     aria-label="Pilih Bahasa / Select Language / 选择语言"
                     aria-expanded={isLangOpen}
                   >
-                    <Globe className="w-3.5 h-3.5 text-blue-400" />
+                    <Globe className="w-3.5 h-3.5 text-blue-400 shrink-0" />
                     <span>{currentBadge}</span>
                     <ChevronDown
                       className={`w-3 h-3 text-slate-400 transition-transform duration-200 ${
@@ -156,7 +156,9 @@ export default function Hero() {
                 <span className="text-slate-700 select-none">|</span>
 
                 {/* THEME TOGGLE SWITCH */}
-                <ThemeToggle />
+                <div className="shrink-0">
+                  <ThemeToggle />
+                </div>
               </div>
             </div>
           </div>
@@ -177,7 +179,7 @@ export default function Hero() {
                   width={271}
                   height={92}
                   priority
-                  className="h-9 sm:h-10 md:h-11 lg:h-12 w-auto object-contain block dark:hidden"
+                  className="h-8 sm:h-10 md:h-11 lg:h-12 w-auto object-contain block dark:hidden"
                 />
                 {/* Dark Mode Crisp White Logo */}
                 <Image
@@ -186,7 +188,7 @@ export default function Hero() {
                   width={271}
                   height={92}
                   priority
-                  className="h-9 sm:h-10 md:h-11 lg:h-12 w-auto object-contain hidden dark:block"
+                  className="h-8 sm:h-10 md:h-11 lg:h-12 w-auto object-contain hidden dark:block"
                 />
               </Link>
 
@@ -232,9 +234,9 @@ export default function Hero() {
         </header>
 
         {/* HERO TYPOGRAPHY & LAYOUT */}
-        <div className="flex-1 flex items-center w-full">
+        <div className="flex-1 flex items-center w-full max-w-[100vw] overflow-hidden">
           {/* Main Content Wrapper with safe mobile padding */}
-          <div className="w-full max-w-7xl mx-auto px-5 sm:px-8 py-6 sm:py-10 lg:py-14">
+          <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 lg:py-14 box-border">
             {/* Visual Accent: Thin, elegant vertical line */}
             <div className="border-l-4 border-blue-600 pl-4 sm:pl-7 lg:pl-9 max-w-2xl lg:max-w-3xl animate-fade-in-up">
               {/* Top Label Badge */}
@@ -275,61 +277,63 @@ export default function Hero() {
               </div>
 
               {/* 3. Refined Feature Grid (Presisi Cetak Tinggi, etc.) */}
-              <div className="mt-6 sm:mt-8 pt-5 sm:pt-6 border-t border-slate-200/90 dark:border-slate-800 grid grid-cols-2 gap-3 sm:gap-4 w-full">
-                {t.hero.features.map((feat, index) => {
-                  const Icon = featureIcons[index] || Sparkles;
-                  return (
-                    <div
-                      key={index}
-                      className="flex items-center gap-2.5 sm:gap-3 p-3 sm:p-4 rounded-xl bg-slate-50/70 dark:bg-slate-900/70 border border-slate-200/60 dark:border-slate-800/60 transition-colors"
-                    >
-                      <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-blue-50 dark:bg-blue-950/80 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0">
-                        <Icon className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-blue-600 dark:text-blue-400" />
+              <div className="mt-6 sm:mt-8 pt-5 sm:pt-6 border-t border-slate-200/90 dark:border-slate-800 w-full box-border">
+                <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3 w-full box-border">
+                  {t.hero.features.map((feat, index) => {
+                    const Icon = featureIcons[index] || Sparkles;
+                    return (
+                      <div
+                        key={index}
+                        className="flex items-center gap-2.5 sm:gap-3 p-2.5 sm:p-3 rounded-xl bg-slate-50/70 dark:bg-slate-900/70 border border-slate-200/60 dark:border-slate-800/60 transition-colors min-w-0 box-border overflow-hidden"
+                      >
+                        <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-blue-50 dark:bg-blue-950/80 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0">
+                          <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-600 dark:text-blue-400" />
+                        </div>
+                        <div className="min-w-0 flex-1 overflow-hidden">
+                          <span className="font-bold text-slate-800 dark:text-white text-xs sm:text-sm block truncate sm:whitespace-normal">
+                            {feat.title}
+                          </span>
+                          <span className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 block truncate sm:whitespace-normal">
+                            {feat.subtitle}
+                          </span>
+                        </div>
                       </div>
-                      <div className="min-w-0 flex-1">
-                        <span className="font-bold text-slate-800 dark:text-white text-xs sm:text-sm block truncate sm:whitespace-normal">
-                          {feat.title}
-                        </span>
-                        <span className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 block truncate sm:whitespace-normal">
-                          {feat.subtitle}
-                        </span>
-                      </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                </div>
               </div>
             </div>
           </div>
         </div>
 
         {/* 2. REFINED BOTTOM STATS SECTION (No Cut-off, Wrapping Responsive Grid) */}
-        <div className="w-full border-t border-slate-200/80 dark:border-slate-800 bg-white/80 dark:bg-slate-950/85 backdrop-blur-md py-4 sm:py-5 px-5 sm:px-8 mt-4 sm:mt-6">
-          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6 w-full">
-            {/* Statistics Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 w-full">
+        <div className="w-full border-t border-slate-200/80 dark:border-slate-800 bg-white/80 dark:bg-slate-950/85 backdrop-blur-md py-4 sm:py-5 px-4 sm:px-6 lg:px-8 mt-4 sm:mt-6 box-border overflow-hidden">
+          <div className="max-w-7xl mx-auto w-full box-border">
+            {/* Statistics Grid: grid-cols-2 on mobile, lg:grid-cols-4 on desktop */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 w-full box-border">
               {t.hero.metrics.map((metric, idx) => (
-                <div key={idx} className="flex items-center gap-2.5 sm:gap-3">
-                  <span className="text-2xl md:text-4xl font-extrabold text-blue-600 shrink-0">
+                <div key={idx} className="flex items-center gap-2 sm:gap-3 min-w-0 overflow-hidden box-border">
+                  <span className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-blue-600 shrink-0">
                     {metric.value}
                   </span>
-                  <div className="flex flex-col min-w-0">
-                    <span className="font-bold text-slate-900 dark:text-white text-xs md:text-sm leading-tight">
+                  <div className="flex flex-col min-w-0 overflow-hidden">
+                    <span className="font-bold text-slate-900 dark:text-white text-xs md:text-sm leading-tight truncate sm:whitespace-normal">
                       {metric.label}
                     </span>
-                    <span className="text-[10px] md:text-xs text-slate-500 dark:text-slate-400 leading-tight">
+                    <span className="text-[10px] md:text-xs text-slate-500 dark:text-slate-400 leading-tight truncate sm:whitespace-normal">
                       {metric.sublabel}
                     </span>
                   </div>
                 </div>
               ))}
 
-              {/* Facility Quick Link integrated into 4th grid cell or side */}
-              <div className="flex items-center col-span-2 md:col-span-1 pt-1 md:pt-0 border-t md:border-t-0 border-slate-200/50 dark:border-slate-800/50">
+              {/* Facility Quick Link integrated into 4th grid cell or full width on mobile */}
+              <div className="flex items-center col-span-2 lg:col-span-1 pt-2 lg:pt-0 border-t lg:border-t-0 border-slate-200/50 dark:border-slate-800/50 min-w-0 overflow-hidden box-border">
                 <a
                   href="/about#mesin-produksi"
-                  className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 font-semibold text-xs md:text-sm inline-flex items-center gap-1.5 transition-colors group"
+                  className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 font-semibold text-xs md:text-sm inline-flex items-center gap-1.5 transition-colors group min-w-0"
                 >
-                  <span className="group-hover:underline">{t.hero.facilityLink}</span>
+                  <span className="group-hover:underline truncate sm:whitespace-normal">{t.hero.facilityLink}</span>
                   <ChevronRight className="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-0.5" />
                 </a>
               </div>

@@ -211,7 +211,7 @@ export default function AboutPreview() {
   return (
     <section
       id="about"
-      className="relative w-full bg-slate-50/70 dark:bg-slate-950 py-20 sm:py-24 border-t border-slate-100 dark:border-slate-800/80 transition-colors duration-300"
+      className="relative w-full max-w-[100vw] overflow-hidden bg-slate-50/70 dark:bg-slate-950 py-20 sm:py-24 border-t border-slate-100 dark:border-slate-800/80 transition-colors duration-300"
     >
       {/* Background Accent Gradients */}
       <div className="absolute top-1/4 left-1/10 w-96 h-96 bg-blue-500/5 dark:bg-blue-600/5 rounded-full blur-3xl pointer-events-none" />
