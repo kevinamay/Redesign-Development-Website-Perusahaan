@@ -93,8 +93,8 @@ export const navLinks: NavLink[] = [
   { label: "Tentang Kami", href: "/about" },
   { label: "Produk & Layanan", href: "/products" },
   { label: "Mesin & Fasilitas", href: "/about#mesin-produksi" },
-  { label: "Kontak", href: "/#contact" },
-  { label: "Minta Penawaran", href: "/#contact", isCta: true },
+  { label: "Kontak", href: "/kontak" },
+  { label: "Minta Penawaran", href: "/kontak", isCta: true },
 ];
 
 export const heroData: HeroData = {
@@ -225,7 +225,7 @@ export const footerData: FooterData = {
         { label: "FAQ", href: "/faq" },
         { label: "PARTNER", href: "/about#partner" },
         { label: "PRODUK CUSTOM", href: "/products#custom" },
-        { label: "KONTAK", href: "/#contact" },
+        { label: "KONTAK", href: "/kontak" },
       ],
     },
     {

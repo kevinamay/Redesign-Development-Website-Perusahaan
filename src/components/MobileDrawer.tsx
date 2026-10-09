@@ -50,11 +50,11 @@ export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
   if (!isOpen) return null;
 
   const navLinks = [
-    { label: t.navbar.home, href: "#hero", icon: Home },
-    { label: t.navbar.about, href: "#about", icon: Users },
-    { label: t.navbar.products, href: "#products", icon: Package },
-    { label: t.navbar.facilities, href: "#about", icon: ShieldCheck },
-    { label: t.navbar.contact, href: "#contact", icon: PhoneCall },
+    { label: t.navbar.home, href: "/", icon: Home },
+    { label: t.navbar.about, href: "/about", icon: Users },
+    { label: t.navbar.products, href: "/products", icon: Package },
+    { label: t.navbar.facilities, href: "/about#mesin-produksi", icon: ShieldCheck },
+    { label: t.navbar.contact, href: "/kontak", icon: PhoneCall },
   ];
 
   return (

@@ -182,7 +182,7 @@ export const translations: Record<Language, TranslationSchema> = {
         { label: "FAQ", href: "/faq" },
         { label: "PARTNER", href: "/partner" },
         { label: "PRODUK CUSTOM", href: "/products#custom" },
-        { label: "KONTAK", href: "/#contact" },
+        { label: "KONTAK", href: "/kontak" },
       ],
       solutionsTitle: "Solusi Manufaktur",
       solutionsLinks: [
@@ -291,7 +291,7 @@ export const translations: Record<Language, TranslationSchema> = {
         { label: "FAQ", href: "/faq" },
         { label: "PARTNER", href: "/partner" },
         { label: "CUSTOM PRODUCTS", href: "/products#custom" },
-        { label: "CONTACT", href: "/#contact" },
+        { label: "CONTACT", href: "/kontak" },
       ],
       solutionsTitle: "Manufacturing Solutions",
       solutionsLinks: [
@@ -400,7 +400,7 @@ export const translations: Record<Language, TranslationSchema> = {
         { label: "常见问题", href: "/faq" },
         { label: "合作伙伴", href: "/partner" },
         { label: "定制产品", href: "/products#custom" },
-        { label: "联系我们", href: "/#contact" },
+        { label: "联系我们", href: "/kontak" },
       ],
       solutionsTitle: "核心制造能力",
       solutionsLinks: [

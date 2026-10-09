@@ -38,7 +38,7 @@ export default function Navbar() {
     { label: t.navbar.about, href: "/about" },
     { label: t.navbar.products, href: "/products" },
     { label: t.navbar.facilities, href: "/about#mesin-produksi" },
-    { label: t.navbar.contact, href: "/#contact" },
+    { label: t.navbar.contact, href: "/kontak" },
   ];
 
   return (
@@ -197,7 +197,7 @@ export default function Navbar() {
 
               {/* Direct CTA Button (Desktop) */}
               <Link
-                href="/#contact"
+                href="/kontak"
                 className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-bold shadow-sm hover:shadow-md transition-all cursor-pointer"
               >
                 <span>{t.navbar.quoteCta}</span>

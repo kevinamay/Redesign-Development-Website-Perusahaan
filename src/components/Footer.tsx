@@ -41,7 +41,7 @@ export default function Footer() {
     { label: "FAQ", href: "/faq" },
     { label: "PARTNER", href: "/partner" },
     { label: "PRODUK CUSTOM", href: "/products#custom" },
-    { label: "KONTAK", href: "/#contact" },
+    { label: "KONTAK", href: "/kontak" },
   ];
 
   const solutionsLinks = t.footer?.solutionsLinks || [
