@@ -11,7 +11,6 @@ import {
   Mail,
   Phone,
   Globe,
-  Search,
   Menu,
   ChevronDown,
   Sparkles,
@@ -21,7 +20,6 @@ import {
 export default function Navbar() {
   const { lang, setLanguage, t } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
   const pathname = usePathname();
 
@@ -183,18 +181,8 @@ export default function Navbar() {
               })}
             </div>
 
-            {/* Right: Search + Direct Contact / Menu Toggle */}
+            {/* Right: Direct Contact / Menu Toggle */}
             <div className="flex items-center gap-2 sm:gap-3">
-              {/* Search Toggle Button */}
-              <button
-                type="button"
-                onClick={() => setIsSearchOpen(!isSearchOpen)}
-                className="p-2 rounded-lg text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus:outline-hidden cursor-pointer"
-                aria-label={t.navbar.searchPlaceholder}
-              >
-                <Search className="w-5 h-5" />
-              </button>
-
               {/* Direct CTA Button (Desktop) */}
               <Link
                 href="/kontak"
@@ -218,28 +206,6 @@ export default function Navbar() {
               </button>
             </div>
           </div>
-
-          {/* Quick Search Overlay Bar */}
-          {isSearchOpen && (
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-3.5 animate-fade-in-up">
-              <div className="relative">
-                <input
-                  type="text"
-                  placeholder={t.navbar.searchPlaceholder}
-                  className="w-full bg-white dark:bg-slate-900 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm px-4 py-2.5 pl-10 rounded-xl border border-slate-300 dark:border-slate-700 focus:outline-hidden focus:ring-2 focus:ring-blue-500 shadow-md"
-                  autoFocus
-                />
-                <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-3" />
-                <button
-                  type="button"
-                  onClick={() => setIsSearchOpen(false)}
-                  className="absolute right-3 top-2 text-[11px] text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 transition-colors cursor-pointer"
-                >
-                  {t.navbar.searchClose}
-                </button>
-              </div>
-            </div>
-          )}
         </nav>
       </header>
 
