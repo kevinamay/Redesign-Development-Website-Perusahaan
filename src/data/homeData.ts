@@ -221,7 +221,7 @@ export const footerData: FooterData = {
         { label: "BERANDA", href: "/" },
         { label: "TENTANG KAMI", href: "/about" },
         { label: "PRODUK", href: "/products" },
-        { label: "ARTIKEL", href: "/about#artikel" },
+        { label: "ARTIKEL", href: "/article" },
         { label: "FAQ", href: "/faq" },
         { label: "PARTNER", href: "/about#partner" },
         { label: "PRODUK CUSTOM", href: "/kontak" },
