@@ -3,6 +3,7 @@
 import React, { useState, useMemo } from "react";
 import {
   ChevronRight,
+  ChevronDown,
   Sparkles,
   CheckCircle2,
   PackageOpen,
@@ -11,6 +12,7 @@ import {
   Search,
   X,
   Tag,
+  Layers,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -153,7 +155,7 @@ export default function ProductsPage() {
     return allProductsWithCategory.filter((p) => {
       const localized = getLocalizedProduct(p, lang);
 
-      // 1. Pencarian berdasarkan Nama Produk (asli atau terjemahan)
+      // 1. Pencarian berdasarkan Nama Produk
       const titleMatch =
         p.title.toLowerCase().includes(query) ||
         localized.title.toLowerCase().includes(query);
@@ -189,12 +191,13 @@ export default function ProductsPage() {
       <Navbar />
 
       {/* Main Split Screen Page Container */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 flex flex-col lg:flex-row gap-12 flex-1 w-full">
-        {/* Left Column: Sticky Category Sidebar (lg:w-1/4) */}
-        <aside className="w-full lg:w-1/4">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-12 lg:py-20 flex flex-col lg:flex-row gap-6 lg:gap-12 flex-1 w-full">
+        {/* DESKTOP SIDEBAR: Sticky Category Sidebar (Hidden on Mobile) */}
+        <aside className="hidden lg:block w-full lg:w-1/4">
           <div className="lg:sticky lg:top-32 h-fit">
-            <h2 className="text-sm font-bold text-slate-400 tracking-widest uppercase mb-6">
-              {ui.sidebarTitle}
+            <h2 className="text-sm font-bold text-slate-400 tracking-widest uppercase mb-6 flex items-center gap-2">
+              <Layers className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+              <span>{ui.sidebarTitle}</span>
             </h2>
 
             <div className="flex flex-col gap-2">
@@ -225,13 +228,73 @@ export default function ProductsPage() {
           </div>
         </aside>
 
-        {/* Right Column: Product Display (lg:w-3/4) */}
+        {/* Right Column: Product Display & Mobile Controls (lg:w-3/4) */}
         <section className="w-full lg:w-3/4">
+          {/* MOBILE CATEGORY SELECTOR & HORIZONTAL TABS (Visible only on mobile/tablet < 1024px) */}
+          <div className="lg:hidden mb-5">
+            <div className="flex items-center justify-between mb-2">
+              <label
+                htmlFor="mobile-category-dropdown"
+                className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider flex items-center gap-1.5"
+              >
+                <Layers className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
+                <span>{ui.sidebarTitle}</span>
+              </label>
+              <span className="text-[11px] text-blue-600 dark:text-blue-400 font-semibold">
+                {categories.findIndex((c) => c.id === activeCategoryId) + 1} / {categories.length}
+              </span>
+            </div>
+
+            {/* Mobile Dropdown for instant Category selection */}
+            <div className="relative mb-3">
+              <select
+                id="mobile-category-dropdown"
+                value={activeCategoryId}
+                onChange={(e) => {
+                  setActiveCategoryId(e.target.value);
+                  setSearchQuery("");
+                }}
+                className="w-full appearance-none bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 pr-10 text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-100 shadow-xs focus:outline-none focus:ring-2 focus:ring-blue-600 cursor-pointer"
+              >
+                {categories.map((cat) => (
+                  <option key={cat.id} value={cat.id}>
+                    {cat.name}
+                  </option>
+                ))}
+              </select>
+              <ChevronDown className="w-4 h-4 text-slate-400 absolute right-3.5 top-3.5 pointer-events-none" />
+            </div>
+
+            {/* Horizontal Swipeable Category Chips */}
+            <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0">
+              {categories.map((cat) => {
+                const isActive = !isSearching && activeCategoryId === cat.id;
+                return (
+                  <button
+                    key={cat.id}
+                    type="button"
+                    onClick={() => {
+                      setActiveCategoryId(cat.id);
+                      setSearchQuery("");
+                    }}
+                    className={`px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all shrink-0 cursor-pointer ${
+                      isActive
+                        ? "bg-blue-600 text-white shadow-xs"
+                        : "bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:border-blue-400"
+                    }`}
+                  >
+                    {cat.name}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
           {/* SEARCH BAR COMPONENT (Ditempatkan persis di atas header katalog sesuai permintaan) */}
-          <div className="mb-8">
-            <div className="relative flex items-center bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md focus-within:ring-2 focus-within:ring-blue-600 focus-within:border-blue-600 transition-all duration-200">
-              <div className="pl-4 sm:pl-5 pr-2 text-slate-400 dark:text-slate-500 pointer-events-none flex items-center justify-center">
-                <Search className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+          <div className="mb-6 sm:mb-8">
+            <div className="relative flex items-center bg-white dark:bg-slate-900 rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xs hover:shadow-md focus-within:ring-2 focus-within:ring-blue-600 focus-within:border-blue-600 transition-all duration-200">
+              <div className="pl-3.5 sm:pl-5 pr-2 text-slate-400 dark:text-slate-500 pointer-events-none flex items-center justify-center shrink-0">
+                <Search className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 dark:text-blue-400" />
               </div>
               <input
                 type="text"
@@ -241,13 +304,13 @@ export default function ProductsPage() {
                   ui.search?.placeholder ||
                   "Cari produk berdasarkan nama atau kategori (contoh: Pallet, Keranjang, Jerigen, Botol)..."
                 }
-                className="w-full py-4 pr-12 text-sm sm:text-base text-slate-900 dark:text-white bg-transparent border-none focus:outline-none placeholder:text-slate-400 dark:placeholder:text-slate-500"
+                className="w-full py-3 sm:py-4 pr-10 sm:pr-12 text-xs sm:text-sm md:text-base text-slate-900 dark:text-white bg-transparent border-none focus:outline-none placeholder:text-slate-400 dark:placeholder:text-slate-500"
               />
               {searchQuery && (
                 <button
                   type="button"
                   onClick={() => setSearchQuery("")}
-                  className="absolute right-4 p-1.5 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors cursor-pointer"
+                  className="absolute right-2.5 sm:right-4 p-1.5 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors cursor-pointer"
                   aria-label={ui.search?.clearSearch || "Hapus pencarian"}
                 >
                   <X className="w-4 h-4" />
@@ -255,11 +318,11 @@ export default function ProductsPage() {
               )}
             </div>
 
-            {/* Quick Filter Pills (Pencarian Cepat) */}
-            <div className="flex items-center gap-2 mt-3 overflow-x-auto pb-1 scrollbar-none text-xs">
+            {/* Quick Filter Pills (Pencarian Cepat dengan scroll halus) */}
+            <div className="flex items-center gap-1.5 sm:gap-2 mt-2.5 sm:mt-3 overflow-x-auto pb-1 scrollbar-none text-[11px] sm:text-xs -mx-4 px-4 sm:mx-0 sm:px-0">
               <span className="text-slate-500 dark:text-slate-400 font-semibold shrink-0 mr-1 flex items-center gap-1">
-                <Sparkles className="w-3.5 h-3.5 text-blue-500" />
-                {ui.search?.popularSearches || "Pencarian Populer:"}
+                <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-blue-500 shrink-0" />
+                <span>{ui.search?.popularSearches || "Pencarian Populer:"}</span>
               </span>
               {[
                 "Pallet",
@@ -283,7 +346,7 @@ export default function ProductsPage() {
                         setSearchQuery(pill);
                       }
                     }}
-                    className={`px-3 py-1 rounded-full font-medium transition-all shrink-0 cursor-pointer ${
+                    className={`px-2.5 sm:px-3 py-1 rounded-full font-medium transition-all shrink-0 cursor-pointer ${
                       isSelected
                         ? "bg-blue-600 text-white shadow-xs"
                         : "bg-slate-100 dark:bg-slate-800/80 hover:bg-blue-50 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 border border-slate-200/60 dark:border-slate-700/60"
@@ -300,19 +363,19 @@ export default function ProductsPage() {
           {isSearching ? (
             <div>
               {/* Search Results Header */}
-              <div className="mb-8">
-                <div className="flex items-center justify-between flex-wrap gap-4">
+              <div className="mb-6 sm:mb-8">
+                <div className="flex items-center justify-between flex-wrap gap-3 sm:gap-4">
                   <div>
-                    <div className="text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                    <div className="text-[11px] sm:text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
                       <Search className="w-3.5 h-3.5" />
                       <span>{ui.search?.resultsTitle || "Hasil Pencarian"}</span>
                     </div>
 
-                    <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mb-2">
+                    <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 dark:text-white mb-1.5 break-words">
                       &ldquo;{searchQuery}&rdquo;
                     </h1>
 
-                    <p className="text-slate-500 dark:text-slate-400 text-sm sm:text-base">
+                    <p className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm lg:text-base">
                       {ui.search?.resultsCount
                         ? ui.search.resultsCount(filteredProducts.length, searchQuery)
                         : `Ditemukan ${filteredProducts.length} produk untuk pencarian "${searchQuery}"`}
@@ -322,19 +385,19 @@ export default function ProductsPage() {
                   <button
                     type="button"
                     onClick={() => setSearchQuery("")}
-                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 transition-colors cursor-pointer"
+                    className="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 transition-colors cursor-pointer"
                   >
                     <X className="w-3.5 h-3.5" />
                     <span>{ui.search?.clearSearch || "Hapus Pencarian"}</span>
                   </button>
                 </div>
 
-                <div className="border-t border-slate-200 dark:border-slate-800 mt-6 pt-2" />
+                <div className="border-t border-slate-200 dark:border-slate-800 mt-4 sm:mt-6 pt-2" />
               </div>
 
               {/* Matching Products Cards */}
               {filteredProducts.length > 0 ? (
-                <div className="flex flex-col gap-12">
+                <div className="flex flex-col gap-6 sm:gap-8 lg:gap-12">
                   {filteredProducts.map((p, idx) => {
                     const localized = getLocalizedProduct(p, lang);
                     return (
@@ -375,14 +438,14 @@ export default function ProductsPage() {
                 </div>
               ) : (
                 /* Sleek Empty State for Search */
-                <div className="bg-white dark:bg-slate-900 rounded-3xl p-12 text-center border border-slate-100 dark:border-slate-800 shadow-xl flex flex-col items-center justify-center">
-                  <div className="w-16 h-16 rounded-2xl bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-4">
-                    <Search className="w-8 h-8" />
+                <div className="bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl p-6 sm:p-12 text-center border border-slate-100 dark:border-slate-800 shadow-xl flex flex-col items-center justify-center">
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-4">
+                    <Search className="w-7 h-7 sm:w-8 sm:h-8" />
                   </div>
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
+                  <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-2">
                     {ui.search?.noResultsTitle || "Produk Tidak Ditemukan"}
                   </h3>
-                  <p className="text-sm text-slate-500 dark:text-slate-400 max-w-md mb-6 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-md mb-6 leading-relaxed">
                     {ui.search?.noResultsDesc
                       ? ui.search.noResultsDesc(searchQuery)
                       : `Tidak ada produk atau kategori yang cocok dengan "${searchQuery}". Coba kata kunci lain atau periksa ejaan.`}
@@ -390,7 +453,7 @@ export default function ProductsPage() {
                   <button
                     type="button"
                     onClick={() => setSearchQuery("")}
-                    className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-full transition-colors text-sm font-semibold inline-flex items-center gap-2 shadow-md shadow-blue-600/20 cursor-pointer"
+                    className="bg-blue-600 hover:bg-blue-700 text-white px-5 sm:px-6 py-2.5 rounded-full transition-colors text-xs sm:text-sm font-semibold inline-flex items-center gap-2 shadow-md shadow-blue-600/20 cursor-pointer"
                   >
                     <span>{ui.search?.allProducts || "Tampilkan Semua Produk"}</span>
                     <ArrowRight className="w-4 h-4" />
@@ -401,25 +464,25 @@ export default function ProductsPage() {
           ) : (
             <div>
               {/* Header Section (Persis sesuai gambar 2: KATALOG PRODUK > PALLET INDUSTRI) */}
-              <div className="mb-8">
-                <div className="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-2">
+              <div className="mb-6 sm:mb-8">
+                <div className="text-[11px] sm:text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-1.5 sm:mb-2">
                   {ui.breadcrumbCatalog} &gt; {activeCategory.name}
                 </div>
 
-                <h1 className="text-4xl font-extrabold text-slate-900 dark:text-white mb-2">
+                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 dark:text-white mb-1.5 sm:mb-2 break-words">
                   {activeCategory.displayName}
                 </h1>
 
-                <p className="text-slate-500 dark:text-slate-400 text-sm sm:text-base">
+                <p className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm lg:text-base leading-relaxed">
                   {activeCategory.subtitle}
                 </p>
 
-                <div className="border-t border-slate-200 dark:border-slate-800 mt-6 pt-2" />
+                <div className="border-t border-slate-200 dark:border-slate-800 mt-4 sm:mt-6 pt-2" />
               </div>
 
               {/* Active Category Products List */}
               {activeProducts.length > 0 ? (
-                <div className="flex flex-col gap-12">
+                <div className="flex flex-col gap-6 sm:gap-8 lg:gap-12">
                   {activeProducts.map((p) => {
                     const localized = getLocalizedProduct(p, lang);
                     return (
@@ -455,22 +518,22 @@ export default function ProductsPage() {
                 </div>
               ) : (
                 /* Clean Empty State for other category tabs */
-                <div className="bg-white dark:bg-slate-900 rounded-3xl p-12 text-center border border-slate-100 dark:border-slate-800 shadow-xl flex flex-col items-center justify-center">
-                  <div className="w-16 h-16 rounded-2xl bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-4">
-                    <PackageOpen className="w-8 h-8" />
+                <div className="bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl p-6 sm:p-12 text-center border border-slate-100 dark:border-slate-800 shadow-xl flex flex-col items-center justify-center">
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-4">
+                    <PackageOpen className="w-7 h-7 sm:w-8 sm:h-8" />
                   </div>
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
+                  <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-2">
                     {ui.emptyState.titlePrefix} {activeCategory.name}
                   </h3>
-                  <p className="text-sm text-slate-500 dark:text-slate-400 max-w-md mb-6 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-md mb-6 leading-relaxed">
                     {ui.emptyState.description}
                   </p>
-                  <div className="flex flex-wrap items-center justify-center gap-3">
+                  <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
                     <a
                       href={getWhatsAppLink(`Kategori ${activeCategory.name}`)}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-blue-600 text-white px-6 py-2.5 rounded-full hover:bg-blue-700 transition-colors text-sm font-semibold inline-flex items-center gap-2 shadow-md shadow-blue-600/20"
+                      className="bg-blue-600 text-white px-5 sm:px-6 py-2.5 rounded-full hover:bg-blue-700 transition-colors text-xs sm:text-sm font-semibold inline-flex items-center gap-2 shadow-md shadow-blue-600/20"
                     >
                       <PhoneCall className="w-4 h-4" />
                       <span>{ui.emptyState.contactSales}</span>
@@ -478,7 +541,7 @@ export default function ProductsPage() {
                     <button
                       type="button"
                       onClick={() => setActiveCategoryId("pallet-industri")}
-                      className="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 px-6 py-2.5 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors text-sm font-semibold inline-flex items-center gap-1 cursor-pointer"
+                      className="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 px-5 sm:px-6 py-2.5 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors text-xs sm:text-sm font-semibold inline-flex items-center gap-1 cursor-pointer"
                     >
                       <span>{ui.emptyState.viewPallet}</span>
                       <ArrowRight className="w-4 h-4" />
