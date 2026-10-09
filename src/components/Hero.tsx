@@ -10,7 +10,6 @@ import {
   Mail,
   Phone,
   Globe,
-  Search,
   Menu,
   ChevronDown,
   ChevronRight,
@@ -24,7 +23,6 @@ import {
 export default function Hero() {
   const { lang, setLanguage, t } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
 
   const languageOptions: { code: Language; label: string; badge: string }[] = [
@@ -46,8 +44,10 @@ export default function Hero() {
   const featureIcons = [Cpu, ShieldCheck, Layers, Sparkles];
 
   return (
-    <section id="hero" className="relative min-h-[100vh] w-full overflow-hidden isolate font-sans">
-
+    <section
+      id="hero"
+      className="relative min-h-[100svh] w-full overflow-hidden overflow-x-hidden isolate font-sans"
+    >
       {/* ========================================================================= */}
       {/* 1. LAYER 1: THE BACKGROUND IMAGE                                          */}
       {/* ========================================================================= */}
@@ -71,7 +71,7 @@ export default function Hero() {
       {/* ========================================================================= */}
       {/* 3. LAYER 3: CONTENT & NAVBAR (BRING TO FRONT, Z-20)                       */}
       {/* ========================================================================= */}
-      <div className="relative z-20 flex flex-col justify-between h-full min-h-[100vh]">
+      <div className="relative z-20 flex flex-col justify-between min-h-[100svh] w-full">
         {/* TOP BAR & MAIN NAVBAR */}
         <header className="w-full">
           {/* Top Bar (Dark Navy bar inspired by the reference design) */}
@@ -155,7 +155,7 @@ export default function Hero() {
 
                 <span className="text-slate-700 select-none">|</span>
 
-                {/* THEME TOGGLE SWITCH: KIRI = GELAP, KANAN = TERANG */}
+                {/* THEME TOGGLE SWITCH */}
                 <ThemeToggle />
               </div>
             </div>
@@ -203,22 +203,12 @@ export default function Hero() {
                 ))}
               </div>
 
-              {/* Right: Search + Direct Contact / Menu Toggle */}
+              {/* Right: Direct Contact / Menu Toggle */}
               <div className="flex items-center gap-2 sm:gap-3">
-                {/* Search Toggle Button */}
-                <button
-                  type="button"
-                  onClick={() => setIsSearchOpen(!isSearchOpen)}
-                  className="p-2 rounded-lg text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus:outline-hidden"
-                  aria-label={t.navbar.searchPlaceholder}
-                >
-                  <Search className="w-5 h-5" />
-                </button>
-
                 {/* Direct CTA Button (Desktop) */}
                 <Link
                   href="/kontak"
-                  className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-bold shadow-sm hover:shadow-md transition-all"
+                  className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-bold shadow-sm hover:shadow-md transition-all cursor-pointer"
                 >
                   <span>{t.navbar.quoteCta}</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -228,7 +218,7 @@ export default function Hero() {
                 <button
                   type="button"
                   onClick={() => setIsMenuOpen(true)}
-                  className="flex items-center gap-2 px-3 py-1.5 sm:py-2 rounded-lg bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-900 dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-slate-700 dark:text-white transition-all duration-200 focus:outline-hidden group shadow-2xs"
+                  className="flex items-center gap-2 px-3 py-1.5 sm:py-2 rounded-lg bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-900 dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-slate-700 dark:text-white transition-all duration-200 focus:outline-hidden group shadow-2xs cursor-pointer"
                   aria-label={t.navbar.menuBtn}
                 >
                   <span className="text-xs sm:text-sm font-bold tracking-wider uppercase group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
@@ -238,57 +228,39 @@ export default function Hero() {
                 </button>
               </div>
             </div>
-
-            {/* Quick Search Overlay Bar */}
-            {isSearchOpen && (
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-3.5 animate-fade-in-up">
-                <div className="relative">
-                  <input
-                    type="text"
-                    placeholder={t.navbar.searchPlaceholder}
-                    className="w-full bg-white dark:bg-slate-900 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 text-xs sm:text-sm px-4 py-2.5 pl-10 rounded-xl border border-slate-300 dark:border-slate-700 focus:outline-hidden focus:ring-2 focus:ring-blue-500 shadow-md"
-                    autoFocus
-                  />
-                  <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-3" />
-                  <button
-                    type="button"
-                    onClick={() => setIsSearchOpen(false)}
-                    className="absolute right-3 top-2 text-[11px] text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 transition-colors cursor-pointer"
-                  >
-                    {t.navbar.searchClose}
-                  </button>
-                </div>
-              </div>
-            )}
           </nav>
         </header>
 
         {/* HERO TYPOGRAPHY & LAYOUT */}
-        <div className="flex-1 flex items-center">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-10 sm:py-16">
+        <div className="flex-1 flex items-center w-full">
+          {/* Main Content Wrapper with safe mobile padding */}
+          <div className="w-full max-w-7xl mx-auto px-5 sm:px-8 py-6 sm:py-10 lg:py-14">
             {/* Visual Accent: Thin, elegant vertical line */}
-            <div className="border-l-4 border-blue-600 pl-5 sm:pl-7 lg:pl-9 max-w-2xl lg:max-w-3xl animate-fade-in-up">
+            <div className="border-l-4 border-blue-600 pl-4 sm:pl-7 lg:pl-9 max-w-2xl lg:max-w-3xl animate-fade-in-up">
               {/* Top Label Badge */}
-              <div className="text-xs sm:text-sm font-bold tracking-wider text-blue-600 uppercase mb-3 flex items-center gap-2">
+              <div className="text-[11px] sm:text-xs md:text-sm font-bold tracking-wider text-blue-600 uppercase mb-2.5 sm:mb-3 flex items-center gap-2">
                 <span>{t.hero.badge}</span>
               </div>
 
-              {/* Main Headline (H1) */}
-              <h1 className="font-extrabold text-slate-900 dark:text-white text-3xl sm:text-5xl lg:text-6xl leading-[1.14] tracking-tight uppercase">
-                {t.hero.titleStart} <span className="text-blue-600 dark:text-blue-400">{t.hero.titleHighlight}</span>
+              {/* Main Headline (H1) with responsive sizing */}
+              <h1 className="font-extrabold text-slate-900 dark:text-white text-2xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.18] sm:leading-[1.14] tracking-tight uppercase break-words">
+                {t.hero.titleStart}{" "}
+                <span className="text-blue-600 dark:text-blue-400">
+                  {t.hero.titleHighlight}
+                </span>
               </h1>
 
               {/* Sub-headline */}
-              <p className="mt-4 sm:mt-5 font-medium text-slate-600 dark:text-slate-300 text-base sm:text-lg lg:text-xl tracking-wide max-w-xl leading-relaxed">
+              <p className="mt-3 sm:mt-5 font-medium text-slate-600 dark:text-slate-300 text-sm sm:text-base lg:text-lg tracking-wide max-w-xl leading-relaxed">
                 {t.hero.subtitle}
               </p>
 
-              {/* Call-to-Action Buttons */}
-              <div className="mt-7 sm:mt-9 flex flex-wrap items-center gap-3.5 sm:gap-4">
+              {/* Action Buttons: Responsive Stack on mobile, side-by-side on sm+ */}
+              <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 w-full sm:w-auto">
                 {/* 1. Primary Button */}
                 <Link
-                  href="#products"
-                  className="inline-flex items-center justify-center px-6 sm:px-7 py-3 sm:py-3.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm sm:text-base shadow-lg shadow-blue-600/30 hover:shadow-blue-600/50 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
+                  href="/products"
+                  className="inline-flex items-center justify-center px-6 sm:px-7 py-3 sm:py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm sm:text-base shadow-lg shadow-blue-600/30 hover:shadow-blue-600/50 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 text-center"
                 >
                   <span>{t.hero.primaryCta}</span>
                 </Link>
@@ -296,26 +268,29 @@ export default function Hero() {
                 {/* 2. Secondary Button */}
                 <Link
                   href="/kontak"
-                  className="inline-flex items-center justify-center px-6 sm:px-7 py-3 sm:py-3.5 rounded-lg border-2 border-slate-800 dark:border-slate-400 text-slate-800 dark:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 bg-transparent font-semibold text-sm sm:text-base transition-all hover:-translate-y-0.5 active:translate-y-0"
+                  className="inline-flex items-center justify-center px-6 sm:px-7 py-3 sm:py-3.5 rounded-xl border-2 border-slate-800 dark:border-slate-400 text-slate-800 dark:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 bg-transparent font-semibold text-sm sm:text-base transition-all hover:-translate-y-0.5 active:translate-y-0 text-center"
                 >
                   <span>{t.hero.secondaryCta}</span>
                 </Link>
               </div>
 
-              {/* Bottom Features (4 items) */}
-              <div className="mt-8 pt-6 border-t border-slate-200/90 dark:border-slate-800 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
+              {/* 3. Refined Feature Grid (Presisi Cetak Tinggi, etc.) */}
+              <div className="mt-6 sm:mt-8 pt-5 sm:pt-6 border-t border-slate-200/90 dark:border-slate-800 grid grid-cols-2 gap-3 sm:gap-4 w-full">
                 {t.hero.features.map((feat, index) => {
                   const Icon = featureIcons[index] || Sparkles;
                   return (
-                    <div key={index} className="flex items-center gap-2.5">
-                      <div className="w-8 h-8 rounded-lg bg-blue-50 dark:bg-blue-950/60 text-blue-600 flex items-center justify-center shrink-0">
-                        <Icon className="w-4 h-4 text-blue-600" />
+                    <div
+                      key={index}
+                      className="flex items-center gap-2.5 sm:gap-3 p-3 sm:p-4 rounded-xl bg-slate-50/70 dark:bg-slate-900/70 border border-slate-200/60 dark:border-slate-800/60 transition-colors"
+                    >
+                      <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-blue-50 dark:bg-blue-950/80 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0">
+                        <Icon className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-blue-600 dark:text-blue-400" />
                       </div>
-                      <div>
-                        <span className="font-bold text-slate-800 dark:text-white text-xs sm:text-sm block">
+                      <div className="min-w-0 flex-1">
+                        <span className="font-bold text-slate-800 dark:text-white text-xs sm:text-sm block truncate sm:whitespace-normal">
                           {feat.title}
                         </span>
-                        <span className="text-[11px] text-slate-500 dark:text-slate-400 hidden sm:block">
+                        <span className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 block truncate sm:whitespace-normal">
                           {feat.subtitle}
                         </span>
                       </div>
@@ -327,35 +302,37 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* BOTTOM METRICS & ACCENT STRIP */}
-        <div className="w-full border-t border-slate-200/80 dark:border-slate-800 bg-white/70 dark:bg-slate-950/80 backdrop-blur-md py-3.5 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3 text-xs sm:text-sm">
-            {/* Key Stats Counter */}
-            <div className="flex items-center gap-6 sm:gap-12">
+        {/* 2. REFINED BOTTOM STATS SECTION (No Cut-off, Wrapping Responsive Grid) */}
+        <div className="w-full border-t border-slate-200/80 dark:border-slate-800 bg-white/80 dark:bg-slate-950/85 backdrop-blur-md py-4 sm:py-5 px-5 sm:px-8 mt-4 sm:mt-6">
+          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6 w-full">
+            {/* Statistics Grid */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 w-full">
               {t.hero.metrics.map((metric, idx) => (
-                <div key={idx} className={`flex items-center gap-2.5 ${idx === 1 ? "hidden xs:flex" : ""}`}>
-                  <span className="text-xl sm:text-2xl font-black text-blue-600">{metric.value}</span>
-                  <div className="flex flex-col">
-                    <span className="font-bold text-slate-900 dark:text-white text-xs leading-tight">
+                <div key={idx} className="flex items-center gap-2.5 sm:gap-3">
+                  <span className="text-2xl md:text-4xl font-extrabold text-blue-600 shrink-0">
+                    {metric.value}
+                  </span>
+                  <div className="flex flex-col min-w-0">
+                    <span className="font-bold text-slate-900 dark:text-white text-xs md:text-sm leading-tight">
                       {metric.label}
                     </span>
-                    <span className="text-[11px] text-slate-500 dark:text-slate-400 leading-tight">
+                    <span className="text-[10px] md:text-xs text-slate-500 dark:text-slate-400 leading-tight">
                       {metric.sublabel}
                     </span>
                   </div>
                 </div>
               ))}
-            </div>
 
-            {/* Quick Link */}
-            <div className="flex items-center gap-4">
-              <a
-                href="#about"
-                className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 font-semibold inline-flex items-center gap-1.5 transition-colors"
-              >
-                <span>{t.hero.facilityLink}</span>
-                <ChevronRight className="w-4 h-4" />
-              </a>
+              {/* Facility Quick Link integrated into 4th grid cell or side */}
+              <div className="flex items-center col-span-2 md:col-span-1 pt-1 md:pt-0 border-t md:border-t-0 border-slate-200/50 dark:border-slate-800/50">
+                <a
+                  href="/about#mesin-produksi"
+                  className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 font-semibold text-xs md:text-sm inline-flex items-center gap-1.5 transition-colors group"
+                >
+                  <span className="group-hover:underline">{t.hero.facilityLink}</span>
+                  <ChevronRight className="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-0.5" />
+                </a>
+              </div>
             </div>
           </div>
         </div>
