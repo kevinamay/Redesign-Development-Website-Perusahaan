@@ -109,7 +109,7 @@ export const heroData: HeroData = {
   },
   ctaSecondary: {
     label: "Hubungi Sales Representatif",
-    href: "#contact",
+    href: "/kontak",
   },
   image: "/images/BG_CV%20ASIA.webp",
   stats: [
@@ -161,7 +161,7 @@ export const productHighlights: ProductHighlight[] = [
       "Pembuatan komponen teknis plastik presisi tinggi, tutup botol (bottle caps), seal, dan peralatan rumah tangga dengan toleransi mikro yang akurat.",
     image: "/images/product-injection.jpg",
     features: ["Bahan PP, PE, ABS, PS", "Toleransi dimensi tinggi", "Kustomisasi warna & tekstur"],
-    href: "#contact",
+    href: "/kontak",
   },
   {
     id: "blow-molding",
@@ -171,7 +171,7 @@ export const productHighlights: ProductHighlight[] = [
       "Produksi botol plastik kimia, wadah pelumas, botol sabun, dan jerigen industri berbagai volume dengan ketebalan dinding yang merata dan anti bocor.",
     image: "/images/product-blow.jpg",
     features: ["Kapasitas 100ml hingga 20 Liter", "Material HDPE & PET tahan bocor", "Desain ergonomis & kokoh"],
-    href: "#contact",
+    href: "/kontak",
   },
   {
     id: "custom-mold",
@@ -181,7 +181,7 @@ export const productHighlights: ProductHighlight[] = [
       "Layanan rancang bangun cetakan baja (mold maker) sesuai kebutuhan spesifik produk Anda, mulai dari sketsa 3D CAD/CAM hingga prototipe fungsional.",
     image: "/images/product-mold.jpg",
     features: ["Baja mold berkualitas tahan abrasi", "Konsultasi desain CAD 3D gratis", "Jaminan masa pakai siklus tinggi"],
-    href: "#contact",
+    href: "/kontak",
   },
   {
     id: "industrial-packaging",
@@ -191,7 +191,7 @@ export const productHighlights: ProductHighlight[] = [
       "Solusi wadah plastik tebal, krat buah/sayur, palet plastik, serta wadah penyimpanan berat untuk kebutuhan pergudangan dan ekspor.",
     image: "/images/product-industrial.jpg",
     features: ["Daya tumpuk beban berat", "Tahan cuaca & anti korosi", "Standardisasi ukuran pergudangan"],
-    href: "#contact",
+    href: "/kontak",
   },
 ];
 
@@ -205,14 +205,14 @@ export const footerData: FooterData = {
     logoImage: "/images/logo.png",
   },
   contact: {
-    address: "Kawasan Industri & Pergudangan, Jl. Raya Industri No. 88",
-    city: "Tangerang, Banten",
-    postalCode: "15138",
+    address: "Jalan Rungkut Industri III/27A",
+    city: "Surabaya",
+    postalCode: "60293",
     country: "Indonesia",
-    phone: "+62 21 555-8901",
-    whatsapp: "+62 812-3456-7890",
-    email: "sales@asiaplastik.com",
-    workingHours: "Senin - Sabtu: 08.00 - 17.00 WIB",
+    phone: "+6231 8433078",
+    whatsapp: "+62 811-322-9988",
+    email: "marketing@asiaplastik.com",
+    workingHours: "Senin - Sabtu: 08.00 - 16.30 WIB",
   },
   sections: [
     {
@@ -241,9 +241,9 @@ export const footerData: FooterData = {
     {
       title: "Layanan Klien",
       links: [
-        { label: "Konsultasi Teknis & CAD", href: "#contact" },
-        { label: "Permintaan Sampel Produk", href: "#contact" },
-        { label: "Kalkulator Estimasi Biaya", href: "#contact" },
+        { label: "Konsultasi Teknis & CAD", href: "/kontak" },
+        { label: "Permintaan Sampel Produk", href: "/kontak" },
+        { label: "Kalkulator Estimasi Biaya", href: "/kontak" },
         { label: "Syarat & Ketentuan Pemesanan", href: "#" },
         { label: "Kebijakan Privasi", href: "#" },
       ],

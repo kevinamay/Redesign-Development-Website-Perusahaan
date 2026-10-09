@@ -40,7 +40,7 @@ export default function Hero() {
     { label: t.navbar.about, href: "/about" },
     { label: t.navbar.products, href: "/products" },
     { label: t.navbar.facilities, href: "/about#mesin-produksi" },
-    { label: t.navbar.contact, href: "#contact" },
+    { label: t.navbar.contact, href: "/kontak" },
   ];
 
   const featureIcons = [Cpu, ShieldCheck, Layers, Sparkles];
@@ -217,7 +217,7 @@ export default function Hero() {
 
                 {/* Direct CTA Button (Desktop) */}
                 <Link
-                  href="#contact"
+                  href="/kontak"
                   className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-bold shadow-sm hover:shadow-md transition-all"
                 >
                   <span>{t.navbar.quoteCta}</span>
@@ -295,7 +295,7 @@ export default function Hero() {
 
                 {/* 2. Secondary Button */}
                 <Link
-                  href="#contact"
+                  href="/kontak"
                   className="inline-flex items-center justify-center px-6 sm:px-7 py-3 sm:py-3.5 rounded-lg border-2 border-slate-800 dark:border-slate-400 text-slate-800 dark:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 bg-transparent font-semibold text-sm sm:text-base transition-all hover:-translate-y-0.5 active:translate-y-0"
                 >
                   <span>{t.hero.secondaryCta}</span>

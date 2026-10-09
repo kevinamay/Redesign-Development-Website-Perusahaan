@@ -119,7 +119,7 @@ export default function AboutPage() {
           <div className="flex items-center gap-3 sm:gap-4">
             <ThemeToggle />
             <Link
-              href="/#contact"
+              href="/kontak"
               className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#1e3a5f] hover:bg-blue-700 text-white text-xs sm:text-sm font-semibold transition-all shadow-md shadow-blue-900/20 cursor-pointer"
             >
               <span>Hubungi Kami</span>

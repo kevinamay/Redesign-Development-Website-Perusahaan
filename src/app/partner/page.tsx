@@ -456,7 +456,7 @@ export default function PartnerPage() {
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Link
-                  href="/#contact"
+                  href="/kontak"
                   className="w-full sm:w-auto bg-slate-900 text-white hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-500 px-8 py-4 rounded-xl font-semibold inline-flex items-center justify-center gap-3 transition-all duration-300 shadow-md hover:shadow-xl"
                 >
                   {content.ctaButton}

@@ -128,7 +128,7 @@ export default function GlobalDistribution() {
 
             {/* Action Button: Outlined Primary Button */}
             <Link
-              href="#contact"
+              href="/kontak"
               className="border-2 border-slate-900 dark:border-slate-100 text-slate-900 dark:text-white hover:bg-slate-900 hover:text-white dark:hover:bg-white dark:hover:text-slate-900 rounded-full px-8 py-3 font-semibold transition-all inline-flex items-center gap-2 w-max group shadow-xs cursor-pointer"
             >
               <span>{t.cta}</span>

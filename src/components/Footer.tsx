@@ -325,7 +325,7 @@ export default function Footer() {
                 <MapPin className="text-blue-500 w-4 h-4 sm:w-5 sm:h-5 shrink-0 mt-0.5" />
                 <span className="leading-relaxed">
                   {t.footer?.address ||
-                    "Kawasan Industri & Pergudangan, Jl. Raya Industri No. 88, Tangerang, Banten, 15138, Indonesia"}
+                    "Jalan Rungkut Industri III/27A, Surabaya - Indonesia, Kode Pos 60293"}
                 </span>
               </li>
 
@@ -333,10 +333,10 @@ export default function Footer() {
               <li className="flex items-center gap-3">
                 <Phone className="text-blue-500 w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
                 <a
-                  href="tel:+62215558901"
+                  href="tel:+62318433078"
                   className="hover:text-white transition-colors"
                 >
-                  +62 21 555-8901
+                  +6231 8433078 - 8439998 - 8439145
                 </a>
               </li>
 
@@ -344,12 +344,12 @@ export default function Footer() {
               <li className="flex items-center gap-3">
                 <MessageCircle className="text-blue-500 w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
                 <a
-                  href="https://wa.me/6281234567890"
+                  href="https://wa.me/628113229988?text=Halo%20Asia%20Plastik%2C%20saya%20ingin%20berkonsultasi%20mengenai%20produk%20dan%20pemesanan%20plastik"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-emerald-400 hover:text-emerald-300 transition-colors"
                 >
-                  WhatsApp: +62 812-3456-7890
+                  WhatsApp: +62 811-322-9988
                 </a>
               </li>
 
@@ -357,10 +357,10 @@ export default function Footer() {
               <li className="flex items-center gap-3">
                 <Mail className="text-blue-500 w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
                 <a
-                  href="mailto:sales@asiaplastik.com"
+                  href="mailto:marketing@asiaplastik.com"
                   className="hover:text-white transition-colors"
                 >
-                  sales@asiaplastik.com
+                  marketing@asiaplastik.com
                 </a>
               </li>
 
@@ -368,7 +368,7 @@ export default function Footer() {
               <li className="flex items-center gap-3">
                 <Clock className="text-blue-500 w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
                 <span>
-                  {t.footer?.workingHours || "Senin - Sabtu: 08.00 - 17.00 WIB"}
+                  {t.footer?.workingHours || "Senin - Sabtu: 08.00 - 16.30 WIB"}
                 </span>
               </li>
             </ul>
