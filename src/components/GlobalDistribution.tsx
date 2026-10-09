@@ -59,7 +59,7 @@ export default function GlobalDistribution() {
     zh: {
       badge: "全球客户",
       heading: "全球化销售与物流网络",
-      p1: "除深耕国内市场外，Asia Plastik 亦积极拓展并满足全球客户的高标准需求。",
+      p1: "除深耕国内市场外，亚洲塑料亦积极拓展并满足全球客户的高标准需求。",
       p2: "我们的愿景是建立更加稳固的全球化合作网络，在塑料包装领域持续保持核心竞争优势。",
       cta: "联系我们",
       stats: [

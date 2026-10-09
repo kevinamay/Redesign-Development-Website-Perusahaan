@@ -239,31 +239,31 @@ export default function FAQPage() {
         },
         {
           category: "order",
-          question: "批发采购时，ASIA PLASTIK 的最低起订量 (MOQ) 是多少？",
+          question: "批发采购时，亚洲塑料的最低起订量 (MOQ) 是多少？",
           answer:
             "对于现模标准产品，最低起订量通常为 2 大袋 (2 Sacks)。对于新开模定制产品，起订量将根据产品规格与模具工艺复杂度单独核算。",
         },
         {
           category: "general",
-          question: "在哪里可以获取 ASIA PLASTIK 产品的详细技术资料？",
+          question: "在哪里可以获取亚洲塑料产品的详细技术资料？",
           answer:
-            "您可以通过电子邮件、服务电话、官方 WhatsApp 专线或关注 Asia Plastik 官方 Instagram 与我们的客服及技术团队取得联系。",
+            "您可以通过电子邮件、服务电话、官方 WhatsApp 专线或关注亚洲塑料官方 Instagram 与我们的客服及技术团队取得联系。",
         },
         {
           category: "quality",
-          question: "ASIA PLASTIK 的产品是否通过清真 (HALAL) 认证？",
+          question: "亚洲塑料的产品是否通过清真 (HALAL) 认证？",
           answer:
             "是的，我们的塑料容器均已通过印尼官方清真合规认证（证书编号：ID00410000251901021）。",
         },
         {
           category: "quality",
-          question: "ASIA PLASTIK 产品用于食品与饮料包装是否安全？",
+          question: "亚洲塑料产品用于食品与饮料包装是否安全？",
           answer:
             "安全可靠。我们严格采用通过食品级 (Food Grade) 安全检测的高纯净原生聚合物原料制造，完全适用于各类食品与饮品的直接接触包装。",
         },
         {
           category: "general",
-          question: "ASIA PLASTIK 主要生产与销售哪些品类的产品？",
+          question: "亚洲塑料主要生产与销售哪些品类的产品？",
           answer:
             "我们生产涵盖从大型企业到中小商户的全系列塑料制品：PET塑料瓶、HDPE手提桶、食品密封罐、周转筐、塑料托盘，以及深海养殖浮球、生蚝养殖网筐与软壳蟹公寓等。",
         },

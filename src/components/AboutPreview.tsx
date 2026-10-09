@@ -157,9 +157,9 @@ export default function AboutPreview() {
           navSubtitle: "始创于1985年",
           title: "深耕塑料制造数十载（始创于1985年）",
           description:
-            "Asia Plastik 自1985年成立至今，专业从事注塑与吹塑塑料包装制造。凭借高精密度与高效产能，成为众多国家重点企业的长期信赖合作伙伴。",
+            "亚洲塑料自1985年成立至今，专业从事注塑与吹塑塑料包装制造。凭借高精密度与高效产能，成为众多国家重点企业的长期信赖合作伙伴。",
           image: "/images/assets/about-1.png",
-          imageAlt: "Asia Plastik 现代化生产基地",
+          imageAlt: "亚洲塑料现代化生产基地",
           imageTag: "现代化制造车间 • 规模化量产",
           badges: [
             { icon: Factory, title: "30余年制造经验", desc: "注塑与吹塑行业专家" },
@@ -388,7 +388,7 @@ export default function AboutPreview() {
                   </div>
 
                   <span className="hidden sm:inline-flex text-xs font-medium text-slate-300 bg-black/40 backdrop-blur-xs px-3 py-1.5 rounded-full border border-white/10">
-                    CV. Asia Plastik
+                    {lang === "zh" ? "亚洲塑料有限公司" : "CV. Asia Plastik"}
                   </span>
                 </div>
               </div>

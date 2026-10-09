@@ -265,7 +265,7 @@ export default function PartnerPage() {
       gridTitle: "我们值得信赖的合作伙伴",
       valuePropEyebrow: "亚洲塑料核心价值",
       trustBadge: "值得长期信赖的企业战略合作伙伴",
-      valuePropTitle: "为何行业领军企业信赖 ASIA PLASTIK",
+      valuePropTitle: "为何行业领军企业信赖亚洲塑料",
       valuePropSubtitle:
         "我们对严苛品质、准时交付与高精度模具定制的长期承诺，使我们成为众多知名品牌的首选塑料制造伙伴。",
       values: [
@@ -289,10 +289,10 @@ export default function PartnerPage() {
       ctaSubtitle:
         "我们始终对战略合作持开放态度，全力支持您的工业与商业包装需求。",
       ctaButton: "立即联系我们",
-      ctaWhatsapp: "微信/WHATSAPP 咨询",
+      ctaWhatsapp: "微信 / WhatsApp 咨询",
       ctaWhatsappUrl:
         "https://wa.me/628113229988?text=" +
-        encodeURIComponent("您好 Asia Plastik，我们对开展企业级 B2B 战略合作很感兴趣"),
+        encodeURIComponent("您好亚洲塑料，我们对开展企业级 B2B 战略合作很感兴趣"),
     },
   }[lang];
 
