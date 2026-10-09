@@ -49,6 +49,7 @@ export default function FAQPage() {
       ],
       noResults: "Tidak ada pertanyaan yang sesuai dengan pencarian Anda.",
       resetSearch: "Reset Pencarian",
+      supportBadge: "KONSULTASI LANGSUNG B2B",
       supportTitle: "Masih Memiliki Pertanyaan Lain?",
       supportDesc:
         "Tim representatif teknis dan sales kami siap membantu memberikan penawaran harga terbaik serta konsultasi spesifikasi kemasan Anda.",
@@ -129,6 +130,7 @@ export default function FAQPage() {
       ],
       noResults: "No questions match your current search query.",
       resetSearch: "Reset Filter",
+      supportBadge: "B2B DIRECT CONSULTATION",
       supportTitle: "Still Have Questions?",
       supportDesc:
         "Our engineering and sales representatives are ready to assist with quotations, mold feasibility, and technical consultations.",
@@ -209,6 +211,7 @@ export default function FAQPage() {
       ],
       noResults: "未找到与您的搜索条件匹配的问题。",
       resetSearch: "重置筛选条件",
+      supportBadge: "B2B 专属商业与技术咨询",
       supportTitle: "还有其他疑问需要咨询？",
       supportDesc:
         "我们的技术工程师与销售代表随时为您提供详尽的技术参数咨询、开模可行性评估及最优惠的批发采购报价。",
@@ -459,7 +462,7 @@ export default function FAQPage() {
             <div className="relative z-10 max-w-2xl">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-wider mb-4">
                 <Sparkles className="w-3.5 h-3.5" />
-                <span>B2B Direct Consultation</span>
+                <span>{current.supportBadge}</span>
               </div>
 
               <h2 className="text-2xl sm:text-3xl font-extrabold mb-4">

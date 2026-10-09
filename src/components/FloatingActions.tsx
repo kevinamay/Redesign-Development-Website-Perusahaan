@@ -28,6 +28,101 @@ export default function FloatingActions() {
     zh: "您好！我是 **CV. Asia Plastik** 的官方智能助手 **AsiaBot**。\n\n我可以为您解答关于塑料包装产品、500升大型吹塑机、模具定制开发、ISO 9001:2015 认证及采购咨询。请问有什么可以帮助您？",
   };
 
+  // Localized UI Texts
+  const uiTexts = {
+    id: {
+      waTooltipTitle: "Hubungi Admin Sales",
+      waTooltipSubtitle: "Respon Cepat via WhatsApp",
+      waTooltipClose: "Tutup info WhatsApp",
+      waAria: "Hubungi Admin CV Asia Plastik via WhatsApp",
+      aiFloatingLabel: "Tanya AI Gemini",
+      aiAria: "Buka Chat AI Assistant Gemini",
+      aiChatTitle: "AsiaBot AI",
+      aiOnline: "Online",
+      aiSubtitle: "CV. Asia Plastik Support Engine",
+      resetTitle: "Mulai Ulang Percakapan",
+      closeAria: "Tutup Percakapan",
+      inputPlaceholder: "Tanyakan produk, cetakan kustom, ISO...",
+      sendAria: "Kirim Pesan",
+      waMessage: "Halo, Saya menemukan website asiaplastik.com. Saya ingin bertanya produk Anda",
+      suggestions: [
+        "Apa saja produk unggulan Asia Plastik?",
+        "Bagaimana spesifikasi mesin Blow Moulding 500L?",
+        "Apakah sudah bersertifikasi ISO 9001:2015?",
+        "Bisa buat cetakan / mold kustom?",
+        "Kontak WhatsApp & Alamat Pabrik",
+      ],
+    },
+    en: {
+      waTooltipTitle: "Contact Sales Admin",
+      waTooltipSubtitle: "Fast Response via WhatsApp",
+      waTooltipClose: "Close WhatsApp info",
+      waAria: "Contact CV Asia Plastik Admin via WhatsApp",
+      aiFloatingLabel: "Ask Gemini AI",
+      aiAria: "Open Gemini AI Assistant Chat",
+      aiChatTitle: "AsiaBot AI",
+      aiOnline: "Online",
+      aiSubtitle: "CV. Asia Plastik Support Engine",
+      resetTitle: "Restart Conversation",
+      closeAria: "Close Conversation",
+      inputPlaceholder: "Ask about products, custom molds, ISO...",
+      sendAria: "Send Message",
+      waMessage: "Hello, I found the asiaplastik.com website and would like to inquire about your products",
+      suggestions: [
+        "What are Asia Plastik's flagship products?",
+        "What are the specs of the 500L Blow Molding machine?",
+        "Is Asia Plastik ISO 9001:2015 certified?",
+        "Can you fabricate custom molds?",
+        "WhatsApp Contact & Factory Address",
+      ],
+    },
+    zh: {
+      waTooltipTitle: "联系销售代表",
+      waTooltipSubtitle: "WhatsApp 快速响应",
+      waTooltipClose: "关闭 WhatsApp 提示",
+      waAria: "通过 WhatsApp 联系官方客服",
+      aiFloatingLabel: "咨询 Gemini AI 助手",
+      aiAria: "打开智能 AI 对话",
+      aiChatTitle: "AsiaBot 智能助手",
+      aiOnline: "在线",
+      aiSubtitle: "亚洲塑料智能服务引擎",
+      resetTitle: "重新开始对话",
+      closeAria: "关闭对话",
+      inputPlaceholder: "咨询产品规格、定制开模、ISO认证...",
+      sendAria: "发送消息",
+      waMessage: "您好，我浏览了 asiaplastik.com 官网，想咨询贵司的相关产品与规格",
+      suggestions: [
+        "亚洲塑料有哪些核心优势产品？",
+        "500升大型吹塑机规格与产能如何？",
+        "工厂是否通过 ISO 9001:2015 质量认证？",
+        "是否支持专属开模与定制制造？",
+        "WhatsApp 联系方式与工厂地址",
+      ],
+    },
+  }[lang] || {
+    waTooltipTitle: "Hubungi Admin Sales",
+    waTooltipSubtitle: "Respon Cepat via WhatsApp",
+    waTooltipClose: "Tutup info WhatsApp",
+    waAria: "Hubungi Admin CV Asia Plastik via WhatsApp",
+    aiFloatingLabel: "Tanya AI Gemini",
+    aiAria: "Buka Chat AI Assistant Gemini",
+    aiChatTitle: "AsiaBot AI",
+    aiOnline: "Online",
+    aiSubtitle: "CV. Asia Plastik Support Engine",
+    resetTitle: "Mulai Ulang Percakapan",
+    closeAria: "Tutup Percakapan",
+    inputPlaceholder: "Tanyakan produk, cetakan kustom, ISO...",
+    sendAria: "Kirim Pesan",
+    waMessage: "Halo, Saya menemukan website asiaplastik.com. Saya ingin bertanya produk Anda",
+    suggestions: [
+      "Apa saja produk unggulan Asia Plastik?",
+      "Bagaimana spesifikasi mesin Blow Moulding 500L?",
+      "Apakah sudah bersertifikasi ISO 9001:2015?",
+      "Bisa buat cetakan / mold kustom?",
+      "Kontak WhatsApp & Alamat Pabrik",
+    ],
+  };
+
   const [showWaTooltip, setShowWaTooltip] = useState(true);
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [inputMessage, setInputMessage] = useState("");
@@ -37,8 +132,7 @@ export default function FloatingActions() {
   // WhatsApp Admin Configuration
   const rawPhone = "082244109503";
   const waPhone = rawPhone.replace(/^0/, "62");
-  const waMessage = "Halo, Saya menemukan website asiaplastik.com. Saya ingin bertanya produk Anda";
-  const waUrl = `https://wa.me/${waPhone}?text=${encodeURIComponent(waMessage)}`;
+  const waUrl = `https://wa.me/${waPhone}?text=${encodeURIComponent(uiTexts.waMessage)}`;
 
   // Default welcome message
   const initialMessages: ChatMessage[] = [
@@ -51,13 +145,7 @@ export default function FloatingActions() {
   const [messages, setMessages] = useState<ChatMessage[]>(initialMessages);
 
   // Quick suggestion prompts
-  const suggestions = [
-    "Apa saja produk unggulan Asia Plastik?",
-    "Bagaimana spesifikasi mesin Blow Moulding 500L?",
-    "Apakah sudah bersertifikasi ISO 9001:2015?",
-    "Bisa buat cetakan / mold kustom?",
-    "Kontak WhatsApp & Alamat Pabrik",
-  ];
+  const suggestions = uiTexts.suggestions;
 
   // Scroll to bottom when new messages arrive
   useEffect(() => {
@@ -176,17 +264,17 @@ export default function FloatingActions() {
               <div className="text-left">
                 <p className="text-xs font-bold leading-tight text-slate-900 dark:text-white flex items-center gap-1.5">
                   <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                  <span>Hubungi Admin Sales</span>
+                  <span>{uiTexts.waTooltipTitle}</span>
                 </p>
                 <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-tight mt-0.5">
-                  Respon Cepat via WhatsApp
+                  {uiTexts.waTooltipSubtitle}
                 </p>
               </div>
               <button
                 type="button"
                 onClick={() => setShowWaTooltip(false)}
                 className="p-1 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
-                aria-label="Tutup info WhatsApp"
+                aria-label={uiTexts.waTooltipClose}
               >
                 <X className="w-3.5 h-3.5" />
               </button>
@@ -198,7 +286,7 @@ export default function FloatingActions() {
             href={waUrl}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Hubungi Admin CV Asia Plastik via WhatsApp"
+            aria-label={uiTexts.waAria}
             className="group relative flex items-center justify-center w-14 h-14 sm:w-15 sm:h-15 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white shadow-xl hover:shadow-2xl shadow-emerald-600/30 transition-all duration-300 hover:scale-108 active:scale-95 cursor-pointer focus:outline-hidden focus:ring-4 focus:ring-emerald-400/40"
           >
             {/* Subtle Pulse Wave */}
@@ -223,14 +311,14 @@ export default function FloatingActions() {
           {/* AI Helper Label on Hover */}
           <div className="hidden sm:inline-flex items-center gap-1.5 bg-slate-900/85 dark:bg-slate-800/90 text-white text-xs font-semibold px-3 py-1.5 rounded-full shadow-lg border border-slate-700/60 opacity-0 group-hover:opacity-100 transition-opacity">
             <Sparkles className="w-3.5 h-3.5 text-blue-400 animate-pulse" />
-            <span>Tanya AI Gemini</span>
+            <span>{uiTexts.aiFloatingLabel}</span>
           </div>
 
           {/* AI Floating Button */}
           <button
             type="button"
             onClick={() => setIsChatOpen(!isChatOpen)}
-            aria-label="Buka Chat AI Assistant Gemini"
+            aria-label={uiTexts.aiAria}
             className="group relative flex items-center justify-center w-14 h-14 sm:w-15 sm:h-15 rounded-full bg-gradient-to-tr from-blue-600 via-indigo-600 to-violet-600 hover:from-blue-500 hover:to-violet-500 text-white shadow-xl hover:shadow-2xl shadow-indigo-600/35 transition-all duration-300 hover:scale-108 active:scale-95 cursor-pointer focus:outline-hidden focus:ring-4 focus:ring-blue-400/40"
           >
             {/* Ambient Pulsing Glow */}
@@ -272,13 +360,13 @@ export default function FloatingActions() {
               </div>
               <div>
                 <h3 id="ai-chat-title" className="text-sm font-bold leading-tight flex items-center gap-1.5">
-                  <span>AsiaBot AI</span>
+                  <span>{uiTexts.aiChatTitle}</span>
                   <span className="px-1.5 py-0.2 rounded-full bg-emerald-500/30 text-emerald-200 text-[10px] font-medium border border-emerald-400/30">
-                    Online
+                    {uiTexts.aiOnline}
                   </span>
                 </h3>
                 <p className="text-[11px] text-blue-100/90 leading-tight mt-0.5">
-                  CV. Asia Plastik Support Engine
+                  {uiTexts.aiSubtitle}
                 </p>
               </div>
             </div>
@@ -288,9 +376,9 @@ export default function FloatingActions() {
               <button
                 type="button"
                 onClick={handleClearChat}
-                title="Mulai Ulang Percakapan"
+                title={uiTexts.resetTitle}
                 className="p-2 rounded-xl hover:bg-white/15 transition-colors cursor-pointer"
-                aria-label="Reset Chat"
+                aria-label={uiTexts.resetTitle}
               >
                 <RotateCcw className="w-4 h-4" />
               </button>
@@ -300,7 +388,7 @@ export default function FloatingActions() {
                 type="button"
                 onClick={() => setIsChatOpen(false)}
                 className="p-2 rounded-xl hover:bg-white/15 transition-colors cursor-pointer"
-                aria-label="Tutup Percakapan"
+                aria-label={uiTexts.closeAria}
               >
                 <X className="w-4.5 h-4.5" />
               </button>
@@ -388,7 +476,7 @@ export default function FloatingActions() {
                   handleSendMessage();
                 }
               }}
-              placeholder="Tanyakan produk, cetakan kustom, ISO..."
+              placeholder={uiTexts.inputPlaceholder}
               disabled={isLoading}
               className="flex-1 px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs sm:text-[13px] text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-blue-500 transition-all"
             />
@@ -397,7 +485,7 @@ export default function FloatingActions() {
               onClick={() => handleSendMessage()}
               disabled={isLoading || !inputMessage.trim()}
               className="p-2.5 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 disabled:opacity-50 text-white transition-all shadow-md shadow-blue-500/20 cursor-pointer"
-              aria-label="Kirim Pesan"
+              aria-label={uiTexts.sendAria}
             >
               <Send className="w-4 h-4" />
             </button>

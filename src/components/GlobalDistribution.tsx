@@ -22,6 +22,16 @@ export default function GlobalDistribution() {
         { value: "24/7", label: "Dukungan Pasokan" },
       ],
       hqLabel: "Surabaya (HQ & Pabrik)",
+      activeLogistics: "Jaringan Logistik Ekspor Aktif",
+      globalSupplyChain: "Rantai Pasok Global",
+      locations: [
+        { name: "Surabaya (HQ & Pabrik)", top: "62%", left: "75%", isHq: true },
+        { name: "Asia Pasifik (Jepang / Korsel)", top: "38%", left: "80%", isHq: false },
+        { name: "Australia & Oseania", top: "74%", left: "84%", isHq: false },
+        { name: "Timur Tengah & Teluk", top: "46%", left: "62%", isHq: false },
+        { name: "Eropa Barat", top: "32%", left: "51%", isHq: false },
+        { name: "Amerika Utara", top: "36%", left: "24%", isHq: false },
+      ],
     },
     en: {
       badge: "OUR CLIENTS",
@@ -35,6 +45,16 @@ export default function GlobalDistribution() {
         { value: "24/7", label: "Supply Chain Support" },
       ],
       hqLabel: "Surabaya (HQ & Plant)",
+      activeLogistics: "Active Export Logistics Network",
+      globalSupplyChain: "Global Supply Chain",
+      locations: [
+        { name: "Surabaya (HQ & Plant)", top: "62%", left: "75%", isHq: true },
+        { name: "Asia Pacific (Japan / S. Korea)", top: "38%", left: "80%", isHq: false },
+        { name: "Australia & Oceania", top: "74%", left: "84%", isHq: false },
+        { name: "Middle East & Gulf", top: "46%", left: "62%", isHq: false },
+        { name: "Western Europe", top: "32%", left: "51%", isHq: false },
+        { name: "North America", top: "36%", left: "24%", isHq: false },
+      ],
     },
     zh: {
       badge: "全球客户",
@@ -48,20 +68,21 @@ export default function GlobalDistribution() {
         { value: "24/7", label: "稳定供应链保障" },
       ],
       hqLabel: "泗水（总部与工厂）",
+      activeLogistics: "国际出口物流网络运行中",
+      globalSupplyChain: "全球化供应链网络",
+      locations: [
+        { name: "泗水（总部与生产基地）", top: "62%", left: "75%", isHq: true },
+        { name: "亚太地区 (日本 / 韩国)", top: "38%", left: "80%", isHq: false },
+        { name: "澳大利亚与大洋洲", top: "74%", left: "84%", isHq: false },
+        { name: "中东与海湾地区", top: "46%", left: "62%", isHq: false },
+        { name: "西欧地区", top: "32%", left: "51%", isHq: false },
+        { name: "北美地区", top: "36%", left: "24%", isHq: false },
+      ],
     },
   };
 
   const t = content[lang] || content.id;
-
-  // Key global presence locations mapped proportionally onto the 4:3 map
-  const locations = [
-    { name: t.hqLabel, top: "62%", left: "75%", isHq: true },
-    { name: "Asia Pasifik (Jepang / Korsel)", top: "38%", left: "80%", isHq: false },
-    { name: "Australia & Oceania", top: "74%", left: "84%", isHq: false },
-    { name: "Timur Tengah & Teluk", top: "46%", left: "62%", isHq: false },
-    { name: "Eropa Barat", top: "32%", left: "51%", isHq: false },
-    { name: "Amerika Utara", top: "36%", left: "24%", isHq: false },
-  ];
+  const locations = t.locations;
 
   return (
     <section className="w-full bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 transition-colors duration-300">
@@ -180,9 +201,9 @@ export default function GlobalDistribution() {
               <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-[11px] text-slate-400 dark:text-slate-500 select-none pointer-events-none">
                 <span className="flex items-center gap-1.5">
                   <Navigation className="w-3 h-3 text-blue-500" />
-                  <span>Jaringan Logistik Ekspor Aktif</span>
+                  <span>{t.activeLogistics}</span>
                 </span>
-                <span className="hidden sm:inline-block">Global Supply Chain</span>
+                <span className="hidden sm:inline-block">{t.globalSupplyChain}</span>
               </div>
             </div>
           </div>

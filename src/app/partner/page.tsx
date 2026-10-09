@@ -175,12 +175,14 @@ export default function PartnerPage() {
     id: {
       breadcrumbHome: "Beranda",
       breadcrumbCurrent: "Partner",
-      heroEyebrow: "WELCOME TO OUR PARTNER PAGE!",
+      heroEyebrow: "SELAMAT DATANG DI HALAMAN MITRA KAMI!",
       heroTitle: "ASIA PLASTIK PARTNER",
       heroSubtitle:
         "Kami bangga dipercaya oleh perusahaan multinasional, BUMN, dan brand terkemuka dalam menyediakan kemasan plastik presisi berkualitas tinggi.",
+      partnerCountBadge: "16 Mitra Korporat",
       gridEyebrow: "ASIA PLASTIK",
-      gridTitle: "OUR TRUSTED PARTNERS",
+      gridTitle: "MITRA TEPERCAYA KAMI",
+      valuePropEyebrow: "NILAI UNGGUL ASIA PLASTIK",
       trustBadge: "Kemitraan Jangka Panjang Terpercaya",
       valuePropTitle: "Mengapa Perusahaan Terkemuka Memilih Asia Plastik?",
       valuePropSubtitle:
@@ -207,16 +209,21 @@ export default function PartnerPage() {
         "Kami selalu terbuka untuk peluang kerjasama strategis guna mendukung kebutuhan industri dan bisnis Anda.",
       ctaButton: "HUBUNGI KAMI",
       ctaWhatsapp: "KONSULTASI WHATSAPP",
+      ctaWhatsappUrl:
+        "https://wa.me/628113229988?text=" +
+        encodeURIComponent("Halo Asia Plastik, kami tertarik untuk menjalin kerjasama kemitraan B2B"),
     },
     en: {
       breadcrumbHome: "Home",
       breadcrumbCurrent: "Partners",
       heroEyebrow: "WELCOME TO OUR PARTNER PAGE!",
-      heroTitle: "ASIA PLASTIK PARTNER",
+      heroTitle: "ASIA PLASTIK PARTNERS",
       heroSubtitle:
         "We are excited about the opportunity to collaborate and create value together.",
+      partnerCountBadge: "16 Corporate Partners",
       gridEyebrow: "ASIA PLASTIK",
       gridTitle: "OUR TRUSTED PARTNERS",
+      valuePropEyebrow: "ASIA PLASTIK VALUES",
       trustBadge: "Trusted Long-Term B2B Partnerships",
       valuePropTitle: "Why Leading Enterprises Choose Asia Plastik",
       valuePropSubtitle:
@@ -243,15 +250,20 @@ export default function PartnerPage() {
         "We are always open to strategic partnership opportunities to support your business and industrial packaging needs.",
       ctaButton: "CONTACT US",
       ctaWhatsapp: "WHATSAPP SALES",
+      ctaWhatsappUrl:
+        "https://wa.me/628113229988?text=" +
+        encodeURIComponent("Hello Asia Plastik, we are interested in exploring strategic B2B partnership"),
     },
     zh: {
       breadcrumbHome: "网站首页",
       breadcrumbCurrent: "合作伙伴",
-      heroEyebrow: "WELCOME TO OUR PARTNER PAGE!",
-      heroTitle: "ASIA PLASTIK PARTNER",
+      heroEyebrow: "欢迎访问我们的合作伙伴页面！",
+      heroTitle: "亚洲塑料 合作伙伴",
       heroSubtitle: "我们期待与您携手合作，共同创造更大商业价值与卓越包装品质。",
-      gridEyebrow: "ASIA PLASTIK",
-      gridTitle: "OUR TRUSTED PARTNERS",
+      partnerCountBadge: "16 家企业合作伙伴",
+      gridEyebrow: "亚洲塑料合作企业",
+      gridTitle: "我们值得信赖的合作伙伴",
+      valuePropEyebrow: "亚洲塑料核心价值",
       trustBadge: "值得长期信赖的企业战略合作伙伴",
       valuePropTitle: "为何行业领军企业信赖 ASIA PLASTIK",
       valuePropSubtitle:
@@ -278,6 +290,9 @@ export default function PartnerPage() {
         "我们始终对战略合作持开放态度，全力支持您的工业与商业包装需求。",
       ctaButton: "立即联系我们",
       ctaWhatsapp: "微信/WHATSAPP 咨询",
+      ctaWhatsappUrl:
+        "https://wa.me/628113229988?text=" +
+        encodeURIComponent("您好 Asia Plastik，我们对开展企业级 B2B 战略合作很感兴趣"),
     },
   }[lang];
 
@@ -330,7 +345,7 @@ export default function PartnerPage() {
             {/* Hero Partner Stats Badge */}
             <div className="inline-flex items-center gap-3 px-5 py-2.5 bg-slate-800/80 border border-slate-700/60 rounded-full text-xs sm:text-sm text-slate-300 shadow-inner">
               <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="font-bold text-white">16 Mitra Korporat</span>
+              <span className="font-bold text-white">{content.partnerCountBadge}</span>
               <span className="text-slate-400">|</span>
               <span>{content.trustBadge}</span>
             </div>
@@ -390,7 +405,7 @@ export default function PartnerPage() {
           <div className="mt-24 pt-16 border-t border-slate-200 dark:border-slate-800">
             <div className="text-center max-w-2xl mx-auto mb-12">
               <span className="text-xs font-bold tracking-widest text-blue-600 uppercase mb-2 block">
-                ASIA PLASTIK VALUE
+                {content.valuePropEyebrow}
               </span>
               <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
                 {content.valuePropTitle}
@@ -449,7 +464,7 @@ export default function PartnerPage() {
                 </Link>
 
                 <a
-                  href="https://wa.me/628113229988?text=Halo%20Asia%20Plastik,%20kami%20tertarik%20untuk%20menjalin%20kerjasama%20kemitraan%20B2B"
+                  href={content.ctaWhatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-xl font-semibold inline-flex items-center justify-center gap-3 transition-all duration-300 shadow-md hover:shadow-xl"
