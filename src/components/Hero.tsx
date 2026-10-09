@@ -57,8 +57,7 @@ export default function Hero() {
         priority
         quality={100}
         sizes="100vw"
-        className="object-cover -z-10 dark:brightness-[0.72] dark:contrast-[1.08] transition-[filter] duration-500"
-        style={{ objectPosition: "right top" }}
+        className="object-cover object-[75%_center] sm:object-[80%_center] md:object-center -z-10 dark:brightness-[0.72] dark:contrast-[1.08] transition-[filter] duration-500"
         alt="Asia Plastik Background"
       />
 
