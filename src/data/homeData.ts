@@ -224,7 +224,7 @@ export const footerData: FooterData = {
         { label: "ARTIKEL", href: "/about#artikel" },
         { label: "FAQ", href: "/faq" },
         { label: "PARTNER", href: "/about#partner" },
-        { label: "PRODUK CUSTOM", href: "/products#custom" },
+        { label: "PRODUK CUSTOM", href: "/kontak" },
         { label: "KONTAK", href: "/kontak" },
       ],
     },
