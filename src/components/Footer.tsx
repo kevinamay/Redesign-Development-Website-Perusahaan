@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  ShieldCheck,
   MapPin,
   Phone,
   MessageCircle,
@@ -27,12 +26,6 @@ export default function Footer() {
     }
   };
 
-  const certifications = t.footer?.certifications || [
-    "ISO 9001:2015 Quality Management",
-    "Food Grade Safety Compliance",
-    "Eco-Friendly Recyclable Resins",
-  ];
-
   const quickNavLinks = t.footer?.quickNavLinks || [
     { label: "BERANDA", href: "/" },
     { label: "TENTANG KAMI", href: "/about" },
@@ -42,14 +35,6 @@ export default function Footer() {
     { label: "PARTNER", href: "/partner" },
     { label: "PRODUK CUSTOM", href: "/kontak" },
     { label: "KONTAK", href: "/kontak" },
-  ];
-
-  const solutionsLinks = t.footer?.solutionsLinks || [
-    { label: "Injection Molding", href: "#products" },
-    { label: "Blow Molding & Botol", href: "#products" },
-    { label: "Pembuatan Cetakan (Mold)", href: "#products" },
-    { label: "Kemasan Industri HDPE", href: "#products" },
-    { label: "Komponen Plastik Kustom", href: "#products" },
   ];
 
   const socialLinks = [
@@ -190,132 +175,87 @@ export default function Footer() {
       className="w-full max-w-[100vw] overflow-hidden bg-slate-950 text-slate-400 pt-12 pb-6 border-t border-slate-900"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Compact Modern CSS Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8">
-          {/* Column 1 (Brand & About & Badges & Social): lg:col-span-4 */}
-          <div className="lg:col-span-4 flex flex-col justify-between">
-            <div>
-              <Link href="/" className="inline-block focus:outline-none">
-                {!logoError ? (
-                  <Image
-                    src="/images/logo.webp"
-                    alt="CV. ASIA PLASTIK"
-                    width={190}
-                    height={65}
-                    className="h-9 w-auto object-contain"
-                    onError={() => setLogoError(true)}
-                    priority
-                  />
-                ) : (
-                  <span className="text-white font-bold text-xl tracking-tight">
-                    CV. ASIA PLASTIK
-                  </span>
-                )}
-              </Link>
+        {/* Balanced 4-Column Responsive Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+          {/* Column 1: Logo & Social Media Icons */}
+          <div className="flex flex-col">
+            <Link href="/" className="inline-block focus:outline-none">
+              {!logoError ? (
+                <Image
+                  src="/images/logo.webp"
+                  alt="CV. ASIA PLASTIK"
+                  width={190}
+                  height={65}
+                  className="h-9 w-auto object-contain"
+                  onError={() => setLogoError(true)}
+                  priority
+                />
+              ) : (
+                <span className="text-white font-bold text-xl tracking-tight">
+                  CV. ASIA PLASTIK
+                </span>
+              )}
+            </Link>
 
-              <p className="text-blue-500 text-xs font-bold tracking-widest mt-1.5 uppercase">
-                {t.footer?.tagline ||
-                  "Precision Plastic Manufacturing & Industrial Packaging"}
-              </p>
-
-              <p className="mt-4 text-xs sm:text-sm leading-relaxed text-slate-400">
-                {t.footer?.description ||
-                  "Produsen manufaktur produk plastik terkemuka yang melayani sektor industri, agrikultur, farmasi, serta kebutuhan kemasan konsumen dengan standar keunggulan teruji."}
-              </p>
-
-              {/* Badges (Standar & Akreditasi Mutu) */}
-              <div className="mt-5 flex flex-wrap gap-2">
-                {certifications.map((badge, index) => (
-                  <span
-                    key={index}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-slate-800 bg-slate-900/50 text-slate-300 text-[11px] sm:text-xs font-medium hover:border-blue-500/50 transition-colors"
-                  >
-                    <ShieldCheck className="w-3.5 h-3.5 text-blue-500 shrink-0" />
-                    <span>{badge}</span>
-                  </span>
-                ))}
-              </div>
-
-              {/* Standalone Colored Social Media & Marketplace Links */}
-              <div className="mt-5 flex flex-wrap items-center gap-4">
-                {socialLinks.map((item, idx) => (
-                  <a
-                    key={idx}
-                    href={item.href}
-                    {...(item.isExternal
-                      ? { target: "_blank", rel: "noopener noreferrer" }
-                      : {})}
-                    aria-label={item.name}
-                    title={item.name}
-                    className="hover:scale-110 transition-transform duration-300 inline-block focus:outline-none"
-                  >
-                    {item.icon}
-                  </a>
-                ))}
-              </div>
+            {/* Standalone Colored Social Media & Marketplace Links */}
+            <div className="mt-6 sm:mt-8 flex flex-wrap items-center gap-3.5">
+              {socialLinks.map((item, idx) => (
+                <a
+                  key={idx}
+                  href={item.href}
+                  {...(item.isExternal
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
+                  aria-label={item.name}
+                  title={item.name}
+                  className="hover:scale-110 transition-transform duration-300 inline-block focus:outline-none"
+                >
+                  {item.icon}
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Column 2 (Menu Navigasi 2 Kolom Tanpa Judul - Estetis & Presisi): lg:col-span-3 */}
-          <div className="lg:col-span-3 pt-1">
-            <div className="grid grid-cols-2 gap-x-8 sm:gap-x-10">
-              {/* Kolom Kiri: BERANDA, TENTANG KAMI, PRODUK, ARTIKEL */}
-              <ul className="flex flex-col gap-4">
-                {quickNavLinks.slice(0, 4).map((link, idx) => (
-                  <li key={idx} className="h-6 flex items-center">
-                    <Link
-                      href={link.href}
-                      className="group inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold tracking-wider text-slate-200 hover:text-white uppercase transition-all duration-200 whitespace-nowrap"
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-200 shrink-0" />
-                      <span className="group-hover:text-blue-400 group-hover:translate-x-1 transition-transform duration-200">
-                        {link.label}
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-
-              {/* Kolom Kanan: FAQ, PARTNER, PRODUK CUSTOM, KONTAK */}
-              <ul className="flex flex-col gap-4">
-                {quickNavLinks.slice(4, 8).map((link, idx) => (
-                  <li key={idx} className="h-6 flex items-center">
-                    <Link
-                      href={link.href}
-                      className="group inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold tracking-wider text-slate-200 hover:text-white uppercase transition-all duration-200 whitespace-nowrap"
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-200 shrink-0" />
-                      <span className="group-hover:text-blue-400 group-hover:translate-x-1 transition-transform duration-200">
-                        {link.label}
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          {/* Column 3 (Solusi Manufaktur): lg:col-span-2 */}
-          <div className="lg:col-span-2">
-            <h3 className="text-white font-semibold text-sm tracking-wider mb-4 uppercase">
-              {t.footer?.solutionsTitle || "SOLUSI MANUFAKTUR"}
-            </h3>
-            <ul className="flex flex-col gap-2.5">
-              {solutionsLinks.map((link, idx) => (
-                <li key={idx}>
+          {/* Column 2: Nav Menu 1 (BERANDA, TENTANG KAMI, PRODUK, ARTIKEL) */}
+          <div className="pt-1">
+            <ul className="flex flex-col gap-4">
+              {quickNavLinks.slice(0, 4).map((link, idx) => (
+                <li key={idx} className="h-6 flex items-center">
                   <Link
                     href={link.href}
-                    className="text-xs sm:text-sm hover:text-white hover:translate-x-1 transition-all duration-300 flex items-center"
+                    className="group inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold tracking-wider text-slate-200 hover:text-white uppercase transition-all duration-200 whitespace-nowrap"
                   >
-                    {link.label}
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-200 shrink-0" />
+                    <span className="group-hover:text-blue-400 group-hover:translate-x-1 transition-transform duration-200">
+                      {link.label}
+                    </span>
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Column 4 (Contact): lg:col-span-3 */}
-          <div className="lg:col-span-3">
+          {/* Column 3: Nav Menu 2 (FAQ, PARTNER, PRODUK CUSTOM, KONTAK) */}
+          <div className="pt-1">
+            <ul className="flex flex-col gap-4">
+              {quickNavLinks.slice(4, 8).map((link, idx) => (
+                <li key={idx} className="h-6 flex items-center">
+                  <Link
+                    href={link.href}
+                    className="group inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold tracking-wider text-slate-200 hover:text-white uppercase transition-all duration-200 whitespace-nowrap"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-200 shrink-0" />
+                    <span className="group-hover:text-blue-400 group-hover:translate-x-1 transition-transform duration-200">
+                      {link.label}
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 4: HUBUNGI KANTOR & PABRIK (Contact Details) */}
+          <div>
             <h3 className="text-white font-semibold text-sm tracking-wider mb-4 uppercase">
               {t.footer?.contactTitle || "HUBUNGI KANTOR & PABRIK"}
             </h3>
