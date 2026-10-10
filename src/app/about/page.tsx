@@ -1,12 +1,14 @@
+"use client";
+
 import React from "react";
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { useLanguage } from "@/data/translations";
+import { aboutTranslations } from "@/data/aboutTranslations";
 import {
   Sparkles,
-  ArrowRight,
   Award,
   CheckCircle2,
   Cpu,
@@ -17,32 +19,9 @@ import {
   Boxes,
 } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Tentang Kami - CV. ASIA PLASTIK | Spesialis Injection & Blow Moulding Sejak 1985",
-  description:
-    "Profil lengkap CV. Asia Plastik: sejarah manufaktur plastik sejak 1985, sertifikasi ISO 9001:2015, visi misi, mesin blow moulding 500 liter, dan fasilitas produksi kustom.",
-};
-
 export default function AboutPage() {
-  const customProducts = [
-    "Palet Plastik Blow",
-    "Keranjang Industri",
-    "Botol Plastik",
-    "Jerigen Beragam Ukuran",
-    "Ember & Pail Industri",
-    "Galon & Wadah Cairan",
-    "Pelampung Jaring / Laut",
-    "Kebutuhan Peternakan",
-  ];
-
-  const missionPoints = [
-    "Mengembangkan sumber daya manusia yang kompeten, berintegritas, dan berdedikasi tinggi.",
-    "Menerapkan teknologi terdepan dalam proses manufaktur injection dan blow molding.",
-    "Meningkatkan efisiensi manajemen dan produktivitas rantai pasok secara berkelanjutan.",
-    "Memberikan kualitas produk yang baik, presisi, dan konsisten sesuai spesifikasi klien.",
-    "Menciptakan produk baru yang inovatif, fungsional, dan ramah lingkungan.",
-    "Berjuang dalam perbaikan terus menerus (continuous improvement) di setiap lini operasional.",
-  ];
+  const { lang } = useLanguage();
+  const t = aboutTranslations[lang] || aboutTranslations.id;
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans selection:bg-blue-600 selection:text-white transition-colors duration-300 flex flex-col">
@@ -63,28 +42,27 @@ export default function AboutPage() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-300 text-xs sm:text-sm font-bold tracking-widest uppercase mb-6 backdrop-blur-xs">
             <Sparkles className="w-4 h-4 text-blue-400" />
-            <span>GAMBARAN PERUSAHAAN</span>
+            <span>{t.hero.badge}</span>
           </div>
 
           {/* Heading 1 */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight drop-shadow-md">
-            Tentang Kami
+            {t.hero.title}
           </h1>
 
           {/* Description */}
           <p className="text-base sm:text-lg lg:text-xl text-slate-200 leading-relaxed max-w-3xl mx-auto drop-shadow-sm font-normal">
-            Asia Plastik adalah perusahaan manufaktur kemasan plastik yang mengkhususkan diri
-            pada bidang injection dan blow molding sejak tahun 1985.
+            {t.hero.description}
           </p>
 
           {/* Breadcrumb indicator */}
           <div className="mt-8 flex items-center justify-center gap-2 text-xs text-slate-300">
             <Link href="/" className="hover:text-blue-400 transition-colors flex items-center gap-1">
               <Home className="w-3.5 h-3.5" />
-              <span>Beranda</span>
+              <span>{t.hero.breadcrumbHome}</span>
             </Link>
             <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
-            <span className="text-blue-400 font-semibold">Tentang Kami</span>
+            <span className="text-blue-400 font-semibold">{t.hero.breadcrumbCurrent}</span>
           </div>
         </div>
       </section>
@@ -99,34 +77,31 @@ export default function AboutPage() {
             {/* Small Label */}
             <div className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-bold tracking-widest text-xs uppercase">
               <Factory className="w-4 h-4" />
-              <span>In-House Tooling & Custom Fabrication</span>
+              <span>{t.customFabrication.eyebrow}</span>
             </div>
 
             {/* H2 */}
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#1e3a5f] dark:text-blue-400 tracking-tight leading-tight">
-              Produksi Kustom
+              {t.customFabrication.title}
             </h2>
 
             {/* Paragraph 1 */}
             <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
-              Melalui proses pengembangan produk dan proses berkesinambungan, beberapa produk
-              yang kami kembangkan antara lain palet plastik blow, keranjang industri, botol plastik,
-              jerigen, ember, galon, pelampung, kebutuhan ternak.
+              {t.customFabrication.desc1}
             </p>
 
             {/* Paragraph 2 */}
             <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
-              Dengan berkembangnya unit in-house, kami siap melayani produk-produk khusus sesuai
-              kebutuhan pelanggan.
+              {t.customFabrication.desc2}
             </p>
 
             {/* Product Chips List */}
             <div className="pt-4">
               <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">
-                Kategori Produk Unggulan Kustom:
+                {t.customFabrication.categoriesTitle}
               </p>
               <div className="flex flex-wrap gap-2">
-                {customProducts.map((item, idx) => (
+                {t.customFabrication.products.map((item, idx) => (
                   <span
                     key={idx}
                     className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-medium border border-slate-200 dark:border-slate-700 shadow-2xs"
@@ -152,7 +127,7 @@ export default function AboutPage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent pointer-events-none" />
               <div className="absolute bottom-4 left-4 text-white text-xs font-semibold bg-slate-900/80 backdrop-blur-md px-3 py-1.5 rounded-xl border border-white/10">
-                Kawasan Pergudangan Terintegrasi
+                {t.customFabrication.warehouseBadge}
               </div>
             </div>
 
@@ -166,7 +141,7 @@ export default function AboutPage() {
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute bottom-3 left-3 text-white text-xs font-semibold bg-blue-600/90 backdrop-blur-xs px-2.5 py-1 rounded-lg">
-                Logistik Cepat & Aman
+                {t.customFabrication.forkliftBadge}
               </div>
             </div>
           </div>
@@ -188,35 +163,34 @@ export default function AboutPage() {
           {/* Label */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-400/20 border border-blue-300/30 text-blue-200 text-xs sm:text-sm font-bold tracking-widest uppercase">
             <Award className="w-4 h-4 text-blue-300" />
-            <span>SERTIFIKAT</span>
+            <span>{t.isoSection.badge}</span>
           </div>
 
           {/* H2 */}
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight">
-            Sertifikasi ISO 9001:2015
+            {t.isoSection.title}
           </h2>
 
           {/* Paragraph */}
           <p className="text-blue-100 text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed font-light">
-            Sejak tahun 2005 Asia Plastik berhasil meraih ISO 9001:2000 yang kini telah
-            dikembangkan menjadi ISO 9001:2015.
+            {t.isoSection.description}
           </p>
 
           {/* Trust Metric Badges */}
           <div className="pt-8 flex flex-wrap justify-center gap-6 sm:gap-10 border-t border-blue-400/20 max-w-2xl mx-auto">
             <div className="text-center">
               <span className="text-3xl font-extrabold text-white">2005</span>
-              <p className="text-xs text-blue-200 uppercase tracking-wider mt-1">ISO 9001:2000 Pertama</p>
+              <p className="text-xs text-blue-200 uppercase tracking-wider mt-1">{t.isoSection.metric1Label}</p>
             </div>
             <div className="w-px h-12 bg-blue-400/30 hidden sm:block" />
             <div className="text-center">
               <span className="text-3xl font-extrabold text-white">2015</span>
-              <p className="text-xs text-blue-200 uppercase tracking-wider mt-1">Upgrade ISO 9001:2015</p>
+              <p className="text-xs text-blue-200 uppercase tracking-wider mt-1">{t.isoSection.metric2Label}</p>
             </div>
             <div className="w-px h-12 bg-blue-400/30 hidden sm:block" />
             <div className="text-center">
               <span className="text-3xl font-extrabold text-white">100%</span>
-              <p className="text-xs text-blue-200 uppercase tracking-wider mt-1">Quality Audit Compliance</p>
+              <p className="text-xs text-blue-200 uppercase tracking-wider mt-1">{t.isoSection.metric3Label}</p>
             </div>
           </div>
         </div>
@@ -231,10 +205,10 @@ export default function AboutPage() {
           <div className="mb-14">
             <div className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-bold tracking-widest text-xs uppercase mb-3">
               <Sparkles className="w-4 h-4" />
-              <span>PRINSIP PERUSAHAAN</span>
+              <span>{t.visionMission.eyebrow}</span>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-              Asia Plastik Visi & Misi
+              {t.visionMission.title}
             </h2>
           </div>
 
@@ -249,20 +223,18 @@ export default function AboutPage() {
                   <Award className="w-6 h-6" />
                 </div>
                 <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight">
-                  Visi Kami
+                  {t.visionMission.visionTitle}
                 </h3>
                 <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
-                  Menjadi perusahaan manufaktur plastik terkemuka secara nasional dan internasional
-                  dengan sumber daya manusia yang handal dan teknologi canggih yang mengutamakan
-                  kepuasan pelanggan.
+                  {t.visionMission.visionDesc}
                 </p>
               </div>
 
               <div className="mt-8 pt-6 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-400">
                 <span className="font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider">
-                  Target Nasional & Global
+                  {t.visionMission.visionFooterLeft}
                 </span>
-                <span>Orientasi Klien</span>
+                <span>{t.visionMission.visionFooterRight}</span>
               </div>
             </div>
 
@@ -273,12 +245,12 @@ export default function AboutPage() {
                   <CheckCircle2 className="w-6 h-6 text-emerald-400" />
                 </div>
                 <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-6 tracking-tight">
-                  Misi Kami
+                  {t.visionMission.missionTitle}
                 </h3>
 
                 {/* List with custom checkmarks */}
                 <ul className="space-y-4">
-                  {missionPoints.map((point, idx) => (
+                  {t.visionMission.missionPoints.map((point, idx) => (
                     <li key={idx} className="flex items-start gap-3.5 group/item">
                       <div className="w-6 h-6 rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5 border border-emerald-200 dark:border-emerald-800/80">
                         <Check className="w-3.5 h-3.5 stroke-[3]" />
@@ -293,9 +265,9 @@ export default function AboutPage() {
 
               <div className="mt-8 pt-6 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-400">
                 <span className="font-semibold text-slate-700 dark:text-slate-300">
-                  Total 6 Pilar Komitmen Mutu
+                  {t.visionMission.missionFooterLeft}
                 </span>
-                <span>Standar Mutu Berkelanjutan</span>
+                <span>{t.visionMission.missionFooterRight}</span>
               </div>
             </div>
           </div>
@@ -311,42 +283,37 @@ export default function AboutPage() {
           <div className="w-full md:w-1/2 space-y-6">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-400/20 text-blue-200 text-xs font-bold tracking-widest uppercase border border-blue-400/30">
               <Cpu className="w-3.5 h-3.5" />
-              <span>Kapasitas Ekstra Besar</span>
+              <span>{t.machinery.eyebrow}</span>
             </div>
 
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
-              Blow Moulding 500 liter
+              {t.machinery.title}
             </h2>
 
             {/* Paragraph 1 */}
             <p className="text-blue-100 text-lg leading-relaxed font-normal">
-              Kemampuan mesin Blow Moulding kami mampu memproduksi tangki dan wadah industri
-              dengan kapasitas hingga 500 liter dalam satu siklus pembentukan yang homogen.
+              {t.machinery.desc1}
             </p>
 
             {/* Paragraph 2 */}
             <p className="text-blue-100 text-lg leading-relaxed font-normal">
-              Dirancang untuk ketahanan struktural luar biasa, produk hasil cetakan memiliki
-              ketebalan dinding yang merata, tahan terhadap benturan keras, serta aman untuk
-              penyimpanan zat cair industri dan kimia.
+              {t.machinery.desc2}
             </p>
 
             {/* Paragraph 3 */}
             <p className="text-blue-100 text-lg leading-relaxed font-normal">
-              Setiap unit diproduksi di bawah pengawasan ketat teknisi bersertifikasi dan parameter
-              mesin otomatis berpresisi mikro, memastikan tidak ada cacat, kebocoran, atau deviasi
-              ukuran demi kepuasan klien jangka panjang.
+              {t.machinery.desc3}
             </p>
 
             {/* Machinery Features Badges */}
             <div className="pt-4 grid grid-cols-2 gap-3">
               <div className="p-3 rounded-xl bg-blue-950/50 border border-blue-400/20">
-                <span className="block text-xl font-bold text-white">500L</span>
-                <span className="text-xs text-blue-200">Kapasitas Maksimal Wadah</span>
+                <span className="block text-xl font-bold text-white">{t.machinery.badge1Val}</span>
+                <span className="text-xs text-blue-200">{t.machinery.badge1Label}</span>
               </div>
               <div className="p-3 rounded-xl bg-blue-950/50 border border-blue-400/20">
-                <span className="block text-xl font-bold text-white">±0.05 mm</span>
-                <span className="text-xs text-blue-200">Toleransi Presisi Cetak</span>
+                <span className="block text-xl font-bold text-white">{t.machinery.badge2Val}</span>
+                <span className="text-xs text-blue-200">{t.machinery.badge2Label}</span>
               </div>
             </div>
           </div>
@@ -364,7 +331,7 @@ export default function AboutPage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent pointer-events-none" />
               <div className="absolute bottom-3 left-4 text-white text-xs font-semibold bg-slate-900/80 backdrop-blur-md px-3 py-1 rounded-lg border border-white/10">
-                Mesin Blow Moulding Otomasi Presisi
+                {t.machinery.image1Badge}
               </div>
             </div>
 
@@ -379,7 +346,7 @@ export default function AboutPage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent pointer-events-none" />
               <div className="absolute bottom-3 left-4 text-white text-xs font-semibold bg-slate-900/80 backdrop-blur-md px-3 py-1 rounded-lg border border-white/10">
-                Kontrol Kualitas & Parameter Termal Mikro
+                {t.machinery.image2Badge}
               </div>
             </div>
           </div>
