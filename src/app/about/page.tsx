@@ -2,8 +2,8 @@ import React from "react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import ThemeToggle from "@/components/ThemeToggle";
 import {
   Sparkles,
   ArrowRight,
@@ -47,87 +47,9 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans selection:bg-blue-600 selection:text-white transition-colors duration-300 flex flex-col">
       {/* ========================================================================= */}
-      {/* 1. COMPACT STICKY HEADER & NAVBAR                                          */}
+      {/* 1. COMPACT STICKY HEADER & NAVBAR (Identical to Beranda)                   */}
       {/* ========================================================================= */}
-      <header className="sticky top-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 transition-all duration-300 shadow-2xs">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 sm:h-20 flex items-center justify-between">
-          {/* Logo CV Asia Plastik */}
-          <Link
-            href="/"
-            className="inline-flex items-center focus:outline-hidden hover:opacity-90 transition-opacity"
-            aria-label="Beranda CV. Asia Plastik"
-          >
-            <Image
-              src="/images/logo-dark.webp"
-              alt="Logo CV. Asia Plastik"
-              width={271}
-              height={92}
-              priority
-              className="h-9 sm:h-10 md:h-11 w-auto object-contain block dark:hidden"
-            />
-            <Image
-              src="/images/logo.webp"
-              alt="Logo CV. Asia Plastik"
-              width={271}
-              height={92}
-              priority
-              className="h-9 sm:h-10 md:h-11 w-auto object-contain hidden dark:block"
-            />
-          </Link>
-
-          {/* Center Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-7">
-            <Link
-              href="/"
-              className="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-            >
-              Beranda
-            </Link>
-            <Link
-              href="/about"
-              className="text-sm font-bold text-blue-600 dark:text-blue-400 transition-colors"
-            >
-              Tentang Kami
-            </Link>
-            <Link
-              href="#produksi-kustom"
-              className="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-            >
-              Produksi Kustom
-            </Link>
-            <Link
-              href="#iso-sertifikat"
-              className="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-            >
-              Sertifikat ISO
-            </Link>
-            <Link
-              href="#visi-misi"
-              className="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-            >
-              Visi & Misi
-            </Link>
-            <Link
-              href="#mesin-produksi"
-              className="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-            >
-              Mesin Produksi
-            </Link>
-          </nav>
-
-          {/* Right: Theme Toggle & Contact CTA */}
-          <div className="flex items-center gap-3 sm:gap-4">
-            <ThemeToggle />
-            <Link
-              href="/kontak"
-              className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#1e3a5f] hover:bg-blue-700 text-white text-xs sm:text-sm font-semibold transition-all shadow-md shadow-blue-900/20 cursor-pointer"
-            >
-              <span>Hubungi Kami</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
-          </div>
-        </div>
-      </header>
+      <Navbar />
 
       {/* ========================================================================= */}
       {/* 2. HERO SECTION (Parallax Header)                                         */}
