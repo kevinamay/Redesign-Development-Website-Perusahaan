@@ -16,15 +16,26 @@ import {
 interface ArticleDetailClientProps {
   article: Article;
   relatedArticles: Article[];
+  contentZh?: string;
+  contentEn?: string;
 }
 
 export default function ArticleDetailClient({
   article,
   relatedArticles,
+  contentZh,
+  contentEn,
 }: ArticleDetailClientProps) {
   const { lang } = useLanguage();
   const t = articleUITranslations[lang] || articleUITranslations.id;
   const currentLocalized = getLocalizedArticle(article, lang);
+
+  const localizedContent =
+    lang === "zh" && contentZh
+      ? contentZh
+      : lang === "en" && contentEn
+      ? contentEn
+      : article.content;
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 font-sans selection:bg-blue-600 selection:text-white">
@@ -98,7 +109,7 @@ export default function ArticleDetailClient({
                 [&_strong]:text-slate-900 [&_strong]:font-bold
                 [&_em]:italic [&_em]:text-slate-600
                 [&_a]:text-blue-600 [&_a]:underline [&_a]:font-medium hover:[&_a]:text-blue-800"
-              dangerouslySetInnerHTML={{ __html: article.content }}
+              dangerouslySetInnerHTML={{ __html: localizedContent }}
             />
           </article>
 

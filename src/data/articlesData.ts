@@ -33,3 +33,16 @@ export function getRelatedArticles(currentSlug: string, count: number = 3): Arti
   }
   return others.slice(0, count);
 }
+
+export function getArticleContentTranslation(
+  slug: string
+): { zh?: string; en?: string } | undefined {
+  if (!slug) return undefined;
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const raw = require("./articleContentsTranslations.json");
+    return raw[slug];
+  } catch {
+    return undefined;
+  }
+}

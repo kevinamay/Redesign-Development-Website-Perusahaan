@@ -1,6 +1,11 @@
 import React from "react";
 import { notFound } from "next/navigation";
-import { articlesData, getArticleBySlug, getRelatedArticles } from "@/data/articlesData";
+import {
+  articlesData,
+  getArticleBySlug,
+  getRelatedArticles,
+  getArticleContentTranslation,
+} from "@/data/articlesData";
 import ArticleDetailClient from "@/components/ArticleDetailClient";
 
 interface PageProps {
@@ -44,11 +49,14 @@ export default async function ArticleDetailPage({ params }: PageProps) {
   }
 
   const relatedArticles = getRelatedArticles(article.slug, 3);
+  const contentTranslation = getArticleContentTranslation(article.slug);
 
   return (
     <ArticleDetailClient
       article={article}
       relatedArticles={relatedArticles}
+      contentZh={contentTranslation?.zh}
+      contentEn={contentTranslation?.en}
     />
   );
 }
