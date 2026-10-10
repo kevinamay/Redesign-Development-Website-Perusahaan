@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -21,7 +21,22 @@ export default function Navbar() {
   const { lang, setLanguage, t } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
+  const langRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (langRef.current && !langRef.current.contains(event.target as Node)) {
+        setIsLangOpen(false);
+      }
+    };
+    if (isLangOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isLangOpen]);
 
   const languageOptions: { code: Language; label: string; badge: string }[] = [
     { code: "id", label: "Bahasa (ID)", badge: "ID" },
@@ -41,10 +56,10 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="w-full max-w-[100vw] sticky top-0 z-50 shadow-xs overflow-hidden">
+      <header className="w-full max-w-[100vw] sticky top-0 z-50 shadow-xs">
         {/* Top Bar (Dark Navy bar identical to Beranda Hero) */}
-        <div className="w-full bg-slate-950 text-slate-300 border-b border-slate-800 overflow-hidden">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-1.5 sm:py-2 flex flex-wrap items-center justify-between w-full text-xs overflow-hidden box-border">
+        <div className="w-full bg-slate-950 text-slate-300 border-b border-slate-800 relative z-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-1.5 sm:py-2 flex items-center justify-between w-full text-xs box-border">
             {/* Top Bar Left Tagline */}
             <div className="hidden md:flex items-center gap-2 text-slate-300">
               <Sparkles className="w-3.5 h-3.5 text-blue-400 shrink-0" />
@@ -52,7 +67,7 @@ export default function Navbar() {
             </div>
 
             {/* Top Bar Right: Contact & Language */}
-            <div className="flex items-center gap-2 sm:gap-4 md:gap-6 ml-auto flex-wrap overflow-hidden">
+            <div className="flex items-center gap-2 sm:gap-4 md:gap-6 ml-auto">
               {/* Email - hidden on small mobile screen to prevent stretching */}
               <a
                 href="mailto:marketing@asiaplastik.com"
@@ -80,7 +95,7 @@ export default function Navbar() {
               <span className="text-slate-700 select-none">|</span>
 
               {/* Language Toggle (ID, EN, ZH) */}
-              <div className="relative shrink-0">
+              <div ref={langRef} className="relative shrink-0">
                 <button
                   type="button"
                   onClick={() => setIsLangOpen(!isLangOpen)}
@@ -98,7 +113,7 @@ export default function Navbar() {
                 </button>
 
                 {isLangOpen && (
-                  <div className="absolute right-0 mt-2 w-36 bg-slate-900 border border-slate-700 rounded-lg shadow-2xl py-1.5 z-50 text-xs">
+                  <div className="absolute right-0 top-full mt-2 w-36 bg-slate-900 border border-slate-700 rounded-lg shadow-2xl py-1.5 z-50 text-xs">
                     {languageOptions.map((opt) => (
                       <button
                         key={opt.code}
@@ -107,8 +122,8 @@ export default function Navbar() {
                           setLanguage(opt.code);
                           setIsLangOpen(false);
                         }}
-                        className={`w-full text-left px-3 py-1.5 hover:bg-slate-800 flex items-center justify-between transition-colors cursor-pointer ${
-                          lang === opt.code ? "text-blue-400 font-bold" : "text-slate-300"
+                        className={`w-full text-left px-3 py-2 hover:bg-slate-800 flex items-center justify-between transition-colors cursor-pointer ${
+                          lang === opt.code ? "text-blue-400 font-bold bg-slate-800/50" : "text-slate-300"
                         }`}
                       >
                         <span>{opt.label}</span>

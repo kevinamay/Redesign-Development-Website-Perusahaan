@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import ThemeToggle from "@/components/ThemeToggle";
-import { useLanguage } from "@/data/translations";
+import { useLanguage, Language } from "@/data/translations";
 import {
   X,
   Home,
@@ -14,6 +14,7 @@ import {
   PhoneCall,
   Mail,
   Phone,
+  Globe,
 } from "lucide-react";
 
 interface MobileDrawerProps {
@@ -22,7 +23,13 @@ interface MobileDrawerProps {
 }
 
 export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
-  const { t } = useLanguage();
+  const { lang, setLanguage, t } = useLanguage();
+
+  const languageOptions: { code: Language; label: string }[] = [
+    { code: "id", label: "ID" },
+    { code: "en", label: "EN" },
+    { code: "zh", label: "CN" },
+  ];
 
   // Prevent background scrolling when sidebar is open
   useEffect(() => {
@@ -103,8 +110,32 @@ export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
             </div>
           </div>
 
+          {/* Quick Language Selector */}
+          <div className="px-6 pt-5 pb-2">
+            <div className="flex items-center justify-between gap-1 p-1 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200/60 dark:border-slate-700/60 text-xs">
+              <div className="flex items-center gap-1.5 pl-2 pr-1 text-slate-500 dark:text-slate-400 font-semibold shrink-0">
+                <Globe className="w-3.5 h-3.5 text-blue-500" />
+                <span className="text-[11px]">Lang:</span>
+              </div>
+              {languageOptions.map((opt) => (
+                <button
+                  key={opt.code}
+                  type="button"
+                  onClick={() => setLanguage(opt.code)}
+                  className={`flex-1 py-1 px-2 rounded-lg font-bold text-center transition-all cursor-pointer ${
+                    lang === opt.code
+                      ? "bg-blue-600 text-white shadow-xs"
+                      : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
+                  }`}
+                >
+                  {opt.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
           {/* 3. MAIN NAVIGATION LINKS (BREAKING THE MONOTONY) */}
-          <div className="px-6 py-6">
+          <div className="px-6 py-4">
             <nav className="space-y-2">
               {navLinks.map((item, index) => {
                 const Icon = item.icon;
