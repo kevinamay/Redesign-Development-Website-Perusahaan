@@ -7,7 +7,11 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Article } from "@/data/articlesData";
 import { useLanguage } from "@/data/translations";
-import { articleUITranslations, getLocalizedArticle } from "@/data/articleTranslations";
+import {
+  articleUITranslations,
+  getLocalizedArticle,
+  formatArticleDate,
+} from "@/data/articleTranslations";
 
 interface ArticleDetailClientProps {
   article: Article;
@@ -62,7 +66,7 @@ export default function ArticleDetailClient({
             {/* Date */}
             <div className="text-sm md:text-base text-blue-600 font-semibold mb-3 md:mb-4 flex items-center justify-center gap-2">
               <Calendar className="w-4 h-4 text-blue-600 shrink-0" />
-              <span>{article.date}</span>
+              <span>{formatArticleDate(article.date, lang)}</span>
             </div>
 
             {/* Main Title */}
@@ -154,7 +158,7 @@ export default function ArticleDetailClient({
                       <div className="p-6 flex flex-col flex-grow bg-white">
                         <div className="text-slate-500 text-xs mb-3 flex items-center gap-1.5 font-medium">
                           <Calendar className="w-3.5 h-3.5 text-blue-600" />
-                          <span>{rel.date}</span>
+                          <span>{formatArticleDate(rel.date, lang)}</span>
                         </div>
 
                         <h3 className="text-base font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors line-clamp-2 leading-snug">
