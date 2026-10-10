@@ -408,7 +408,7 @@ export const productTranslations: Record<
       "deskripsi": "Industrial plastic pallets from Asia Plastik are specifically engineered for modern logistics and heavy warehousing. Molded from premium-grade polymer, these pallets deliver superior load resistance, impact durability, and resilience in extreme conditions. Unlike wooden pallets, they are splinter-free, non-absorbent, and pest-resistant."
     },
     "zh": {
-      "title": "P系列重型工业塑料托盘",
+      "title": "重型工业塑料托盘 (P系列)",
       "subtitle": "适用于立体仓储、出口货运与自动化货架的标准重载塑料托盘",
       "dimensi": "1200 x 1165 x 140 毫米",
       "berat": "12 千克 (KG)",
