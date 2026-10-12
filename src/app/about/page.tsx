@@ -119,10 +119,11 @@ export default function AboutPage() {
             {/* Main Upper/Warehouse Image */}
             <div className="relative w-[85%] h-[380px] sm:h-[440px] rounded-3xl overflow-hidden shadow-2xl group">
               <Image
-                src="/images/assets/warehouse.png"
+                src="/images/assets/warehouse.webp"
                 alt="Fasilitas Pergudangan & Manufaktur Asia Plastik"
                 width={800}
                 height={600}
+                sizes="(max-width: 768px) 85vw, 500px"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent pointer-events-none" />
@@ -134,10 +135,11 @@ export default function AboutPage() {
             {/* Overlapping Secondary Image (Forklift / Operasional) */}
             <div className="absolute -bottom-8 -right-2 sm:-right-6 w-[55%] h-[240px] sm:h-[280px] rounded-2xl overflow-hidden shadow-2xl border-4 border-white dark:border-slate-900 group">
               <Image
-                src="/images/assets/forklift.png"
+                src="/images/assets/forklift.webp"
                 alt="Operasional Logistik Forklift Pabrik"
                 width={500}
                 height={400}
+                sizes="(max-width: 768px) 55vw, 350px"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute bottom-3 left-3 text-white text-xs font-semibold bg-blue-600/90 backdrop-blur-xs px-2.5 py-1 rounded-lg">
@@ -153,7 +155,7 @@ export default function AboutPage() {
       {/* ========================================================================= */}
       <section
         id="iso-sertifikat"
-        className="relative w-full py-32 bg-[url('/images/assets/iso-bg.png')] bg-fixed bg-cover bg-center overflow-hidden shadow-2xl scroll-mt-20"
+        className="relative w-full py-32 bg-[url('/images/assets/iso-bg.webp')] bg-fixed bg-cover bg-center overflow-hidden shadow-2xl scroll-mt-20"
       >
         {/* Dark Blue Overlay */}
         <div className="absolute inset-0 bg-[#1e3a5f]/85 backdrop-blur-xs pointer-events-none" />
@@ -323,10 +325,11 @@ export default function AboutPage() {
             {/* Machinery Image 1 */}
             <div className="relative overflow-hidden rounded-2xl shadow-2xl border border-blue-400/20 group">
               <Image
-                src="/images/assets/machinery-1.png"
+                src="/images/assets/machinery-1.webp"
                 alt="Mesin Heavy-Duty Blow Moulding 500L"
                 width={800}
                 height={450}
+                sizes="(max-width: 768px) 100vw, 500px"
                 className="w-full h-[220px] sm:h-[240px] object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent pointer-events-none" />
@@ -338,10 +341,11 @@ export default function AboutPage() {
             {/* Machinery Image 2 */}
             <div className="relative overflow-hidden rounded-2xl shadow-2xl border border-blue-400/20 group">
               <Image
-                src="/images/assets/machinery-2.png"
+                src="/images/assets/machinery-2.webp"
                 alt="Lini Perakitan & Tooling In-House Asia Plastik"
                 width={800}
                 height={450}
+                sizes="(max-width: 768px) 100vw, 500px"
                 className="w-full h-[220px] sm:h-[240px] object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent pointer-events-none" />

@@ -55,10 +55,10 @@ body {
   animation: fadeInUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-body.drawer-open aside[aria-label="Kontak Cepat & Asisten AI"],
-body.drawer-open .floating-actions-dock {
-  display: none !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-  visibility: hidden !important;
+body.drawer-open #floating-actions,
+body.drawer-open #floating-ai-chat,
+body.drawer-open aside[aria-label="Kontak Cepat & Asisten AI"] {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
 }

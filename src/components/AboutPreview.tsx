@@ -39,7 +39,7 @@ export default function AboutPreview() {
           title: "Pionir Manufaktur Plastik Sejak 1985",
           description:
             "Asia Plastik adalah perusahaan manufaktur kemasan plastik yang mengkhususkan diri pada bidang injection dan blow molding sejak tahun 1985. Dengan komitmen presisi dan efisiensi tinggi, kami menjadi mitra strategis ratusan industri terkemuka nasional.",
-          image: "/images/assets/about-1.png",
+          image: "/images/assets/about-1.webp",
           imageAlt: "Fasilitas Produksi Manufaktur Asia Plastik",
           imageTag: "Pabrik Produksi Modern • Skala Massal",
           badges: [
@@ -56,7 +56,7 @@ export default function AboutPreview() {
           title: "Sertifikasi Standar Mutu ISO 9001:2015",
           description:
             "Sejak tahun 2005 Asia Plastik berhasil meraih ISO 9001:2000 yang kini telah dikembangkan menjadi ISO 9001:2015. Seluruh rantai operasional dijalankan melalui inspeksi toleransi ketat guna memastikan zero-defect.",
-          image: "/images/assets/iso-bg.png",
+          image: "/images/assets/iso-bg.webp",
           imageAlt: "Fasilitas Bangunan dan Sertifikasi ISO Asia Plastik",
           imageTag: "Terakreditasi ISO 9001:2015 • Audit Berkala",
           badges: [
@@ -73,7 +73,7 @@ export default function AboutPreview() {
           title: "Visi & Prinsip Nilai Perusahaan",
           description:
             "Visi & Nilai: Menjadi perusahaan manufaktur plastik terkemuka secara nasional dan internasional dengan menyediakan kemasan yang inovatif, ramah lingkungan, dan andal demi kepuasan mitra bisnis.",
-          image: "/images/assets/visi.png",
+          image: "/images/assets/visi.webp",
           imageAlt: "Visi dan Nilai Mutu Asia Plastik",
           imageTag: "Inovasi Berkelanjutan • Integritas Kemitraan",
           badges: [
@@ -99,7 +99,7 @@ export default function AboutPreview() {
           title: "Pioneering Plastic Manufacturing Since 1985",
           description:
             "Asia Plastik specializes in precision injection and blow molding packaging since 1985. Through dedicated craftsmanship and continuous engineering advances, we remain the trusted supplier to top national industries.",
-          image: "/images/assets/about-1.png",
+          image: "/images/assets/about-1.webp",
           imageAlt: "Asia Plastik Production Plant",
           imageTag: "Advanced Manufacturing Plant • Mass Scale",
           badges: [
@@ -116,7 +116,7 @@ export default function AboutPreview() {
           title: "ISO 9001:2015 Quality Certification",
           description:
             "Since 2005, Asia Plastik achieved ISO 9001:2000 which has evolved into ISO 9001:2015 compliance. Every production process adheres to stringent tolerance audits ensuring zero defects.",
-          image: "/images/assets/iso-bg.png",
+          image: "/images/assets/iso-bg.webp",
           imageAlt: "Asia Plastik ISO Certified Facility",
           imageTag: "ISO 9001:2015 Certified • Periodic Audits",
           badges: [
@@ -133,7 +133,7 @@ export default function AboutPreview() {
           title: "Corporate Vision & Core Values",
           description:
             "Vision & Values: To stand as a premier plastic manufacturing enterprise nationally and globally by delivering innovative, eco-conscious, and durable packaging tailored for client satisfaction.",
-          image: "/images/assets/visi.png",
+          image: "/images/assets/visi.webp",
           imageAlt: "Corporate Values Asia Plastik",
           imageTag: "Eco Innovation • Trusted Partnership",
           badges: [
@@ -158,7 +158,7 @@ export default function AboutPreview() {
           title: "深耕塑料制造数十载（始创于1985年）",
           description:
             "亚洲塑料自1985年成立至今，专业从事注塑与吹塑塑料包装制造。凭借高精密度与高效产能，成为众多国家重点企业的长期信赖合作伙伴。",
-          image: "/images/assets/about-1.png",
+          image: "/images/assets/about-1.webp",
           imageAlt: "亚洲塑料现代化生产基地",
           imageTag: "现代化制造车间 • 规模化量产",
           badges: [
@@ -175,7 +175,7 @@ export default function AboutPreview() {
           title: "ISO 9001:2015 国际质量体系认证",
           description:
             "自2005年荣获 ISO 9001:2000 起，现已全面推行 ISO 9001:2015 标准。全流程微公差严格检验，确保零缺陷交付。",
-          image: "/images/assets/iso-bg.png",
+          image: "/images/assets/iso-bg.webp",
           imageAlt: "ISO 认证现代化厂房",
           imageTag: "ISO 9001:2015 权威认证 • 定期审核",
           badges: [
@@ -192,7 +192,7 @@ export default function AboutPreview() {
           title: "企业愿景与核心价值观",
           description:
             "愿景与价值观：通过持续技术革新与环保制造，成为国内外领先且深受信赖的塑料包装标杆企业，为合作伙伴创造长久价值。",
-          image: "/images/assets/visi.png",
+          image: "/images/assets/visi.webp",
           imageAlt: "企业愿景与发展理念",
           imageTag: "绿色环保创新 • 诚信稳健合作",
           badges: [

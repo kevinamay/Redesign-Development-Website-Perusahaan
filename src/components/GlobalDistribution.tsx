@@ -148,7 +148,7 @@ export default function GlobalDistribution() {
               {/* The Map Image */}
               <div className="relative w-full h-full">
                 <Image
-                  src="/images/assets/world-map.png"
+                  src="/images/assets/world-map.webp"
                   alt="Peta Distribusi Global CV Asia Plastik"
                   fill
                   className="object-contain opacity-80 dark:opacity-60 transition-opacity duration-500"
