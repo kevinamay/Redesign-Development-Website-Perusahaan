@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 import Link from "next/link";
 import ThemeToggle from "@/components/ThemeToggle";
@@ -24,6 +25,11 @@ interface MobileDrawerProps {
 
 export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
   const { lang, setLanguage, t } = useLanguage();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const languageOptions: { code: Language; label: string }[] = [
     { code: "id", label: "ID" },
@@ -54,7 +60,7 @@ export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isOpen, onClose]);
 
-  if (!isOpen) return null;
+  if (!isOpen || !mounted) return null;
 
   const navLinks = [
     { label: t.navbar.home, href: "/", icon: Home },
@@ -64,17 +70,17 @@ export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
     { label: t.navbar.contact, href: "/kontak", icon: PhoneCall },
   ];
 
-  return (
-    <div className="fixed inset-0 z-50 overflow-hidden" role="dialog" aria-modal="true">
+  return createPortal(
+    <div className="fixed inset-0 z-[99999] overflow-hidden" role="dialog" aria-modal="true">
       {/* 1. PANEL & BACKDROP (GLASSMORPHISM) */}
       <div
         onClick={onClose}
-        className="fixed inset-0 z-40 bg-slate-900/60 backdrop-blur-sm transition-opacity duration-300 animate-fade-in"
+        className="fixed inset-0 z-[99998] bg-slate-900/60 backdrop-blur-sm transition-opacity duration-300 animate-fade-in"
         aria-hidden="true"
       />
 
       {/* 2. SIDEBAR PANEL (SLIDE IN FROM RIGHT) */}
-      <aside className="fixed right-0 top-0 h-full w-[85%] max-w-sm bg-white dark:bg-slate-900 shadow-2xl z-50 flex flex-col justify-between transition-transform duration-300 overflow-y-auto border-l border-slate-100 dark:border-slate-800">
+      <aside className="fixed right-0 top-0 h-full w-[85%] max-w-sm bg-white dark:bg-slate-900 shadow-2xl z-[99999] flex flex-col justify-between transition-transform duration-300 overflow-y-auto border-l border-slate-100 dark:border-slate-800">
         <div>
           {/* HEADER SECTION */}
           <div className="p-6 pb-5 flex items-center justify-between border-b border-slate-100 dark:border-slate-800/80">
@@ -238,6 +244,7 @@ export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
           </div>
         </div>
       </aside>
-    </div>
+    </div>,
+    document.body
   );
 }

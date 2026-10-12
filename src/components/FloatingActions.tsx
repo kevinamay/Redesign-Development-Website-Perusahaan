@@ -254,7 +254,7 @@ export default function FloatingActions() {
       {/* ========================================================================= */}
       <aside
         aria-label="Kontak Cepat & Asisten AI"
-        className="fixed bottom-5 right-5 sm:bottom-7 sm:right-7 z-50 flex flex-col items-end gap-3.5 select-none"
+        className="fixed bottom-5 right-5 sm:bottom-7 sm:right-7 z-40 flex flex-col items-end gap-3.5 select-none"
       >
         {/* TOP ITEM: WHATSAPP BUTTON & TOOLTIP */}
         <div className="flex items-center gap-3">
@@ -350,7 +350,7 @@ export default function FloatingActions() {
           role="dialog"
           aria-modal="true"
           aria-labelledby="ai-chat-title"
-          className="fixed bottom-24 right-4 sm:right-7 z-50 w-[92vw] sm:w-[410px] h-[550px] max-h-[82vh] bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl rounded-3xl shadow-2xl border border-slate-200/90 dark:border-slate-800 flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-6 duration-300"
+          className="fixed bottom-24 right-4 sm:right-7 z-40 w-[92vw] sm:w-[410px] h-[550px] max-h-[82vh] bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl rounded-3xl shadow-2xl border border-slate-200/90 dark:border-slate-800 flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-6 duration-300"
         >
           {/* Header */}
           <div className="p-4 sm:p-4.5 bg-gradient-to-r from-blue-700 via-indigo-700 to-violet-700 text-white flex items-center justify-between shadow-sm">
