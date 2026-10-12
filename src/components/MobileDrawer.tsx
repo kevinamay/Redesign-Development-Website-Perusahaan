@@ -199,7 +199,7 @@ export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
           <div className="flex items-center gap-3">
             {/* Instagram */}
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/asia_plastik/"
               target="_blank"
               rel="noopener noreferrer"
               className="w-9 h-9 rounded-full bg-white dark:bg-slate-700/80 border border-slate-200/80 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:text-white hover:bg-gradient-to-tr hover:from-amber-500 hover:to-pink-600 hover:border-transparent flex items-center justify-center transition-all shadow-2xs"
@@ -212,7 +212,7 @@ export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
 
             {/* Facebook */}
             <a
-              href="https://facebook.com"
+              href="https://www.facebook.com/asiaplastik/?locale=id_ID"
               target="_blank"
               rel="noopener noreferrer"
               className="w-9 h-9 rounded-full bg-white dark:bg-slate-700/80 border border-slate-200/80 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:text-white hover:bg-blue-600 hover:border-blue-600 flex items-center justify-center transition-all shadow-2xs"
@@ -225,7 +225,7 @@ export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
 
             {/* LinkedIn */}
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/company/asia-plastik-plastic-packaging-manufacturing/?originalSubdomain=id"
               target="_blank"
               rel="noopener noreferrer"
               className="w-9 h-9 rounded-full bg-white dark:bg-slate-700/80 border border-slate-200/80 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:text-white hover:bg-[#0A66C2] hover:border-[#0A66C2] flex items-center justify-center transition-all shadow-2xs"

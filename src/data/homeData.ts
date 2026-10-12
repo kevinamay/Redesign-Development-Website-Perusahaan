@@ -255,8 +255,8 @@ export const footerData: FooterData = {
     "Eco-Friendly Recyclable Resins",
   ],
   socialLinks: [
-    { platform: "LinkedIn", href: "https://linkedin.com" },
-    { platform: "Instagram", href: "https://instagram.com" },
+    { platform: "LinkedIn", href: "https://www.linkedin.com/company/asia-plastik-plastic-packaging-manufacturing/?originalSubdomain=id" },
+    { platform: "Instagram", href: "https://www.instagram.com/asia_plastik/" },
     { platform: "WhatsApp", href: "https://wa.me/6281234567890" },
   ],
   copyright: `© ${new Date().getFullYear()} CV. ASIA PLASTIK. Seluruh Hak Cipta Dilindungi Undang-Undang.`,
