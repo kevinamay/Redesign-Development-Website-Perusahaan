@@ -37,15 +37,18 @@ export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
     { code: "zh", label: "CN" },
   ];
 
-  // Prevent background scrolling when sidebar is open
+  // Prevent background scrolling and hide floating elements when sidebar is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
+      document.body.classList.add("drawer-open");
     } else {
       document.body.style.overflow = "";
+      document.body.classList.remove("drawer-open");
     }
     return () => {
       document.body.style.overflow = "";
+      document.body.classList.remove("drawer-open");
     };
   }, [isOpen]);
 
@@ -75,12 +78,12 @@ export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
       {/* 1. PANEL & BACKDROP (GLASSMORPHISM) */}
       <div
         onClick={onClose}
-        className="fixed inset-0 z-[99998] bg-slate-900/60 backdrop-blur-sm transition-opacity duration-300 animate-fade-in"
+        className="fixed inset-0 z-[99998] bg-slate-950/80 backdrop-blur-md transition-opacity duration-300 animate-fade-in"
         aria-hidden="true"
       />
 
-      {/* 2. SIDEBAR PANEL (SLIDE IN FROM RIGHT) */}
-      <aside className="fixed right-0 top-0 h-full w-[85%] max-w-sm bg-white dark:bg-slate-900 shadow-2xl z-[99999] flex flex-col justify-between transition-transform duration-300 overflow-y-auto border-l border-slate-100 dark:border-slate-800">
+      {/* 2. SIDEBAR PANEL (FULL WIDTH ON MOBILE, COMPACT ON TABLET/DESKTOP) */}
+      <aside className="fixed right-0 top-0 h-full w-full sm:w-[400px] sm:max-w-[90vw] bg-white dark:bg-slate-900 shadow-2xl z-[99999] flex flex-col justify-between transition-transform duration-300 overflow-y-auto border-l border-slate-100 dark:border-slate-800">
         <div>
           {/* HEADER SECTION */}
           <div className="p-6 pb-5 flex items-center justify-between border-b border-slate-100 dark:border-slate-800/80">

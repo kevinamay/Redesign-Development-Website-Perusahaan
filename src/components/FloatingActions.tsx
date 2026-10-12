@@ -127,7 +127,21 @@ export default function FloatingActions() {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [inputMessage, setInputMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // Hide FloatingActions completely whenever mobile drawer is open
+  useEffect(() => {
+    const checkDrawer = () => {
+      setIsDrawerOpen(document.body.classList.contains("drawer-open"));
+    };
+
+    checkDrawer();
+    const observer = new MutationObserver(checkDrawer);
+    observer.observe(document.body, { attributes: true, attributeFilter: ["class"] });
+
+    return () => observer.disconnect();
+  }, []);
 
   // WhatsApp Admin Configuration
   const rawPhone = "082244109503";
@@ -246,6 +260,8 @@ export default function FloatingActions() {
       );
     });
   };
+
+  if (isDrawerOpen) return null;
 
   return (
     <>
