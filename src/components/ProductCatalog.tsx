@@ -22,6 +22,11 @@ import {
   getLocalizedProduct,
 } from "@/data/catalogTranslations";
 import {
+  filterProductsBySearch,
+  categoryAliases,
+  popularPillCategoryMap,
+} from "@/lib/productSearch";
+import {
   keranjangProducts,
   boxLipatProducts,
   laluLintasProducts,
@@ -128,55 +133,42 @@ export default function ProductCatalog() {
   // Daftar seluruh produk yang digabungkan dengan metadata kategori untuk pencarian
   const allProductsWithCategory = useMemo(() => {
     return categoryIds.flatMap((catItem) => {
-      const catMeta =
-        categoriesTranslations[catItem.id]?.[lang] ||
-        categoriesTranslations[catItem.id]?.id;
+      const catMetaAllLang = categoriesTranslations[catItem.id];
+      const catMeta = catMetaAllLang?.[lang] || catMetaAllLang?.id;
       const catName = catMeta?.name || catItem.defaultName;
       const catDisplayName = catMeta?.displayName || catItem.defaultName.toUpperCase();
       const rawProducts = categoryProductsMap[catItem.id] || [];
+
+      // Gabungkan nama kategori di semua bahasa dan alias untuk pencarian yang akurat
+      const allCategoryNames = [
+        catName,
+        catDisplayName,
+        catItem.defaultName,
+        catItem.id,
+        catMetaAllLang?.id?.name,
+        catMetaAllLang?.id?.displayName,
+        catMetaAllLang?.en?.name,
+        catMetaAllLang?.en?.displayName,
+        catMetaAllLang?.zh?.name,
+        catMetaAllLang?.zh?.displayName,
+        ...(categoryAliases[catItem.id] || []),
+      ]
+        .filter(Boolean)
+        .join(" ");
 
       return rawProducts.map((p) => ({
         ...p,
         categoryId: catItem.id,
         categoryName: catName,
         categoryDisplayName: catDisplayName,
+        allCategorySearchText: allCategoryNames,
       }));
     });
   }, [lang]);
 
-  // Logika Filter Produk berdasarkan Nama Produk atau Nama Kategori
+  // Logika Filter Produk dengan pencarian cerdas (multi-kata, normalisasi simbol &, -, dll)
   const filteredProducts = useMemo(() => {
-    const query = searchQuery.trim().toLowerCase();
-    if (!query) return [];
-
-    return allProductsWithCategory.filter((p) => {
-      const localized = getLocalizedProduct(p, lang);
-
-      // 1. Pencarian berdasarkan Nama Produk
-      const titleMatch =
-        p.title.toLowerCase().includes(query) ||
-        localized.title.toLowerCase().includes(query);
-
-      // 2. Pencarian berdasarkan Nama Kategori Produk
-      const categoryMatch =
-        p.categoryName.toLowerCase().includes(query) ||
-        p.categoryDisplayName.toLowerCase().includes(query) ||
-        p.categoryId.toLowerCase().includes(query);
-
-      // 3. Pencarian berdasarkan Deskripsi & Subtitle
-      const descMatch =
-        p.deskripsi.toLowerCase().includes(query) ||
-        localized.deskripsi.toLowerCase().includes(query) ||
-        Boolean(p.subtitle && p.subtitle.toLowerCase().includes(query)) ||
-        Boolean(localized.subtitle && localized.subtitle.toLowerCase().includes(query));
-
-      // 4. Pencarian berdasarkan Dimensi & Berat
-      const specMatch =
-        p.dimensi.toLowerCase().includes(query) ||
-        p.berat.toLowerCase().includes(query);
-
-      return titleMatch || categoryMatch || descMatch || specMatch;
-    });
+    return filterProductsBySearch(allProductsWithCategory, searchQuery, lang);
   }, [searchQuery, allProductsWithCategory, lang]);
 
   const isSearching = searchQuery.trim().length > 0;
@@ -316,7 +308,7 @@ export default function ProductCatalog() {
               <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-blue-500 shrink-0" />
               <span>{ui.search?.popularSearches || "Pencarian Populer:"}</span>
             </span>
-            {[
+            {(ui.search?.popularPills || [
               "Pallet",
               "Keranjang",
               "Box Lipat",
@@ -325,7 +317,7 @@ export default function ProductCatalog() {
               "Kaleng Pail",
               "Lalu Lintas",
               "Perikanan",
-            ].map((pill) => {
+            ]).map((pill) => {
               const isSelected = searchQuery.toLowerCase() === pill.toLowerCase();
               return (
                 <button
@@ -335,6 +327,11 @@ export default function ProductCatalog() {
                     if (isSelected) {
                       setSearchQuery("");
                     } else {
+                      const targetCat =
+                        popularPillCategoryMap[pill.toLowerCase()];
+                      if (targetCat) {
+                        setActiveCategoryId(targetCat);
+                      }
                       setSearchQuery(pill);
                     }
                   }}
