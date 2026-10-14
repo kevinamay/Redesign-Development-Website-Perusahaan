@@ -32,6 +32,15 @@ export const partnersList = [
     },
   },
   {
+    name: "PT. Aneka Indomakmur (AIM Biscuits)",
+    logo: "/images/logo/aim biscuits.png",
+    sector: {
+      id: "Industri Biskuit & Makanan Ringan",
+      en: "Biscuits & Confectionery Industry",
+      zh: "饼干与休闲食品产业",
+    },
+  },
+  {
     name: "Greenfields",
     logo: "/images/logo/greenfileds.png",
     sector: {
@@ -41,12 +50,30 @@ export const partnersList = [
     },
   },
   {
+    name: "PT HM Sampoerna Tbk",
+    logo: "/images/logo/sampoerna.png",
+    sector: {
+      id: "Industri Tembakau & Produk Konsumen (FMCG)",
+      en: "Tobacco & Consumer Goods Industry (FMCG)",
+      zh: "烟草及快速消费品产业",
+    },
+  },
+  {
     name: "PT. Indo Acidatama Tbk",
     logo: "/images/logo/indo acidatama.png",
     sector: {
       id: "Bahan Kimia & Agroindustri",
       en: "Chemicals & Agro-Industry",
       zh: "化工与农业综合产业",
+    },
+  },
+  {
+    name: "PT. Inti Daya Guna Aneka Warna (INDANA)",
+    logo: "/images/logo/indana.png",
+    sector: {
+      id: "Industri Cat & Pelapis Permukaan",
+      en: "Paints & Surface Coatings Industry",
+      zh: "涂料与表面保护漆产业",
     },
   },
   {
@@ -104,6 +131,15 @@ export const partnersList = [
     },
   },
   {
+    name: "PT. Nippon Paint Indonesia",
+    logo: "/images/logo/nippon paint.png",
+    sector: {
+      id: "Manufaktur Cat & Pelapis Berkualitas Global",
+      en: "Global Coatings & Decorative Paint Manufacturing",
+      zh: "全球高品质涂料与装饰漆制造",
+    },
+  },
+  {
     name: "Petrokimia Kayaku",
     logo: "/images/logo/petrokimia.png",
     sector: {
@@ -119,6 +155,15 @@ export const partnersList = [
       id: "Industri Agrokimia Terpadu",
       en: "Integrated Agrochemicals",
       zh: "综合农化生产",
+    },
+  },
+  {
+    name: "PT. PIM Pharmaceuticals",
+    logo: "/images/logo/pim.png",
+    sector: {
+      id: "Farmasi, Obat-obatan & Suplemen Kesehatan",
+      en: "Pharmaceuticals & Healthcare Supplements",
+      zh: "制药与健康医药制品",
     },
   },
   {
