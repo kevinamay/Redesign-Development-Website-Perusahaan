@@ -32,12 +32,30 @@ export const partnersList = [
     },
   },
   {
+    name: "PT. ALP Petro Industry",
+    logo: "/images/logo/alp petro.png",
+    sector: {
+      id: "Manufaktur Minyak Pelumas, Kimia Industri & Blending Oli",
+      en: "Lubricant Oil Manufacturing, Chemical Blending & Petrochemicals",
+      zh: "工业润滑油精炼、润滑剂调配与石化化学品制造",
+    },
+  },
+  {
     name: "PT. Aneka Indomakmur (AIM Biscuits)",
     logo: "/images/logo/aim biscuits.png",
     sector: {
       id: "Industri Biskuit & Makanan Ringan",
       en: "Biscuits & Confectionery Industry",
       zh: "饼干与休闲食品产业",
+    },
+  },
+  {
+    name: "PT. Asian Agri",
+    logo: "/images/logo/asian agri.png",
+    sector: {
+      id: "Agribisnis Minyak Kelapa Sawit & Produk Pangan Terpadu",
+      en: "Integrated Palm Oil Agribusiness & Sustainable Food Products",
+      zh: "综合棕榈油农业与可持续绿色粮油生产",
     },
   },
   {
@@ -56,6 +74,15 @@ export const partnersList = [
       id: "Industri Pangan Olahan, Kacang & Makanan Ringan",
       en: "Food Manufacturing, Peanuts & Confectionery Snacks",
       zh: "食品制造、坚果与休闲零食产业",
+    },
+  },
+  {
+    name: "PT. Faber-Castell International Indonesia",
+    logo: "/images/logo/faber castell.png",
+    sector: {
+      id: "Manufaktur Alat Tulis, Gambar & Perlengkapan Seni Global",
+      en: "Global Writing Instruments, Drawing & Art Supplies Manufacturing",
+      zh: "全球知名书写工具、美术用品与文具制造",
     },
   },
   {
@@ -113,6 +140,15 @@ export const partnersList = [
     },
   },
   {
+    name: "PT. Jadi Abadi Corak Biscuit (Jacobis)",
+    logo: "/images/logo/jacobis.png",
+    sector: {
+      id: "Industri Biskuit, Wafer, Cookies & Makanan Ringan Ekspor",
+      en: "Biscuits, Wafers, Cookies & Confectionery Export Manufacturing",
+      zh: "大型饼干制造、威化曲奇与休闲食品出口产业",
+    },
+  },
+  {
     name: "Kelaya Hair Treatment",
     logo: "/images/logo/kelaya.png",
     sector: {
@@ -146,6 +182,15 @@ export const partnersList = [
       id: "Industri Farmasi, Layanan Kesehatan & Makanan Konsumen",
       en: "Pharmaceuticals, Healthcare Products & Consumer Foods",
       zh: "制药、健康医疗与高品质消费食品产业",
+    },
+  },
+  {
+    name: "MAKO Cake and Bakery",
+    logo: "/images/logo/mako.png",
+    sector: {
+      id: "Industri Roti, Kue Butik & Produk Pastry Premium",
+      en: "Japanese-Inspired Boutique Bakery, Cakes & Premium Pastry",
+      zh: "日式精品烘焙、精致蛋糕与优质西点产业",
     },
   },
   {
