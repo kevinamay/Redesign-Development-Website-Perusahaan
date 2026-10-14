@@ -50,6 +50,24 @@ export const partnersList = [
     },
   },
   {
+    name: "PT. Dua Kelinci",
+    logo: "/images/logo/dua kelinci.png",
+    sector: {
+      id: "Industri Pangan Olahan, Kacang & Makanan Ringan",
+      en: "Food Manufacturing, Peanuts & Confectionery Snacks",
+      zh: "食品制造、坚果与休闲零食产业",
+    },
+  },
+  {
+    name: "PT. Gloria Origita Cosmetics (Purbasari)",
+    logo: "/images/logo/purbasari.png",
+    sector: {
+      id: "Produk Perawatan Tubuh, Kosmetik & Skincare Nusantara",
+      en: "Traditional Body Care, Cosmetics & Modern Skincare",
+      zh: "印尼传统身体护理、美妆与个人护肤品",
+    },
+  },
+  {
     name: "Greenfields",
     logo: "/images/logo/greenfileds.png",
     sector: {
@@ -122,6 +140,15 @@ export const partnersList = [
     },
   },
   {
+    name: "PT. Konimex",
+    logo: "/images/logo/konimex.png",
+    sector: {
+      id: "Industri Farmasi, Layanan Kesehatan & Makanan Konsumen",
+      en: "Pharmaceuticals, Healthcare Products & Consumer Foods",
+      zh: "制药、健康医疗与高品质消费食品产业",
+    },
+  },
+  {
     name: "Mak",
     logo: "/images/logo/mak.png",
     sector: {
@@ -176,6 +203,15 @@ export const partnersList = [
     },
   },
   {
+    name: "PT. Pacific Paint (Since 1943)",
+    logo: "/images/logo/pacific paint.png",
+    sector: {
+      id: "Manufaktur Cat & Pelapis Permukaan Pelopor di Indonesia",
+      en: "Pioneering Paint & Architectural Coating Manufacturing",
+      zh: "印尼老字号涂料与建筑表面涂层制造",
+    },
+  },
+  {
     name: "PT. Panfila Indosari (RON 88)",
     logo: "/images/logo/ron88.png",
     sector: {
@@ -218,6 +254,15 @@ export const partnersList = [
       id: "Produsen Pupuk Nasional BUMN",
       en: "National Fertilizer SOE",
       zh: "国家级化肥制造",
+    },
+  },
+  {
+    name: "Rumah Kreatif BUMN (RKB)",
+    logo: "/images/logo/rumah bumn.png",
+    sector: {
+      id: "Pusat Edukasi, Pengembangan & Pembinaan UMKM Indonesia",
+      en: "MSME Incubation, Digitalization & Empowerment Hub",
+      zh: "印尼中小微企业数字化与创业孵化发展中心",
     },
   },
   {
