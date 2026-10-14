@@ -212,6 +212,15 @@ export const partnersList = [
     },
   },
   {
+    name: "PT. Mikatasa Agung",
+    logo: "/images/logo/mikatasa.png",
+    sector: {
+      id: "Manufaktur Perekat, Lem Industri & Cat Pelapis",
+      en: "Industrial Adhesives, Sealants & Surface Paint Coatings",
+      zh: "工业粘合剂、胶粘剂与建筑涂料制造",
+    },
+  },
+  {
     name: "MS Glow Skincare",
     logo: "/images/logo/ms glow.png",
     sector: {
@@ -302,12 +311,30 @@ export const partnersList = [
     },
   },
   {
+    name: "PT. Realfood Winta Asia (Realfood)",
+    logo: "/images/logo/realfood.png",
+    sector: {
+      id: "Makanan & Minuman Sehat Sarang Burung Walet",
+      en: "Edible Bird's Nest Health & Wellness Beverages",
+      zh: "印尼天然燕窝健康饮品与滋补营养食品",
+    },
+  },
+  {
     name: "Rumah Kreatif BUMN (RKB)",
     logo: "/images/logo/rumah bumn.png",
     sector: {
       id: "Pusat Edukasi, Pengembangan & Pembinaan UMKM Indonesia",
       en: "MSME Incubation, Digitalization & Empowerment Hub",
       zh: "印尼中小微企业数字化与创业孵化发展中心",
+    },
+  },
+  {
+    name: "PT. Serena Indopangan Industri",
+    logo: "/images/logo/serena.png",
+    sector: {
+      id: "Industri Biskuit, Cookies & Makanan Ringan Berkualitas",
+      en: "Premium Biscuits, Cookies & Confectionery Manufacturing",
+      zh: "优质休闲饼干、曲奇与西点制造产业",
     },
   },
   {
