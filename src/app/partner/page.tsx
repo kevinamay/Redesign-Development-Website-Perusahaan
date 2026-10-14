@@ -23,6 +23,15 @@ import { useLanguage } from "@/data/translations";
 
 export const partnersList = [
   {
+    name: "PT. Additon Karya Sembada",
+    logo: "/images/logo/additon.png",
+    sector: {
+      id: "Bahan Kimia Konstruksi & Aditif Beton",
+      en: "Construction Chemicals & Concrete Admixtures",
+      zh: "建筑化学品与混凝土外加剂",
+    },
+  },
+  {
     name: "Greenfields",
     logo: "/images/logo/greenfileds.png",
     sector: {
@@ -179,7 +188,7 @@ export default function PartnerPage() {
       heroTitle: "ASIA PLASTIK PARTNER",
       heroSubtitle:
         "Kami bangga dipercaya oleh perusahaan multinasional, BUMN, dan brand terkemuka dalam menyediakan kemasan plastik presisi berkualitas tinggi.",
-      partnerCountBadge: "16 Mitra Korporat",
+      partnerCountBadge: `${partnersList.length} Mitra Korporat`,
       gridEyebrow: "ASIA PLASTIK",
       gridTitle: "MITRA TEPERCAYA KAMI",
       valuePropEyebrow: "NILAI UNGGUL ASIA PLASTIK",
@@ -220,7 +229,7 @@ export default function PartnerPage() {
       heroTitle: "ASIA PLASTIK PARTNERS",
       heroSubtitle:
         "We are excited about the opportunity to collaborate and create value together.",
-      partnerCountBadge: "16 Corporate Partners",
+      partnerCountBadge: `${partnersList.length} Corporate Partners`,
       gridEyebrow: "ASIA PLASTIK",
       gridTitle: "OUR TRUSTED PARTNERS",
       valuePropEyebrow: "ASIA PLASTIK VALUES",
@@ -260,7 +269,7 @@ export default function PartnerPage() {
       heroEyebrow: "欢迎访问我们的合作伙伴页面！",
       heroTitle: "亚洲塑料 合作伙伴",
       heroSubtitle: "我们期待与您携手合作，共同创造更大商业价值与卓越包装品质。",
-      partnerCountBadge: "16 家企业合作伙伴",
+      partnerCountBadge: `${partnersList.length} 家企业合作伙伴`,
       gridEyebrow: "亚洲塑料合作企业",
       gridTitle: "我们值得信赖的合作伙伴",
       valuePropEyebrow: "亚洲塑料核心价值",
@@ -364,7 +373,7 @@ export default function PartnerPage() {
             <div className="w-16 h-1 bg-blue-600 mx-auto mt-4 rounded-full" />
           </div>
 
-          {/* Symmetrical 4-Column Grid: 16 items = 4 rows of 4 cards perfectly balanced */}
+          {/* Partner Cards Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 sm:gap-6 lg:gap-7">
             {partnersList.map((partner, index) => (
               <div
