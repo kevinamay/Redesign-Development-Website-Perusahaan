@@ -41,6 +41,15 @@ export const partnersList = [
     },
   },
   {
+    name: "PT. Atlantic Biruraya (Cheers Water)",
+    logo: "/images/logo/cheers.png",
+    sector: {
+      id: "Air Minum Dalam Kemasan & Minuman Sehat Beralkali",
+      en: "Healthy Alkaline Drinking Water & Bottled Beverages",
+      zh: "健康碱性饮用水及瓶装饮品产业",
+    },
+  },
+  {
     name: "Greenfields",
     logo: "/images/logo/greenfileds.png",
     sector: {
@@ -68,6 +77,15 @@ export const partnersList = [
     },
   },
   {
+    name: "PT. Indofood Sukses Makmur Tbk",
+    logo: "/images/logo/indofood.png",
+    sector: {
+      id: "Industri Pangan Olahan & Total Food Solutions",
+      en: "Food Processing & Total Food Solutions",
+      zh: "综合食品制造与全面食品方案",
+    },
+  },
+  {
     name: "PT. Inti Daya Guna Aneka Warna (INDANA)",
     logo: "/images/logo/indana.png",
     sector: {
@@ -83,6 +101,15 @@ export const partnersList = [
       id: "Perawatan Pribadi & Kosmetik",
       en: "Personal Care & Cosmetics",
       zh: "个人护理与美妆",
+    },
+  },
+  {
+    name: "Kementerian Koperasi dan UKM RI",
+    logo: "/images/logo/kemenkopukm.png",
+    sector: {
+      id: "Kementerian Pembinaan Koperasi & UKM RI",
+      en: "Ministry of Cooperatives & SMEs Republic of Indonesia",
+      zh: "印度尼西亚共和国合作社与中小微企业部",
     },
   },
   {
@@ -137,6 +164,24 @@ export const partnersList = [
       id: "Manufaktur Cat & Pelapis Berkualitas Global",
       en: "Global Coatings & Decorative Paint Manufacturing",
       zh: "全球高品质涂料与装饰漆制造",
+    },
+  },
+  {
+    name: "OT Group (Orang Tua)",
+    logo: "/images/logo/ot.png",
+    sector: {
+      id: "Industri Makanan, Minuman & Produk Konsumen (FMCG)",
+      en: "Food, Beverage & Fast-Moving Consumer Goods (FMCG)",
+      zh: "食品、饮料与快速消费品产业 (FMCG)",
+    },
+  },
+  {
+    name: "PT. Panfila Indosari (RON 88)",
+    logo: "/images/logo/ron88.png",
+    sector: {
+      id: "Air Minum Dalam Kemasan (AMDK) & Air Mineral Alami",
+      en: "Bottled Drinking Water & Natural Mineral Water",
+      zh: "天然矿泉水与高品质饮用水制造",
     },
   },
   {
