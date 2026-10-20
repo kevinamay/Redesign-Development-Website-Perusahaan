@@ -71,10 +71,12 @@ export default function KontakPage() {
       locationsSectionSubtitle:
         "Fasilitas produksi modern dan kantor operasional kami di Kawasan Industri Rungkut Surabaya siap menyambut Anda.",
       mapOpenButton: "Buka di Google Maps",
+      location1Badge: "Kantor & Pabrik Utama",
       location1Title: "Kantor & Pabrik Utama (CV. Asia Plastik)",
       location1Desc:
         "Jalan Rungkut Industri III/27A, Surabaya - Indonesia, Kode Pos 60293",
-      location2Title: "Fasilitas Produksi II (PT. Asia Plastik)",
+      location2Badge: "Kantor, Pabrik dan Retail",
+      location2Title: "Kantor, Pabrik dan Retail (PT. Asia Plastik)",
       location2Desc:
         "Kawasan Industri Rungkut, Surabaya - Jawa Timur, Indonesia",
     },
@@ -114,10 +116,12 @@ export default function KontakPage() {
       locationsSectionSubtitle:
         "Our state-of-the-art manufacturing facilities and corporate offices in SIER Industrial Estate Surabaya.",
       mapOpenButton: "Open in Google Maps",
+      location1Badge: "Head Office & Main Plant",
       location1Title: "Head Office & Main Plant (CV. Asia Plastik)",
       location1Desc:
         "Jalan Rungkut Industri III/27A, Surabaya - Indonesia, Postal Code 60293",
-      location2Title: "Manufacturing Facility II (PT. Asia Plastik)",
+      location2Badge: "Office, Factory & Retail",
+      location2Title: "Office, Factory & Retail (PT. Asia Plastik)",
       location2Desc:
         "Rungkut Industrial Estate, Surabaya - East Java, Indonesia",
     },
@@ -157,10 +161,12 @@ export default function KontakPage() {
       locationsSectionSubtitle:
         "欢迎莅临我们位于泗水隆库特工业园区的现代化模具与注塑吹塑制造基地。",
       mapOpenButton: "在谷歌地图中打开",
+      location1Badge: "总部办公与主厂区",
       location1Title: "总部办公大楼及一号制造基地 (CV. Asia Plastik)",
       location1Desc:
         "Jalan Rungkut Industri III/27A, Surabaya - Indonesia, 邮编 60293",
-      location2Title: "二号制造工厂 (PT. Asia Plastik)",
+      location2Badge: "办公、工厂与零售展厅",
+      location2Title: "办公室、工厂与零售部 (PT. Asia Plastik)",
       location2Desc:
         "Kawasan Industri Rungkut, Surabaya - Jawa Timur, Indonesia",
     },
@@ -531,7 +537,7 @@ export default function KontakPage() {
                   <div>
                     <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs font-semibold mb-2">
                       <Building2 className="w-3.5 h-3.5" />
-                      <span>Kantor & Pabrik Utama</span>
+                      <span>{content.location1Badge}</span>
                     </div>
                     <h3 className="text-lg font-bold text-slate-900 dark:text-white">
                       {content.location1Title}
@@ -546,7 +552,7 @@ export default function KontakPage() {
                 {/* Google Map Embedded Iframe */}
                 <div className="relative w-full h-80 rounded-2xl overflow-hidden bg-slate-200 dark:bg-slate-800 shadow-inner">
                   <iframe
-                    title="Peta Kantor Utama CV Asia Plastik"
+                    title={`Peta ${content.location1Title}`}
                     src="https://maps.google.com/maps?q=-7.3352907,112.7565049+(CV+Asia+Plastik)&z=16&output=embed"
                     width="100%"
                     height="100%"
@@ -578,7 +584,7 @@ export default function KontakPage() {
                   <div>
                     <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 text-xs font-semibold mb-2">
                       <Building2 className="w-3.5 h-3.5" />
-                      <span>Fasilitas Manufaktur II</span>
+                      <span>{content.location2Badge}</span>
                     </div>
                     <h3 className="text-lg font-bold text-slate-900 dark:text-white">
                       {content.location2Title}
@@ -593,7 +599,7 @@ export default function KontakPage() {
                 {/* Google Map Embedded Iframe */}
                 <div className="relative w-full h-80 rounded-2xl overflow-hidden bg-slate-200 dark:bg-slate-800 shadow-inner">
                   <iframe
-                    title="Peta Fasilitas Produksi II PT Asia Plastik"
+                    title={`Peta ${content.location2Title}`}
                     src="https://maps.google.com/maps?q=-7.3361184,112.7611569+(PT.+Asia+Plastik)&z=16&output=embed"
                     width="100%"
                     height="100%"
