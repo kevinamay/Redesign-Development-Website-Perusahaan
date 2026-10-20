@@ -284,7 +284,7 @@ export default function Hero() {
                 {/* 2. Secondary Button */}
                 <Link
                   href="/kontak"
-                  className="inline-flex items-center justify-center px-6 sm:px-7 py-3 sm:py-3.5 rounded-xl border-2 border-slate-800 dark:border-slate-400 text-slate-800 dark:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 bg-transparent font-semibold text-sm sm:text-base transition-all hover:-translate-y-0.5 active:translate-y-0 text-center"
+                  className="inline-flex items-center justify-center px-6 sm:px-7 py-3 sm:py-3.5 rounded-xl bg-white dark:bg-slate-800 text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-700 font-semibold text-sm sm:text-base shadow-md hover:shadow-lg shadow-slate-900/10 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 text-center"
                 >
                   <span>{t.hero.secondaryCta}</span>
                 </Link>
