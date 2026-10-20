@@ -13,9 +13,6 @@ import {
   Menu,
   ChevronDown,
   ChevronRight,
-  ShieldCheck,
-  Cpu,
-  Layers,
   Sparkles,
   ArrowRight,
 } from "lucide-react";
@@ -56,7 +53,6 @@ export default function Hero() {
     { label: t.navbar.contact, href: "/kontak" },
   ];
 
-  const featureIcons = [Cpu, ShieldCheck, Layers, Sparkles];
 
   return (
     <section
@@ -290,32 +286,7 @@ export default function Hero() {
                 </Link>
               </div>
 
-              {/* 3. Refined Feature Grid (Presisi Cetak Tinggi, etc.) */}
-              <div className="mt-6 sm:mt-8 pt-5 sm:pt-6 border-t border-slate-200/90 dark:border-slate-800 w-full box-border">
-                <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3 w-full box-border">
-                  {t.hero.features.map((feat, index) => {
-                    const Icon = featureIcons[index] || Sparkles;
-                    return (
-                      <div
-                        key={index}
-                        className="flex items-center gap-2.5 sm:gap-3 p-2.5 sm:p-3 rounded-xl bg-slate-50/70 dark:bg-slate-900/70 border border-slate-200/60 dark:border-slate-800/60 transition-colors min-w-0 box-border overflow-hidden"
-                      >
-                        <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-blue-50 dark:bg-blue-950/80 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0">
-                          <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-600 dark:text-blue-400" />
-                        </div>
-                        <div className="min-w-0 flex-1 overflow-hidden">
-                          <span className="font-bold text-slate-800 dark:text-white text-xs sm:text-sm block truncate sm:whitespace-normal">
-                            {feat.title}
-                          </span>
-                          <span className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 block truncate sm:whitespace-normal">
-                            {feat.subtitle}
-                          </span>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
+
             </div>
           </div>
         </div>
