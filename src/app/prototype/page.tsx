@@ -57,16 +57,16 @@ export default function PrototypePage() {
     },
     {
       id: "C" as MenuVariant,
-      name: "Varian C: Bottom Action Sheet",
-      tagline: "Thumb-Friendly Mobile Action Sheet (Modern App Style)",
-      badgeColor: "bg-emerald-50 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400 border-emerald-200 dark:border-emerald-800",
+      name: "Varian C: Bottom Action Sheet (FIX / Terpilih)",
+      tagline: "Thumb-Friendly Mobile Action Sheet + 6 Icon Media Sosial",
+      badgeColor: "bg-emerald-500 text-white dark:bg-emerald-600 dark:text-white border-emerald-500",
       description:
-        "Popup meluncur mulus dari dasar layar (bottom sheet) lengkap dengan drag handle. Setiap menu dilengkapi baris keterangan penjelasan (hint), serta dual action buttons di bawah (WhatsApp & Telepon).",
+        "Varian terpilih yang kini resmi digunakan! Popup meluncur mulus dari dasar layar (bottom sheet) lengkap dengan drag handle, sub-deskripsi di setiap menu, dual primary action button, serta 6 ikon media sosial resmi yang aktif & terhubung.",
       highlights: [
         "Paling ergonomis untuk jempol tangan satu di layar HP besar",
         "Setiap menu ada sub-deskripsi penjelas (hint)",
         "Tombol aksi cepat hijau WhatsApp & Kontak Penjualan",
-        "Standar UX aplikasi mobile modern masa kini",
+        "Dilengkapi 6 channel media sosial: FB, IG, YT, TikTok, LinkedIn, WA",
       ],
       component: VariantC,
     },

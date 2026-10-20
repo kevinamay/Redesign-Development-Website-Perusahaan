@@ -513,6 +513,28 @@ export function VariantC({
             <span>Kontak Kami</span>
           </Link>
         </div>
+
+        {/* 6 Official Social Media Channels (Facebook, Instagram, YouTube, TikTok, LinkedIn, WhatsApp) */}
+        <div className="pt-2.5 pb-1 border-t border-slate-100 dark:border-slate-800 flex flex-col items-center gap-2">
+          <div className="text-[11px] font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider">
+            Media Sosial Resmi
+          </div>
+          <div className="flex items-center justify-center gap-2.5 sm:gap-3 w-full">
+            {socialIcons.map((s, idx) => (
+              <a
+                key={idx}
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={s.name}
+                aria-label={s.name}
+                className="w-9 h-9 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-blue-600 dark:hover:bg-blue-600 text-slate-600 dark:text-slate-400 hover:text-white dark:hover:text-white flex items-center justify-center transition-all duration-200 shadow-2xs hover:scale-110 active:scale-95 cursor-pointer"
+              >
+                {s.icon}
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );

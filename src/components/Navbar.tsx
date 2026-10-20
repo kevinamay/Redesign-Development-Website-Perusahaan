@@ -5,11 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import ThemeToggle from "@/components/ThemeToggle";
-import {
-  MobileMenuPopup,
-  PrototypeSwitcher,
-  MenuVariant,
-} from "@/components/MobileMenuPrototypes";
+import MobileDrawer from "@/components/MobileDrawer";
 import { useLanguage, Language } from "@/data/translations";
 import {
   Mail,
@@ -25,28 +21,8 @@ export default function Navbar() {
   const { lang, setLanguage, t } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
-  const [menuVariant, setMenuVariant] = useState<MenuVariant>(() => {
-    if (typeof window !== "undefined") {
-      const params = new URLSearchParams(window.location.search);
-      const v = (params.get("variant") || params.get("menuVariant")) as MenuVariant;
-      if (v && ["A", "B", "C"].includes(v)) {
-        return v;
-      }
-    }
-    return "A";
-  });
   const langRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
-
-  const handleSelectVariant = (v: MenuVariant) => {
-    setMenuVariant(v);
-    if (typeof window !== "undefined") {
-      const url = new URL(window.location.href);
-      url.searchParams.set("variant", v);
-      url.searchParams.set("menuVariant", v);
-      window.history.replaceState({}, "", url.toString());
-    }
-  };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -248,19 +224,8 @@ export default function Navbar() {
         </nav>
       </header>
 
-      {/* Mobile Menu Popup Prototype (Variants A, B, C) */}
-      <MobileMenuPopup
-        isOpen={isMenuOpen}
-        onClose={() => setIsMenuOpen(false)}
-        variant={menuVariant}
-      />
-
-      {/* Floating Prototype Switcher Bar for Evaluation */}
-      <PrototypeSwitcher
-        currentVariant={menuVariant}
-        onSelectVariant={handleSelectVariant}
-        onOpenMenu={() => setIsMenuOpen(true)}
-      />
+      {/* Mobile Menu Bottom Sheet Popup (Final Design C) */}
+      <MobileDrawer isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
     </>
   );
 }
