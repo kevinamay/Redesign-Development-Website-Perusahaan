@@ -25,24 +25,24 @@ export default function Navbar() {
   const { lang, setLanguage, t } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
-  const [menuVariant, setMenuVariant] = useState<MenuVariant>("A");
-  const langRef = useRef<HTMLDivElement>(null);
-  const pathname = usePathname();
-
-  useEffect(() => {
+  const [menuVariant, setMenuVariant] = useState<MenuVariant>(() => {
     if (typeof window !== "undefined") {
       const params = new URLSearchParams(window.location.search);
-      const v = params.get("menuVariant") as MenuVariant;
+      const v = (params.get("variant") || params.get("menuVariant")) as MenuVariant;
       if (v && ["A", "B", "C"].includes(v)) {
-        setMenuVariant(v);
+        return v;
       }
     }
-  }, []);
+    return "A";
+  });
+  const langRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
 
   const handleSelectVariant = (v: MenuVariant) => {
     setMenuVariant(v);
     if (typeof window !== "undefined") {
       const url = new URL(window.location.href);
+      url.searchParams.set("variant", v);
       url.searchParams.set("menuVariant", v);
       window.history.replaceState({}, "", url.toString());
     }

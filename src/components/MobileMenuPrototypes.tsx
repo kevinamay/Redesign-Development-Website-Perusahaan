@@ -1,6 +1,7 @@
+// Prototype: Three variants of the mobile menu popup, switchable via ?variant=, on existing routes.
 "use client";
 
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useEffect, useCallback } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 import Link from "next/link";
@@ -528,11 +529,14 @@ export function MobileMenuPopup({
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
+      document.body.classList.add("menu-popup-open");
     } else {
       document.body.style.overflow = "";
+      document.body.classList.remove("menu-popup-open");
     }
     return () => {
       document.body.style.overflow = "";
+      document.body.classList.remove("menu-popup-open");
     };
   }, [isOpen]);
 
@@ -567,28 +571,28 @@ interface PrototypeSwitcherProps {
   onOpenMenu: () => void;
 }
 
+const PROTOTYPE_VARIANTS: { key: MenuVariant; name: string }[] = [
+  { key: "A", name: "A (Center Modal)" },
+  { key: "B", name: "B (Top Island)" },
+  { key: "C", name: "C (Bottom Sheet)" },
+];
+
 export function PrototypeSwitcher({
   currentVariant,
   onSelectVariant,
   onOpenMenu,
 }: PrototypeSwitcherProps) {
-  const variants: { key: MenuVariant; name: string }[] = [
-    { key: "A", name: "A (Center Modal)" },
-    { key: "B", name: "B (Top Island)" },
-    { key: "C", name: "C (Bottom Sheet)" },
-  ];
-
-  const currentIndex = variants.findIndex((v) => v.key === currentVariant);
+  const currentIndex = PROTOTYPE_VARIANTS.findIndex((v) => v.key === currentVariant);
 
   const prev = useCallback(() => {
-    const nextIdx = (currentIndex - 1 + variants.length) % variants.length;
-    onSelectVariant(variants[nextIdx].key);
-  }, [currentIndex, variants, onSelectVariant]);
+    const nextIdx = (currentIndex - 1 + PROTOTYPE_VARIANTS.length) % PROTOTYPE_VARIANTS.length;
+    onSelectVariant(PROTOTYPE_VARIANTS[nextIdx].key);
+  }, [currentIndex, onSelectVariant]);
 
   const next = useCallback(() => {
-    const nextIdx = (currentIndex + 1) % variants.length;
-    onSelectVariant(variants[nextIdx].key);
-  }, [currentIndex, variants, onSelectVariant]);
+    const nextIdx = (currentIndex + 1) % PROTOTYPE_VARIANTS.length;
+    onSelectVariant(PROTOTYPE_VARIANTS[nextIdx].key);
+  }, [currentIndex, onSelectVariant]);
 
   // Keyboard navigation
   useEffect(() => {
@@ -629,7 +633,7 @@ export function PrototypeSwitcher({
 
       {/* Direct Variant Buttons */}
       <div className="flex items-center gap-1">
-        {variants.map((v) => (
+        {PROTOTYPE_VARIANTS.map((v) => (
           <button
             key={v.key}
             onClick={() => onSelectVariant(v.key)}
