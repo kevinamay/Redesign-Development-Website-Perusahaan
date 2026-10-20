@@ -277,18 +277,25 @@ export default function AboutPage() {
       </section>
 
       {/* ========================================================================= */}
-      {/* 6. SECTION 4: MESIN PRODUKSI (Dark Section)                               */}
       {/* ========================================================================= */}
-      <section id="mesin-produksi" className="bg-[#1e3a5f] w-full py-24 text-white scroll-mt-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row gap-16 items-center">
+      {/* 6. SECTION 4: MESIN PRODUKSI (Parallax Transparent Break)                  */}
+      {/* ========================================================================= */}
+      <section
+        id="mesin-produksi"
+        className="relative w-full py-28 lg:py-32 bg-[url('/images/assets/warehouse.webp')] bg-fixed bg-cover bg-center overflow-hidden shadow-2xl scroll-mt-20 text-white"
+      >
+        {/* Dark Blue Transparent Overlay penetrating to background */}
+        <div className="absolute inset-0 bg-[#1e3a5f]/85 dark:bg-[#0a192f]/90 backdrop-blur-xs pointer-events-none" />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row gap-16 items-center">
           {/* Text Left */}
           <div className="w-full md:w-1/2 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-400/20 text-blue-200 text-xs font-bold tracking-widest uppercase border border-blue-400/30">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-400/20 text-blue-200 text-xs font-bold tracking-widest uppercase border border-blue-400/30 backdrop-blur-xs">
               <Cpu className="w-3.5 h-3.5" />
               <span>{t.machinery.eyebrow}</span>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight drop-shadow-sm">
               {t.machinery.title}
             </h2>
 
@@ -308,14 +315,14 @@ export default function AboutPage() {
             </p>
 
             {/* Machinery Features Badges */}
-            <div className="pt-4 grid grid-cols-2 gap-3">
-              <div className="p-3 rounded-xl bg-blue-950/50 border border-blue-400/20">
-                <span className="block text-xl font-bold text-white">{t.machinery.badge1Val}</span>
-                <span className="text-xs text-blue-200">{t.machinery.badge1Label}</span>
+            <div className="pt-4 grid grid-cols-2 gap-4">
+              <div className="p-4 rounded-2xl bg-white/10 dark:bg-slate-900/40 border border-white/15 dark:border-blue-400/20 backdrop-blur-md shadow-lg">
+                <span className="block text-2xl font-black text-white">{t.machinery.badge1Val}</span>
+                <span className="text-xs text-blue-200 font-medium">{t.machinery.badge1Label}</span>
               </div>
-              <div className="p-3 rounded-xl bg-blue-950/50 border border-blue-400/20">
-                <span className="block text-xl font-bold text-white">{t.machinery.badge2Val}</span>
-                <span className="text-xs text-blue-200">{t.machinery.badge2Label}</span>
+              <div className="p-4 rounded-2xl bg-white/10 dark:bg-slate-900/40 border border-white/15 dark:border-blue-400/20 backdrop-blur-md shadow-lg">
+                <span className="block text-2xl font-black text-white">{t.machinery.badge2Val}</span>
+                <span className="text-xs text-blue-200 font-medium">{t.machinery.badge2Label}</span>
               </div>
             </div>
           </div>
@@ -323,7 +330,7 @@ export default function AboutPage() {
           {/* Images Right (Two horizontal images stacked) */}
           <div className="w-full md:w-1/2 flex flex-col gap-6">
             {/* Machinery Image 1 */}
-            <div className="relative overflow-hidden rounded-2xl shadow-2xl border border-blue-400/20 group">
+            <div className="relative overflow-hidden rounded-2xl shadow-2xl border border-white/20 dark:border-blue-400/30 group backdrop-blur-xs">
               <Image
                 src="/images/assets/machinery-1.webp"
                 alt="Mesin Heavy-Duty Blow Moulding 500L"
@@ -332,14 +339,14 @@ export default function AboutPage() {
                 sizes="(max-width: 768px) 100vw, 500px"
                 className="w-full h-[220px] sm:h-[240px] object-cover transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent pointer-events-none" />
-              <div className="absolute bottom-3 left-4 text-white text-xs font-semibold bg-slate-900/80 backdrop-blur-md px-3 py-1 rounded-lg border border-white/10">
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute bottom-3 left-4 text-white text-xs font-semibold bg-slate-950/80 backdrop-blur-md px-3.5 py-1.5 rounded-xl border border-white/15 shadow-md">
                 {t.machinery.image1Badge}
               </div>
             </div>
 
             {/* Machinery Image 2 */}
-            <div className="relative overflow-hidden rounded-2xl shadow-2xl border border-blue-400/20 group">
+            <div className="relative overflow-hidden rounded-2xl shadow-2xl border border-white/20 dark:border-blue-400/30 group backdrop-blur-xs">
               <Image
                 src="/images/assets/machinery-2.webp"
                 alt="Lini Perakitan & Tooling In-House Asia Plastik"
@@ -348,8 +355,8 @@ export default function AboutPage() {
                 sizes="(max-width: 768px) 100vw, 500px"
                 className="w-full h-[220px] sm:h-[240px] object-cover transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent pointer-events-none" />
-              <div className="absolute bottom-3 left-4 text-white text-xs font-semibold bg-slate-900/80 backdrop-blur-md px-3 py-1 rounded-lg border border-white/10">
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute bottom-3 left-4 text-white text-xs font-semibold bg-slate-950/80 backdrop-blur-md px-3.5 py-1.5 rounded-xl border border-white/15 shadow-md">
                 {t.machinery.image2Badge}
               </div>
             </div>
