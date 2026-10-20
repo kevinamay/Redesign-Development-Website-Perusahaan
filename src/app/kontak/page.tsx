@@ -22,6 +22,16 @@ import {
 } from "lucide-react";
 import { useLanguage } from "@/data/translations";
 
+export interface LocationConfig {
+  id: string;
+  badge: string;
+  title: string;
+  desc: string;
+  mapEmbedSrc: string;
+  mapsUrl: string;
+  badgeColorClass: string;
+}
+
 export default function KontakPage() {
   const { lang } = useLanguage();
   const [formData, setFormData] = useState({
@@ -71,14 +81,30 @@ export default function KontakPage() {
       locationsSectionSubtitle:
         "Fasilitas produksi modern dan kantor operasional kami di Kawasan Industri Rungkut Surabaya siap menyambut Anda.",
       mapOpenButton: "Buka di Google Maps",
-      location1Badge: "Kantor & Pabrik Utama",
-      location1Title: "Kantor & Pabrik Utama (CV. Asia Plastik)",
-      location1Desc:
-        "Jalan Rungkut Industri III/27A, Surabaya - Indonesia, Kode Pos 60293",
-      location2Badge: "Kantor, Pabrik dan Retail",
-      location2Title: "Kantor, Pabrik dan Retail (PT. Asia Plastik)",
-      location2Desc:
-        "Kawasan Industri Rungkut, Surabaya - Jawa Timur, Indonesia",
+      locations: [
+        {
+          id: "lokasi-1",
+          badge: "Kantor & Pabrik Utama",
+          title: "Kantor & Pabrik Utama (CV. Asia Plastik)",
+          desc: "Jalan Rungkut Industri III/27A, Surabaya - Indonesia, Kode Pos 60293",
+          mapEmbedSrc:
+            "https://maps.google.com/maps?q=-7.3352907,112.7565049+(CV+Asia+Plastik)&z=16&output=embed",
+          mapsUrl: "https://maps.app.goo.gl/TUfEKgp7Mpuw8ntN8",
+          badgeColorClass:
+            "bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400",
+        },
+        {
+          id: "lokasi-2",
+          badge: "Kantor, Pabrik dan Retail",
+          title: "Kantor, Pabrik dan Retail (PT. Asia Plastik)",
+          desc: "Kawasan Industri Rungkut, Surabaya - Jawa Timur, Indonesia",
+          mapEmbedSrc:
+            "https://maps.google.com/maps?q=-7.3361184,112.7611569+(PT.+Asia+Plastik)&z=16&output=embed",
+          mapsUrl: "https://maps.app.goo.gl/Fmfe9x2CxzNP7FJTA",
+          badgeColorClass:
+            "bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400",
+        },
+      ] as LocationConfig[],
     },
     en: {
       breadcrumbHome: "Home",
@@ -116,14 +142,30 @@ export default function KontakPage() {
       locationsSectionSubtitle:
         "Our state-of-the-art manufacturing facilities and corporate offices in SIER Industrial Estate Surabaya.",
       mapOpenButton: "Open in Google Maps",
-      location1Badge: "Head Office & Main Plant",
-      location1Title: "Head Office & Main Plant (CV. Asia Plastik)",
-      location1Desc:
-        "Jalan Rungkut Industri III/27A, Surabaya - Indonesia, Postal Code 60293",
-      location2Badge: "Office, Factory & Retail",
-      location2Title: "Office, Factory & Retail (PT. Asia Plastik)",
-      location2Desc:
-        "Rungkut Industrial Estate, Surabaya - East Java, Indonesia",
+      locations: [
+        {
+          id: "location-1",
+          badge: "Head Office & Main Plant",
+          title: "Head Office & Main Plant (CV. Asia Plastik)",
+          desc: "Jalan Rungkut Industri III/27A, Surabaya - Indonesia, Postal Code 60293",
+          mapEmbedSrc:
+            "https://maps.google.com/maps?q=-7.3352907,112.7565049+(CV+Asia+Plastik)&z=16&output=embed",
+          mapsUrl: "https://maps.app.goo.gl/TUfEKgp7Mpuw8ntN8",
+          badgeColorClass:
+            "bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400",
+        },
+        {
+          id: "location-2",
+          badge: "Office, Factory & Retail",
+          title: "Office, Factory & Retail (PT. Asia Plastik)",
+          desc: "Rungkut Industrial Estate, Surabaya - East Java, Indonesia",
+          mapEmbedSrc:
+            "https://maps.google.com/maps?q=-7.3361184,112.7611569+(PT.+Asia+Plastik)&z=16&output=embed",
+          mapsUrl: "https://maps.app.goo.gl/Fmfe9x2CxzNP7FJTA",
+          badgeColorClass:
+            "bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400",
+        },
+      ] as LocationConfig[],
     },
     zh: {
       breadcrumbHome: "首页",
@@ -161,14 +203,30 @@ export default function KontakPage() {
       locationsSectionSubtitle:
         "欢迎莅临我们位于泗水隆库特工业园区的现代化模具与注塑吹塑制造基地。",
       mapOpenButton: "在谷歌地图中打开",
-      location1Badge: "总部办公与主厂区",
-      location1Title: "总部办公大楼及一号制造基地 (CV. Asia Plastik)",
-      location1Desc:
-        "Jalan Rungkut Industri III/27A, Surabaya - Indonesia, 邮编 60293",
-      location2Badge: "办公、工厂与零售展厅",
-      location2Title: "办公室、工厂与零售部 (PT. Asia Plastik)",
-      location2Desc:
-        "Kawasan Industri Rungkut, Surabaya - Jawa Timur, Indonesia",
+      locations: [
+        {
+          id: "location-1",
+          badge: "总部办公与主厂区",
+          title: "总部办公大楼及一号制造基地 (CV. Asia Plastik)",
+          desc: "Jalan Rungkut Industri III/27A, Surabaya - Indonesia, 邮编 60293",
+          mapEmbedSrc:
+            "https://maps.google.com/maps?q=-7.3352907,112.7565049+(CV+Asia+Plastik)&z=16&output=embed",
+          mapsUrl: "https://maps.app.goo.gl/TUfEKgp7Mpuw8ntN8",
+          badgeColorClass:
+            "bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400",
+        },
+        {
+          id: "location-2",
+          badge: "办公、工厂与零售展厅",
+          title: "办公室、工厂与零售部 (PT. Asia Plastik)",
+          desc: "Kawasan Industri Rungkut, Surabaya - Jawa Timur, Indonesia",
+          mapEmbedSrc:
+            "https://maps.google.com/maps?q=-7.3361184,112.7611569+(PT.+Asia+Plastik)&z=16&output=embed",
+          mapsUrl: "https://maps.app.goo.gl/Fmfe9x2CxzNP7FJTA",
+          badgeColorClass:
+            "bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400",
+        },
+      ] as LocationConfig[],
     },
   }[lang];
 
@@ -527,103 +585,60 @@ export default function KontakPage() {
               </p>
             </div>
 
-            {/* 2-Column Grid for TWO Map Locations */}
+            {/* 2-Column Grid for Map Locations */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              
-              {/* Map Card 1 (Kantor Utama) */}
-              <div className="bg-white dark:bg-slate-900 p-5 sm:p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-800 flex flex-col gap-4 hover:shadow-xl transition-all duration-300">
-                {/* Location Badge & Info */}
-                <div className="flex items-start justify-between gap-3">
-                  <div>
-                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs font-semibold mb-2">
-                      <Building2 className="w-3.5 h-3.5" />
-                      <span>{content.location1Badge}</span>
-                    </div>
-                    <h3 className="text-lg font-bold text-slate-900 dark:text-white">
-                      {content.location1Title}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 flex items-start gap-1.5">
-                      <MapPin className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
-                      <span>{content.location1Desc}</span>
-                    </p>
-                  </div>
-                </div>
-
-                {/* Google Map Embedded Iframe */}
-                <div className="relative w-full h-80 rounded-2xl overflow-hidden bg-slate-200 dark:bg-slate-800 shadow-inner">
-                  <iframe
-                    title={`Peta ${content.location1Title}`}
-                    src="https://maps.google.com/maps?q=-7.3352907,112.7565049+(CV+Asia+Plastik)&z=16&output=embed"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    className="w-full h-80 rounded-2xl grayscale hover:grayscale-0 transition-all duration-500"
-                  />
-                </div>
-
-                {/* Primary CTA Button */}
-                <a
-                  href="https://maps.app.goo.gl/TUfEKgp7Mpuw8ntN8"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full mt-auto inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-blue-600 dark:bg-slate-800 dark:hover:bg-blue-600 text-white font-semibold py-3.5 px-6 rounded-2xl transition-all duration-300 text-sm shadow-sm hover:shadow-md cursor-pointer group"
+              {content.locations.map((location) => (
+                <div
+                  key={location.id}
+                  className="bg-white dark:bg-slate-900 p-5 sm:p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-800 flex flex-col gap-4 hover:shadow-xl transition-all duration-300"
                 >
-                  <MapPin className="w-4 h-4 text-blue-400 group-hover:text-white transition-colors" />
-                  <span>{content.mapOpenButton}</span>
-                  <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-white group-hover:translate-x-0.5 transition-all" />
-                </a>
-              </div>
-
-              {/* Map Card 2 (Fasilitas/Cabang Kedua) */}
-              <div className="bg-white dark:bg-slate-900 p-5 sm:p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-800 flex flex-col gap-4 hover:shadow-xl transition-all duration-300">
-                {/* Location Badge & Info */}
-                <div className="flex items-start justify-between gap-3">
-                  <div>
-                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 text-xs font-semibold mb-2">
-                      <Building2 className="w-3.5 h-3.5" />
-                      <span>{content.location2Badge}</span>
+                  {/* Location Badge & Info */}
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <div
+                        className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full ${location.badgeColorClass} text-xs font-semibold mb-2`}
+                      >
+                        <Building2 className="w-3.5 h-3.5" />
+                        <span>{location.badge}</span>
+                      </div>
+                      <h3 className="text-lg font-bold text-slate-900 dark:text-white">
+                        {location.title}
+                      </h3>
+                      <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 flex items-start gap-1.5">
+                        <MapPin className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
+                        <span>{location.desc}</span>
+                      </p>
                     </div>
-                    <h3 className="text-lg font-bold text-slate-900 dark:text-white">
-                      {content.location2Title}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 flex items-start gap-1.5">
-                      <MapPin className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
-                      <span>{content.location2Desc}</span>
-                    </p>
                   </div>
+
+                  {/* Google Map Embedded Iframe */}
+                  <div className="relative w-full h-80 rounded-2xl overflow-hidden bg-slate-200 dark:bg-slate-800 shadow-inner">
+                    <iframe
+                      title={`Peta ${location.title}`}
+                      src={location.mapEmbedSrc}
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0 }}
+                      allowFullScreen
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      className="w-full h-80 rounded-2xl grayscale hover:grayscale-0 transition-all duration-500"
+                    />
+                  </div>
+
+                  {/* Primary CTA Button */}
+                  <a
+                    href={location.mapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full mt-auto inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-blue-600 dark:bg-slate-800 dark:hover:bg-blue-600 text-white font-semibold py-3.5 px-6 rounded-2xl transition-all duration-300 text-sm shadow-sm hover:shadow-md cursor-pointer group"
+                  >
+                    <MapPin className="w-4 h-4 text-blue-400 group-hover:text-white transition-colors" />
+                    <span>{content.mapOpenButton}</span>
+                    <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-white group-hover:translate-x-0.5 transition-all" />
+                  </a>
                 </div>
-
-                {/* Google Map Embedded Iframe */}
-                <div className="relative w-full h-80 rounded-2xl overflow-hidden bg-slate-200 dark:bg-slate-800 shadow-inner">
-                  <iframe
-                    title={`Peta ${content.location2Title}`}
-                    src="https://maps.google.com/maps?q=-7.3361184,112.7611569+(PT.+Asia+Plastik)&z=16&output=embed"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    className="w-full h-80 rounded-2xl grayscale hover:grayscale-0 transition-all duration-500"
-                  />
-                </div>
-
-                {/* Primary CTA Button */}
-                <a
-                  href="https://maps.app.goo.gl/Fmfe9x2CxzNP7FJTA"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full mt-auto inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-blue-600 dark:bg-slate-800 dark:hover:bg-blue-600 text-white font-semibold py-3.5 px-6 rounded-2xl transition-all duration-300 text-sm shadow-sm hover:shadow-md cursor-pointer group"
-                >
-                  <MapPin className="w-4 h-4 text-blue-400 group-hover:text-white transition-colors" />
-                  <span>{content.mapOpenButton}</span>
-                  <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-white group-hover:translate-x-0.5 transition-all" />
-                </a>
-              </div>
-
+              ))}
             </div>
           </div>
         </section>
