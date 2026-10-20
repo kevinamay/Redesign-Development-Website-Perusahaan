@@ -15,7 +15,7 @@ export interface Partner {
 export const partnersList: Partner[] = [
   {
     name: "PT. Additon Karya Sembada",
-    logo: "/images/logo/additon.png",
+    logo: "/images/logo/additon.webp",
     sector: {
       id: "Bahan Kimia Konstruksi & Aditif Beton",
       en: "Construction Chemicals & Concrete Admixtures",
@@ -24,7 +24,7 @@ export const partnersList: Partner[] = [
   },
   {
     name: "PT. ALP Petro Industry",
-    logo: "/images/logo/alp petro.png",
+    logo: "/images/logo/alp-petro.webp",
     sector: {
       id: "Manufaktur Minyak Pelumas, Kimia Industri & Blending Oli",
       en: "Lubricant Oil Manufacturing, Chemical Blending & Petrochemicals",
@@ -33,7 +33,7 @@ export const partnersList: Partner[] = [
   },
   {
     name: "PT. Aneka Indomakmur (AIM Biscuits)",
-    logo: "/images/logo/aim biscuits.png",
+    logo: "/images/logo/aim-biscuits.webp",
     sector: {
       id: "Industri Biskuit & Makanan Ringan",
       en: "Biscuits & Confectionery Industry",
@@ -42,7 +42,7 @@ export const partnersList: Partner[] = [
   },
   {
     name: "PT. Asian Agri",
-    logo: "/images/logo/asian agri.png",
+    logo: "/images/logo/asian-agri.webp",
     sector: {
       id: "Agribisnis Minyak Kelapa Sawit & Produk Pangan Terpadu",
       en: "Integrated Palm Oil Agribusiness & Sustainable Food Products",
@@ -51,7 +51,7 @@ export const partnersList: Partner[] = [
   },
   {
     name: "PT. Atlantic Biruraya (Cheers Water)",
-    logo: "/images/logo/cheers.png",
+    logo: "/images/logo/cheers.webp",
     sector: {
       id: "Air Minum Dalam Kemasan & Minuman Sehat Beralkali",
       en: "Healthy Alkaline Drinking Water & Bottled Beverages",
@@ -60,7 +60,7 @@ export const partnersList: Partner[] = [
   },
   {
     name: "PT. Dua Kelinci",
-    logo: "/images/logo/dua kelinci.png",
+    logo: "/images/logo/dua-kelinci.webp",
     sector: {
       id: "Industri Pangan Olahan, Kacang & Makanan Ringan",
       en: "Food Manufacturing, Peanuts & Confectionery Snacks",
@@ -69,7 +69,7 @@ export const partnersList: Partner[] = [
   },
   {
     name: "PT. Faber-Castell International Indonesia",
-    logo: "/images/logo/faber castell.png",
+    logo: "/images/logo/faber-castell.webp",
     sector: {
       id: "Manufaktur Alat Tulis, Gambar & Perlengkapan Seni Global",
       en: "Global Writing Instruments, Drawing & Art Supplies Manufacturing",
@@ -78,7 +78,7 @@ export const partnersList: Partner[] = [
   },
   {
     name: "PT. Gloria Origita Cosmetics (Purbasari)",
-    logo: "/images/logo/purbasari.png",
+    logo: "/images/logo/purbasari.webp",
     sector: {
       id: "Produk Perawatan Tubuh, Kosmetik & Skincare Nusantara",
       en: "Traditional Body Care, Cosmetics & Modern Skincare",
@@ -87,7 +87,7 @@ export const partnersList: Partner[] = [
   },
   {
     name: "Greenfields",
-    logo: "/images/logo/greenfileds.png",
+    logo: "/images/logo/greenfields.webp",
     sector: {
       id: "Industri Susu & Olahan Pangan",
       en: "Dairy & Beverage Industry",
@@ -96,7 +96,7 @@ export const partnersList: Partner[] = [
   },
   {
     name: "PT HM Sampoerna Tbk",
-    logo: "/images/logo/sampoerna.png",
+    logo: "/images/logo/sampoerna.webp",
     sector: {
       id: "Industri Tembakau & Produk Konsumen (FMCG)",
       en: "Tobacco & Consumer Goods Industry (FMCG)",
@@ -105,7 +105,7 @@ export const partnersList: Partner[] = [
   },
   {
     name: "PT. Indo Acidatama Tbk",
-    logo: "/images/logo/indo acidatama.png",
+    logo: "/images/logo/indo-acidatama.webp",
     sector: {
       id: "Bahan Kimia & Agroindustri",
       en: "Chemicals & Agro-Industry",
@@ -114,7 +114,7 @@ export const partnersList: Partner[] = [
   },
   {
     name: "PT. Indofood Sukses Makmur Tbk",
-    logo: "/images/logo/indofood.png",
+    logo: "/images/logo/indofood.webp",
     sector: {
       id: "Industri Pangan Olahan & Total Food Solutions",
       en: "Food Processing & Total Food Solutions",
@@ -123,7 +123,7 @@ export const partnersList: Partner[] = [
   },
   {
     name: "PT. Inti Daya Guna Aneka Warna (INDANA)",
-    logo: "/images/logo/indana.png",
+    logo: "/images/logo/indana.webp",
     sector: {
       id: "Industri Cat & Pelapis Permukaan",
       en: "Paints & Surface Coatings Industry",
@@ -132,7 +132,7 @@ export const partnersList: Partner[] = [
   },
   {
     name: "PT. Jadi Abadi Corak Biscuit (Jacobis)",
-    logo: "/images/logo/jacobis.png",
+    logo: "/images/logo/jacobis.webp",
     sector: {
       id: "Industri Biskuit, Wafer, Cookies & Makanan Ringan Ekspor",
       en: "Biscuits, Wafers, Cookies & Confectionery Export Manufacturing",
@@ -141,7 +141,7 @@ export const partnersList: Partner[] = [
   },
   {
     name: "Kelaya Hair Treatment",
-    logo: "/images/logo/kelaya.png",
+    logo: "/images/logo/kelaya.webp",
     sector: {
       id: "Perawatan Pribadi & Kosmetik",
       en: "Personal Care & Cosmetics",
@@ -150,7 +150,7 @@ export const partnersList: Partner[] = [
   },
   {
     name: "Kementerian Koperasi dan UKM RI",
-    logo: "/images/logo/kemenkopukm.png",
+    logo: "/images/logo/kemenkopukm.webp",
     sector: {
       id: "Kementerian Pembinaan Koperasi & UKM RI",
       en: "Ministry of Cooperatives & SMEs Republic of Indonesia",
@@ -159,7 +159,7 @@ export const partnersList: Partner[] = [
   },
   {
     name: "Kimia Farma",
-    logo: "/images/logo/kimia farma.png",
+    logo: "/images/logo/kimia-farma.webp",
     sector: {
       id: "Farmasi & Layanan Kesehatan",
       en: "Pharmaceutical & Healthcare",
@@ -168,7 +168,7 @@ export const partnersList: Partner[] = [
   },
   {
     name: "PT. Konimex",
-    logo: "/images/logo/konimex.png",
+    logo: "/images/logo/konimex.webp",
     sector: {
       id: "Industri Farmasi, Layanan Kesehatan & Makanan Konsumen",
       en: "Pharmaceuticals, Healthcare Products & Consumer Foods",
@@ -177,7 +177,7 @@ export const partnersList: Partner[] = [
   },
   {
     name: "MAKO Cake and Bakery",
-    logo: "/images/logo/mako.png",
+    logo: "/images/logo/mako.webp",
     sector: {
       id: "Industri Roti, Kue Butik & Produk Pastry Premium",
       en: "Japanese-Inspired Boutique Bakery, Cakes & Premium Pastry",
@@ -186,7 +186,7 @@ export const partnersList: Partner[] = [
   },
   {
     name: "Mak",
-    logo: "/images/logo/mak.png",
+    logo: "/images/logo/mak.webp",
     sector: {
       id: "Produk Rumah Tangga & Kimia",
       en: "Household & Chemical Products",
@@ -195,7 +195,7 @@ export const partnersList: Partner[] = [
   },
   {
     name: "PT. Megasurya Mas",
-    logo: "/images/logo/megasurya.png",
+    logo: "/images/logo/megasurya.webp",
     sector: {
       id: "Minyak Nabati & Sabun Industri",
       en: "Edible Oils & Soap Industry",
@@ -204,7 +204,7 @@ export const partnersList: Partner[] = [
   },
   {
     name: "PT. Mikatasa Agung",
-    logo: "/images/logo/mikatasa.png",
+    logo: "/images/logo/mikatasa.webp",
     sector: {
       id: "Manufaktur Perekat, Lem Industri & Cat Pelapis",
       en: "Industrial Adhesives, Sealants & Surface Paint Coatings",
@@ -213,7 +213,7 @@ export const partnersList: Partner[] = [
   },
   {
     name: "MS Glow Skincare",
-    logo: "/images/logo/ms glow.png",
+    logo: "/images/logo/ms-glow.webp",
     sector: {
       id: "Kecantikan & Skincare",
       en: "Beauty & Skincare",
@@ -222,7 +222,7 @@ export const partnersList: Partner[] = [
   },
   {
     name: "PT. Multi Sarana Indotani",
-    logo: "/images/logo/multi sarana.png",
+    logo: "/images/logo/multi-sarana.webp",
     sector: {
       id: "Agrokimia & Perlindungan Tanaman",
       en: "Agrochemicals & Crop Protection",
@@ -231,7 +231,7 @@ export const partnersList: Partner[] = [
   },
   {
     name: "PT. Nippon Paint Indonesia",
-    logo: "/images/logo/nippon paint.png",
+    logo: "/images/logo/nippon-paint.webp",
     sector: {
       id: "Manufaktur Cat & Pelapis Berkualitas Global",
       en: "Global Coatings & Decorative Paint Manufacturing",
@@ -240,7 +240,7 @@ export const partnersList: Partner[] = [
   },
   {
     name: "OT Group (Orang Tua)",
-    logo: "/images/logo/ot.png",
+    logo: "/images/logo/ot.webp",
     sector: {
       id: "Industri Makanan, Minuman & Produk Konsumen (FMCG)",
       en: "Food, Beverage & Fast-Moving Consumer Goods (FMCG)",
@@ -249,7 +249,7 @@ export const partnersList: Partner[] = [
   },
   {
     name: "PT. Pacific Paint (Since 1943)",
-    logo: "/images/logo/pacific paint.png",
+    logo: "/images/logo/pacific-paint.webp",
     sector: {
       id: "Manufaktur Cat & Pelapis Permukaan Pelopor di Indonesia",
       en: "Pioneering Paint & Architectural Coating Manufacturing",
@@ -258,7 +258,7 @@ export const partnersList: Partner[] = [
   },
   {
     name: "PT. Panfila Indosari (RON 88)",
-    logo: "/images/logo/ron88.png",
+    logo: "/images/logo/ron88.webp",
     sector: {
       id: "Air Minum Dalam Kemasan (AMDK) & Air Mineral Alami",
       en: "Bottled Drinking Water & Natural Mineral Water",
@@ -267,7 +267,7 @@ export const partnersList: Partner[] = [
   },
   {
     name: "Petrokimia Kayaku",
-    logo: "/images/logo/petrokimia.png",
+    logo: "/images/logo/petrokimia.webp",
     sector: {
       id: "Formulasi Pestisida & Pupuk",
       en: "Pesticides & Fertilizers",
@@ -276,7 +276,7 @@ export const partnersList: Partner[] = [
   },
   {
     name: "PT Petrosida Gresik",
-    logo: "/images/logo/petrosida.png",
+    logo: "/images/logo/petrosida.webp",
     sector: {
       id: "Industri Agrokimia Terpadu",
       en: "Integrated Agrochemicals",
@@ -285,7 +285,7 @@ export const partnersList: Partner[] = [
   },
   {
     name: "PT. PIM Pharmaceuticals",
-    logo: "/images/logo/pim.png",
+    logo: "/images/logo/pim.webp",
     sector: {
       id: "Farmasi, Obat-obatan & Suplemen Kesehatan",
       en: "Pharmaceuticals & Healthcare Supplements",
@@ -294,7 +294,7 @@ export const partnersList: Partner[] = [
   },
   {
     name: "PT. Pupuk Kujang Cikampek",
-    logo: "/images/logo/pomal.png",
+    logo: "/images/logo/pomal.webp",
     sector: {
       id: "Produsen Pupuk Nasional BUMN",
       en: "National Fertilizer SOE",
@@ -303,7 +303,7 @@ export const partnersList: Partner[] = [
   },
   {
     name: "PT. Realfood Winta Asia (Realfood)",
-    logo: "/images/logo/realfood.png",
+    logo: "/images/logo/realfood.webp",
     sector: {
       id: "Makanan & Minuman Sehat Sarang Burung Walet",
       en: "Edible Bird's Nest Health & Wellness Beverages",
@@ -312,7 +312,7 @@ export const partnersList: Partner[] = [
   },
   {
     name: "Rumah Kreatif BUMN (RKB)",
-    logo: "/images/logo/rumah bumn.png",
+    logo: "/images/logo/rumah-bumn.webp",
     sector: {
       id: "Pusat Edukasi, Pengembangan & Pembinaan UMKM Indonesia",
       en: "MSME Incubation, Digitalization & Empowerment Hub",
@@ -321,7 +321,7 @@ export const partnersList: Partner[] = [
   },
   {
     name: "PT. Serena Indopangan Industri",
-    logo: "/images/logo/serena.png",
+    logo: "/images/logo/serena.webp",
     sector: {
       id: "Industri Biskuit, Cookies & Makanan Ringan Berkualitas",
       en: "Premium Biscuits, Cookies & Confectionery Manufacturing",
@@ -330,7 +330,7 @@ export const partnersList: Partner[] = [
   },
   {
     name: "SIMP",
-    logo: "/images/logo/simp.png",
+    logo: "/images/logo/simp.webp",
     sector: {
       id: "Agribisnis Kelapa Sawit & Pangan",
       en: "Agribusiness & Food Processing",
@@ -339,7 +339,7 @@ export const partnersList: Partner[] = [
   },
   {
     name: "Sinarmas Agribusiness and Food",
-    logo: "/images/logo/sinarmas.png",
+    logo: "/images/logo/sinarmas.webp",
     sector: {
       id: "Agribisnis Global & FMCG",
       en: "Agribusiness & Global FMCG",
@@ -348,7 +348,7 @@ export const partnersList: Partner[] = [
   },
   {
     name: "Tjiwi Kimia Paper Products",
-    logo: "/images/logo/twijikimia.png",
+    logo: "/images/logo/twijikimia.webp",
     sector: {
       id: "Industri Kertas & Kemasan",
       en: "Paper & Packaging Products",
@@ -357,7 +357,7 @@ export const partnersList: Partner[] = [
   },
   {
     name: "PT Tunas Baru Lampung",
-    logo: "/images/logo/tunasbaru.png",
+    logo: "/images/logo/tunasbaru.webp",
     sector: {
       id: "Perkebunan & Minyak Goreng",
       en: "Plantation & Edible Oils",
@@ -366,7 +366,7 @@ export const partnersList: Partner[] = [
   },
   {
     name: "Wilmar",
-    logo: "/images/logo/wilmar.png",
+    logo: "/images/logo/wilmar.webp",
     sector: {
       id: "Rantai Pasok Agribisnis Global",
       en: "Global Agribusiness Supply Chain",
