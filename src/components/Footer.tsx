@@ -44,7 +44,7 @@ export default function Footer() {
       isExternal: true,
       icon: (
         <svg
-          className="w-5 h-5 fill-current"
+          className="w-6 h-6 fill-current"
           viewBox="0 0 24 24"
           aria-hidden="true"
         >
@@ -62,7 +62,7 @@ export default function Footer() {
       isExternal: true,
       icon: (
         <svg
-          className="w-5 h-5 fill-current"
+          className="w-6 h-6 fill-current"
           viewBox="0 0 24 24"
           aria-hidden="true"
         >
@@ -80,7 +80,7 @@ export default function Footer() {
       isExternal: true,
       icon: (
         <svg
-          className="w-5 h-5 fill-current"
+          className="w-6 h-6 fill-current"
           viewBox="0 0 24 24"
           aria-hidden="true"
         >
@@ -98,7 +98,7 @@ export default function Footer() {
       isExternal: true,
       icon: (
         <svg
-          className="w-5 h-5 fill-current"
+          className="w-6 h-6 fill-current"
           viewBox="0 0 24 24"
           aria-hidden="true"
         >
@@ -116,7 +116,7 @@ export default function Footer() {
       isExternal: true,
       icon: (
         <svg
-          className="w-5 h-5 fill-current"
+          className="w-6 h-6 fill-current"
           viewBox="0 0 24 24"
           aria-hidden="true"
         >
@@ -134,7 +134,7 @@ export default function Footer() {
       isExternal: true,
       icon: (
         <svg
-          className="w-5 h-5 fill-current"
+          className="w-6 h-6 fill-current"
           viewBox="0 0 24 24"
           aria-hidden="true"
         >
@@ -177,7 +177,7 @@ export default function Footer() {
             </Link>
 
             {/* Social Media Links (Tailwind Transparent Style) */}
-            <div className="mt-6 sm:mt-8 flex items-center gap-4 text-slate-400">
+            <div className="mt-6 sm:mt-8 flex items-center gap-5 text-slate-400">
               {socialLinks.map((item, idx) => (
                 <a
                   key={idx}
