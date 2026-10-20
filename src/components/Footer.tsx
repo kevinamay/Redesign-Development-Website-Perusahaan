@@ -39,39 +39,37 @@ export default function Footer() {
 
   const socialLinks = [
     {
-      name: "Tokopedia",
-      href: "https://www.tokopedia.com/asia-plastik-official",
-      isExternal: true,
-      icon: (
-        <Image
-          src="/images/tokopedia.png"
-          alt="Tokopedia"
-          width={32}
-          height={32}
-          className="w-8 h-8 object-contain shrink-0"
-        />
-      ),
-    },
-    {
-      name: "Shopee",
-      href: "https://shopee.co.id/asiaplastik52?smtt=0.27476852-1652338218.9&is_from_login=true",
+      name: "Facebook",
+      href: "https://www.facebook.com/asiaplastik/?locale=id_ID",
       isExternal: true,
       icon: (
         <svg
-          className="w-8 h-8 shrink-0"
+          className="w-5 h-5 fill-current"
           viewBox="0 0 24 24"
-          fill="none"
           aria-hidden="true"
         >
-          {/* Official Shopee Bag */}
           <path
-            d="M11.9986 1.4009c-2.068 0-3.7539 1.95-3.8329 4.3899h7.6657c-.08-2.44-1.765-4.3899-3.8328-4.3899zm7.8516 22.5981-.08.001-15.7843-.002c-1.074-.04-1.863-.91-1.971-1.991l-.01-.195L1.298 6.2858a.459.459 0 0 1 .45-.494h4.9748C6.8448 2.568 9.1607 0 11.9996 0c2.8388 0 5.1537 2.5689 5.2757 5.7898h4.9678a.459.459 0 0 1 .458.483l-.773 15.5883-.007.131c-.094 1.094-.979 1.9769-2.0709 2.0059z"
-            fill="#EE4D2D"
+            fillRule="evenodd"
+            d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+            clipRule="evenodd"
           />
-          {/* Official Shopee 'S' in Crisp White */}
+        </svg>
+      ),
+    },
+    {
+      name: "Instagram",
+      href: "https://www.instagram.com/asia_plastik?igsh=ZWpjNG5zcm9rbW42",
+      isExternal: true,
+      icon: (
+        <svg
+          className="w-5 h-5 fill-current"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
           <path
-            d="M15.9414 17.9633c.229-1.879-.981-3.077-4.1758-4.0969-1.548-.528-2.277-1.22-2.26-2.1719.065-1.056 1.048-1.825 2.352-1.85a5.2898 5.2898 0 0 1 2.8838.89c.116.072.197.06.263-.039.09-.145.315-.494.39-.62.051-.081.061-.187-.068-.281-.185-.1369-.704-.4149-.983-.5319a6.4697 6.4697 0 0 0-2.5118-.514c-1.909.008-3.4129 1.215-3.5389 2.826-.082 1.1629.494 2.1078 1.73 2.8278.262.152 1.6799.716 2.2438.892 1.774.552 2.695 1.5419 2.478 2.6969-.197 1.047-1.299 1.7239-2.818 1.7439-1.2039-.046-2.2878-.537-3.1278-1.19l-.141-.11c-.104-.08-.218-.075-.287.03-.05.077-.376.547-.458.67-.077.108-.035.168.045.234.35.293.817.613 1.134.775a6.7097 6.7097 0 0 0 2.8289.727 4.9048 4.9048 0 0 0 2.0759-.354c1.095-.465 1.8029-1.394 1.9449-2.554z"
-            fill="#FFFFFF"
+            fillRule="evenodd"
+            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+            clipRule="evenodd"
           />
         </svg>
       ),
@@ -82,52 +80,15 @@ export default function Footer() {
       isExternal: true,
       icon: (
         <svg
-          className="w-8 h-8 text-[#FF0000] shrink-0"
+          className="w-5 h-5 fill-current"
           viewBox="0 0 24 24"
-          fill="currentColor"
           aria-hidden="true"
         >
           <path
-            d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"
-            fill="#FF0000"
+            fillRule="evenodd"
+            d="M21.7 8.037a4.26 4.26 0 0 0-.789-1.964 2.84 2.84 0 0 0-1.984-.839c-2.767-.2-6.926-.2-6.926-.2s-4.157 0-6.928.2a2.836 2.836 0 0 0-1.983.839 4.225 4.225 0 0 0-.79 1.965 30.146 30.146 0 0 0-.2 3.206v1.5a30.12 30.12 0 0 0 .2 3.206c.094.712.364 1.39.79 1.966.434.56.99.992 1.624 1.255 1.08.435 5.289.435 5.289.435s4.157 0 6.928-.2a2.842 2.842 0 0 0 1.985-.84 4.27 4.27 0 0 0 .787-1.965 30.12 30.12 0 0 0 .2-3.206v-1.516a30.672 30.672 0 0 0-.202-3.206Zm-11.692 6.554V9.409l5.7 2.59-5.7 2.592Z"
+            clipRule="evenodd"
           />
-          <path d="M9.545 15.568V8.432L15.818 12l-6.273 3.568z" fill="#FFFFFF" />
-        </svg>
-      ),
-    },
-    {
-      name: "Instagram",
-      href: "https://www.instagram.com/asia_plastik?igsh=ZWpjNG5zcm9rbW42",
-      isExternal: true,
-      icon: (
-        <svg
-          className="w-8 h-8 shrink-0"
-          viewBox="0 0 24 24"
-          fill="none"
-          aria-hidden="true"
-        >
-          <defs>
-            <radialGradient id="footerIgGradient" cx="20%" cy="105%" r="120%">
-              <stop offset="0%" stopColor="#fdf497" />
-              <stop offset="10%" stopColor="#fdf497" />
-              <stop offset="50%" stopColor="#fd5949" />
-              <stop offset="70%" stopColor="#d6249f" />
-              <stop offset="100%" stopColor="#285AEB" />
-            </radialGradient>
-          </defs>
-          <rect x="2" y="2" width="20" height="20" rx="5.5" fill="url(#footerIgGradient)" />
-          <rect
-            x="5.2"
-            y="5.2"
-            width="13.6"
-            height="13.6"
-            rx="3.8"
-            stroke="#FFFFFF"
-            strokeWidth="1.6"
-            fill="none"
-          />
-          <circle cx="12" cy="12" r="3.4" stroke="#FFFFFF" strokeWidth="1.6" />
-          <circle cx="15.8" cy="8.2" r="0.9" fill="#FFFFFF" />
         </svg>
       ),
     },
@@ -137,32 +98,50 @@ export default function Footer() {
       isExternal: true,
       icon: (
         <svg
-          className="w-8 h-8 text-white fill-current shrink-0"
+          className="w-5 h-5 fill-current"
           viewBox="0 0 24 24"
           aria-hidden="true"
         >
-          <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.04-.1z" />
+          <path
+            fillRule="evenodd"
+            d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.04-.1z"
+            clipRule="evenodd"
+          />
         </svg>
       ),
     },
     {
-      name: "Email",
-      href: "mailto:marketing@asiaplastik.com",
-      isExternal: false,
+      name: "LinkedIn",
+      href: "https://www.linkedin.com/company/asia-plastik-plastic-packaging-manufacturing/?originalSubdomain=id",
+      isExternal: true,
       icon: (
         <svg
-          className="w-8 h-8 text-[#FF6600] shrink-0"
+          className="w-5 h-5 fill-current"
           viewBox="0 0 24 24"
-          fill="none"
           aria-hidden="true"
         >
-          <rect x="2" y="4" width="20" height="16" rx="3.5" fill="#FF6600" />
           <path
-            d="M3 6L12 13L21 6"
-            stroke="#FFFFFF"
-            strokeWidth="1.8"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+            fillRule="evenodd"
+            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+            clipRule="evenodd"
+          />
+        </svg>
+      ),
+    },
+    {
+      name: "WhatsApp",
+      href: "https://wa.me/628113229988?text=Halo%20Asia%20Plastik%2C%20saya%20ingin%20berkonsultasi%20mengenai%20produk%20dan%20pemesanan%20plastik",
+      isExternal: true,
+      icon: (
+        <svg
+          className="w-5 h-5 fill-current"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path
+            fillRule="evenodd"
+            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.05 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"
+            clipRule="evenodd"
           />
         </svg>
       ),
@@ -197,8 +176,8 @@ export default function Footer() {
               )}
             </Link>
 
-            {/* Standalone Colored Social Media & Marketplace Links */}
-            <div className="mt-6 sm:mt-8 flex flex-wrap items-center gap-3.5">
+            {/* Social Media Links (Tailwind Transparent Style) */}
+            <div className="mt-6 sm:mt-8 flex items-center gap-4 text-slate-400">
               {socialLinks.map((item, idx) => (
                 <a
                   key={idx}
@@ -208,7 +187,7 @@ export default function Footer() {
                     : {})}
                   aria-label={item.name}
                   title={item.name}
-                  className="hover:scale-110 transition-transform duration-300 inline-block focus:outline-none"
+                  className="text-slate-400 hover:text-white transition-colors duration-200 inline-flex items-center justify-center focus:outline-none"
                 >
                   {item.icon}
                 </a>
