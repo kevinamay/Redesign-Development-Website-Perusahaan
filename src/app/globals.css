@@ -57,8 +57,47 @@ body {
 
 body.drawer-open #floating-actions,
 body.drawer-open #floating-ai-chat,
-body.drawer-open aside[aria-label="Kontak Cepat & Asisten AI"] {
+body.drawer-open aside[aria-label="Kontak Cepat & Asisten AI"],
+body.menu-popup-open #floating-actions,
+body.menu-popup-open #floating-ai-chat,
+body.menu-popup-open aside[aria-label="Kontak Cepat & Asisten AI"] {
   opacity: 0;
   pointer-events: none;
   visibility: hidden;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+.animate-scale-up {
+  animation: scaleUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-down {
+  animation: slideDown 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
