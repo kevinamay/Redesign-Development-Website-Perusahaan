@@ -6,14 +6,6 @@ import Link from "next/link";
 import {
   Sparkles,
   ArrowRight,
-  ShieldCheck,
-  Award,
-  Target,
-  Factory,
-  CheckCircle2,
-  Cpu,
-  Layers,
-  Building2,
   ChevronRight,
 } from "lucide-react";
 import { useLanguage } from "@/data/translations";
@@ -42,11 +34,6 @@ export default function AboutPreview() {
           image: "/images/assets/about-1.webp",
           imageAlt: "Fasilitas Produksi Manufaktur Asia Plastik",
           imageTag: "Pabrik Produksi Modern • Skala Massal",
-          badges: [
-            { icon: Factory, title: "30+ Tahun Dedikasi", desc: "Spesialis Injection & Blow" },
-            { icon: Cpu, title: "Otomasi Presisi", desc: "Parameter Suhu & Siklus Mikro" },
-            { icon: Layers, title: "Material Food Grade", desc: "Resin Standar Industri Aman" },
-          ],
         },
         {
           id: "sertifikat-iso",
@@ -59,11 +46,6 @@ export default function AboutPreview() {
           image: "/images/assets/iso-bg.webp",
           imageAlt: "Fasilitas Bangunan dan Sertifikasi ISO Asia Plastik",
           imageTag: "Terakreditasi ISO 9001:2015 • Audit Berkala",
-          badges: [
-            { icon: ShieldCheck, title: "Manajemen Mutu Terpadu", desc: "Sistem Terintegrasi Penuh" },
-            { icon: Award, title: "Inspeksi Toleransi Ketat", desc: "Pengujian Dimensi & Tekanan" },
-            { icon: CheckCircle2, title: "Audit Berkala Konsisten", desc: "Kepatuhan Regulasi Penuh" },
-          ],
         },
         {
           id: "visi-nilai",
@@ -76,11 +58,6 @@ export default function AboutPreview() {
           image: "/images/assets/visi.webp",
           imageAlt: "Visi dan Nilai Mutu Asia Plastik",
           imageTag: "Inovasi Berkelanjutan • Integritas Kemitraan",
-          badges: [
-            { icon: Target, title: "Kualitas Presisi", desc: "Konsistensi di Setiap Batch" },
-            { icon: Building2, title: "Integritas Kemitraan", desc: "Transparansi & Pasokan Stabil" },
-            { icon: Sparkles, title: "Inovasi Ramah Lingkungan", desc: "Efisiensi Energi & Daur Ulang" },
-          ],
         },
       ],
     },
@@ -102,11 +79,6 @@ export default function AboutPreview() {
           image: "/images/assets/about-1.webp",
           imageAlt: "Asia Plastik Production Plant",
           imageTag: "Advanced Manufacturing Plant • Mass Scale",
-          badges: [
-            { icon: Factory, title: "30+ Years Experience", desc: "Injection & Blow Specialist" },
-            { icon: Cpu, title: "Precision Automation", desc: "Micro Cycle & Thermal Control" },
-            { icon: Layers, title: "Food Grade Certified", desc: "Safe Resin Formulations" },
-          ],
         },
         {
           id: "iso-cert",
@@ -119,11 +91,6 @@ export default function AboutPreview() {
           image: "/images/assets/iso-bg.webp",
           imageAlt: "Asia Plastik ISO Certified Facility",
           imageTag: "ISO 9001:2015 Certified • Periodic Audits",
-          badges: [
-            { icon: ShieldCheck, title: "Integrated QMS", desc: "Comprehensive Standard" },
-            { icon: Award, title: "Micro Tolerance Check", desc: "Rigid Dimension Inspection" },
-            { icon: CheckCircle2, title: "Audited Compliance", desc: "Consistent Verification" },
-          ],
         },
         {
           id: "vision-values",
@@ -136,11 +103,6 @@ export default function AboutPreview() {
           image: "/images/assets/visi.webp",
           imageAlt: "Corporate Values Asia Plastik",
           imageTag: "Eco Innovation • Trusted Partnership",
-          badges: [
-            { icon: Target, title: "Precision Standards", desc: "Batch Consistency" },
-            { icon: Building2, title: "Partner Integrity", desc: "Stable Supply Chain" },
-            { icon: Sparkles, title: "Green Sustainability", desc: "Recyclable Options" },
-          ],
         },
       ],
     },
@@ -161,11 +123,6 @@ export default function AboutPreview() {
           image: "/images/assets/about-1.webp",
           imageAlt: "亚洲塑料现代化生产基地",
           imageTag: "现代化制造车间 • 规模化量产",
-          badges: [
-            { icon: Factory, title: "30余年制造经验", desc: "注塑与吹塑行业专家" },
-            { icon: Cpu, title: "高精度自动化", desc: "微公差温控成型" },
-            { icon: Layers, title: "食品级标准材料", desc: "合规安全树脂原料" },
-          ],
         },
         {
           id: "iso-cert",
@@ -178,11 +135,6 @@ export default function AboutPreview() {
           image: "/images/assets/iso-bg.webp",
           imageAlt: "ISO 认证现代化厂房",
           imageTag: "ISO 9001:2015 权威认证 • 定期审核",
-          badges: [
-            { icon: ShieldCheck, title: "一体化质管系统", desc: "标准化全流程质控" },
-            { icon: Award, title: "严苛微公差检测", desc: "尺寸与抗压双重检验" },
-            { icon: CheckCircle2, title: "规范审计达标", desc: "持续合规稳定生产" },
-          ],
         },
         {
           id: "vision-values",
@@ -195,11 +147,6 @@ export default function AboutPreview() {
           image: "/images/assets/visi.webp",
           imageAlt: "企业愿景与发展理念",
           imageTag: "绿色环保创新 • 诚信稳健合作",
-          badges: [
-            { icon: Target, title: "严苛精度品质", desc: "每一批次稳定可靠" },
-            { icon: Building2, title: "诚信合作伙伴", desc: "稳定高效供应链" },
-            { icon: Sparkles, title: "绿色环保创新", desc: "节能减排可回收树脂" },
-          ],
         },
       ],
     },
@@ -344,26 +291,7 @@ export default function AboutPreview() {
                 </p>
               </div>
 
-              {/* Row of Feature Badges / Micro-Cards */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
-                {currentTab.badges.map((badge, idx) => {
-                  const Icon = badge.icon;
-                  return (
-                    <div
-                      key={idx}
-                      className="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-800 transition-all hover:border-blue-500/40"
-                    >
-                      <div className="flex items-center gap-2 text-slate-900 dark:text-white font-bold text-xs mb-1">
-                        <Icon className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 shrink-0" />
-                        <span className="truncate">{badge.title}</span>
-                      </div>
-                      <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
-                        {badge.desc}
-                      </p>
-                    </div>
-                  );
-                })}
-              </div>
+
 
               {/* The Dedicated Image Showcase Container (NO MORE IMAGES BELOW TEXT) */}
               <div className="relative h-[320px] sm:h-[380px] md:h-[420px] w-full rounded-3xl overflow-hidden shadow-2xl border border-slate-100 dark:border-slate-800 group">
