@@ -219,7 +219,7 @@ export default function FloatingActions() {
         );
       }
 
-      // Check for links e.g. [082244109503](https://wa.me/...)
+      // Check for links e.g. [085142000027](https://wa.me/...)
       const linkRegex = /\[(.*?)\]\((.*?)\)/g;
       if (typeof formattedLine === "string" && linkRegex.test(formattedLine)) {
         const match = formattedLine.match(/\[(.*?)\]\((.*?)\)/);

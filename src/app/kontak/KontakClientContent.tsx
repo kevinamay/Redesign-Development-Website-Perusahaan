@@ -398,7 +398,7 @@ export default function KontakClientContent() {
                 <div className="relative z-10 mt-10 pt-6 border-t border-slate-800/80">
                   <a
                     href={companyConfig.contact.whatsapp.getChatUrl(
-                      "primary",
+                      "sales",
                       "Halo Asia Plastik, saya ingin berkonsultasi mengenai produk dan pemesanan plastik"
                     )}
                     target="_blank"
@@ -412,7 +412,7 @@ export default function KontakClientContent() {
                       <div className="text-left">
                         <p className="text-xs text-slate-400">Butuh respon cepat?</p>
                         <p className="text-xs sm:text-sm font-semibold text-white group-hover:text-emerald-400 transition-colors">
-                          WhatsApp Sales ({companyConfig.contact.whatsapp.primaryDisplay})
+                          WhatsApp Sales ({companyConfig.contact.whatsapp.salesDisplay})
                         </p>
                       </div>
                     </div>

@@ -62,8 +62,8 @@ export const companyConfig = {
       primaryDisplay: "+62 811-322-9988",
 
       // Fast-Response Sales Admin Number (Live Chat & Floating Quick Action)
-      salesNumber: "6282244109503",
-      salesDisplay: "+62 822-4410-9503",
+      salesNumber: "6285142000027",
+      salesDisplay: "+62 851-4200-0027",
 
       // Helper function to build WhatsApp chat link
       getChatUrl(
