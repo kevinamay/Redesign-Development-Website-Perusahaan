@@ -139,7 +139,7 @@ export default function Footer() {
   return (
     <footer
       id="contact"
-      className="w-full max-w-[100vw] overflow-hidden bg-slate-950 text-slate-400 pt-12 pb-6 border-t border-slate-900"
+      className="w-full max-w-[100vw] overflow-hidden bg-[#1e3a5f] text-blue-100 pt-12 pb-6 border-t border-blue-900/60 transition-colors duration-300"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Balanced 4-Column Responsive Grid */}
@@ -165,7 +165,7 @@ export default function Footer() {
             </Link>
 
             {/* Social Media Links (Tailwind Transparent Style) */}
-            <div className="mt-6 sm:mt-8 flex items-center gap-5 text-slate-400">
+            <div className="mt-6 sm:mt-8 flex items-center gap-5 text-blue-200">
               {socialLinks.map((item, idx) => (
                 <a
                   key={idx}
@@ -175,7 +175,7 @@ export default function Footer() {
                     : {})}
                   aria-label={item.name}
                   title={item.name}
-                  className="text-slate-400 hover:text-white transition-colors duration-200 inline-flex items-center justify-center focus:outline-none"
+                  className="text-blue-200 hover:text-white transition-colors duration-200 inline-flex items-center justify-center focus:outline-none"
                 >
                   {item.icon}
                 </a>
@@ -190,10 +190,10 @@ export default function Footer() {
                 <li key={idx} className="h-6 flex items-center">
                   <Link
                     href={link.href}
-                    className="group inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold tracking-wider text-slate-200 hover:text-white uppercase transition-all duration-200 whitespace-nowrap"
+                    className="group inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold tracking-wider text-white hover:text-blue-200 uppercase transition-all duration-200 whitespace-nowrap"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-200 shrink-0" />
-                    <span className="group-hover:text-blue-400 group-hover:translate-x-1 transition-transform duration-200">
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-300 opacity-0 group-hover:opacity-100 transition-opacity duration-200 shrink-0" />
+                    <span className="group-hover:text-blue-200 group-hover:translate-x-1 transition-transform duration-200">
                       {link.label}
                     </span>
                   </Link>
@@ -209,10 +209,10 @@ export default function Footer() {
                 <li key={idx} className="h-6 flex items-center">
                   <Link
                     href={link.href}
-                    className="group inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold tracking-wider text-slate-200 hover:text-white uppercase transition-all duration-200 whitespace-nowrap"
+                    className="group inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold tracking-wider text-white hover:text-blue-200 uppercase transition-all duration-200 whitespace-nowrap"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-200 shrink-0" />
-                    <span className="group-hover:text-blue-400 group-hover:translate-x-1 transition-transform duration-200">
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-300 opacity-0 group-hover:opacity-100 transition-opacity duration-200 shrink-0" />
+                    <span className="group-hover:text-blue-200 group-hover:translate-x-1 transition-transform duration-200">
                       {link.label}
                     </span>
                   </Link>
@@ -223,14 +223,14 @@ export default function Footer() {
 
           {/* Column 4: HUBUNGI KANTOR & PABRIK (Contact Details) */}
           <div>
-            <h3 className="text-white font-semibold text-sm tracking-wider mb-4 uppercase">
+            <h3 className="text-white font-bold text-sm tracking-wider mb-4 uppercase">
               {t.footer?.contactTitle || "HUBUNGI KANTOR & PABRIK"}
             </h3>
             <ul className="flex flex-col gap-3 text-xs sm:text-sm">
               {/* 1. MapPin */}
               <li className="flex items-start gap-3">
-                <MapPin className="text-blue-500 w-4 h-4 sm:w-5 sm:h-5 shrink-0 mt-0.5" />
-                <span className="leading-relaxed">
+                <MapPin className="text-blue-300 w-4 h-4 sm:w-5 sm:h-5 shrink-0 mt-0.5" />
+                <span className="leading-relaxed text-blue-100">
                   {t.footer?.address ||
                     "Jalan Rungkut Industri III/27A, Surabaya - Indonesia, Kode Pos 60293"}
                 </span>
@@ -238,10 +238,10 @@ export default function Footer() {
 
               {/* 2. Phone */}
               <li className="flex items-center gap-3">
-                <Phone className="text-blue-500 w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
+                <Phone className="text-blue-300 w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
                 <a
                   href="tel:+62318433078"
-                  className="hover:text-white transition-colors"
+                  className="hover:text-white transition-colors text-blue-100"
                 >
                   +6231 8433078 - 8439998 - 8439145
                 </a>
@@ -249,12 +249,12 @@ export default function Footer() {
 
               {/* 3. WhatsApp MessageCircle */}
               <li className="flex items-center gap-3">
-                <MessageCircle className="text-blue-500 w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
+                <MessageCircle className="text-blue-300 w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
                 <a
                   href="https://wa.me/628113229988?text=Halo%20Asia%20Plastik%2C%20saya%20ingin%20berkonsultasi%20mengenai%20produk%20dan%20pemesanan%20plastik"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-emerald-400 hover:text-emerald-300 transition-colors"
+                  className="text-emerald-300 hover:text-emerald-200 font-semibold transition-colors"
                 >
                   WhatsApp: +62 811-322-9988
                 </a>
@@ -262,10 +262,10 @@ export default function Footer() {
 
               {/* 4. Mail */}
               <li className="flex items-center gap-3">
-                <Mail className="text-blue-500 w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
+                <Mail className="text-blue-300 w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
                 <a
                   href="mailto:marketing@asiaplastik.com"
-                  className="hover:text-white transition-colors"
+                  className="hover:text-white transition-colors text-blue-100"
                 >
                   marketing@asiaplastik.com
                 </a>
@@ -273,8 +273,8 @@ export default function Footer() {
 
               {/* 5. Clock */}
               <li className="flex items-center gap-3">
-                <Clock className="text-blue-500 w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
-                <span>
+                <Clock className="text-blue-300 w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
+                <span className="text-blue-100">
                   {t.footer?.workingHours || "Senin - Sabtu: 08.00 - 16.30 WIB"}
                 </span>
               </li>
@@ -283,13 +283,13 @@ export default function Footer() {
         </div>
 
         {/* Compressed Bottom Bar (Copyright & Extra Links) */}
-        <div className="mt-10 pt-6 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-xs">
+        <div className="mt-10 pt-6 border-t border-blue-400/20 flex flex-col md:flex-row justify-between items-center gap-4 text-blue-200/90">
+          <p className="text-xs text-blue-200/90">
             {t.footer?.copyright ||
               "© 2026 CV. ASIA PLASTIK. Seluruh Hak Cipta Dilindungi Undang-Undang."}
           </p>
 
-          <div className="flex flex-wrap items-center gap-6 text-xs">
+          <div className="flex flex-wrap items-center gap-6 text-xs text-blue-200/90">
             <Link
               href="#privacy"
               className="hover:text-white transition-colors cursor-pointer"
@@ -305,11 +305,11 @@ export default function Footer() {
             <button
               type="button"
               onClick={scrollToTop}
-              className="inline-flex items-center gap-1.5 hover:text-white transition-colors cursor-pointer"
+              className="inline-flex items-center gap-1.5 hover:text-white transition-colors cursor-pointer text-blue-200/90"
               aria-label="Kembali ke Atas"
             >
               <span>{t.footer?.backToTop || "Kembali ke Atas"}</span>
-              <ArrowUp className="w-4 h-4 text-blue-500" />
+              <ArrowUp className="w-4 h-4 text-blue-300" />
             </button>
           </div>
         </div>
