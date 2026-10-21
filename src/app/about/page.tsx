@@ -34,8 +34,8 @@ export default function AboutPage() {
       {/* 2. HERO SECTION (Parallax Header)                                         */}
       {/* ========================================================================= */}
       <section className="relative w-full min-h-[60vh] flex items-center justify-center bg-[url('/images/assets/about-hero.jpg')] bg-cover bg-center bg-fixed overflow-hidden">
-        {/* Dark gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/85 via-slate-900/75 to-slate-950/90 pointer-events-none" />
+        {/* Dark gradient overlay in Light Mode, Corporate Blue overlay in Dark Mode */}
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/85 via-slate-900/75 to-slate-950/90 dark:from-[#1e3a5f]/90 dark:via-[#1e3a5f]/85 dark:to-[#1e3a5f]/90 backdrop-blur-xs pointer-events-none transition-all duration-500" />
 
         {/* Hero Content */}
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center text-white">
@@ -51,17 +51,17 @@ export default function AboutPage() {
           </h1>
 
           {/* Description */}
-          <p className="text-base sm:text-lg lg:text-xl text-slate-200 leading-relaxed max-w-3xl mx-auto drop-shadow-sm font-normal">
+          <p className="text-base sm:text-lg lg:text-xl text-slate-200 dark:text-blue-100 leading-relaxed max-w-3xl mx-auto drop-shadow-sm font-normal transition-colors duration-300">
             {t.hero.description}
           </p>
 
           {/* Breadcrumb indicator */}
-          <div className="mt-8 flex items-center justify-center gap-2 text-xs text-slate-300">
+          <div className="mt-8 flex items-center justify-center gap-2 text-xs text-slate-300 dark:text-blue-200 transition-colors duration-300">
             <Link href="/" className="hover:text-blue-400 transition-colors flex items-center gap-1">
               <Home className="w-3.5 h-3.5" />
               <span>{t.hero.breadcrumbHome}</span>
             </Link>
-            <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
+            <ChevronRight className="w-3.5 h-3.5 text-slate-400 dark:text-blue-300/60" />
             <span className="text-blue-400 font-semibold">{t.hero.breadcrumbCurrent}</span>
           </div>
         </div>
@@ -157,42 +157,42 @@ export default function AboutPage() {
         id="iso-sertifikat"
         className="relative w-full py-32 bg-[url('/images/assets/iso-bg.webp')] bg-fixed bg-cover bg-center overflow-hidden shadow-2xl scroll-mt-20"
       >
-        {/* Dark Blue Overlay */}
-        <div className="absolute inset-0 bg-[#1e3a5f]/85 backdrop-blur-xs pointer-events-none" />
+        {/* Dark gradient overlay in Light Mode, Corporate Blue overlay in Dark Mode */}
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/85 via-slate-900/75 to-slate-950/90 dark:from-[#1e3a5f]/90 dark:via-[#1e3a5f]/85 dark:to-[#1e3a5f]/90 backdrop-blur-xs pointer-events-none transition-all duration-500" />
 
         {/* Centered Content */}
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white space-y-6">
           {/* Label */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-400/20 border border-blue-300/30 text-blue-200 text-xs sm:text-sm font-bold tracking-widest uppercase">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/20 dark:bg-blue-400/20 border border-blue-400/30 dark:border-blue-300/30 text-blue-300 dark:text-blue-200 text-xs sm:text-sm font-bold tracking-widest uppercase backdrop-blur-xs">
             <Award className="w-4 h-4 text-blue-300" />
             <span>{t.isoSection.badge}</span>
           </div>
 
           {/* H2 */}
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight drop-shadow-md">
             {t.isoSection.title}
           </h2>
 
           {/* Paragraph */}
-          <p className="text-blue-100 text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed font-light">
+          <p className="text-slate-200 dark:text-blue-100 text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed font-light drop-shadow-sm transition-colors duration-300">
             {t.isoSection.description}
           </p>
 
           {/* Trust Metric Badges */}
-          <div className="pt-8 flex flex-wrap justify-center gap-6 sm:gap-10 border-t border-blue-400/20 max-w-2xl mx-auto">
+          <div className="pt-8 flex flex-wrap justify-center gap-6 sm:gap-10 border-t border-slate-700/50 dark:border-blue-400/20 max-w-2xl mx-auto transition-colors duration-300">
             <div className="text-center">
               <span className="text-3xl font-extrabold text-white">2005</span>
-              <p className="text-xs text-blue-200 uppercase tracking-wider mt-1">{t.isoSection.metric1Label}</p>
+              <p className="text-xs text-slate-300 dark:text-blue-200 uppercase tracking-wider mt-1">{t.isoSection.metric1Label}</p>
             </div>
-            <div className="w-px h-12 bg-blue-400/30 hidden sm:block" />
+            <div className="w-px h-12 bg-slate-700/60 dark:bg-blue-400/30 hidden sm:block" />
             <div className="text-center">
               <span className="text-3xl font-extrabold text-white">2015</span>
-              <p className="text-xs text-blue-200 uppercase tracking-wider mt-1">{t.isoSection.metric2Label}</p>
+              <p className="text-xs text-slate-300 dark:text-blue-200 uppercase tracking-wider mt-1">{t.isoSection.metric2Label}</p>
             </div>
-            <div className="w-px h-12 bg-blue-400/30 hidden sm:block" />
+            <div className="w-px h-12 bg-slate-700/60 dark:bg-blue-400/30 hidden sm:block" />
             <div className="text-center">
               <span className="text-3xl font-extrabold text-white">100%</span>
-              <p className="text-xs text-blue-200 uppercase tracking-wider mt-1">{t.isoSection.metric3Label}</p>
+              <p className="text-xs text-slate-300 dark:text-blue-200 uppercase tracking-wider mt-1">{t.isoSection.metric3Label}</p>
             </div>
           </div>
         </div>
@@ -284,13 +284,13 @@ export default function AboutPage() {
         id="mesin-produksi"
         className="relative w-full py-28 lg:py-32 bg-[url('/images/assets/warehouse.webp')] bg-fixed bg-cover bg-center overflow-hidden shadow-2xl scroll-mt-20 text-white"
       >
-        {/* Dark Blue Transparent Overlay penetrating to background */}
-        <div className="absolute inset-0 bg-[#1e3a5f]/85 dark:bg-[#0a192f]/90 backdrop-blur-xs pointer-events-none" />
+        {/* Dark gradient overlay in Light Mode, Corporate Blue overlay in Dark Mode */}
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/85 via-slate-900/75 to-slate-950/90 dark:from-[#1e3a5f]/90 dark:via-[#1e3a5f]/85 dark:to-[#1e3a5f]/90 backdrop-blur-xs pointer-events-none transition-all duration-500" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row gap-16 items-center">
           {/* Text Left */}
           <div className="w-full md:w-1/2 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-400/20 text-blue-200 text-xs font-bold tracking-widest uppercase border border-blue-400/30 backdrop-blur-xs">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 dark:bg-blue-400/20 text-blue-300 dark:text-blue-200 text-xs font-bold tracking-widest uppercase border border-blue-400/30 backdrop-blur-xs">
               <Cpu className="w-3.5 h-3.5" />
               <span>{t.machinery.eyebrow}</span>
             </div>
@@ -300,29 +300,29 @@ export default function AboutPage() {
             </h2>
 
             {/* Paragraph 1 */}
-            <p className="text-blue-100 text-lg leading-relaxed font-normal">
+            <p className="text-slate-200 dark:text-blue-100 text-lg leading-relaxed font-normal transition-colors duration-300">
               {t.machinery.desc1}
             </p>
 
             {/* Paragraph 2 */}
-            <p className="text-blue-100 text-lg leading-relaxed font-normal">
+            <p className="text-slate-200 dark:text-blue-100 text-lg leading-relaxed font-normal transition-colors duration-300">
               {t.machinery.desc2}
             </p>
 
             {/* Paragraph 3 */}
-            <p className="text-blue-100 text-lg leading-relaxed font-normal">
+            <p className="text-slate-200 dark:text-blue-100 text-lg leading-relaxed font-normal transition-colors duration-300">
               {t.machinery.desc3}
             </p>
 
             {/* Machinery Features Badges */}
             <div className="pt-4 grid grid-cols-2 gap-4">
-              <div className="p-4 rounded-2xl bg-white/10 dark:bg-slate-900/40 border border-white/15 dark:border-blue-400/20 backdrop-blur-md shadow-lg">
+              <div className="p-4 rounded-2xl bg-white/10 dark:bg-blue-900/30 border border-white/15 dark:border-blue-400/20 backdrop-blur-md shadow-lg transition-colors duration-300">
                 <span className="block text-2xl font-black text-white">{t.machinery.badge1Val}</span>
-                <span className="text-xs text-blue-200 font-medium">{t.machinery.badge1Label}</span>
+                <span className="text-xs text-slate-300 dark:text-blue-200 font-medium transition-colors duration-300">{t.machinery.badge1Label}</span>
               </div>
-              <div className="p-4 rounded-2xl bg-white/10 dark:bg-slate-900/40 border border-white/15 dark:border-blue-400/20 backdrop-blur-md shadow-lg">
+              <div className="p-4 rounded-2xl bg-white/10 dark:bg-blue-900/30 border border-white/15 dark:border-blue-400/20 backdrop-blur-md shadow-lg transition-colors duration-300">
                 <span className="block text-2xl font-black text-white">{t.machinery.badge2Val}</span>
-                <span className="text-xs text-blue-200 font-medium">{t.machinery.badge2Label}</span>
+                <span className="text-xs text-slate-300 dark:text-blue-200 font-medium transition-colors duration-300">{t.machinery.badge2Label}</span>
               </div>
             </div>
           </div>
