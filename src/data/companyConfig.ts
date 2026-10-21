@@ -54,6 +54,7 @@ export const companyConfig = {
     phoneFormattedFull: "+6231 8433078 - 8439998 - 8439145",
     fax: "+6231 8492989",
     email: "marketing@asiaplastik.com",
+    recruitmentEmail: "recruitmentasia7@gmail.com",
 
     // WhatsApp Contact Points
     whatsapp: {

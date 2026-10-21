@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { Mail, ArrowRight } from "lucide-react";
 import { useLanguage } from "@/data/translations";
+import { companyConfig } from "@/data/companyConfig";
 
 export default function CareerBanner() {
   const { lang } = useLanguage();
@@ -13,7 +14,7 @@ export default function CareerBanner() {
       eyebrow: "GABUNG BERSAMA KAMI",
       heading: "LOWONGAN KARIR DI ASIA PLASTIK",
       paragraph:
-        "Di Asia Plastik, kami menyambut semua talenta untuk menjadi bagian dari tim kami. Jika Anda tertarik untuk menjadi bagian dari kami, silakan kirimkan CV ke recruitmentasia7@gmail.com",
+        `Di Asia Plastik, kami menyambut semua talenta untuk menjadi bagian dari tim kami. Jika Anda tertarik untuk menjadi bagian dari kami, silakan kirimkan CV ke ${companyConfig.contact.recruitmentEmail}`,
       buttonText: "Kirim CV Sekarang",
       imageAlt: "Karir dan Rekrutmen di Asia Plastik",
     },
@@ -21,7 +22,7 @@ export default function CareerBanner() {
       eyebrow: "JOIN OUR TEAM",
       heading: "CAREER OPPORTUNITIES AT ASIA PLASTIK",
       paragraph:
-        "At Asia Plastik, we welcome all talents to be part of our dedicated team. If you are interested in growing with us, please send your CV to recruitmentasia7@gmail.com",
+        `At Asia Plastik, we welcome all talents to be part of our dedicated team. If you are interested in growing with us, please send your CV to ${companyConfig.contact.recruitmentEmail}`,
       buttonText: "Send CV Now",
       imageAlt: "Careers and Recruitment at Asia Plastik",
     },
@@ -29,7 +30,7 @@ export default function CareerBanner() {
       eyebrow: "加入我们",
       heading: "亚洲塑料人才招聘与职业发展",
       paragraph:
-        "在亚洲塑料 (Asia Plastik)，我们欢迎各界优秀人才加入团队共同奋斗。如果您渴望投身现代化工业制造与高洁净包装产业，欢迎投递简历至 recruitmentasia7@gmail.com",
+        `在亚洲塑料 (Asia Plastik)，我们欢迎各界优秀人才加入团队共同奋斗。如果您渴望投身现代化工业制造与高洁净包装产业，欢迎投递简历至 ${companyConfig.contact.recruitmentEmail}`,
       buttonText: "立即发送简历",
       imageAlt: "亚洲塑料人才招聘",
     },
@@ -77,7 +78,7 @@ export default function CareerBanner() {
           {/* 4. INTERACTIVE CTA BUTTON */}
           <div>
             <a
-              href="mailto:recruitmentasia7@gmail.com"
+              href={`mailto:${companyConfig.contact.recruitmentEmail}`}
               className="inline-flex items-center gap-3 bg-blue-600 text-white font-semibold px-8 py-4 rounded-xl hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-600/30 hover:-translate-y-1 transition-all duration-300 w-fit cursor-pointer group/btn"
             >
               <Mail className="w-5 h-5 text-white shrink-0 group-hover/btn:scale-110 transition-transform" />

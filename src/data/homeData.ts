@@ -204,7 +204,7 @@ export const footerData: FooterData = {
     tagline: "Precision Plastic Manufacturing & Industrial Packaging",
     description:
       "Produsen manufaktur produk plastik terkemuka yang melayani sektor industri, agrikultur, farmasi, serta kebutuhan kemasan konsumen dengan standar keunggulan teruji.",
-    logoImage: "/images/logo.png",
+    logoImage: "/images/logo.webp",
   },
   contact: {
     address: companyConfig.address.street,
@@ -225,7 +225,7 @@ export const footerData: FooterData = {
         { label: "PRODUK", href: "/products" },
         { label: "ARTIKEL", href: "/article" },
         { label: "FAQ", href: "/faq" },
-        { label: "PARTNER", href: "/about#partner" },
+        { label: "PARTNER", href: "/partner" },
         { label: "PRODUK CUSTOM", href: "/kontak" },
         { label: "KONTAK", href: "/kontak" },
       ],
@@ -233,11 +233,11 @@ export const footerData: FooterData = {
     {
       title: "Solusi Manufaktur",
       links: [
-        { label: "Injection Molding", href: "#products" },
-        { label: "Blow Molding & Botol", href: "#products" },
-        { label: "Pembuatan Cetakan (Mold)", href: "#products" },
-        { label: "Kemasan Industri HDPE", href: "#products" },
-        { label: "Komponen Plastik Kustom", href: "#products" },
+        { label: "Injection Molding", href: "/products" },
+        { label: "Blow Molding & Botol", href: "/products" },
+        { label: "Pembuatan Cetakan (Mold)", href: "/products" },
+        { label: "Kemasan Industri HDPE", href: "/products" },
+        { label: "Komponen Plastik Kustom", href: "/products" },
       ],
     },
     {
@@ -246,8 +246,8 @@ export const footerData: FooterData = {
         { label: "Konsultasi Teknis & CAD", href: "/kontak" },
         { label: "Permintaan Sampel Produk", href: "/kontak" },
         { label: "Kalkulator Estimasi Biaya", href: "/kontak" },
-        { label: "Syarat & Ketentuan Pemesanan", href: "#" },
-        { label: "Kebijakan Privasi", href: "#" },
+        { label: "Syarat & Ketentuan Pemesanan", href: "/faq" },
+        { label: "Kebijakan Privasi", href: "/faq" },
       ],
     },
   ],
