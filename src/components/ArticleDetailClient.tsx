@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { Calendar, ArrowLeft, ArrowRight, Home, ChevronRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
@@ -88,10 +89,13 @@ export default function ArticleDetailClient({
 
           {/* 2. HERO IMAGE */}
           <div className="w-full max-w-5xl mx-auto rounded-2xl md:rounded-3xl overflow-hidden shadow-lg md:shadow-xl mb-10 lg:mb-16 aspect-[4/3] md:aspect-[16/9] relative bg-slate-100 border border-slate-200/60">
-            <img
-              src={article.image}
+            <Image
+              src={article.image || "/images/assets/placeholder.jpg"}
               alt={currentLocalized.title}
-              className="object-cover w-full h-full"
+              fill
+              priority
+              sizes="(max-width: 1200px) 100vw, 1024px"
+              className="object-cover"
             />
           </div>
 
@@ -157,11 +161,12 @@ export default function ArticleDetailClient({
                     >
                       {/* Thumbnail */}
                       <div className="relative h-48 overflow-hidden w-full bg-slate-100">
-                        <img
-                          src={rel.image}
+                        <Image
+                          src={rel.image || "/images/assets/placeholder.jpg"}
                           alt={relLocalized.title}
-                          loading="lazy"
-                          className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+                          fill
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
                         />
                       </div>
 

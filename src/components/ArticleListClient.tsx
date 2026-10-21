@@ -1,0 +1,95 @@
+"use client";
+
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { Calendar, ArrowRight } from "lucide-react";
+import { useLanguage } from "@/data/translations";
+import { ArticleSummary } from "@/data/articlesSummary";
+import {
+  articleUITranslations,
+  getLocalizedArticle,
+  formatArticleDate,
+} from "@/data/articleTranslations";
+
+interface ArticleListClientProps {
+  articles: ArticleSummary[];
+}
+
+export default function ArticleListClient({ articles }: ArticleListClientProps) {
+  const { lang } = useLanguage();
+  const t = articleUITranslations[lang] || articleUITranslations.id;
+
+  return (
+    <div className="bg-slate-50 dark:bg-slate-950 min-h-screen py-20 px-4 sm:px-6 lg:px-8 flex flex-col items-center transition-colors duration-300">
+      <div className="max-w-7xl mx-auto w-full">
+        {/* Section Header */}
+        <div className="text-center mb-14">
+          <span className="text-xs font-bold tracking-widest text-blue-600 dark:text-blue-400 uppercase mb-2 block">
+            {lang === "zh" ? "行业动态与最新资讯" : lang === "en" ? "Industry Insights & News" : "Wawasan Industri & Berita Terkini"}
+          </span>
+          <h1 className="text-3xl lg:text-5xl font-extrabold text-slate-900 dark:text-white uppercase tracking-tight">
+            {t.pageTitle}
+          </h1>
+          <div className="w-16 h-1 bg-blue-600 mx-auto mt-4 rounded-full" />
+        </div>
+
+        {/* Article Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {articles.map((article, index) => {
+            const localized = getLocalizedArticle(article, lang);
+            return (
+              <article
+                key={article.slug || index}
+                className="bg-white dark:bg-slate-900 rounded-3xl overflow-hidden shadow-xs hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 flex flex-col group border border-slate-100 dark:border-slate-800"
+              >
+                {/* Image Container with Next.js Image Optimization */}
+                <div className="relative h-64 overflow-hidden w-full bg-slate-200 dark:bg-slate-800">
+                  <Image
+                    src={article.image || article.imageUrl || "/images/assets/placeholder.jpg"}
+                    alt={localized.title}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    priority={index < 3}
+                    loading={index < 3 ? "eager" : "lazy"}
+                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                </div>
+
+                {/* Content Container */}
+                <div className="p-8 flex flex-col flex-grow bg-white dark:bg-slate-900 relative z-10">
+                  {/* Date */}
+                  <div className="text-slate-500 dark:text-slate-400 text-sm mb-4 flex items-center gap-2 font-medium">
+                    <Calendar className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0" />
+                    <span>{formatArticleDate(article.date, lang)}</span>
+                  </div>
+
+                  {/* Title */}
+                  <h2 className="text-xl font-extrabold text-slate-900 dark:text-slate-100 mb-4 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-snug line-clamp-2">
+                    <Link href={`/article/${article.slug}`}>
+                      {localized.title}
+                    </Link>
+                  </h2>
+
+                  {/* Excerpt */}
+                  <p className="text-slate-600 dark:text-slate-300 text-base leading-relaxed mb-8 line-clamp-3 text-justify flex-grow">
+                    {localized.excerpt}
+                  </p>
+
+                  {/* Read More Link */}
+                  <Link
+                    href={`/article/${article.slug}`}
+                    className="text-sm font-bold text-blue-600 dark:text-blue-400 uppercase tracking-widest flex items-center gap-2 group/btn mt-auto inline-flex w-fit"
+                  >
+                    <span>{t.readMore}</span>
+                    <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-2 transition-transform duration-300" />
+                  </Link>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}
