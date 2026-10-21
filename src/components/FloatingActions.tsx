@@ -174,7 +174,14 @@ export default function FloatingActions() {
         }),
       });
 
-      if (!res.ok) throw new Error("Gagal mengambil respon dari server");
+      if (!res.ok) {
+        const errorData = await res.json().catch(() => null);
+        if (errorData?.reply) {
+          setMessages((prev) => [...prev, { role: "assistant", content: errorData.reply }]);
+          return;
+        }
+        throw new Error("Gagal mengambil respon dari server");
+      }
 
       const data = await res.json();
       const reply =

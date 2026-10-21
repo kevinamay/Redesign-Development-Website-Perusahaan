@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     "CV. Asia Plastik adalah produsen manufaktur produk plastik terkemuka: Injection Molding, Blow Molding, dan Kemasan Industri berkualitas tinggi & presisi.",
 };
 
-import FloatingActions from "@/components/FloatingActions";
+import FloatingActions from "@/components/FloatingActionsClient";
 
 export default function RootLayout({
   children,

@@ -306,6 +306,69 @@ function generateIntelligentFallback(query: string): string {
 }
 
 // ============================================================================
+// RATE LIMITER (In-Memory Sliding Window per Client IP)
+// ============================================================================
+// Melindungi endpoint /api/chat dari spam bot otomatis & abuse
+interface RateLimitRecord {
+  timestamps: number[];
+}
+
+const rateLimitMap = new Map<string, RateLimitRecord>();
+const RATE_LIMIT_WINDOW_MS = 60 * 1000; // Window 1 menit (60.000 ms)
+const MAX_REQUESTS_PER_WINDOW = 15; // Maksimum 15 request per menit per IP
+
+function checkRateLimit(ip: string): {
+  allowed: boolean;
+  remaining: number;
+  retryAfterSec: number;
+} {
+  const now = Date.now();
+  const record = rateLimitMap.get(ip) || { timestamps: [] };
+
+  // Filter timestamps yang masih berada di dalam jendela sliding window
+  const recent = record.timestamps.filter((ts) => now - ts < RATE_LIMIT_WINDOW_MS);
+
+  if (recent.length >= MAX_REQUESTS_PER_WINDOW) {
+    const oldest = recent[0];
+    const retryAfterSec = Math.max(1, Math.ceil((oldest + RATE_LIMIT_WINDOW_MS - now) / 1000));
+    return { allowed: false, remaining: 0, retryAfterSec };
+  }
+
+  recent.push(now);
+  rateLimitMap.set(ip, { timestamps: recent });
+
+  // Pembersihan berkala memori jika map tumbuh besar
+  if (rateLimitMap.size > 2000) {
+    for (const [key, val] of rateLimitMap.entries()) {
+      const active = val.timestamps.filter((ts) => now - ts < RATE_LIMIT_WINDOW_MS);
+      if (active.length === 0) {
+        rateLimitMap.delete(key);
+      } else {
+        rateLimitMap.set(key, { timestamps: active });
+      }
+    }
+  }
+
+  return {
+    allowed: true,
+    remaining: MAX_REQUESTS_PER_WINDOW - recent.length,
+    retryAfterSec: 0,
+  };
+}
+
+function getClientIp(request: Request): string {
+  const xForwardedFor = request.headers.get("x-forwarded-for");
+  if (xForwardedFor) {
+    return xForwardedFor.split(",")[0].trim();
+  }
+  return (
+    request.headers.get("x-real-ip") ||
+    request.headers.get("cf-connecting-ip") ||
+    "127.0.0.1"
+  );
+}
+
+// ============================================================================
 // KONFIGURASI GEMINI API KEY DI CODINGAN (SERVER-SIDE)
 // ============================================================================
 // API Key tersimpan secara aman di backend server Next.js (terenkripsi)
@@ -313,6 +376,27 @@ const SECURE_FALLBACK_KEY = "QVEuQWI4Uk42TEM1T2VLaUlxVkY3a0ZHQUU0VUlpNklwSnUweHh
 
 export async function POST(request: Request) {
   try {
+    // 0. Keamanan: Cek rate limiting berbasis IP client
+    const clientIp = getClientIp(request);
+    const rateLimit = checkRateLimit(clientIp);
+
+    if (!rateLimit.allowed) {
+      return NextResponse.json(
+        {
+          error: "Terlalu banyak permintaan (Rate limit exceeded).",
+          reply: `Mohon maaf, Anda mengirim terlalu banyak pesan dalam waktu singkat. Silakan tunggu ${rateLimit.retryAfterSec} detik, atau langsung hubungi tim Sales kami melalui WhatsApp di [${companyConfig.contact.whatsapp.salesDisplay}](${companyConfig.contact.whatsapp.getChatUrl("sales")}).`,
+        },
+        {
+          status: 429,
+          headers: {
+            "Retry-After": rateLimit.retryAfterSec.toString(),
+            "X-RateLimit-Limit": MAX_REQUESTS_PER_WINDOW.toString(),
+            "X-RateLimit-Remaining": "0",
+          },
+        }
+      );
+    }
+
     const body = await request.json();
     const { messages } = body;
 
