@@ -112,7 +112,12 @@ export default function ArticleDetailClient({
                 [&_li]:leading-relaxed
                 [&_strong]:text-slate-900 [&_strong]:font-bold
                 [&_em]:italic [&_em]:text-slate-600
-                [&_a]:text-blue-600 [&_a]:underline [&_a]:font-medium hover:[&_a]:text-blue-800"
+                [&_a]:text-blue-600 [&_a]:underline [&_a]:font-medium hover:[&_a]:text-blue-800
+                [&_table]:w-full [&_table]:max-w-full [&_table]:my-6 [&_table]:border-collapse [&_table]:block [&_table]:overflow-x-auto
+                [&_th]:px-4 [&_th]:py-2 [&_th]:bg-slate-100 [&_th]:border [&_th]:border-slate-300 [&_th]:text-left [&_th]:font-semibold
+                [&_td]:px-4 [&_td]:py-2 [&_td]:border [&_td]:border-slate-200
+                [&_img]:max-w-full [&_img]:h-auto [&_img]:rounded-xl [&_img]:my-6
+                [&_div]:max-w-full [&_div]:overflow-x-auto"
               dangerouslySetInnerHTML={{ __html: localizedContent }}
             />
           </article>
