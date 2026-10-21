@@ -6,6 +6,7 @@ import Link from "next/link";
 import ThemeToggle from "@/components/ThemeToggle";
 import MobileDrawer from "@/components/MobileDrawer";
 import { useLanguage, Language } from "@/data/translations";
+import { companyConfig } from "@/data/companyConfig";
 import {
   Mail,
   Phone,
@@ -97,12 +98,12 @@ export default function Hero() {
               <div className="flex items-center gap-2 sm:gap-4 md:gap-6 ml-auto">
                 {/* Email - hidden on small mobile screen to prevent stretching */}
                 <a
-                  href="mailto:marketing@asiaplastik.com"
+                  href={`mailto:${companyConfig.contact.email}`}
                   className="hidden sm:flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors text-xs"
                   aria-label="Email Asia Plastik"
                 >
                   <Mail className="w-3.5 h-3.5 text-blue-400 shrink-0" />
-                  <span className="hidden md:inline">marketing@asiaplastik.com</span>
+                  <span className="hidden md:inline">{companyConfig.contact.email}</span>
                   <span className="inline md:hidden">{t.topBar.emailLabel}</span>
                 </a>
 
@@ -110,12 +111,12 @@ export default function Hero() {
 
                 {/* Phone */}
                 <a
-                  href="tel:+62318433078"
+                  href={`tel:${companyConfig.contact.phone.replace(/\s+/g, "")}`}
                   className="flex items-center gap-1 text-slate-300 hover:text-white transition-colors font-medium text-xs shrink-0"
                   aria-label="Telepon Asia Plastik"
                 >
                   <Phone className="w-3.5 h-3.5 text-blue-400 shrink-0" />
-                  <span className="hidden md:inline">+6231 8433078</span>
+                  <span className="hidden md:inline">{companyConfig.contact.phone}</span>
                   <span className="inline md:hidden">{t.topBar.phoneLabel}</span>
                 </a>
 

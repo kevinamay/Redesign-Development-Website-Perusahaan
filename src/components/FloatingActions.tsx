@@ -12,6 +12,7 @@ import {
   ChevronDown,
 } from "lucide-react";
 import { useLanguage } from "@/data/translations";
+import { companyConfig } from "@/data/companyConfig";
 
 interface ChatMessage {
   role: "user" | "assistant";
@@ -129,10 +130,8 @@ export default function FloatingActions() {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // WhatsApp Admin Configuration
-  const rawPhone = "082244109503";
-  const waPhone = rawPhone.replace(/^0/, "62");
-  const waUrl = `https://wa.me/${waPhone}?text=${encodeURIComponent(uiTexts.waMessage)}`;
+  // WhatsApp Admin Configuration from companyConfig
+  const waUrl = companyConfig.contact.whatsapp.getChatUrl("sales", uiTexts.waMessage);
 
   // Default welcome message
   const initialMessages: ChatMessage[] = [
@@ -180,7 +179,7 @@ export default function FloatingActions() {
       const data = await res.json();
       const reply =
         data.reply ||
-        "Terima kasih atas pertanyaannya. Anda juga dapat langsung berkonsultasi via WhatsApp ke Admin Sales kami di 082244109503.";
+        `Terima kasih atas pertanyaannya. Anda juga dapat langsung berkonsultasi via WhatsApp ke Admin Sales kami di ${companyConfig.contact.whatsapp.salesDisplay}.`;
 
       setMessages((prev) => [...prev, { role: "assistant", content: reply }]);
     } catch {
@@ -188,8 +187,7 @@ export default function FloatingActions() {
         ...prev,
         {
           role: "assistant",
-          content:
-            "Mohon maaf, terjadi gangguan sesaat. Anda dapat langsung berkonsultasi via WhatsApp ke Admin Sales kami di [082244109503](https://wa.me/6282244109503).",
+          content: `Mohon maaf, terjadi gangguan sesaat. Anda dapat langsung berkonsultasi via WhatsApp ke Admin Sales kami di [${companyConfig.contact.whatsapp.salesDisplay}](${companyConfig.contact.whatsapp.getChatUrl("sales")}).`,
         },
       ]);
     } finally {

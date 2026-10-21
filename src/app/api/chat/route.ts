@@ -1,24 +1,25 @@
 import { NextResponse } from "next/server";
+import { companyConfig } from "@/data/companyConfig";
 
 // Comprehensive Corporate Knowledge Base for CV. Asia Plastik
 const SYSTEM_PROMPT = `
-Anda adalah "AsiaBot", asisten AI cerdas dan ramah dari CV. ASIA PLASTIK (asiaplastik.com).
+Anda adalah "AsiaBot", asisten AI cerdas dan ramah dari ${companyConfig.legalName} (${companyConfig.websiteUrl.replace(/^https?:\/\//, "")}).
 
 ATURAN UTAMA MENJAWAB (SANGAT PENTING):
 1. FOKUS & RELEVANSI TINGGI:
    - Jawablah SECARA LANGSUNG, SPESIFIK, dan SESUAI dengan apa yang ditanyakan oleh pengguna.
    - JIKA PENGGUNA MENANYAKAN HAL UMUM / BEBAS (contoh: rekomendasi makanan, resep, matematika, lelucon, tips umum, hobi, teknologi, coding, atau obrolan santai):
      * Jawablah pertanyaan tersebut secara tuntas, alami, ramah, dan solutif.
-     * JANGAN memaksakan promosi perusahaan, kemasan, atau membawa-bawa CV. Asia Plastik ke dalam jawaban jika pengguna sama sekali tidak menanyakannya! Jawablah layaknya asisten AI yang cerdas dan objektif.
-   - JIKA PENGGUNA MENANYAKAN TENTANG CV. ASIA PLASTIK, PRODUK KEMASAN, ATAU INDUSTRI PLASTIK:
+     * JANGAN memaksakan promosi perusahaan, kemasan, atau membawa-bawa ${companyConfig.legalName} ke dalam jawaban jika pengguna sama sekali tidak menanyakannya! Jawablah layaknya asisten AI yang cerdas dan objektif.
+   - JIKA PENGGUNA MENANYAKAN TENTANG ${companyConfig.legalName}, PRODUK KEMASAN, ATAU INDUSTRI PLASTIK:
      * Berikan penjelasan teknis, lengkap, dan profesional sesuai informasi resmi perusahaan di bawah.
 
 INFORMASI RESMI PERUSAHAAN (HANYA GUNAKAN SAAT PENGGUNA BERTANYA TENTANG PERUSAHAAN/PRODUK):
 1. Profil & Sejarah:
-   - Nama Perusahaan: CV. ASIA PLASTIK (asiaplastik.com)
-   - Didirikan: Sejak tahun 1985 (berpengalaman lebih dari 35 tahun di industri plastik).
-   - Lokasi: Kawasan Industri & Pergudangan, Surabaya, Jawa Timur, Indonesia.
-   - Status Mutu: Bersertifikat resmi ISO 9001:2015 (sejak 2005 meraih sertifikasi ISO).
+   - Nama Perusahaan: ${companyConfig.legalName} (${companyConfig.websiteUrl.replace(/^https?:\/\//, "")})
+   - Didirikan: Sejak tahun ${companyConfig.establishedYear} (berpengalaman di industri plastik manufaktur).
+   - Lokasi: ${companyConfig.address.formatted.id}.
+   - Status Mutu: Bersertifikat resmi ${companyConfig.isoCertification}.
 
 2. Bidang Spesialisasi Manufaktur:
    - Plastic Injection Molding (komponen industri presisi tinggi, tutup botol/caps, krat lipat, wadah industri).
@@ -42,10 +43,10 @@ INFORMASI RESMI PERUSAHAAN (HANYA GUNAKAN SAAT PENGGUNA BERTANYA TENTANG PERUSAH
    - Ekspor global ke lebih dari 20 negara di kawasan Asia Pasifik, Australia, Timur Tengah, Eropa, dan Amerika Utara.
 
 6. Kontak & Pemesanan:
-   - WhatsApp Admin Sales: 082244109503 (+62 822-4410-9503)
-   - Telepon Kantor: +6231 8433078
-   - Email: marketing@asiaplastik.com
-   - Jam Operasional: Senin - Sabtu: 08.00 - 17.00 WIB.
+   - WhatsApp Admin Sales: ${companyConfig.contact.whatsapp.salesDisplay} (${companyConfig.contact.whatsapp.salesNumber})
+   - Telepon Kantor: ${companyConfig.contact.phone}
+   - Email: ${companyConfig.contact.email}
+   - Jam Operasional: ${companyConfig.contact.operatingHours.id}.
 
 GAYA KOMUNIKASI:
 - Gunakan bahasa yang sama dengan pengguna (Bahasa Indonesia santun & natural, atau bahasa lain jika pengguna memakai bahasa asing).
@@ -119,8 +120,8 @@ function generateIntelligentFallback(query: string): string {
       "• Pembuatan produk plastik (Injection & Blow Moulding)\n" +
       "• Spesifikasi mesin Blow Moulding 500 Liter & Injeksi Presisi\n" +
       "• Pembuatan cetakan / mold kustom sesuai sampel Anda\n" +
-      "• Sertifikasi mutu ISO 9001:2015\n" +
-      "• Konsultasi langsung ke tim Sales via WhatsApp (082244109503)"
+      `• Sertifikasi mutu ${companyConfig.isoCertification}\n` +
+      `• Konsultasi langsung ke tim Sales via WhatsApp (${companyConfig.contact.whatsapp.salesDisplay})`
     );
   }
 
@@ -157,7 +158,7 @@ function generateIntelligentFallback(query: string): string {
       "• **PP (Polypropylene)**: Memiliki titik leleh tinggi (~160°C), fleksibilitas engsel luar biasa, tahan lelah mekanis. Ideal untuk krat lipat (*Solid Foldable Industrial Basket*) dan tutup botol presisi.\n" +
       "• **PET & LDPE**: Pilihan bening untuk botol minuman atau fleksibel untuk wadah lentur.\n" +
       "• **Resin Daur Ulang (Eco-Friendly)**: Opsi ramah lingkungan untuk produk logistik dan pergudangan.\n\n" +
-      "Butuh rekomendasi bahan plastik terbaik untuk produk spesifik Anda? Tim teknis kami siap memandu via WhatsApp [082244109503](https://wa.me/6282244109503)."
+      `Butuh rekomendasi bahan plastik terbaik untuk produk spesifik Anda? Tim teknis kami siap memandu via WhatsApp [${companyConfig.contact.whatsapp.salesDisplay}](${companyConfig.contact.whatsapp.getChatUrl("sales")}).`
     );
   }
 
@@ -196,10 +197,10 @@ function generateIntelligentFallback(query: string): string {
   ) {
     return (
       "Untuk konsultasi langsung, pemesanan, atau permintaan penawaran harga resmi (quotation), Anda dapat langsung menghubungi Admin Sales CV. Asia Plastik melalui:\n\n" +
-      "• **WhatsApp Sales**: [082244109503](https://wa.me/6282244109503?text=Halo%2C%20Saya%20ingin%20berkonsultasi%20mengenai%20produk%20CV%20Asia%20Plastik)\n" +
-      "• **Telepon Kantor**: +6231 8433078\n" +
-      "• **Email**: marketing@asiaplastik.com\n" +
-      "• **Jam Kerja**: Senin - Sabtu, 08.00 - 17.00 WIB\n\n" +
+      `• **WhatsApp Sales**: [${companyConfig.contact.whatsapp.salesDisplay}](${companyConfig.contact.whatsapp.getChatUrl("sales", "Halo, Saya ingin berkonsultasi mengenai produk CV Asia Plastik")})\n` +
+      `• **Telepon Kantor**: ${companyConfig.contact.phone}\n` +
+      `• **Email**: ${companyConfig.contact.email}\n` +
+      `• **Jam Kerja**: ${companyConfig.contact.operatingHours.id}\n\n` +
       "Tim representatif kami siap memberikan kalkulasi harga kompetitif dan informasi MOQ terbaik sesuai volume pesanan Anda!"
     );
   }
@@ -213,7 +214,7 @@ function generateIntelligentFallback(query: string): string {
     q.includes("standar")
   ) {
     return (
-      "CV. Asia Plastik telah tersertifikasi sistem manajemen mutu internasional **ISO 9001:2015** (yang dikembangkan dari perolehan awal ISO 9001:2000 sejak tahun 2005).\n\n" +
+      `CV. Asia Plastik telah tersertifikasi sistem manajemen mutu internasional **${companyConfig.isoCertification}** (yang dikembangkan dari perolehan awal ISO 9001:2000 sejak tahun 2005).\n\n` +
       "Standar mutu kami mencakup:\n" +
       "• **Inspeksi Toleransi Mikro Ketat**: Pengujian dimensi, kerapatan dinding, dan uji kebocoran.\n" +
       "• **Quality Control Terpadu**: Di setiap batch proses injection & blow molding.\n" +
@@ -274,7 +275,7 @@ function generateIntelligentFallback(query: string): string {
       "• Kami dapat merancang cetakan baru berdasarkan gambar teknik (CAD/3D), sampel fisik produk, atau konsep kebutuhan Anda.\n" +
       "• Didukung mesin CNC presisi dan tim engineering berpengalaman sejak 1985.\n" +
       "• Pilihan resin fleksibel: HDPE, PP, LDPE, ABS, dan material *food-grade*.\n\n" +
-      "Silakan diskusikan spesifikasi cetakan kustom Anda dengan tim sales kami di WhatsApp: [082244109503](https://wa.me/6282244109503)."
+      `Silakan diskusikan spesifikasi cetakan kustom Anda dengan tim sales kami di WhatsApp: [${companyConfig.contact.whatsapp.salesDisplay}](${companyConfig.contact.whatsapp.getChatUrl("sales")}).`
     );
   }
 
@@ -420,8 +421,7 @@ export async function POST(request: Request) {
     console.error("Chat API error:", error);
     return NextResponse.json(
       {
-        reply:
-          "Mohon maaf, terjadi gangguan sesaat. Anda dapat langsung berkonsultasi via WhatsApp ke Admin Sales kami di [082244109503](https://wa.me/6282244109503).",
+        reply: `Mohon maaf, terjadi gangguan sesaat. Anda dapat langsung berkonsultasi via WhatsApp ke Admin Sales kami di [${companyConfig.contact.whatsapp.salesDisplay}](${companyConfig.contact.whatsapp.getChatUrl("sales")}).`,
       },
       { status: 200 }
     );

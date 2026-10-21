@@ -21,6 +21,7 @@ import {
   MessageCircle,
 } from "lucide-react";
 import { useLanguage } from "@/data/translations";
+import { companyConfig } from "@/data/companyConfig";
 
 export interface LocationConfig {
   id: string;
@@ -43,7 +44,7 @@ export default function KontakPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Localized copy with exact fallback to Indonesian requirements
+  // Localized copy with single source of truth from companyConfig
   const content = {
     id: {
       breadcrumbHome: "Beranda",
@@ -51,15 +52,14 @@ export default function KontakPage() {
       eyebrow: "HUBUNGI KAMI",
       title: "Kontak",
       officeAddressLabel: "ALAMAT KANTOR",
-      officeAddress:
-        "Jalan Rungkut Industri III/27A, Surabaya - Indonesia, Kode Pos 60293",
+      officeAddress: companyConfig.address.formatted.id,
       contactInfoLabel: "INFORMASI KONTAK",
-      phone: "+6231 8433078 - 8439998 - 8439145",
-      fax: "+6231 8492989",
-      email: "marketing@asiaplastik.com",
-      website: "www.asiaplastik.com",
+      phone: companyConfig.contact.phoneFormattedFull,
+      fax: companyConfig.contact.fax,
+      email: companyConfig.contact.email,
+      website: companyConfig.websiteUrl.replace(/^https?:\/\//, ""),
       operatingHoursLabel: "JAM OPERASIONAL",
-      operatingHours: "Senin - Sabtu: 08.00 - 16.30 WIB",
+      operatingHours: companyConfig.contact.operatingHours.id,
       formHeader: "Form Kontak",
       formSubtitle:
         "Mohon isi form dibawah ini untuk menghubungi kami. Kami berusaha menjawab secepatnya.",
@@ -85,11 +85,10 @@ export default function KontakPage() {
         {
           id: "lokasi-1",
           badge: "Kantor & Pabrik Utama",
-          title: "Kantor & Pabrik Utama (CV. Asia Plastik)",
-          desc: "Jalan Rungkut Industri III/27A, Surabaya - Indonesia, Kode Pos 60293",
-          mapEmbedSrc:
-            "https://maps.google.com/maps?q=-7.3352907,112.7565049+(CV+Asia+Plastik)&z=16&output=embed",
-          mapsUrl: "https://maps.app.goo.gl/TUfEKgp7Mpuw8ntN8",
+          title: `Kantor & Pabrik Utama (${companyConfig.legalName})`,
+          desc: companyConfig.address.formatted.id,
+          mapEmbedSrc: companyConfig.address.googleMapsEmbedUrl,
+          mapsUrl: companyConfig.address.googleMapsUrl,
           badgeColorClass:
             "bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400",
         },
@@ -112,15 +111,14 @@ export default function KontakPage() {
       eyebrow: "CONTACT US",
       title: "Contact",
       officeAddressLabel: "OFFICE ADDRESS",
-      officeAddress:
-        "Jalan Rungkut Industri III/27A, Surabaya - Indonesia, Postal Code 60293",
+      officeAddress: companyConfig.address.formatted.en,
       contactInfoLabel: "CONTACT INFORMATION",
-      phone: "+6231 8433078 - 8439998 - 8439145",
-      fax: "+6231 8492989",
-      email: "marketing@asiaplastik.com",
-      website: "www.asiaplastik.com",
+      phone: companyConfig.contact.phoneFormattedFull,
+      fax: companyConfig.contact.fax,
+      email: companyConfig.contact.email,
+      website: companyConfig.websiteUrl.replace(/^https?:\/\//, ""),
       operatingHoursLabel: "OPERATING HOURS",
-      operatingHours: "Monday - Saturday: 08:00 - 16:30 WIB",
+      operatingHours: companyConfig.contact.operatingHours.en,
       formHeader: "Contact Form",
       formSubtitle:
         "Please fill out the form below to reach us. We will get back to you as soon as possible.",
@@ -146,11 +144,10 @@ export default function KontakPage() {
         {
           id: "location-1",
           badge: "Head Office & Main Plant",
-          title: "Head Office & Main Plant (CV. Asia Plastik)",
-          desc: "Jalan Rungkut Industri III/27A, Surabaya - Indonesia, Postal Code 60293",
-          mapEmbedSrc:
-            "https://maps.google.com/maps?q=-7.3352907,112.7565049+(CV+Asia+Plastik)&z=16&output=embed",
-          mapsUrl: "https://maps.app.goo.gl/TUfEKgp7Mpuw8ntN8",
+          title: `Head Office & Main Plant (${companyConfig.legalName})`,
+          desc: companyConfig.address.formatted.en,
+          mapEmbedSrc: companyConfig.address.googleMapsEmbedUrl,
+          mapsUrl: companyConfig.address.googleMapsUrl,
           badgeColorClass:
             "bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400",
         },
@@ -173,15 +170,14 @@ export default function KontakPage() {
       eyebrow: "联系我们",
       title: "联系方式",
       officeAddressLabel: "总部工厂地址",
-      officeAddress:
-        "Jalan Rungkut Industri III/27A, Surabaya - Indonesia, 邮编 60293",
+      officeAddress: companyConfig.address.formatted.zh,
       contactInfoLabel: "联络方式",
-      phone: "+6231 8433078 - 8439998 - 8439145",
-      fax: "+6231 8492989",
-      email: "marketing@asiaplastik.com",
-      website: "www.asiaplastik.com",
+      phone: companyConfig.contact.phoneFormattedFull,
+      fax: companyConfig.contact.fax,
+      email: companyConfig.contact.email,
+      website: companyConfig.websiteUrl.replace(/^https?:\/\//, ""),
       operatingHoursLabel: "工作时间",
-      operatingHours: "周一至周六：08:00 - 16:30 (印尼西部时间)",
+      operatingHours: companyConfig.contact.operatingHours.zh,
       formHeader: "在线咨询留言",
       formSubtitle:
         "请填写以下表格与我们取得联系，我们将尽快回复您的需求。",
@@ -207,11 +203,10 @@ export default function KontakPage() {
         {
           id: "location-1",
           badge: "总部办公与主厂区",
-          title: "总部办公大楼及一号制造基地 (CV. Asia Plastik)",
-          desc: "Jalan Rungkut Industri III/27A, Surabaya - Indonesia, 邮编 60293",
-          mapEmbedSrc:
-            "https://maps.google.com/maps?q=-7.3352907,112.7565049+(CV+Asia+Plastik)&z=16&output=embed",
-          mapsUrl: "https://maps.app.goo.gl/TUfEKgp7Mpuw8ntN8",
+          title: `总部办公大楼及一号制造基地 (${companyConfig.legalName})`,
+          desc: companyConfig.address.formatted.zh,
+          mapEmbedSrc: companyConfig.address.googleMapsEmbedUrl,
+          mapsUrl: companyConfig.address.googleMapsUrl,
           badgeColorClass:
             "bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400",
         },
@@ -339,7 +334,7 @@ export default function KontakPage() {
                             <div className="text-sm sm:text-base">
                               <span className="text-xs text-slate-400 block mb-0.5">Telepon Kantor</span>
                               <a
-                                href="tel:+62318433078"
+                                href={`tel:${companyConfig.contact.phone.replace(/\s+/g, "")}`}
                                 className="hover:text-white hover:underline transition-colors block font-medium"
                               >
                                 {content.phone}
@@ -376,7 +371,7 @@ export default function KontakPage() {
                             <div className="text-sm sm:text-base">
                               <span className="text-xs text-slate-400 block mb-0.5">Situs Web Resmi</span>
                               <a
-                                href="https://www.asiaplastik.com"
+                                href={companyConfig.websiteUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="hover:text-white hover:underline transition-colors inline-flex items-center gap-1.5 font-medium"
@@ -405,7 +400,10 @@ export default function KontakPage() {
                 {/* Direct WhatsApp Callout Bottom Banner */}
                 <div className="relative z-10 mt-10 pt-6 border-t border-slate-800/80">
                   <a
-                    href="https://wa.me/628113229988?text=Halo%20Asia%20Plastik%2C%20saya%20ingin%20berkonsultasi%20mengenai%20produk%20dan%20pemesanan%20plastik"
+                    href={companyConfig.contact.whatsapp.getChatUrl(
+                      "primary",
+                      "Halo Asia Plastik, saya ingin berkonsultasi mengenai produk dan pemesanan plastik"
+                    )}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-between p-3.5 rounded-2xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/60 hover:border-emerald-500/50 transition-all duration-300 group"
@@ -417,7 +415,7 @@ export default function KontakPage() {
                       <div className="text-left">
                         <p className="text-xs text-slate-400">Butuh respon cepat?</p>
                         <p className="text-xs sm:text-sm font-semibold text-white group-hover:text-emerald-400 transition-colors">
-                          WhatsApp Sales (+62 811-322-9988)
+                          WhatsApp Sales ({companyConfig.contact.whatsapp.primaryDisplay})
                         </p>
                       </div>
                     </div>

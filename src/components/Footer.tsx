@@ -12,6 +12,7 @@ import {
   ArrowUp,
 } from "lucide-react";
 import { useLanguage } from "@/data/translations";
+import { companyConfig } from "@/data/companyConfig";
 
 export default function Footer() {
   const { t } = useLanguage();
@@ -40,7 +41,7 @@ export default function Footer() {
   const socialLinks = [
     {
       name: "Facebook",
-      href: "https://www.facebook.com/asiaplastik/?locale=id_ID",
+      href: companyConfig.socialMedia.facebook,
       isExternal: true,
       icon: (
         <svg
@@ -54,7 +55,7 @@ export default function Footer() {
     },
     {
       name: "Instagram",
-      href: "https://www.instagram.com/asia_plastik?igsh=ZWpjNG5zcm9rbW42",
+      href: companyConfig.socialMedia.instagram,
       isExternal: true,
       icon: (
         <svg
@@ -72,7 +73,7 @@ export default function Footer() {
     },
     {
       name: "YouTube",
-      href: "https://www.youtube.com/@AsiaPlastik",
+      href: companyConfig.socialMedia.youtube,
       isExternal: true,
       icon: (
         <svg
@@ -86,7 +87,7 @@ export default function Footer() {
     },
     {
       name: "TikTok",
-      href: "https://www.tiktok.com/@asiaplastik",
+      href: companyConfig.socialMedia.tiktok,
       isExternal: true,
       icon: (
         <svg
@@ -100,7 +101,7 @@ export default function Footer() {
     },
     {
       name: "LinkedIn",
-      href: "https://www.linkedin.com/company/asia-plastik-plastic-packaging-manufacturing/?originalSubdomain=id",
+      href: companyConfig.socialMedia.linkedin,
       isExternal: true,
       icon: (
         <svg
@@ -118,7 +119,7 @@ export default function Footer() {
     },
     {
       name: "WhatsApp",
-      href: "https://wa.me/628113229988?text=Halo%20Asia%20Plastik%2C%20saya%20ingin%20berkonsultasi%20mengenai%20produk%20dan%20pemesanan%20plastik",
+      href: companyConfig.contact.whatsapp.getChatUrl("primary"),
       isExternal: true,
       icon: (
         <svg
@@ -231,8 +232,7 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin className="text-blue-300 w-4 h-4 sm:w-5 sm:h-5 shrink-0 mt-0.5" />
                 <span className="leading-relaxed text-blue-100">
-                  {t.footer?.address ||
-                    "Jalan Rungkut Industri III/27A, Surabaya - Indonesia, Kode Pos 60293"}
+                  {t.footer?.address || companyConfig.address.formatted.id}
                 </span>
               </li>
 
@@ -240,10 +240,10 @@ export default function Footer() {
               <li className="flex items-center gap-3">
                 <Phone className="text-blue-300 w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
                 <a
-                  href="tel:+62318433078"
+                  href={`tel:${companyConfig.contact.phone.replace(/\s+/g, "")}`}
                   className="hover:text-white transition-colors text-blue-100"
                 >
-                  +6231 8433078 - 8439998 - 8439145
+                  {companyConfig.contact.phoneFormattedFull}
                 </a>
               </li>
 
@@ -251,12 +251,12 @@ export default function Footer() {
               <li className="flex items-center gap-3">
                 <MessageCircle className="text-blue-300 w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
                 <a
-                  href="https://wa.me/628113229988?text=Halo%20Asia%20Plastik%2C%20saya%20ingin%20berkonsultasi%20mengenai%20produk%20dan%20pemesanan%20plastik"
+                  href={companyConfig.contact.whatsapp.getChatUrl("primary")}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-emerald-300 hover:text-emerald-200 font-semibold transition-colors"
                 >
-                  WhatsApp: +62 811-322-9988
+                  WhatsApp: {companyConfig.contact.whatsapp.primaryDisplay}
                 </a>
               </li>
 
@@ -264,10 +264,10 @@ export default function Footer() {
               <li className="flex items-center gap-3">
                 <Mail className="text-blue-300 w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
                 <a
-                  href="mailto:marketing@asiaplastik.com"
+                  href={`mailto:${companyConfig.contact.email}`}
                   className="hover:text-white transition-colors text-blue-100"
                 >
-                  marketing@asiaplastik.com
+                  {companyConfig.contact.email}
                 </a>
               </li>
 

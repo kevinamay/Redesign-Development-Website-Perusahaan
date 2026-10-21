@@ -1,3 +1,5 @@
+import { companyConfig } from "@/data/companyConfig";
+
 export interface NavLink {
   label: string;
   href: string;
@@ -205,14 +207,14 @@ export const footerData: FooterData = {
     logoImage: "/images/logo.png",
   },
   contact: {
-    address: "Jalan Rungkut Industri III/27A",
-    city: "Surabaya",
-    postalCode: "60293",
-    country: "Indonesia",
-    phone: "+6231 8433078",
-    whatsapp: "+62 811-322-9988",
-    email: "marketing@asiaplastik.com",
-    workingHours: "Senin - Sabtu: 08.00 - 16.30 WIB",
+    address: companyConfig.address.street,
+    city: companyConfig.address.city,
+    postalCode: companyConfig.address.postalCode,
+    country: companyConfig.address.country,
+    phone: companyConfig.contact.phone,
+    whatsapp: companyConfig.contact.whatsapp.primaryDisplay,
+    email: companyConfig.contact.email,
+    workingHours: companyConfig.contact.operatingHours.id,
   },
   sections: [
     {
@@ -249,15 +251,11 @@ export const footerData: FooterData = {
       ],
     },
   ],
-  certifications: [
-    "ISO 9001:2015 Quality Management",
-    "Food Grade Safety Compliance",
-    "Eco-Friendly Recyclable Resins",
-  ],
+  certifications: [...companyConfig.certifications],
   socialLinks: [
-    { platform: "LinkedIn", href: "https://www.linkedin.com/company/asia-plastik-plastic-packaging-manufacturing/?originalSubdomain=id" },
-    { platform: "Instagram", href: "https://www.instagram.com/asia_plastik/" },
-    { platform: "WhatsApp", href: "https://wa.me/6281234567890" },
+    { platform: "LinkedIn", href: companyConfig.socialMedia.linkedin },
+    { platform: "Instagram", href: companyConfig.socialMedia.instagram },
+    { platform: "WhatsApp", href: companyConfig.contact.whatsapp.getChatUrl("primary") },
   ],
-  copyright: `© ${new Date().getFullYear()} CV. ASIA PLASTIK. Seluruh Hak Cipta Dilindungi Undang-Undang.`,
+  copyright: `© ${new Date().getFullYear()} ${companyConfig.legalName}. Seluruh Hak Cipta Dilindungi Undang-Undang.`,
 };

@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import ThemeToggle from "@/components/ThemeToggle";
 import { useLanguage, Language } from "@/data/translations";
+import { companyConfig } from "@/data/companyConfig";
 import {
   X,
   Home,
@@ -39,7 +40,7 @@ interface MobileMenuProps {
 const socialIcons = [
   {
     name: "Facebook",
-    href: "https://www.facebook.com/asiaplastik/?locale=id_ID",
+    href: companyConfig.socialMedia.facebook,
     icon: (
       <svg className="w-4 h-4 fill-current" viewBox="0 0 512 512">
         <path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z" />
@@ -48,7 +49,7 @@ const socialIcons = [
   },
   {
     name: "Instagram",
-    href: "https://www.instagram.com/asia_plastik?igsh=ZWpjNG5zcm9rbW42",
+    href: companyConfig.socialMedia.instagram,
     icon: (
       <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
         <path
@@ -61,7 +62,7 @@ const socialIcons = [
   },
   {
     name: "YouTube",
-    href: "https://www.youtube.com/@AsiaPlastik",
+    href: companyConfig.socialMedia.youtube,
     icon: (
       <svg className="w-4 h-4 fill-current" viewBox="0 0 576 512">
         <path d="M549.655 124.083c-6.281-23.65-24.774-42.144-48.423-48.426C458.581 64 288 64 288 64S117.42 64 74.768 75.657c-23.649 6.282-42.143 24.776-48.425 48.426C15 166.738 15 256 15 256s0 89.262 11.343 131.917c6.282 23.65 24.776 42.144 48.425 48.426C117.42 448 288 448 288 448s170.58 0 213.232-11.657c23.649-6.282 42.143-24.776 48.423-48.426C561 345.262 561 256 561 256s0-89.262-11.345-131.917zM232 336V176l144 80-144 80z" />
@@ -70,7 +71,7 @@ const socialIcons = [
   },
   {
     name: "TikTok",
-    href: "https://www.tiktok.com/@asiaplastik",
+    href: companyConfig.socialMedia.tiktok,
     icon: (
       <svg className="w-4 h-4 fill-current" viewBox="0 0 448 512">
         <path d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25V349.38A162.55 162.55 0 1 1 185 188.31V278.2a74.62 74.62 0 1 0 52.23 71.18V0l88 0a121.18 121.18 0 0 0 1.86 22.17h0A122.18 122.18 0 0 0 381 102.39a121.43 121.43 0 0 0 67 20.14Z" />
@@ -79,7 +80,7 @@ const socialIcons = [
   },
   {
     name: "LinkedIn",
-    href: "https://www.linkedin.com/company/asia-plastik-plastic-packaging-manufacturing/?originalSubdomain=id",
+    href: companyConfig.socialMedia.linkedin,
     icon: (
       <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
         <path
@@ -92,7 +93,10 @@ const socialIcons = [
   },
   {
     name: "WhatsApp",
-    href: "https://wa.me/628113229988?text=Halo%20Asia%20Plastik%2C%20saya%20ingin%20berkonsultasi",
+    href: companyConfig.contact.whatsapp.getChatUrl(
+      "primary",
+      "Halo Asia Plastik, saya ingin berkonsultasi"
+    ),
     icon: (
       <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
         <path
@@ -227,14 +231,14 @@ export function VariantA({
         <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800 flex flex-col gap-2.5">
           <div className="flex items-center justify-between text-xs">
             <a
-              href="tel:+62318433078"
+              href={`tel:${companyConfig.contact.phone.replace(/\s+/g, "")}`}
               className="flex items-center gap-1.5 font-semibold text-slate-700 dark:text-slate-300 hover:text-blue-600"
             >
               <Phone className="w-3.5 h-3.5 text-blue-500" />
-              <span>+6231 8433078</span>
+              <span>{companyConfig.contact.phone}</span>
             </a>
             <a
-              href="mailto:marketing@asiaplastik.com"
+              href={`mailto:${companyConfig.contact.email}`}
               className="flex items-center gap-1.5 text-slate-500 hover:text-blue-600"
             >
               <Mail className="w-3.5 h-3.5 text-blue-500" />
@@ -372,7 +376,7 @@ export function VariantB({
 
         {/* Island Footer: Contacts & Socials */}
         <div className="flex items-center justify-between pt-2 border-t border-slate-100 dark:border-slate-800 text-xs">
-          <span className="text-slate-500 font-medium">+6231 8433078</span>
+          <span className="text-slate-500 font-medium">{companyConfig.contact.phone}</span>
           <div className="flex items-center gap-3 text-slate-400">
             {socialIcons.slice(0, 4).map((s, idx) => (
               <a
@@ -496,7 +500,10 @@ export function VariantC({
         {/* Dual Primary Quick Actions (WhatsApp & Contact) */}
         <div className="grid grid-cols-2 gap-2.5 pt-2 border-t border-slate-100 dark:border-slate-800">
           <a
-            href="https://wa.me/628113229988?text=Halo%20Asia%20Plastik%2C%20saya%20ingin%20berkonsultasi"
+            href={companyConfig.contact.whatsapp.getChatUrl(
+              "primary",
+              "Halo Asia Plastik, saya ingin berkonsultasi"
+            )}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center gap-2 py-3 px-3 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-md transition-all"

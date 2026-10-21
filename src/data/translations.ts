@@ -1,6 +1,7 @@
 "use client";
 
 import { useSyncExternalStore, useCallback } from "react";
+import { companyConfig } from "@/data/companyConfig";
 
 export type Language = "id" | "en" | "zh";
 
@@ -193,8 +194,8 @@ export const translations: Record<Language, TranslationSchema> = {
         { label: "Komponen Plastik Kustom", href: "#products" },
       ],
       contactTitle: "Hubungi Kantor & Pabrik",
-      address: "Jalan Rungkut Industri III/27A, Surabaya - Indonesia, Kode Pos 60293",
-      workingHours: "Senin - Sabtu: 08.00 - 16.30 WIB",
+      address: companyConfig.address.formatted.id,
+      workingHours: companyConfig.contact.operatingHours.id,
       privacyPolicy: "Kebijakan Privasi",
       termsOfService: "Syarat & Ketentuan",
       backToTop: "Kembali ke Atas",
@@ -302,8 +303,8 @@ export const translations: Record<Language, TranslationSchema> = {
         { label: "Custom Technical Parts", href: "#products" },
       ],
       contactTitle: "Contact Office & Plant",
-      address: "Jalan Rungkut Industri III/27A, Surabaya - Indonesia, Postal Code 60293",
-      workingHours: "Monday - Saturday: 08:00 - 16:30 WIB",
+      address: companyConfig.address.formatted.en,
+      workingHours: companyConfig.contact.operatingHours.en,
       privacyPolicy: "Privacy Policy",
       termsOfService: "Terms of Service",
       backToTop: "Back to Top",
@@ -411,8 +412,8 @@ export const translations: Record<Language, TranslationSchema> = {
         { label: "工程塑料精密构件", href: "#products" },
       ],
       contactTitle: "总部办公室与生产基地",
-      address: "Jalan Rungkut Industri III/27A, Surabaya - Indonesia, 邮编 60293",
-      workingHours: "周一至周六：08:00 - 16:30 (印尼西部时间 WIB)",
+      address: companyConfig.address.formatted.zh,
+      workingHours: companyConfig.contact.operatingHours.zh,
       privacyPolicy: "隐私政策",
       termsOfService: "服务条款",
       backToTop: "返回顶部",

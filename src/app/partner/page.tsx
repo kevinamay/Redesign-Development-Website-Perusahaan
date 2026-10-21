@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { useLanguage } from "@/data/translations";
 import { partnersList } from "@/data/partnersData";
+import { companyConfig } from "@/data/companyConfig";
 
 export { partnersList };
 
@@ -61,9 +62,10 @@ export default function PartnerPage() {
         "Kami selalu terbuka untuk peluang kerjasama strategis guna mendukung kebutuhan industri dan bisnis Anda.",
       ctaButton: "HUBUNGI KAMI",
       ctaWhatsapp: "KONSULTASI WHATSAPP",
-      ctaWhatsappUrl:
-        "https://wa.me/628113229988?text=" +
-        encodeURIComponent("Halo Asia Plastik, kami tertarik untuk menjalin kerjasama kemitraan B2B"),
+      ctaWhatsappUrl: companyConfig.contact.whatsapp.getChatUrl(
+        "primary",
+        "Halo Asia Plastik, kami tertarik untuk menjalin kerjasama kemitraan B2B"
+      ),
     },
     en: {
       breadcrumbHome: "Home",
@@ -102,9 +104,10 @@ export default function PartnerPage() {
         "We are always open to strategic partnership opportunities to support your business and industrial packaging needs.",
       ctaButton: "CONTACT US",
       ctaWhatsapp: "WHATSAPP SALES",
-      ctaWhatsappUrl:
-        "https://wa.me/628113229988?text=" +
-        encodeURIComponent("Hello Asia Plastik, we are interested in exploring strategic B2B partnership"),
+      ctaWhatsappUrl: companyConfig.contact.whatsapp.getChatUrl(
+        "primary",
+        "Hello Asia Plastik, we are interested in exploring strategic B2B partnership"
+      ),
     },
     zh: {
       breadcrumbHome: "网站首页",
@@ -142,9 +145,10 @@ export default function PartnerPage() {
         "我们始终对战略合作持开放态度，全力支持您的工业与商业包装需求。",
       ctaButton: "立即联系我们",
       ctaWhatsapp: "微信 / WhatsApp 咨询",
-      ctaWhatsappUrl:
-        "https://wa.me/628113229988?text=" +
-        encodeURIComponent("您好亚洲塑料，我们对开展企业级 B2B 战略合作很感兴趣"),
+      ctaWhatsappUrl: companyConfig.contact.whatsapp.getChatUrl(
+        "primary",
+        "您好亚洲塑料，我们对开展企业级 B2B 战略合作很感兴趣"
+      ),
     },
   }[lang];
 

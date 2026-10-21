@@ -5,6 +5,7 @@ import { createPortal } from "react-dom";
 import Link from "next/link";
 import ThemeToggle from "@/components/ThemeToggle";
 import { useLanguage, Language } from "@/data/translations";
+import { companyConfig } from "@/data/companyConfig";
 import {
   X,
   Home,
@@ -25,7 +26,7 @@ interface MobileDrawerProps {
 const socialMediaChannels = [
   {
     name: "Facebook",
-    href: "https://www.facebook.com/asiaplastik/?locale=id_ID",
+    href: companyConfig.socialMedia.facebook,
     hoverBg: "hover:bg-[#1877F2]",
     icon: (
       <svg className="w-4 h-4 fill-current" viewBox="0 0 512 512" aria-hidden="true">
@@ -35,7 +36,7 @@ const socialMediaChannels = [
   },
   {
     name: "Instagram",
-    href: "https://www.instagram.com/asia_plastik?igsh=ZWpjNG5zcm9rbW42",
+    href: companyConfig.socialMedia.instagram,
     hoverBg: "hover:bg-gradient-to-tr hover:from-[#F58529] hover:via-[#DD2A7B] hover:to-[#8134AF]",
     icon: (
       <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
@@ -49,7 +50,7 @@ const socialMediaChannels = [
   },
   {
     name: "YouTube",
-    href: "https://www.youtube.com/@AsiaPlastik",
+    href: companyConfig.socialMedia.youtube,
     hoverBg: "hover:bg-[#FF0000]",
     icon: (
       <svg className="w-4 h-4 fill-current" viewBox="0 0 576 512" aria-hidden="true">
@@ -59,7 +60,7 @@ const socialMediaChannels = [
   },
   {
     name: "TikTok",
-    href: "https://www.tiktok.com/@asiaplastik",
+    href: companyConfig.socialMedia.tiktok,
     hoverBg: "hover:bg-[#000000] dark:hover:bg-[#25F4EE] dark:hover:text-black",
     icon: (
       <svg className="w-4 h-4 fill-current" viewBox="0 0 448 512" aria-hidden="true">
@@ -69,7 +70,7 @@ const socialMediaChannels = [
   },
   {
     name: "LinkedIn",
-    href: "https://www.linkedin.com/company/asia-plastik-plastic-packaging-manufacturing/?originalSubdomain=id",
+    href: companyConfig.socialMedia.linkedin,
     hoverBg: "hover:bg-[#0A66C2]",
     icon: (
       <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
@@ -83,7 +84,10 @@ const socialMediaChannels = [
   },
   {
     name: "WhatsApp",
-    href: "https://wa.me/628113229988?text=Halo%20Asia%20Plastik%2C%20saya%20ingin%20berkonsultasi",
+    href: companyConfig.contact.whatsapp.getChatUrl(
+      "primary",
+      "Halo Asia Plastik, saya ingin berkonsultasi"
+    ),
     hoverBg: "hover:bg-[#25D366]",
     icon: (
       <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
@@ -267,7 +271,10 @@ export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
         {/* Dual Primary Quick Actions (WhatsApp & Contact) */}
         <div className="grid grid-cols-2 gap-2.5 pt-2 border-t border-slate-100 dark:border-slate-800">
           <a
-            href="https://wa.me/628113229988?text=Halo%20Asia%20Plastik%2C%20saya%20ingin%20berkonsultasi"
+            href={companyConfig.contact.whatsapp.getChatUrl(
+              "primary",
+              "Halo Asia Plastik, saya ingin berkonsultasi"
+            )}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center gap-2 py-3 px-3 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-md transition-all active:scale-[0.99] cursor-pointer"
