@@ -1,5 +1,5 @@
 import { Language } from "@/data/translations";
-import { categoriesTranslations, getLocalizedProduct } from "@/data/catalogTranslations";
+import { getLocalizedProduct } from "@/data/catalogTranslations";
 
 export interface SearchableProduct {
   title: string;

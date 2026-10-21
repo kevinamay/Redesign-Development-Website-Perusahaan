@@ -13,9 +13,6 @@ import {
   Phone,
   Home,
   ChevronRight,
-  ShieldCheck,
-  Package,
-  Layers,
   Sparkles,
 } from "lucide-react";
 import { useLanguage } from "@/data/translations";

@@ -330,33 +330,31 @@ export default function AboutPage() {
           {/* Images Right (Two horizontal images stacked) */}
           <div className="w-full md:w-1/2 flex flex-col gap-6">
             {/* Machinery Image 1 */}
-            <div className="relative overflow-hidden rounded-2xl shadow-2xl border border-white/20 dark:border-blue-400/30 group backdrop-blur-xs">
+            <div className="relative h-[220px] sm:h-[240px] w-full overflow-hidden rounded-2xl shadow-2xl border border-white/20 dark:border-blue-400/30 group backdrop-blur-xs">
               <Image
                 src="/images/assets/machinery-1.webp"
                 alt="Mesin Heavy-Duty Blow Moulding 500L"
-                width={800}
-                height={450}
+                fill
                 sizes="(max-width: 768px) 100vw, 500px"
-                className="w-full h-[220px] sm:h-[240px] object-cover transition-transform duration-700 group-hover:scale-105"
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent pointer-events-none" />
-              <div className="absolute bottom-3 left-4 text-white text-xs font-semibold bg-slate-950/80 backdrop-blur-md px-3.5 py-1.5 rounded-xl border border-white/15 shadow-md">
+              <div className="absolute bottom-3 left-4 text-white text-xs font-semibold bg-slate-950/80 backdrop-blur-md px-3.5 py-1.5 rounded-xl border border-white/15 shadow-md z-10">
                 {t.machinery.image1Badge}
               </div>
             </div>
 
             {/* Machinery Image 2 */}
-            <div className="relative overflow-hidden rounded-2xl shadow-2xl border border-white/20 dark:border-blue-400/30 group backdrop-blur-xs">
+            <div className="relative h-[220px] sm:h-[240px] w-full overflow-hidden rounded-2xl shadow-2xl border border-white/20 dark:border-blue-400/30 group backdrop-blur-xs">
               <Image
                 src="/images/assets/machinery-2.webp"
                 alt="Lini Perakitan & Tooling In-House Asia Plastik"
-                width={800}
-                height={450}
+                fill
                 sizes="(max-width: 768px) 100vw, 500px"
-                className="w-full h-[220px] sm:h-[240px] object-cover transition-transform duration-700 group-hover:scale-105"
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent pointer-events-none" />
-              <div className="absolute bottom-3 left-4 text-white text-xs font-semibold bg-slate-950/80 backdrop-blur-md px-3.5 py-1.5 rounded-xl border border-white/15 shadow-md">
+              <div className="absolute bottom-3 left-4 text-white text-xs font-semibold bg-slate-950/80 backdrop-blur-md px-3.5 py-1.5 rounded-xl border border-white/15 shadow-md z-10">
                 {t.machinery.image2Badge}
               </div>
             </div>

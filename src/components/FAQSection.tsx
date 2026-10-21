@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ChevronDown, HelpCircle, MessageSquare } from "lucide-react";
+import { ChevronDown, HelpCircle } from "lucide-react";
 import { useLanguage } from "@/data/translations";
 
 export default function FAQSection() {
