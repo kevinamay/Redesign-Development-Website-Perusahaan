@@ -15,7 +15,6 @@ import {
   PhoneCall,
   MessageCircle,
   ChevronRight,
-  ArrowRight,
 } from "lucide-react";
 
 interface DrawerVariantProps {

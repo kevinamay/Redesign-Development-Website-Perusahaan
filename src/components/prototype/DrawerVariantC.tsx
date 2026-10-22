@@ -14,8 +14,6 @@ import {
   ShieldCheck,
   PhoneCall,
   MessageCircle,
-  ChevronRight,
-  Sparkles,
 } from "lucide-react";
 
 interface DrawerVariantProps {

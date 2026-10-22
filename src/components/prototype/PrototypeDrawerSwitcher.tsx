@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { ChevronLeft, ChevronRight, Menu, X } from "lucide-react";
 
@@ -24,21 +24,24 @@ export default function PrototypeDrawerSwitcher({
   const currentIndex = variants.findIndex((v) => v.id === currentVariant);
   const activeVariant = variants[currentIndex >= 0 ? currentIndex : 0];
 
-  const setVariant = (variantId: string) => {
-    const params = new URLSearchParams(searchParams ? searchParams.toString() : "");
-    params.set("variant", variantId);
-    router.replace(`${pathname}?${params.toString()}`);
-  };
+  const setVariant = useCallback(
+    (variantId: string) => {
+      const params = new URLSearchParams(searchParams ? searchParams.toString() : "");
+      params.set("variant", variantId);
+      router.replace(`${pathname}?${params.toString()}`);
+    },
+    [pathname, router, searchParams]
+  );
 
-  const handlePrev = () => {
+  const handlePrev = useCallback(() => {
     const prevIdx = (currentIndex - 1 + variants.length) % variants.length;
     setVariant(variants[prevIdx].id);
-  };
+  }, [currentIndex, setVariant, variants]);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     const nextIdx = (currentIndex + 1) % variants.length;
     setVariant(variants[nextIdx].id);
-  };
+  }, [currentIndex, setVariant, variants]);
 
   // Keyboard navigation: Left/Right arrows cycle, 'M' toggles menu
   useEffect(() => {
@@ -60,7 +63,7 @@ export default function PrototypeDrawerSwitcher({
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [currentIndex, variants, onToggleDrawer]);
+  }, [handleNext, handlePrev, onToggleDrawer]);
 
   return (
     <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[1000000] flex flex-col items-center gap-2 pointer-events-auto">

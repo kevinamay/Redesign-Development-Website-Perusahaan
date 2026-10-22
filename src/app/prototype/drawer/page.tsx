@@ -3,7 +3,7 @@
 import React, { useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { Menu, ArrowLeft, Smartphone, Monitor, Sparkles } from "lucide-react";
+import { Menu, ArrowLeft } from "lucide-react";
 import DrawerVariantA from "@/components/prototype/DrawerVariantA";
 import DrawerVariantB from "@/components/prototype/DrawerVariantB";
 import DrawerVariantC from "@/components/prototype/DrawerVariantC";

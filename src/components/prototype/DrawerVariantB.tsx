@@ -8,12 +8,9 @@ import { companyConfig } from "@/data/companyConfig";
 import DrawerPrototypeBar from "./DrawerPrototypeBar";
 import {
   X,
-  Building2,
   ShieldCheck,
   PhoneCall,
   MessageCircle,
-  ExternalLink,
-  ChevronRight,
 } from "lucide-react";
 
 interface DrawerVariantProps {
