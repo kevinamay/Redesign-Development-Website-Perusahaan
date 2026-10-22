@@ -65,7 +65,7 @@ export default function NewProduct() {
 
     const timer = setInterval(() => {
       nextSlide();
-    }, 3500);
+    }, 2800);
 
     return () => clearInterval(timer);
   }, [isPaused, nextSlide]);
@@ -215,7 +215,7 @@ export default function NewProduct() {
               <div
                 onTransitionEnd={handleTransitionEnd}
                 className={`flex h-full w-full ${
-                  withTransition ? "transition-transform duration-500 ease-in-out" : "transition-none"
+                  withTransition ? "transition-transform duration-700 ease-in-out" : "transition-none"
                 }`}
                 style={{
                   transform: `translateX(-${currentIndex * 100}%)`,
