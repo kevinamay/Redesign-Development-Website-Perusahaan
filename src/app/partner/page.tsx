@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import PartnerClientContent, { partnersList } from "./PartnerClientContent";
-
-export { partnersList };
+import PartnerClientContent from "./PartnerClientContent";
 
 export const metadata: Metadata = {
   title: "Mitra Korporat & Kemitraan B2B | CV. ASIA PLASTIK",

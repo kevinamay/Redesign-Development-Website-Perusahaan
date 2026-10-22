@@ -1,13 +1,60 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/data/translations";
 import { ChevronRight } from "lucide-react";
 
+const HERO_SLIDES = [
+  {
+    src: "/images/3840%20x%202160%20px%202.jpg.jpeg",
+    alt: "Fasilitas Pabrik & Manufaktur CV. Asia Plastik Surabaya 1",
+  },
+  {
+    src: "/images/3840%20x%202160%20px%204.jpg.jpeg",
+    alt: "Fasilitas Pabrik & Manufaktur CV. Asia Plastik Surabaya 2",
+  },
+];
+
 export default function Hero() {
   const { t } = useLanguage();
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isSliding, setIsSliding] = useState(false);
+  const [incomingSlide, setIncomingSlide] = useState<number | null>(null);
+
+  const nextSlide = useCallback(() => {
+    if (isSliding) return;
+    const next = (currentSlide + 1) % HERO_SLIDES.length;
+    setIncomingSlide(next);
+    setIsSliding(true);
+
+    setTimeout(() => {
+      setCurrentSlide(next);
+      setIncomingSlide(null);
+      setIsSliding(false);
+    }, 1000);
+  }, [currentSlide, isSliding]);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      nextSlide();
+    }, 5000);
+
+    return () => clearInterval(timer);
+  }, [nextSlide]);
+
+  const goToSlide = (targetIndex: number) => {
+    if (isSliding || targetIndex === currentSlide) return;
+    setIncomingSlide(targetIndex);
+    setIsSliding(true);
+    setTimeout(() => {
+      setCurrentSlide(targetIndex);
+      setIncomingSlide(null);
+      setIsSliding(false);
+    }, 1000);
+  };
 
   return (
     <section
@@ -15,17 +62,66 @@ export default function Hero() {
       className="relative min-h-[calc(100svh-110px)] lg:min-h-[calc(100svh-115px)] w-full max-w-[100vw] overflow-x-clip isolate font-sans box-border"
     >
       {/* ========================================================================= */}
-      {/* 1. LAYER 1: THE BACKGROUND IMAGE                                          */}
+      {/* 1. LAYER 1: CAROUSEL BACKGROUND SLIDES (SWAP TO THE RIGHT CONTINUOUSLY)   */}
       {/* ========================================================================= */}
-      <Image
-        src="/images/fotopt.png"
-        fill
-        priority
-        quality={100}
-        sizes="100vw"
-        className="object-cover object-[75%_center] sm:object-[80%_center] md:object-center -z-10 dark:brightness-[0.72] dark:contrast-[1.08] transition-[filter] duration-500"
-        alt="Asia Plastik Background"
-      />
+      <div className="absolute inset-0 w-full h-full -z-10 overflow-hidden">
+        {HERO_SLIDES.map((slide, idx) => {
+          let transformClass = "";
+          let opacityClass = "";
+          let zIndexClass = "";
+          let transitionClass = "";
+
+          if (isSliding) {
+            if (idx === currentSlide) {
+              // Outgoing slide moves to the right
+              transformClass = "translate-x-full";
+              opacityClass = "opacity-90";
+              zIndexClass = "z-[1]";
+              transitionClass = "transition-all duration-1000 ease-in-out";
+            } else if (idx === incomingSlide) {
+              // Incoming slide enters from left into center
+              transformClass = "translate-x-0";
+              opacityClass = "opacity-100";
+              zIndexClass = "z-[2]";
+              transitionClass = "transition-all duration-1000 ease-in-out";
+            } else {
+              transformClass = "-translate-x-full";
+              opacityClass = "opacity-0";
+              zIndexClass = "z-0";
+              transitionClass = "transition-none";
+            }
+          } else {
+            if (idx === currentSlide) {
+              transformClass = "translate-x-0";
+              opacityClass = "opacity-100";
+              zIndexClass = "z-[2]";
+              transitionClass = "transition-none";
+            } else {
+              transformClass = "-translate-x-full";
+              opacityClass = "opacity-0";
+              zIndexClass = "z-0";
+              transitionClass = "transition-none";
+            }
+          }
+
+          return (
+            <div
+              key={idx}
+              className={`absolute inset-0 w-full h-full will-change-transform ${transformClass} ${opacityClass} ${zIndexClass} ${transitionClass}`}
+            >
+              <Image
+                src={slide.src}
+                fill
+                priority
+                quality={90}
+                sizes="100vw"
+                className="object-cover object-[75%_center] sm:object-[80%_center] md:object-center dark:brightness-[0.72] dark:contrast-[1.08] transition-[filter] duration-500"
+                alt={slide.alt}
+              />
+            </div>
+          );
+        })}
+      </div>
 
       {/* ========================================================================= */}
       {/* 2. LAYER 2: THE WHITE / DARK GRADIENT OVERLAY (SPLIT SCREEN EFFECT)        */}
@@ -78,6 +174,23 @@ export default function Hero() {
                 >
                   <span>{t.hero.secondaryCta}</span>
                 </Link>
+              </div>
+
+              {/* Slide Indicators: Subtle Dots */}
+              <div className="flex items-center gap-2 mt-6 sm:mt-8">
+                {HERO_SLIDES.map((_, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    onClick={() => goToSlide(i)}
+                    aria-label={`Foto Gedung ${i + 1}`}
+                    className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                      currentSlide === i
+                        ? "w-8 bg-blue-600 shadow-xs shadow-blue-500/50"
+                        : "w-2.5 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400 dark:hover:bg-slate-600"
+                    }`}
+                  />
+                ))}
               </div>
             </div>
           </div>
