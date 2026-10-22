@@ -1,4 +1,5 @@
 import React from "react";
+import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import AboutPreview from "@/components/AboutPreview";
 import GlobalDistribution from "@/components/GlobalDistribution";
@@ -8,10 +9,13 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen w-full max-w-[100vw] overflow-x-hidden flex flex-col bg-slate-50 dark:bg-slate-950 font-sans selection:bg-blue-600 selection:text-white transition-colors duration-300">
+    <div className="min-h-screen w-full max-w-[100vw] overflow-x-clip flex flex-col bg-slate-50 dark:bg-slate-950 font-sans selection:bg-blue-600 selection:text-white transition-colors duration-300">
+      {/* 1. Sticky Global Navigation (Top Bar & Navbar) */}
+      <Navbar />
+
       {/* Main Page Container */}
-      <main className="flex-1 w-full max-w-[100vw] overflow-x-hidden">
-        {/* 1. Main Header & Hero Section (includes integrated Top Bar & Navbar) */}
+      <main className="flex-1 w-full max-w-[100vw] overflow-x-clip">
+        {/* 1. Hero Showcase Section */}
         <Hero />
 
         {/* 2. About Us Preview Section with Interactive Steps */}

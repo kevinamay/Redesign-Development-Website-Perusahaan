@@ -1,63 +1,18 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import ThemeToggle from "@/components/ThemeToggle";
-import MobileDrawer from "@/components/MobileDrawer";
-import { useLanguage, Language } from "@/data/translations";
-import { companyConfig } from "@/data/companyConfig";
-import {
-  Mail,
-  Phone,
-  Globe,
-  Menu,
-  ChevronDown,
-  ChevronRight,
-  Sparkles,
-} from "lucide-react";
+import { useLanguage } from "@/data/translations";
+import { ChevronRight } from "lucide-react";
 
 export default function Hero() {
-  const { lang, setLanguage, t } = useLanguage();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isLangOpen, setIsLangOpen] = useState(false);
-  const langRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (langRef.current && !langRef.current.contains(event.target as Node)) {
-        setIsLangOpen(false);
-      }
-    };
-    if (isLangOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [isLangOpen]);
-
-  const languageOptions: { code: Language; label: string; badge: string }[] = [
-    { code: "id", label: "Bahasa (ID)", badge: "ID" },
-    { code: "en", label: "English (EN)", badge: "EN" },
-    { code: "zh", label: "中文 (CN)", badge: "CN" },
-  ];
-
-  const currentBadge = lang === "id" ? "ID" : lang === "en" ? "EN" : "CN";
-
-  const navMenuItems = [
-    { label: t.navbar.home, href: "#hero" },
-    { label: t.navbar.about, href: "/about" },
-    { label: t.navbar.products, href: "/products" },
-    { label: t.navbar.facilities, href: "/about#mesin-produksi" },
-    { label: t.navbar.contact, href: "/kontak" },
-  ];
-
+  const { t } = useLanguage();
 
   return (
     <section
       id="hero"
-      className="relative min-h-[100svh] w-full max-w-[100vw] overflow-x-hidden isolate font-sans box-border"
+      className="relative min-h-[calc(100svh-110px)] lg:min-h-[calc(100svh-115px)] w-full max-w-[100vw] overflow-x-clip isolate font-sans box-border"
     >
       {/* ========================================================================= */}
       {/* 1. LAYER 1: THE BACKGROUND IMAGE                                          */}
@@ -79,165 +34,13 @@ export default function Hero() {
       <div className="absolute inset-0 z-10 hidden dark:block bg-slate-950/20 pointer-events-none transition-opacity duration-500" />
 
       {/* ========================================================================= */}
-      {/* 3. LAYER 3: CONTENT & NAVBAR (BRING TO FRONT, Z-20)                       */}
+      {/* 3. LAYER 3: HERO CONTENT & STATS                                          */}
       {/* ========================================================================= */}
-      <div className="relative z-20 flex flex-col justify-between min-h-[100svh] w-full max-w-[100vw] box-border">
-        {/* TOP BAR & MAIN NAVBAR */}
-        <header className="w-full max-w-[100vw] relative z-50">
-          {/* Top Bar (Dark Navy bar inspired by the reference design) */}
-          <div className="w-full bg-slate-950 text-slate-300 border-b border-slate-800 relative z-50">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-1.5 sm:py-2 flex items-center justify-between w-full text-xs box-border">
-              {/* Top Bar Left Tagline */}
-              <div className="hidden md:flex items-center gap-2 text-slate-300">
-                <Sparkles className="w-3.5 h-3.5 text-blue-400 shrink-0" />
-                <span className="truncate">{t.topBar.tagline}</span>
-              </div>
-
-              {/* Top Bar Right: Contact & Language (strictly prevents overflow on mobile) */}
-              <div className="flex items-center gap-2 sm:gap-4 md:gap-6 ml-auto">
-                {/* Email - hidden on small mobile screen to prevent stretching */}
-                <a
-                  href={`mailto:${companyConfig.contact.email}`}
-                  className="hidden sm:flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors text-xs"
-                  aria-label="Email Asia Plastik"
-                >
-                  <Mail className="w-3.5 h-3.5 text-blue-400 shrink-0" />
-                  <span className="hidden md:inline">{companyConfig.contact.email}</span>
-                  <span className="inline md:hidden">{t.topBar.emailLabel}</span>
-                </a>
-
-                <span className="hidden sm:inline text-slate-700 select-none">|</span>
-
-                {/* Phone */}
-                <a
-                  href={`tel:${companyConfig.contact.phone.replace(/\s+/g, "")}`}
-                  className="flex items-center gap-1 text-slate-300 hover:text-white transition-colors font-medium text-xs shrink-0"
-                  aria-label="Telepon Asia Plastik"
-                >
-                  <Phone className="w-3.5 h-3.5 text-blue-400 shrink-0" />
-                  <span className="hidden md:inline">{companyConfig.contact.phone}</span>
-                  <span className="inline md:hidden">{t.topBar.phoneLabel}</span>
-                </a>
-
-                <span className="text-slate-700 select-none">|</span>
-
-                {/* Language Toggle (ID, EN, ZH) */}
-                <div ref={langRef} className="relative shrink-0">
-                  <button
-                    type="button"
-                    onClick={() => setIsLangOpen(!isLangOpen)}
-                    className="flex items-center gap-1 px-1.5 py-0.5 rounded hover:bg-slate-800 text-white font-semibold transition-colors focus:outline-hidden cursor-pointer text-xs"
-                    aria-label="Pilih Bahasa / Select Language / 选择语言"
-                    aria-expanded={isLangOpen}
-                  >
-                    <Globe className="w-3.5 h-3.5 text-blue-400 shrink-0" />
-                    <span>{currentBadge}</span>
-                    <ChevronDown
-                      className={`w-3 h-3 text-slate-400 transition-transform duration-200 ${
-                        isLangOpen ? "rotate-180 text-blue-400" : ""
-                      }`}
-                    />
-                  </button>
-
-                  {isLangOpen && (
-                    <div className="absolute right-0 top-full mt-2 w-36 bg-slate-900 border border-slate-700 rounded-lg shadow-2xl py-1.5 z-50 text-xs">
-                      {languageOptions.map((opt) => (
-                        <button
-                          key={opt.code}
-                          type="button"
-                          onClick={() => {
-                            setLanguage(opt.code);
-                            setIsLangOpen(false);
-                          }}
-                          className={`w-full text-left px-3 py-2 hover:bg-slate-800 flex items-center justify-between transition-colors cursor-pointer ${
-                            lang === opt.code ? "text-blue-400 font-bold bg-slate-800/50" : "text-slate-300"
-                          }`}
-                        >
-                          <span>{opt.label}</span>
-                          {lang === opt.code && (
-                            <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
-                          )}
-                        </button>
-                      ))}
-                    </div>
-                  )}
-                </div>
-
-                <span className="text-slate-700 select-none">|</span>
-
-                {/* THEME TOGGLE SWITCH */}
-                <div className="shrink-0">
-                  <ThemeToggle />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Main Navbar */}
-          <nav className="w-full bg-white/85 dark:bg-slate-900/85 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 transition-all duration-300 shadow-xs">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 sm:py-4 flex items-center justify-between">
-              {/* Left: Corporate Logo */}
-              <Link
-                href="/"
-                className="inline-flex items-center focus:outline-hidden hover:opacity-95 transition-opacity"
-                aria-label="Beranda CV. Asia Plastik"
-              >
-                {/* Light Mode Corporate Slate Logo */}
-                <Image
-                  src="/images/logo-dark.webp"
-                  alt="Logo CV. Asia Plastik"
-                  width={271}
-                  height={92}
-                  priority
-                  className="h-8 sm:h-10 md:h-11 lg:h-12 w-auto object-contain block dark:hidden"
-                />
-                {/* Dark Mode Crisp White Logo */}
-                <Image
-                  src="/images/logo.webp"
-                  alt="Logo CV. Asia Plastik"
-                  width={271}
-                  height={92}
-                  priority
-                  className="h-8 sm:h-10 md:h-11 lg:h-12 w-auto object-contain hidden dark:block"
-                />
-              </Link>
-
-              {/* Center: Desktop Navigation Links */}
-              <div className="hidden lg:flex items-center gap-7">
-                {navMenuItems.map((item, index) => (
-                  <Link
-                    key={index}
-                    href={item.href}
-                    className="text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-
-              {/* Right: Menu Toggle */}
-              <div className="flex items-center gap-2 sm:gap-3">
-                {/* MENU with Hamburger Icon */}
-                <button
-                  type="button"
-                  onClick={() => setIsMenuOpen(true)}
-                  className="flex items-center gap-2 px-3 py-1.5 sm:py-2 rounded-lg bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-900 dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-slate-700 dark:text-white transition-all duration-200 focus:outline-hidden group shadow-2xs cursor-pointer"
-                  aria-label={t.navbar.menuBtn}
-                >
-                  <span className="text-xs sm:text-sm font-bold tracking-wider uppercase group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                    {t.navbar.menuBtn}
-                  </span>
-                  <Menu className="w-4 h-4 sm:w-5 sm:h-5 text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" />
-                </button>
-              </div>
-            </div>
-          </nav>
-        </header>
-
+      <div className="relative z-20 flex flex-col justify-between min-h-[calc(100svh-110px)] lg:min-h-[calc(100svh-115px)] w-full max-w-[100vw] box-border">
         {/* HERO TYPOGRAPHY & LAYOUT */}
-        <div className="flex-1 flex items-center w-full max-w-[100vw] overflow-hidden">
+        <div className="flex-1 flex items-center w-full max-w-[100vw] overflow-hidden py-8 sm:py-12 lg:py-16">
           {/* Main Content Wrapper with safe mobile padding */}
-          <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 lg:py-14 box-border">
+          <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 box-border">
             {/* Visual Accent: Thin, elegant vertical line */}
             <div className="border-l-4 border-blue-600 pl-4 sm:pl-7 lg:pl-9 max-w-2xl lg:max-w-3xl animate-fade-in-up">
               {/* Top Label Badge */}
@@ -276,14 +79,12 @@ export default function Hero() {
                   <span>{t.hero.secondaryCta}</span>
                 </Link>
               </div>
-
-
             </div>
           </div>
         </div>
 
-        {/* 2. REFINED BOTTOM STATS SECTION (No Cut-off, Wrapping Responsive Grid) */}
-        <div className="w-full border-t border-slate-200/80 dark:border-slate-800 bg-white/80 dark:bg-slate-950/85 backdrop-blur-md py-4 sm:py-5 px-4 sm:px-6 lg:px-8 mt-4 sm:mt-6 box-border overflow-hidden">
+        {/* 2. REFINED BOTTOM STATS SECTION */}
+        <div className="w-full border-t border-slate-200/80 dark:border-slate-800 bg-white/80 dark:bg-slate-950/85 backdrop-blur-md py-4 sm:py-5 px-4 sm:px-6 lg:px-8 box-border overflow-hidden">
           <div className="max-w-7xl mx-auto w-full box-border">
             {/* Statistics Grid: grid-cols-2 on mobile, lg:grid-cols-4 on desktop */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 w-full box-border">
@@ -317,9 +118,6 @@ export default function Hero() {
           </div>
         </div>
       </div>
-
-      {/* Mobile Menu Bottom Sheet Popup (Final Design C) */}
-      <MobileDrawer isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
     </section>
   );
 }
