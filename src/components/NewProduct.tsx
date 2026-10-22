@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/data/translations";
@@ -11,6 +11,8 @@ import {
   Layers,
   CheckCircle2,
   ArrowRight,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 
 export default function NewProduct() {
@@ -26,37 +28,81 @@ export default function NewProduct() {
     "/images/product/basket.png",
   ];
 
-  // Mouse drag support for desktop horizontal scrolling
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const isDownRef = useRef(false);
-  const startXRef = useRef(0);
-  const scrollLeftRef = useRef(0);
-  const [isDragging, setIsDragging] = useState(false);
+  // Carousel State for Auto-Swapping
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [withTransition, setWithTransition] = useState(true);
+  const [isPaused, setIsPaused] = useState(false);
 
-  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!scrollRef.current) return;
-    isDownRef.current = true;
-    setIsDragging(true);
-    startXRef.current = e.pageX - scrollRef.current.offsetLeft;
-    scrollLeftRef.current = scrollRef.current.scrollLeft;
+  // Auto-swap interval every 3.5 seconds
+  const nextSlide = useCallback(() => {
+    setWithTransition(true);
+    setCurrentIndex((prev) => prev + 1);
+  }, []);
+
+  const prevSlide = useCallback(() => {
+    if (currentIndex === 0) {
+      setWithTransition(false);
+      setCurrentIndex(productImages.length);
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setWithTransition(true);
+          setCurrentIndex(productImages.length - 1);
+        });
+      });
+    } else {
+      setWithTransition(true);
+      setCurrentIndex((prev) => prev - 1);
+    }
+  }, [currentIndex, productImages.length]);
+
+  const goToSlide = (index: number) => {
+    setWithTransition(true);
+    setCurrentIndex(index);
   };
 
-  const handleMouseLeave = () => {
-    isDownRef.current = false;
-    setIsDragging(false);
+  useEffect(() => {
+    if (isPaused) return;
+
+    const timer = setInterval(() => {
+      nextSlide();
+    }, 3500);
+
+    return () => clearInterval(timer);
+  }, [isPaused, nextSlide]);
+
+  const handleTransitionEnd = () => {
+    if (currentIndex >= productImages.length) {
+      setWithTransition(false);
+      setCurrentIndex(0);
+    } else if (currentIndex < 0) {
+      setWithTransition(false);
+      setCurrentIndex(productImages.length - 1);
+    }
   };
 
-  const handleMouseUp = () => {
-    isDownRef.current = false;
-    setIsDragging(false);
+  // Touch & Swipe gestures
+  const touchStartXRef = useRef(0);
+  const touchEndXRef = useRef(0);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartXRef.current = e.touches[0].clientX;
+    setIsPaused(true);
   };
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!isDownRef.current || !scrollRef.current) return;
-    e.preventDefault();
-    const x = e.pageX - scrollRef.current.offsetLeft;
-    const walk = (x - startXRef.current) * 1.5;
-    scrollRef.current.scrollLeft = scrollLeftRef.current - walk;
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndXRef.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const diff = touchStartXRef.current - touchEndXRef.current;
+    if (Math.abs(diff) > 40) {
+      if (diff > 0) {
+        nextSlide();
+      } else {
+        prevSlide();
+      }
+    }
+    setIsPaused(false);
   };
 
   const specs = [
@@ -150,39 +196,88 @@ export default function NewProduct() {
           </div>
 
           {/* ========================================================================= */}
-          {/* RIGHT COLUMN: NATIVE SMOOTH SWIPE CAROUSEL (CSS SCROLL SNAP)               */}
+          {/* RIGHT COLUMN: AUTO-SWAPPING PRODUCT IMAGE CAROUSEL                         */}
           {/* ========================================================================= */}
-          <div className="bg-slate-100 dark:bg-slate-950 relative flex items-center justify-center p-4 sm:p-8 lg:p-10 overflow-hidden transition-colors duration-300 border-t lg:border-t-0 lg:border-l border-slate-200/60 dark:border-slate-800/80">
+          <div
+            className="bg-slate-100 dark:bg-slate-950 relative flex flex-col items-center justify-center p-4 sm:p-8 lg:p-10 overflow-hidden transition-colors duration-300 border-t lg:border-t-0 lg:border-l border-slate-200/60 dark:border-slate-800/80 group"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
             {/* Ambient Studio Lighting (Dark Mode Subtle Glow) */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.12),transparent_70%)] pointer-events-none opacity-0 dark:opacity-100 transition-opacity duration-500" />
 
-            {/* Scroll Container with CSS Scroll Snap & Mouse Drag */}
-            <div
-              ref={scrollRef}
-              onMouseDown={handleMouseDown}
-              onMouseLeave={handleMouseLeave}
-              onMouseUp={handleMouseUp}
-              onMouseMove={handleMouseMove}
-              className={`relative z-10 flex w-full h-[400px] lg:h-[500px] overflow-x-auto snap-x snap-mandatory scroll-smooth cursor-grab active:cursor-grabbing [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] ${
-                isDragging ? "cursor-grabbing select-none" : ""
-              }`}
-            >
-              {productImages.map((src, index) => (
-                <div
-                  key={index}
-                  className="min-w-full h-full flex-shrink-0 snap-center relative flex items-center justify-center p-4"
-                >
-                  <Image
-                    src={src}
-                    alt={`${t.newProduct.carouselAlt} ${index + 1}`}
-                    fill
-                    priority={index === 0}
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    draggable={false}
-                    className="object-contain hover:scale-105 transition-transform duration-500 select-none dark:drop-shadow-[0_12px_24px_rgba(0,0,0,0.6)]"
+            {/* Slider Viewport */}
+            <div className="relative z-10 w-full h-[360px] sm:h-[420px] lg:h-[480px] overflow-hidden rounded-2xl">
+              {/* Sliding Track */}
+              <div
+                onTransitionEnd={handleTransitionEnd}
+                className={`flex h-full w-full ${
+                  withTransition ? "transition-transform duration-500 ease-in-out" : "transition-none"
+                }`}
+                style={{
+                  transform: `translateX(-${currentIndex * 100}%)`,
+                }}
+              >
+                {/* 7 original images + 1 clone of image 0 for seamless infinite looping */}
+                {[...productImages, productImages[0]].map((src, index) => (
+                  <div
+                    key={index}
+                    className="min-w-full w-full h-full flex-shrink-0 relative flex items-center justify-center p-4 sm:p-6"
+                  >
+                    <Image
+                      src={src}
+                      alt={`${t.newProduct.carouselAlt} ${(index % productImages.length) + 1}`}
+                      fill
+                      priority={index < 2}
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      draggable={false}
+                      className="object-contain select-none hover:scale-105 transition-transform duration-500 dark:drop-shadow-[0_12px_24px_rgba(0,0,0,0.6)]"
+                    />
+                  </div>
+                ))}
+              </div>
+
+              {/* Prev / Next Navigation Arrows */}
+              <button
+                type="button"
+                onClick={prevSlide}
+                aria-label="Previous product image"
+                className="absolute left-2.5 sm:left-4 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/85 dark:bg-slate-800/85 backdrop-blur-md shadow-md flex items-center justify-center text-slate-700 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-700 hover:scale-110 active:scale-95 transition-all opacity-0 group-hover:opacity-100 focus:opacity-100 cursor-pointer"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+
+              <button
+                type="button"
+                onClick={nextSlide}
+                aria-label="Next product image"
+                className="absolute right-2.5 sm:right-4 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/85 dark:bg-slate-800/85 backdrop-blur-md shadow-md flex items-center justify-center text-slate-700 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-700 hover:scale-110 active:scale-95 transition-all opacity-0 group-hover:opacity-100 focus:opacity-100 cursor-pointer"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Slide Indicators: Interactive Dots */}
+            <div className="relative z-10 flex items-center justify-center gap-1.5 sm:gap-2 mt-4 sm:mt-6">
+              {productImages.map((_, i) => {
+                const isActive = (currentIndex % productImages.length) === i;
+                return (
+                  <button
+                    key={i}
+                    type="button"
+                    onClick={() => goToSlide(i)}
+                    aria-label={`Tampilan produk ${i + 1}`}
+                    className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                      isActive
+                        ? "w-7 sm:w-8 bg-blue-600 dark:bg-blue-500 shadow-xs shadow-blue-500/50"
+                        : "w-2 sm:w-2.5 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400 dark:hover:bg-slate-600"
+                    }`}
                   />
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
