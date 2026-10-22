@@ -10,10 +10,14 @@ const HERO_SLIDES = [
   {
     src: "/images/3840%20x%202160%20px%202.jpg.jpeg",
     alt: "Fasilitas Pabrik & Manufaktur CV. Asia Plastik Surabaya 1",
+    imageClass:
+      "object-cover object-[65%_center] sm:object-[70%_center] md:object-center md:scale-105 md:translate-x-[5%] lg:translate-x-[8%] dark:brightness-[0.72] dark:contrast-[1.08] transition-[filter] duration-500",
   },
   {
     src: "/images/3840%20x%202160%20px%204.jpg.jpeg",
     alt: "Fasilitas Pabrik & Manufaktur CV. Asia Plastik Surabaya 2",
+    imageClass:
+      "object-cover object-[24%_center] sm:object-[28%_center] md:object-[30%_center] md:scale-115 lg:scale-120 md:translate-x-[20%] lg:translate-x-[24%] dark:brightness-[0.72] dark:contrast-[1.08] transition-[filter] duration-500",
   },
 ];
 
@@ -115,7 +119,7 @@ export default function Hero() {
                 priority
                 quality={90}
                 sizes="100vw"
-                className="object-cover object-[75%_center] sm:object-[80%_center] md:object-center dark:brightness-[0.72] dark:contrast-[1.08] transition-[filter] duration-500"
+                className={slide.imageClass}
                 alt={slide.alt}
               />
             </div>
@@ -126,7 +130,7 @@ export default function Hero() {
       {/* ========================================================================= */}
       {/* 2. LAYER 2: THE WHITE / DARK GRADIENT OVERLAY (SPLIT SCREEN EFFECT)        */}
       {/* ========================================================================= */}
-      <div className="absolute inset-0 z-10 bg-gradient-to-r from-white via-white/90 via-40% to-transparent to-70% dark:from-slate-950 dark:via-slate-950/95 dark:via-40% dark:to-transparent dark:to-75% pointer-events-none transition-colors duration-500" />
+      <div className="absolute inset-0 z-10 bg-gradient-to-r from-white via-white/95 via-35% to-transparent to-60% dark:from-slate-950 dark:via-slate-950/95 dark:via-35% dark:to-transparent dark:to-65% pointer-events-none transition-colors duration-500" />
       <div className="absolute inset-0 z-10 hidden dark:block bg-slate-950/20 pointer-events-none transition-opacity duration-500" />
 
       {/* ========================================================================= */}
