@@ -272,23 +272,23 @@ export default function KontakClientContent() {
         <section className="py-12 lg:py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
-              {/* LEFT SIDE: Deep Dark Professional Container */}
-              <div className="lg:col-span-5 bg-slate-900 text-white p-8 sm:p-12 rounded-3xl shadow-2xl relative overflow-hidden flex flex-col justify-between border border-slate-800">
+              {/* LEFT SIDE: Deep Dark Professional Container Matching Footer (#1e3a5f) */}
+              <div className="lg:col-span-5 bg-[#1e3a5f] text-white p-8 sm:p-12 rounded-3xl shadow-2xl relative overflow-hidden flex flex-col justify-between border border-blue-900/60">
                 {/* Subtle Ambient Decorative Glows */}
                 <div
-                  className="absolute -top-24 -left-24 w-64 h-64 bg-blue-600/15 rounded-full blur-3xl pointer-events-none"
+                  className="absolute -top-24 -left-24 w-64 h-64 bg-blue-400/20 rounded-full blur-3xl pointer-events-none"
                   aria-hidden="true"
                 />
                 <div
-                  className="absolute -bottom-24 -right-24 w-72 h-72 bg-indigo-600/15 rounded-full blur-3xl pointer-events-none"
+                  className="absolute -bottom-24 -right-24 w-72 h-72 bg-sky-400/15 rounded-full blur-3xl pointer-events-none"
                   aria-hidden="true"
                 />
 
                 <div className="relative z-10">
                   {/* Eyebrow */}
                   <div className="flex items-center gap-2 mb-2">
-                    <Sparkles className="w-4 h-4 text-blue-400" />
-                    <span className="text-blue-400 font-bold tracking-widest text-sm uppercase">
+                    <Sparkles className="w-4 h-4 text-blue-300" />
+                    <span className="text-blue-300 font-bold tracking-widest text-sm uppercase">
                       {content.eyebrow}
                     </span>
                   </div>
@@ -302,14 +302,14 @@ export default function KontakClientContent() {
                   <div className="space-y-8">
                     {/* ALAMAT KANTOR */}
                     <div className="flex items-start gap-4 group">
-                      <div className="w-11 h-11 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0 text-blue-400 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+                      <div className="w-11 h-11 rounded-2xl bg-white/10 border border-white/15 flex items-center justify-center shrink-0 text-blue-200 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
                         <MapPin className="w-5 h-5" />
                       </div>
                       <div className="flex-1">
-                        <h2 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">
+                        <h2 className="text-xs font-bold uppercase tracking-wider text-blue-200 mb-1.5">
                           {content.officeAddressLabel}
                         </h2>
-                        <p className="text-slate-300 leading-relaxed font-normal text-sm sm:text-base">
+                        <p className="text-blue-100 leading-relaxed font-normal text-sm sm:text-base">
                           {content.officeAddress}
                         </p>
                       </div>
@@ -317,20 +317,20 @@ export default function KontakClientContent() {
 
                     {/* INFORMASI KONTAK */}
                     <div className="flex items-start gap-4">
-                      <div className="w-11 h-11 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center shrink-0 text-indigo-400">
+                      <div className="w-11 h-11 rounded-2xl bg-white/10 border border-white/15 flex items-center justify-center shrink-0 text-blue-200">
                         <Building2 className="w-5 h-5" />
                       </div>
                       <div className="flex-1">
-                        <h2 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">
+                        <h2 className="text-xs font-bold uppercase tracking-wider text-blue-200 mb-3">
                           {content.contactInfoLabel}
                         </h2>
 
                         <div className="space-y-3.5">
                           {/* Phone */}
-                          <div className="flex items-start gap-3 text-slate-300 group">
-                            <Phone className="w-4 h-4 text-blue-400 shrink-0 mt-1 group-hover:scale-110 transition-transform" />
+                          <div className="flex items-start gap-3 text-blue-100 group">
+                            <Phone className="w-4 h-4 text-blue-300 shrink-0 mt-1 group-hover:scale-110 transition-transform" />
                             <div className="text-sm sm:text-base">
-                              <span className="text-xs text-slate-400 block mb-0.5">Telepon Kantor</span>
+                              <span className="text-xs text-blue-200/80 block mb-0.5">Telepon Kantor</span>
                               <a
                                 href={`tel:${companyConfig.contact.phone.replace(/\s+/g, "")}`}
                                 className="hover:text-white hover:underline transition-colors block font-medium"
@@ -341,22 +341,22 @@ export default function KontakClientContent() {
                           </div>
 
                           {/* Fax */}
-                          <div className="flex items-start gap-3 text-slate-300">
-                            <Printer className="w-4 h-4 text-blue-400 shrink-0 mt-1" />
+                          <div className="flex items-start gap-3 text-blue-100">
+                            <Printer className="w-4 h-4 text-blue-300 shrink-0 mt-1" />
                             <div className="text-sm sm:text-base">
-                              <span className="text-xs text-slate-400 block mb-0.5">Fax</span>
-                              <span className="font-medium text-slate-200">{content.fax}</span>
+                              <span className="text-xs text-blue-200/80 block mb-0.5">Fax</span>
+                              <span className="font-medium text-white">{content.fax}</span>
                             </div>
                           </div>
 
                           {/* Email */}
-                          <div className="flex items-start gap-3 text-slate-300 group">
-                            <Mail className="w-4 h-4 text-blue-400 shrink-0 mt-1 group-hover:scale-110 transition-transform" />
+                          <div className="flex items-start gap-3 text-blue-100 group">
+                            <Mail className="w-4 h-4 text-blue-300 shrink-0 mt-1 group-hover:scale-110 transition-transform" />
                             <div className="text-sm sm:text-base">
-                              <span className="text-xs text-slate-400 block mb-0.5">Email Pemasaran</span>
+                              <span className="text-xs text-blue-200/80 block mb-0.5">Email Pemasaran</span>
                               <a
                                 href={`mailto:${content.email}`}
-                                className="hover:text-white hover:underline transition-colors block font-medium text-blue-300 hover:text-blue-200"
+                                className="hover:text-white hover:underline transition-colors block font-medium text-blue-200 hover:text-white"
                               >
                                 {content.email}
                               </a>
@@ -364,10 +364,10 @@ export default function KontakClientContent() {
                           </div>
 
                           {/* Website */}
-                          <div className="flex items-start gap-3 text-slate-300 group">
-                            <Globe className="w-4 h-4 text-blue-400 shrink-0 mt-1 group-hover:scale-110 transition-transform" />
+                          <div className="flex items-start gap-3 text-blue-100 group">
+                            <Globe className="w-4 h-4 text-blue-300 shrink-0 mt-1 group-hover:scale-110 transition-transform" />
                             <div className="text-sm sm:text-base">
-                              <span className="text-xs text-slate-400 block mb-0.5">Situs Web Resmi</span>
+                              <span className="text-xs text-blue-200/80 block mb-0.5">Situs Web Resmi</span>
                               <a
                                 href={companyConfig.websiteUrl}
                                 target="_blank"
@@ -375,7 +375,7 @@ export default function KontakClientContent() {
                                 className="hover:text-white hover:underline transition-colors inline-flex items-center gap-1.5 font-medium"
                               >
                                 <span>{content.website}</span>
-                                <ExternalLink className="w-3.5 h-3.5 text-slate-400" />
+                                <ExternalLink className="w-3.5 h-3.5 text-blue-300" />
                               </a>
                             </div>
                           </div>
@@ -384,10 +384,10 @@ export default function KontakClientContent() {
                     </div>
 
                     {/* JAM OPERASIONAL BADGE */}
-                    <div className="pt-4 border-t border-slate-800 flex items-center gap-3 text-xs text-slate-400">
+                    <div className="pt-4 border-t border-blue-900/60 flex items-center gap-3 text-xs text-blue-200">
                       <Clock className="w-4 h-4 text-emerald-400 shrink-0" />
                       <span>
-                        <strong className="text-slate-300 mr-1">{content.operatingHoursLabel}:</strong>
+                        <strong className="text-white mr-1">{content.operatingHoursLabel}:</strong>
                         {content.operatingHours}
                       </span>
                     </div>
@@ -395,7 +395,7 @@ export default function KontakClientContent() {
                 </div>
 
                 {/* Direct WhatsApp Callout Bottom Banner */}
-                <div className="relative z-10 mt-10 pt-6 border-t border-slate-800/80">
+                <div className="relative z-10 mt-10 pt-6 border-t border-blue-900/60">
                   <a
                     href={companyConfig.contact.whatsapp.getChatUrl(
                       "sales",
@@ -403,20 +403,20 @@ export default function KontakClientContent() {
                     )}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between p-3.5 rounded-2xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/60 hover:border-emerald-500/50 transition-all duration-300 group"
+                    className="flex items-center justify-between p-3.5 rounded-2xl bg-[#142944] hover:bg-[#0f2138] border border-blue-800/60 hover:border-emerald-500/50 transition-all duration-300 group"
                   >
                     <div className="flex items-center gap-3">
                       <div className="w-9 h-9 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
                         <MessageCircle className="w-4 h-4" />
                       </div>
                       <div className="text-left">
-                        <p className="text-xs text-slate-400">Butuh respon cepat?</p>
-                        <p className="text-xs sm:text-sm font-semibold text-white group-hover:text-emerald-400 transition-colors">
+                        <p className="text-xs text-blue-200/80">Butuh respon cepat?</p>
+                        <p className="text-xs sm:text-sm font-semibold text-white group-hover:text-emerald-300 transition-colors">
                           WhatsApp Sales ({companyConfig.contact.whatsapp.salesDisplay})
                         </p>
                       </div>
                     </div>
-                    <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-white group-hover:translate-x-1 transition-all" />
+                    <ChevronRight className="w-4 h-4 text-blue-300 group-hover:text-white group-hover:translate-x-1 transition-all" />
                   </a>
                 </div>
               </div>
