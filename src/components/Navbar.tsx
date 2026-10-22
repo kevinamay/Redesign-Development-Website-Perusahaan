@@ -56,95 +56,95 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="w-full max-w-[100vw] sticky top-0 z-50 shadow-xs">
-        {/* Top Bar (Dark Navy bar identical to Beranda Hero) */}
-        <div className="w-full bg-slate-950 text-slate-300 border-b border-slate-800 relative z-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-1.5 sm:py-2 flex items-center justify-between w-full text-xs box-border">
-            {/* Top Bar Left Tagline */}
-            <div className="hidden md:flex items-center gap-2 text-slate-300">
-              <Sparkles className="w-3.5 h-3.5 text-blue-400 shrink-0" />
-              <span className="truncate">{t.topBar.tagline}</span>
+      {/* 1. Top Bar (Dark Navy bar) - SCROLLS NATURALLY WITH PAGE (NOT STICKY) */}
+      <div className="w-full max-w-[100vw] bg-slate-950 text-slate-300 border-b border-slate-800 relative z-40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-1.5 sm:py-2 flex items-center justify-between w-full text-xs box-border">
+          {/* Top Bar Left Tagline */}
+          <div className="hidden md:flex items-center gap-2 text-slate-300">
+            <Sparkles className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+            <span className="truncate">{t.topBar.tagline}</span>
+          </div>
+
+          {/* Top Bar Right: Contact & Language */}
+          <div className="flex items-center gap-2 sm:gap-4 md:gap-6 ml-auto">
+            {/* Email - hidden on small mobile screen to prevent stretching */}
+            <a
+              href={`mailto:${companyConfig.contact.email}`}
+              className="hidden sm:flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors text-xs"
+              aria-label="Email Asia Plastik"
+            >
+              <Mail className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+              <span className="hidden md:inline">{companyConfig.contact.email}</span>
+              <span className="inline md:hidden">{t.topBar.emailLabel}</span>
+            </a>
+
+            <span className="hidden sm:inline text-slate-700 select-none">|</span>
+
+            {/* Phone */}
+            <a
+              href={`tel:${companyConfig.contact.phone.replace(/\s+/g, "")}`}
+              className="flex items-center gap-1 text-slate-300 hover:text-white transition-colors font-medium text-xs shrink-0"
+              aria-label="Telepon Asia Plastik"
+            >
+              <Phone className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+              <span className="hidden md:inline">{companyConfig.contact.phoneDisplay}</span>
+              <span className="inline md:hidden">{t.topBar.phoneLabel}</span>
+            </a>
+
+            <span className="text-slate-700 select-none">|</span>
+
+            {/* Language Toggle (ID, EN, ZH) */}
+            <div ref={langRef} className="relative shrink-0">
+              <button
+                type="button"
+                onClick={() => setIsLangOpen(!isLangOpen)}
+                className="flex items-center gap-1 px-2 py-0.5 rounded hover:bg-slate-800 text-white font-semibold transition-colors focus:outline-hidden cursor-pointer"
+                aria-label="Pilih Bahasa / Select Language / 选择语言"
+                aria-expanded={isLangOpen}
+              >
+                <Globe className="w-3.5 h-3.5 text-blue-400" />
+                <span>{currentBadge}</span>
+                <ChevronDown
+                  className={`w-3 h-3 text-slate-400 transition-transform duration-200 ${
+                    isLangOpen ? "rotate-180 text-blue-400" : ""
+                  }`}
+                />
+              </button>
+
+              {isLangOpen && (
+                <div className="absolute right-0 top-full mt-2 w-36 bg-slate-900 border border-slate-700 rounded-lg shadow-2xl py-1.5 z-50 text-xs">
+                  {languageOptions.map((opt) => (
+                    <button
+                      key={opt.code}
+                      type="button"
+                      onClick={() => {
+                        setLanguage(opt.code);
+                        setIsLangOpen(false);
+                      }}
+                      className={`w-full text-left px-3 py-2 hover:bg-slate-800 flex items-center justify-between transition-colors cursor-pointer ${
+                        lang === opt.code ? "text-blue-400 font-bold bg-slate-800/50" : "text-slate-300"
+                      }`}
+                    >
+                      <span>{opt.label}</span>
+                      {lang === opt.code && (
+                        <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+                      )}
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
 
-            {/* Top Bar Right: Contact & Language */}
-            <div className="flex items-center gap-2 sm:gap-4 md:gap-6 ml-auto">
-              {/* Email - hidden on small mobile screen to prevent stretching */}
-              <a
-                href={`mailto:${companyConfig.contact.email}`}
-                className="hidden sm:flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors text-xs"
-                aria-label="Email Asia Plastik"
-              >
-                <Mail className="w-3.5 h-3.5 text-blue-400 shrink-0" />
-                <span className="hidden md:inline">{companyConfig.contact.email}</span>
-                <span className="inline md:hidden">{t.topBar.emailLabel}</span>
-              </a>
+            <span className="text-slate-700 select-none">|</span>
 
-              <span className="hidden sm:inline text-slate-700 select-none">|</span>
-
-              {/* Phone */}
-              <a
-                href={`tel:${companyConfig.contact.phone.replace(/\s+/g, "")}`}
-                className="flex items-center gap-1 text-slate-300 hover:text-white transition-colors font-medium text-xs shrink-0"
-                aria-label="Telepon Asia Plastik"
-              >
-                <Phone className="w-3.5 h-3.5 text-blue-400 shrink-0" />
-                <span className="hidden md:inline">{companyConfig.contact.phoneDisplay}</span>
-                <span className="inline md:hidden">{t.topBar.phoneLabel}</span>
-              </a>
-
-              <span className="text-slate-700 select-none">|</span>
-
-              {/* Language Toggle (ID, EN, ZH) */}
-              <div ref={langRef} className="relative shrink-0">
-                <button
-                  type="button"
-                  onClick={() => setIsLangOpen(!isLangOpen)}
-                  className="flex items-center gap-1 px-2 py-0.5 rounded hover:bg-slate-800 text-white font-semibold transition-colors focus:outline-hidden cursor-pointer"
-                  aria-label="Pilih Bahasa / Select Language / 选择语言"
-                  aria-expanded={isLangOpen}
-                >
-                  <Globe className="w-3.5 h-3.5 text-blue-400" />
-                  <span>{currentBadge}</span>
-                  <ChevronDown
-                    className={`w-3 h-3 text-slate-400 transition-transform duration-200 ${
-                      isLangOpen ? "rotate-180 text-blue-400" : ""
-                    }`}
-                  />
-                </button>
-
-                {isLangOpen && (
-                  <div className="absolute right-0 top-full mt-2 w-36 bg-slate-900 border border-slate-700 rounded-lg shadow-2xl py-1.5 z-50 text-xs">
-                    {languageOptions.map((opt) => (
-                      <button
-                        key={opt.code}
-                        type="button"
-                        onClick={() => {
-                          setLanguage(opt.code);
-                          setIsLangOpen(false);
-                        }}
-                        className={`w-full text-left px-3 py-2 hover:bg-slate-800 flex items-center justify-between transition-colors cursor-pointer ${
-                          lang === opt.code ? "text-blue-400 font-bold bg-slate-800/50" : "text-slate-300"
-                        }`}
-                      >
-                        <span>{opt.label}</span>
-                        {lang === opt.code && (
-                          <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
-                        )}
-                      </button>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              <span className="text-slate-700 select-none">|</span>
-
-              {/* THEME TOGGLE SWITCH: KIRI = GELAP, KANAN = TERANG */}
-              <ThemeToggle />
-            </div>
+            {/* THEME TOGGLE SWITCH: KIRI = GELAP, KANAN = TERANG */}
+            <ThemeToggle />
           </div>
         </div>
+      </div>
 
-        {/* Main Navbar */}
+      {/* 2. Main Navbar - STICKY TOP-0 (LOCKED ONLY THIS SECTION DURING SCROLL) */}
+      <header className="w-full max-w-[100vw] sticky top-0 z-50 shadow-xs">
         <nav className="w-full bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 transition-all duration-300 shadow-xs">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 sm:py-4 flex items-center justify-between">
             {/* Left: Corporate Logo */}
