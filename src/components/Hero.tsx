@@ -77,19 +77,19 @@ export default function Hero() {
 
           if (isSliding) {
             if (idx === currentSlide) {
-              // Outgoing slide moves to the right
-              transformClass = "translate-x-full";
+              // Outgoing slide moves to the left (same direction as NewProduct)
+              transformClass = "-translate-x-full";
               opacityClass = "opacity-90";
               zIndexClass = "z-[1]";
               transitionClass = "transition-all duration-1000 ease-in-out";
             } else if (idx === incomingSlide) {
-              // Incoming slide enters from left into center
+              // Incoming slide enters from the right into center
               transformClass = "translate-x-0";
               opacityClass = "opacity-100";
               zIndexClass = "z-[2]";
               transitionClass = "transition-all duration-1000 ease-in-out";
             } else {
-              transformClass = "-translate-x-full";
+              transformClass = "translate-x-full";
               opacityClass = "opacity-0";
               zIndexClass = "z-0";
               transitionClass = "transition-none";
@@ -101,7 +101,7 @@ export default function Hero() {
               zIndexClass = "z-[2]";
               transitionClass = "transition-none";
             } else {
-              transformClass = "-translate-x-full";
+              transformClass = "translate-x-full";
               opacityClass = "opacity-0";
               zIndexClass = "z-0";
               transitionClass = "transition-none";
