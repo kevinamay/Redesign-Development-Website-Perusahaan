@@ -5,6 +5,7 @@ import Link from "next/link";
 import ThemeToggle from "@/components/ThemeToggle";
 import { useLanguage, Language } from "@/data/translations";
 import { companyConfig } from "@/data/companyConfig";
+import DrawerPrototypeBar from "./DrawerPrototypeBar";
 import {
   X,
   Home,
@@ -20,9 +21,16 @@ import {
 interface DrawerVariantProps {
   isOpen: boolean;
   onClose: () => void;
+  activeVariant?: "A" | "B" | "C";
+  onSelectVariant?: (v: "A" | "B" | "C") => void;
 }
 
-export default function DrawerVariantC({ isOpen, onClose }: DrawerVariantProps) {
+export default function DrawerVariantC({
+  isOpen,
+  onClose,
+  activeVariant = "C",
+  onSelectVariant,
+}: DrawerVariantProps) {
   const { lang, setLanguage, t } = useLanguage();
 
   if (!isOpen) return null;
@@ -74,6 +82,14 @@ export default function DrawerVariantC({ isOpen, onClose }: DrawerVariantProps) 
               </button>
             </div>
           </div>
+
+          {/* PROTOTYPE SWITCHER BUTTONS */}
+          {onSelectVariant && (
+            <DrawerPrototypeBar
+              activeVariant={activeVariant}
+              onSelectVariant={onSelectVariant}
+            />
+          )}
 
           {/* Language Pills */}
           <div className="flex items-center gap-1.5 p-1 rounded-xl bg-slate-100 dark:bg-slate-800/80 text-xs font-semibold text-slate-500">

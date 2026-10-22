@@ -5,6 +5,7 @@ import Link from "next/link";
 import ThemeToggle from "@/components/ThemeToggle";
 import { useLanguage, Language } from "@/data/translations";
 import { companyConfig } from "@/data/companyConfig";
+import DrawerPrototypeBar from "./DrawerPrototypeBar";
 import {
   X,
   Home,
@@ -20,9 +21,16 @@ import {
 interface DrawerVariantProps {
   isOpen: boolean;
   onClose: () => void;
+  activeVariant?: "A" | "B" | "C";
+  onSelectVariant?: (v: "A" | "B" | "C") => void;
 }
 
-export default function DrawerVariantA({ isOpen, onClose }: DrawerVariantProps) {
+export default function DrawerVariantA({
+  isOpen,
+  onClose,
+  activeVariant = "A",
+  onSelectVariant,
+}: DrawerVariantProps) {
   const { lang, setLanguage, t } = useLanguage();
 
   if (!isOpen) return null;
@@ -70,7 +78,14 @@ export default function DrawerVariantA({ isOpen, onClose }: DrawerVariantProps) 
         </div>
 
         {/* Scrollable Body */}
-        <div className="flex-1 overflow-y-auto px-5 sm:px-6 py-4 flex flex-col gap-5">
+        <div className="flex-1 overflow-y-auto px-5 sm:px-6 py-4 flex flex-col gap-4">
+          {/* PROTOTYPE SWITCHER BUTTONS */}
+          {onSelectVariant && (
+            <DrawerPrototypeBar
+              activeVariant={activeVariant}
+              onSelectVariant={onSelectVariant}
+            />
+          )}
           {/* Language Selector Pill */}
           <div className="flex items-center p-1 rounded-xl bg-slate-100 dark:bg-slate-800/80 text-xs font-semibold">
             {(["id", "en", "zh"] as Language[]).map((code) => (
