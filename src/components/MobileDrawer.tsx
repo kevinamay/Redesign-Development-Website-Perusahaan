@@ -6,6 +6,8 @@ import Link from "next/link";
 import ThemeToggle from "@/components/ThemeToggle";
 import { useLanguage, Language } from "@/data/translations";
 import { companyConfig } from "@/data/companyConfig";
+import DrawerVariantB from "@/components/prototype/DrawerVariantB";
+import DrawerVariantC from "@/components/prototype/DrawerVariantC";
 import {
   X,
   Home,
@@ -20,6 +22,7 @@ import {
 interface MobileDrawerProps {
   isOpen: boolean;
   onClose: () => void;
+  variant?: "A" | "B" | "C";
 }
 
 // 6 Official Social Media Channels (in exact requested order)
@@ -101,8 +104,15 @@ const socialMediaChannels = [
   },
 ];
 
-export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
+export default function MobileDrawer({ isOpen, onClose, variant = "A" }: MobileDrawerProps) {
   const { lang, setLanguage, t } = useLanguage();
+
+  if (variant === "B") {
+    return <DrawerVariantB isOpen={isOpen} onClose={onClose} />;
+  }
+  if (variant === "C") {
+    return <DrawerVariantC isOpen={isOpen} onClose={onClose} />;
+  }
 
   // Lock body scroll and set menu-popup-open class
   useEffect(() => {
@@ -178,30 +188,23 @@ export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
   ];
 
   return createPortal(
-    <div className="fixed inset-0 z-[99999] flex flex-col justify-end sm:items-center sm:justify-center p-0 sm:p-4">
-      {/* Dimmed Glass Backdrop */}
+    <div className="fixed inset-0 z-[99999] overflow-hidden isolate">
+      {/* Dimmed Backdrop */}
       <div
         onClick={onClose}
-        className="fixed inset-0 bg-slate-950/75 backdrop-blur-md transition-opacity animate-fade-in"
+        className="fixed inset-0 bg-slate-950/70 backdrop-blur-xs transition-opacity animate-fade-in"
         aria-hidden="true"
       />
 
-      {/* Bottom Sheet Card Container */}
-      <div className="relative z-[100000] w-full sm:max-w-[430px] bg-white dark:bg-slate-900 rounded-t-[32px] sm:rounded-[32px] shadow-2xl border-t sm:border border-slate-200/80 dark:border-slate-800 p-6 pt-3 flex flex-col gap-4 max-h-[90vh] overflow-y-auto animate-slide-up">
-        {/* Drag Handle Indicator */}
-        <div
-          className="w-12 h-1.5 rounded-full bg-slate-300 dark:bg-slate-700 mx-auto cursor-pointer hover:bg-slate-400 dark:hover:bg-slate-600 transition-colors"
-          onClick={onClose}
-          title="Tutup Popup"
-        />
-
-        {/* Sheet Header */}
-        <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
+      {/* Slide-in Drawer Container from RIGHT */}
+      <div className="fixed inset-y-0 right-0 w-full sm:w-[420px] max-w-[90vw] h-full bg-white dark:bg-slate-900 shadow-2xl border-l border-slate-200/80 dark:border-slate-800 p-6 flex flex-col justify-between z-[100000] overflow-y-auto animate-slide-in-right box-border">
+        {/* Header */}
+        <div className="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800 shrink-0">
           <div>
-            <div className="text-xs font-bold text-blue-600 dark:text-blue-400 tracking-wider uppercase">
+            <div className="text-[11px] font-black text-blue-600 dark:text-blue-400 tracking-wider uppercase">
               Menu Navigasi
             </div>
-            <div className="text-base font-bold text-slate-900 dark:text-white">
+            <div className="text-lg font-extrabold text-slate-900 dark:text-white">
               CV. ASIA PLASTIK
             </div>
           </div>
@@ -210,107 +213,111 @@ export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
             <ThemeToggle />
             <button
               onClick={onClose}
-              className="p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-800 dark:hover:text-white transition-colors cursor-pointer"
+              className="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-800 dark:hover:text-white transition-colors cursor-pointer"
               aria-label="Tutup"
             >
-              <X className="w-4 h-4" />
+              <X className="w-5 h-5" />
             </button>
           </div>
         </div>
 
-        {/* Compact Horizontal Language Strip */}
-        <div className="flex items-center gap-1.5 p-1 rounded-xl bg-slate-100 dark:bg-slate-800/80 text-xs font-semibold text-slate-500">
-          <span className="px-2 text-[11px] font-bold text-slate-500 dark:text-slate-400">
-            {hints.langLabel}
-          </span>
-          {(["id", "en", "zh"] as Language[]).map((code) => (
-            <button
-              key={code}
-              onClick={() => setLanguage(code)}
-              className={`flex-1 py-1 rounded-lg font-bold text-center transition-all cursor-pointer ${
-                lang === code
-                  ? "bg-blue-600 text-white shadow-xs"
-                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
-              }`}
-            >
-              {code === "id" ? "Indonesia" : code === "en" ? "English" : "中文"}
-            </button>
-          ))}
-        </div>
-
-        {/* Navigation List with Subtitles */}
-        <nav className="flex flex-col gap-1">
-          {navLinks.map((item, idx) => {
-            const Icon = item.icon;
-            return (
-              <Link
-                key={idx}
-                href={item.href}
-                onClick={onClose}
-                className="group flex items-center justify-between p-3 rounded-2xl hover:bg-slate-100 dark:hover:bg-slate-800/70 transition-colors"
+        {/* Scrollable Body */}
+        <div className="flex-1 overflow-y-auto py-4 flex flex-col gap-4">
+          {/* Compact Horizontal Language Strip */}
+          <div className="flex items-center gap-1.5 p-1 rounded-xl bg-slate-100 dark:bg-slate-800/80 text-xs font-semibold text-slate-500">
+            <span className="px-2 text-[11px] font-bold text-slate-500 dark:text-slate-400">
+              {hints.langLabel}
+            </span>
+            {(["id", "en", "zh"] as Language[]).map((code) => (
+              <button
+                key={code}
+                onClick={() => setLanguage(code)}
+                className={`flex-1 py-1 rounded-lg font-bold text-center transition-all cursor-pointer ${
+                  lang === code
+                    ? "bg-blue-600 text-white shadow-xs"
+                    : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                }`}
               >
-                <div className="flex items-center gap-3.5">
-                  <div className="w-10 h-10 rounded-2xl bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 group-hover:bg-blue-600 group-hover:text-white flex items-center justify-center transition-colors shrink-0 shadow-2xs">
-                    <Icon className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <div className="text-sm font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                      {item.label}
-                    </div>
-                    <div className="text-[11px] text-slate-400 dark:text-slate-500">
-                      {item.hint}
-                    </div>
-                  </div>
-                </div>
-                <ChevronRight className="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            );
-          })}
-        </nav>
-
-        {/* Dual Primary Quick Actions (WhatsApp & Contact) */}
-        <div className="grid grid-cols-2 gap-2.5 pt-2 border-t border-slate-100 dark:border-slate-800">
-          <a
-            href={companyConfig.contact.whatsapp.getChatUrl(
-              "primary",
-              "Halo Asia Plastik, saya ingin berkonsultasi"
-            )}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 py-3 px-3 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-md transition-all active:scale-[0.99] cursor-pointer"
-          >
-            <MessageCircle className="w-4 h-4" />
-            <span>{hints.waText}</span>
-          </a>
-          <Link
-            href="/kontak"
-            onClick={onClose}
-            className="flex items-center justify-center gap-2 py-3 px-3 rounded-2xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold text-xs shadow-md hover:opacity-90 transition-all active:scale-[0.99] cursor-pointer"
-          >
-            <PhoneCall className="w-4 h-4" />
-            <span>{hints.contactBtn}</span>
-          </Link>
-        </div>
-
-        {/* 6 Official Social Media Channels (Facebook, Instagram, YouTube, TikTok, LinkedIn, WhatsApp) */}
-        <div className="pt-2.5 pb-1 border-t border-slate-100 dark:border-slate-800 flex flex-col items-center gap-2">
-          <div className="text-[11px] font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider">
-            {hints.socialLabel}
-          </div>
-          <div className="flex items-center justify-center gap-2.5 sm:gap-3 w-full">
-            {socialMediaChannels.map((s, idx) => (
-              <a
-                key={idx}
-                href={s.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                title={s.name}
-                aria-label={s.name}
-                className={`w-9 h-9 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-white ${s.hoverBg} flex items-center justify-center transition-all duration-200 shadow-2xs hover:scale-110 active:scale-95 cursor-pointer`}
-              >
-                {s.icon}
-              </a>
+                {code === "id" ? "Indonesia" : code === "en" ? "English" : "中文"}
+              </button>
             ))}
+          </div>
+
+          {/* Navigation List with Subtitles */}
+          <nav className="flex flex-col gap-1">
+            {navLinks.map((item, idx) => {
+              const Icon = item.icon;
+              return (
+                <Link
+                  key={idx}
+                  href={item.href}
+                  onClick={onClose}
+                  className="group flex items-center justify-between p-3 rounded-2xl hover:bg-slate-100 dark:hover:bg-slate-800/70 transition-colors"
+                >
+                  <div className="flex items-center gap-3.5">
+                    <div className="w-10 h-10 rounded-2xl bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 group-hover:bg-blue-600 group-hover:text-white flex items-center justify-center transition-colors shrink-0 shadow-2xs">
+                      <Icon className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <div className="text-sm font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                        {item.label}
+                      </div>
+                      <div className="text-[11px] text-slate-400 dark:text-slate-500">
+                        {item.hint}
+                      </div>
+                    </div>
+                  </div>
+                  <ChevronRight className="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              );
+            })}
+          </nav>
+        </div>
+
+        {/* Footer: Quick Actions (WhatsApp & Contact) & Socials */}
+        <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex flex-col gap-3 shrink-0">
+          <div className="grid grid-cols-2 gap-2.5">
+            <a
+              href={companyConfig.contact.whatsapp.getChatUrl(
+                "primary",
+                "Halo Asia Plastik, saya ingin berkonsultasi"
+              )}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 py-3 px-3 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-md transition-all active:scale-[0.99] cursor-pointer"
+            >
+              <MessageCircle className="w-4 h-4" />
+              <span>{hints.waText}</span>
+            </a>
+            <Link
+              href="/kontak"
+              onClick={onClose}
+              className="flex items-center justify-center gap-2 py-3 px-3 rounded-2xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold text-xs shadow-md hover:opacity-90 transition-all active:scale-[0.99] cursor-pointer"
+            >
+              <PhoneCall className="w-4 h-4" />
+              <span>{hints.contactBtn}</span>
+            </Link>
+          </div>
+
+          <div className="pt-2 border-t border-slate-100 dark:border-slate-850 flex flex-col items-center gap-1.5">
+            <div className="text-[10px] font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider">
+              {hints.socialLabel}
+            </div>
+            <div className="flex items-center justify-center gap-2.5 sm:gap-3 w-full">
+              {socialMediaChannels.map((s, idx) => (
+                <a
+                  key={idx}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={s.name}
+                  aria-label={s.name}
+                  className={`w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-white ${s.hoverBg} flex items-center justify-center transition-all duration-200 shadow-2xs hover:scale-110 active:scale-95 cursor-pointer`}
+                >
+                  {s.icon}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </div>
