@@ -88,24 +88,32 @@ export default function Hero() {
           <div className="max-w-7xl mx-auto w-full box-border">
             {/* Statistics Grid: grid-cols-2 on mobile, lg:grid-cols-4 on desktop */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 w-full box-border">
-              {t.hero.metrics.map((metric, idx) => (
-                <div key={idx} className="flex items-center gap-2 sm:gap-3 min-w-0 overflow-hidden box-border">
-                  <span className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-blue-600 shrink-0">
-                    {metric.value}
-                  </span>
-                  <div className="flex flex-col min-w-0 overflow-hidden">
-                    <span className="font-bold text-slate-900 dark:text-white text-xs md:text-sm leading-tight truncate sm:whitespace-normal">
-                      {metric.label}
+              {t.hero.metrics.map((metric, idx) => {
+                const is99 = metric.value === "99.8%" || idx === 2;
+                return (
+                  <div
+                    key={idx}
+                    className={`flex items-center gap-2 sm:gap-3 min-w-0 overflow-hidden box-border ${
+                      is99 ? "col-span-2 lg:col-span-1 justify-center lg:justify-start" : ""
+                    }`}
+                  >
+                    <span className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-blue-600 shrink-0">
+                      {metric.value}
                     </span>
-                    <span className="text-[10px] md:text-xs text-slate-500 dark:text-slate-400 leading-tight truncate sm:whitespace-normal">
-                      {metric.sublabel}
-                    </span>
+                    <div className="flex flex-col min-w-0 overflow-hidden">
+                      <span className="font-bold text-slate-900 dark:text-white text-xs md:text-sm leading-tight truncate sm:whitespace-normal">
+                        {metric.label}
+                      </span>
+                      <span className="text-[10px] md:text-xs text-slate-500 dark:text-slate-400 leading-tight truncate sm:whitespace-normal">
+                        {metric.sublabel}
+                      </span>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
 
               {/* Facility Quick Link integrated into 4th grid cell or full width on mobile */}
-              <div className="flex items-center col-span-2 lg:col-span-1 pt-2 lg:pt-0 border-t lg:border-t-0 border-slate-200/50 dark:border-slate-800/50 min-w-0 overflow-hidden box-border">
+              <div className="flex items-center justify-center lg:justify-start col-span-2 lg:col-span-1 pt-2 lg:pt-0 border-t lg:border-t-0 border-slate-200/50 dark:border-slate-800/50 min-w-0 overflow-hidden box-border">
                 <a
                   href="/about#mesin-produksi"
                   className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 font-semibold text-xs md:text-sm inline-flex items-center gap-1.5 transition-colors group min-w-0"
