@@ -386,10 +386,10 @@ export default function FAQClientContent() {
                       type="button"
                       onClick={() => toggleFAQ(index)}
                       aria-expanded={isOpen}
-                      className="w-full text-left p-6 sm:p-7 flex items-center justify-between gap-4 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors cursor-pointer select-none group"
+                      className="w-full text-left p-4 sm:p-6 lg:p-7 flex items-center justify-between gap-3 sm:gap-4 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors cursor-pointer select-none group"
                     >
                       <span
-                        className={`text-base sm:text-lg font-bold uppercase tracking-tight transition-colors ${
+                        className={`text-sm sm:text-base md:text-lg font-bold uppercase tracking-tight break-words leading-snug sm:leading-normal transition-colors ${
                           isOpen
                             ? "text-blue-600 dark:text-blue-400"
                             : "text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400"
@@ -399,13 +399,13 @@ export default function FAQClientContent() {
                       </span>
 
                       <span
-                        className={`w-9 h-9 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${
+                        className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${
                           isOpen
                             ? "bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 rotate-180"
                             : "bg-slate-100 dark:bg-slate-800 text-slate-400 group-hover:bg-slate-200 dark:group-hover:bg-slate-700 group-hover:text-slate-600 dark:group-hover:text-slate-200"
                         }`}
                       >
-                        <ChevronDown className="w-5 h-5 transition-transform duration-300" />
+                        <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300" />
                       </span>
                     </button>
 
@@ -418,8 +418,8 @@ export default function FAQClientContent() {
                       }`}
                     >
                       <div className="overflow-hidden">
-                        <div className="px-6 sm:px-7 pb-6 sm:pb-7 pt-1 border-t border-slate-100 dark:border-slate-800/60">
-                          <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed text-justify mt-4">
+                        <div className="px-4 sm:px-6 lg:px-7 pb-4 sm:pb-6 lg:pb-7 pt-1 border-t border-slate-100 dark:border-slate-800/60">
+                          <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed text-left sm:text-justify mt-3 sm:mt-4">
                             {faq.answer}
                           </p>
                         </div>
@@ -431,11 +431,11 @@ export default function FAQClientContent() {
             </div>
           ) : (
             /* Empty State */
-            <div className="bg-white dark:bg-slate-900 rounded-3xl p-12 text-center border border-slate-100 dark:border-slate-800 shadow-xl flex flex-col items-center justify-center">
-              <div className="w-16 h-16 rounded-2xl bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-4">
-                <HelpCircle className="w-8 h-8" />
+            <div className="bg-white dark:bg-slate-900 rounded-3xl p-8 sm:p-12 text-center border border-slate-100 dark:border-slate-800 shadow-xl flex flex-col items-center justify-center">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-4">
+                <HelpCircle className="w-7 h-7 sm:w-8 sm:h-8" />
               </div>
-              <p className="text-slate-600 dark:text-slate-300 font-medium mb-4">
+              <p className="text-slate-600 dark:text-slate-300 font-medium mb-4 text-sm sm:text-base">
                 {current.noResults}
               </p>
               <button
@@ -452,7 +452,7 @@ export default function FAQClientContent() {
           )}
 
           {/* DEDICATED SUPPORT CTA BANNER */}
-          <div className="mt-20 bg-gradient-to-br from-slate-900 to-slate-950 text-white rounded-3xl p-8 sm:p-12 border border-slate-800 shadow-2xl relative overflow-hidden">
+          <div className="mt-14 sm:mt-20 bg-gradient-to-br from-slate-900 to-slate-950 text-white rounded-3xl p-6 sm:p-10 lg:p-12 border border-slate-800 shadow-2xl relative overflow-hidden">
             {/* Ambient subtle glow */}
             <div className="absolute top-0 right-0 w-80 h-80 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
 
@@ -470,7 +470,7 @@ export default function FAQClientContent() {
                 {current.supportDesc}
               </p>
 
-              <div className="flex flex-wrap items-center gap-4">
+              <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 sm:gap-4">
                 <a
                   href={companyConfig.contact.whatsapp.getChatUrl(
                     "primary",
@@ -478,7 +478,7 @@ export default function FAQClientContent() {
                   )}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-emerald-600 text-white font-semibold px-6 py-3.5 rounded-xl hover:bg-emerald-500 hover:shadow-lg hover:shadow-emerald-600/20 transition-all inline-flex items-center gap-2.5 text-sm"
+                  className="bg-emerald-600 text-white font-semibold px-5 sm:px-6 py-3.5 rounded-xl hover:bg-emerald-500 hover:shadow-lg hover:shadow-emerald-600/20 transition-all inline-flex items-center justify-center gap-2.5 text-sm"
                 >
                   <MessageCircle className="w-4 h-4 shrink-0" />
                   <span>{current.whatsappBtn}</span>
@@ -486,7 +486,7 @@ export default function FAQClientContent() {
 
                 <a
                   href={`mailto:${companyConfig.contact.email}`}
-                  className="bg-blue-600 text-white font-semibold px-6 py-3.5 rounded-xl hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-600/20 transition-all inline-flex items-center gap-2.5 text-sm"
+                  className="bg-blue-600 text-white font-semibold px-5 sm:px-6 py-3.5 rounded-xl hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-600/20 transition-all inline-flex items-center justify-center gap-2.5 text-sm"
                 >
                   <Mail className="w-4 h-4 shrink-0" />
                   <span>{current.emailBtn}</span>
@@ -494,7 +494,7 @@ export default function FAQClientContent() {
 
                 <a
                   href={`tel:${companyConfig.contact.phone.replace(/[^0-9+]/g, "")}`}
-                  className="bg-slate-800 text-slate-200 font-semibold px-6 py-3.5 rounded-xl hover:bg-slate-700 transition-all inline-flex items-center gap-2.5 text-sm"
+                  className="bg-slate-800 text-slate-200 font-semibold px-5 sm:px-6 py-3.5 rounded-xl hover:bg-slate-700 transition-all inline-flex items-center justify-center gap-2.5 text-sm"
                 >
                   <Phone className="w-4 h-4 shrink-0" />
                   <span>{companyConfig.contact.phoneFormattedFull}</span>

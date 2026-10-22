@@ -87,39 +87,39 @@ export default function GlobalDistribution() {
   return (
     <section className="w-full max-w-[100vw] overflow-hidden bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 transition-colors duration-300">
       {/* 1. SECTION LAYOUT & AESTHETICS */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 lg:py-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* ========================================================================= */}
           {/* 2. LEFT COLUMN: TEXT & CALL TO ACTION                                     */}
           {/* ========================================================================= */}
           <div className="flex flex-col items-start">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 border border-blue-100 dark:border-blue-900/60 text-blue-600 dark:text-blue-400 text-xs font-bold tracking-widest uppercase mb-6 shadow-2xs">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 border border-blue-100 dark:border-blue-900/60 text-blue-600 dark:text-blue-400 text-xs font-bold tracking-widest uppercase mb-4 sm:mb-6 shadow-2xs">
               <Globe className="w-3.5 h-3.5" />
               <span>{t.badge}</span>
             </div>
 
             {/* Heading */}
-            <h2 className="text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight mb-6 tracking-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight mb-4 sm:mb-6 tracking-tight">
               {t.heading}
             </h2>
 
             {/* Description Paragraphs */}
-            <p className="text-lg text-slate-600 dark:text-slate-300 mb-4 leading-relaxed font-normal">
+            <p className="text-sm sm:text-base lg:text-lg text-slate-600 dark:text-slate-300 mb-3 sm:mb-4 leading-relaxed font-normal">
               {t.p1}
             </p>
-            <p className="text-lg text-slate-600 dark:text-slate-300 mb-8 leading-relaxed font-normal">
+            <p className="text-sm sm:text-base lg:text-lg text-slate-600 dark:text-slate-300 mb-6 sm:mb-8 leading-relaxed font-normal">
               {t.p2}
             </p>
 
             {/* Trust Metrics Bar */}
-            <div className="w-full grid grid-cols-3 gap-4 py-5 mb-8 border-y border-slate-100 dark:border-slate-800/80">
+            <div className="w-full grid grid-cols-3 gap-3 sm:gap-4 py-4 sm:py-5 mb-6 sm:mb-8 border-y border-slate-100 dark:border-slate-800/80">
               {t.stats.map((item, idx) => (
                 <div key={idx}>
-                  <span className="block text-2xl lg:text-3xl font-extrabold text-blue-600 dark:text-blue-400">
+                  <span className="block text-xl sm:text-2xl lg:text-3xl font-extrabold text-blue-600 dark:text-blue-400">
                     {item.value}
                   </span>
-                  <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">
+                  <span className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium leading-tight">
                     {item.label}
                   </span>
                 </div>
@@ -129,7 +129,7 @@ export default function GlobalDistribution() {
             {/* Action Button: Outlined Primary Button */}
             <Link
               href="/kontak"
-              className="border-2 border-slate-900 dark:border-slate-100 text-slate-900 dark:text-white hover:bg-slate-900 hover:text-white dark:hover:bg-white dark:hover:text-slate-900 rounded-full px-8 py-3 font-semibold transition-all inline-flex items-center gap-2 w-max group shadow-xs cursor-pointer"
+              className="border-2 border-slate-900 dark:border-slate-100 text-slate-900 dark:text-white hover:bg-slate-900 hover:text-white dark:hover:bg-white dark:hover:text-slate-900 rounded-full px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base font-semibold transition-all inline-flex items-center gap-2 w-max group shadow-xs cursor-pointer"
             >
               <span>{t.cta}</span>
               <ChevronRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />

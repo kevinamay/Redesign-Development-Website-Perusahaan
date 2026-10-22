@@ -136,37 +136,37 @@ export default function NewProduct() {
           {/* ========================================================================= */}
           {/* LEFT COLUMN: TYPOGRAPHY & PRODUCT DETAILS                                 */}
           {/* ========================================================================= */}
-          <div className="p-8 sm:p-12 lg:p-16 flex flex-col justify-between">
+          <div className="p-5 sm:p-10 lg:p-16 flex flex-col justify-between">
             <div>
               {/* Aesthetic Badge */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 text-xs font-bold tracking-widest uppercase mb-6 shadow-2xs">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 text-xs font-bold tracking-widest uppercase mb-4 sm:mb-6 shadow-2xs">
                 <span className="w-2 h-2 rounded-full bg-blue-600 dark:bg-blue-400 animate-pulse" />
                 <span>{t.newProduct.badge}</span>
               </div>
 
               {/* Product Title */}
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight mb-4 tracking-tight">
+              <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight mb-3 sm:mb-4 tracking-tight">
                 {t.newProduct.title}
               </h2>
 
               {/* Subtitle / Product Narrative */}
-              <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed mb-8">
+              <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed mb-6 sm:mb-8">
                 {t.newProduct.description}
               </p>
 
               {/* Product Specs (Bento-style 2x2 grid) */}
-              <div className="grid grid-cols-2 gap-3.5 sm:gap-4 mb-8">
+              <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-6 sm:mb-8">
                 {specs.map((spec, index) => {
                   const Icon = spec.icon;
                   return (
                     <div
                       key={index}
-                      className="bg-slate-50 dark:bg-slate-800/60 p-4 rounded-xl border border-slate-100 dark:border-slate-700/60 hover:border-blue-200 dark:hover:border-blue-500/40 hover:bg-slate-50/80 dark:hover:bg-slate-800 transition-colors"
+                      className="bg-slate-50 dark:bg-slate-800/60 p-3 sm:p-4 rounded-xl border border-slate-100 dark:border-slate-700/60 hover:border-blue-200 dark:hover:border-blue-500/40 hover:bg-slate-50/80 dark:hover:bg-slate-800 transition-colors"
                     >
-                      <div className="w-8 h-8 rounded-lg bg-blue-100/60 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-2.5">
-                        <Icon className="w-4 h-4" />
+                      <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-blue-100/60 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-2">
+                        <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                       </div>
-                      <span className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 block">
+                      <span className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 block">
                         {spec.label}
                       </span>
                       <span className="font-semibold text-slate-900 dark:text-white text-xs sm:text-sm md:text-base block mt-0.5">
@@ -179,7 +179,7 @@ export default function NewProduct() {
             </div>
 
             {/* Bottom Highlights & CTA Navigation */}
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mt-8 pt-6 border-t border-slate-100 dark:border-slate-800/80">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6 mt-6 sm:mt-8 pt-5 sm:pt-6 border-t border-slate-100 dark:border-slate-800/80">
               <span className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
                 <span>{t.newProduct.highlights}</span>
@@ -210,7 +210,7 @@ export default function NewProduct() {
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.12),transparent_70%)] pointer-events-none opacity-0 dark:opacity-100 transition-opacity duration-500" />
 
             {/* Slider Viewport */}
-            <div className="relative z-10 w-full h-[360px] sm:h-[420px] lg:h-[480px] overflow-hidden rounded-2xl">
+            <div className="relative z-10 w-full h-[280px] sm:h-[400px] lg:h-[480px] overflow-hidden rounded-2xl">
               {/* Sliding Track */}
               <div
                 onTransitionEnd={handleTransitionEnd}

@@ -173,26 +173,26 @@ export default function FAQSection() {
   return (
     <section
       id="faq"
-      className="bg-slate-50 dark:bg-slate-950/80 py-20 px-4 sm:px-6 lg:px-8 transition-colors duration-300 relative overflow-hidden"
+      className="bg-slate-50 dark:bg-slate-950/80 py-14 sm:py-20 px-4 sm:px-6 lg:px-8 transition-colors duration-300 relative overflow-hidden"
     >
       {/* Ambient background decoration */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-blue-500/5 dark:bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-4xl mx-auto relative z-10">
         {/* 1. SECTION HEADER (CENTER-ALIGNED) */}
-        <div className="text-center mb-16">
-          <p className="text-sm font-bold tracking-widest text-blue-600 dark:text-blue-400 uppercase mb-3 inline-flex items-center gap-2">
+        <div className="text-center mb-10 sm:mb-16">
+          <p className="text-xs sm:text-sm font-bold tracking-wider sm:tracking-widest text-blue-600 dark:text-blue-400 uppercase mb-2.5 sm:mb-3 inline-flex items-center gap-2">
             <HelpCircle className="w-4 h-4 shrink-0" />
             <span>{currentContent.eyebrow}</span>
           </p>
 
-          <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
             {currentContent.heading}
           </h2>
         </div>
 
         {/* 2. ACCORDION LIST */}
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-3.5 sm:gap-4">
           {currentContent.faqs.map((faq, index) => {
             const isOpen = openIndex === index;
 
@@ -210,10 +210,10 @@ export default function FAQSection() {
                   type="button"
                   onClick={() => toggleFAQ(index)}
                   aria-expanded={isOpen}
-                  className="w-full text-left p-6 sm:p-7 flex items-center justify-between gap-4 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors cursor-pointer select-none group"
+                  className="w-full text-left p-4 sm:p-6 lg:p-7 flex items-center justify-between gap-3 sm:gap-4 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors cursor-pointer select-none group"
                 >
                   <span
-                    className={`text-base sm:text-lg font-bold uppercase tracking-tight transition-colors ${
+                    className={`text-sm sm:text-base md:text-lg font-bold uppercase tracking-tight break-words leading-snug sm:leading-normal transition-colors ${
                       isOpen
                         ? "text-blue-600 dark:text-blue-400"
                         : "text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400"
@@ -223,13 +223,13 @@ export default function FAQSection() {
                   </span>
 
                   <span
-                    className={`w-9 h-9 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${
+                    className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${
                       isOpen
                         ? "bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 rotate-180"
                         : "bg-slate-100 dark:bg-slate-800 text-slate-400 group-hover:bg-slate-200 dark:group-hover:bg-slate-700 group-hover:text-slate-600 dark:group-hover:text-slate-200"
                     }`}
                   >
-                    <ChevronDown className="w-5 h-5 transition-transform duration-300" />
+                    <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300" />
                   </span>
                 </button>
 
@@ -240,8 +240,8 @@ export default function FAQSection() {
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <div className="px-6 sm:px-7 pb-6 sm:pb-7 pt-1 border-t border-slate-100 dark:border-slate-800/60">
-                      <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed text-justify mt-4">
+                    <div className="px-4 sm:px-6 lg:px-7 pb-4 sm:pb-6 lg:pb-7 pt-1 border-t border-slate-100 dark:border-slate-800/60">
+                      <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed text-left sm:text-justify mt-3 sm:mt-4">
                         {faq.answer}
                       </p>
                     </div>

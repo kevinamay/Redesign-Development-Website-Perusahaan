@@ -186,14 +186,14 @@ export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
       />
 
       {/* Slide-in Drawer Container from RIGHT */}
-      <div className="fixed inset-y-0 right-0 w-full sm:w-[420px] max-w-[90vw] h-full bg-white dark:bg-slate-900 shadow-2xl border-l border-slate-200/80 dark:border-slate-800 p-6 flex flex-col justify-between z-[100000] overflow-y-auto animate-slide-in-right box-border">
+      <div className="fixed inset-y-0 right-0 w-full sm:w-[420px] max-w-[90vw] h-full bg-white dark:bg-slate-900 shadow-2xl border-l border-slate-200/80 dark:border-slate-800 p-5 sm:p-6 flex flex-col justify-between z-[100000] overflow-hidden animate-slide-in-right box-border">
         {/* Header: Title + ThemeToggle + Close Button */}
-        <div className="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800 shrink-0">
+        <div className="flex items-center justify-between pb-3.5 sm:pb-4 border-b border-slate-100 dark:border-slate-800 shrink-0">
           <div>
             <div className="text-[11px] font-black text-blue-600 dark:text-blue-400 tracking-wider uppercase">
               Menu Navigasi
             </div>
-            <div className="text-lg font-extrabold text-slate-900 dark:text-white tracking-tight">
+            <div className="text-base sm:text-lg font-extrabold text-slate-900 dark:text-white tracking-tight">
               CV. ASIA PLASTIK
             </div>
           </div>
@@ -292,7 +292,7 @@ export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
             <div className="text-[10px] font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider">
               {hints.socialLabel}
             </div>
-            <div className="flex items-center justify-center gap-2.5 sm:gap-3 w-full">
+            <div className="flex items-center justify-center gap-2 sm:gap-2.5 w-full flex-wrap">
               {socialMediaChannels.map((s, idx) => (
                 <a
                   key={idx}
