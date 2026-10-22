@@ -96,7 +96,6 @@ export const navLinks: NavLink[] = [
   { label: "Produk & Layanan", href: "/products" },
   { label: "Mesin & Fasilitas", href: "/about#mesin-produksi" },
   { label: "Kontak", href: "/kontak" },
-  { label: "Minta Penawaran", href: "/kontak", isCta: true },
 ];
 
 export const heroData: HeroData = {

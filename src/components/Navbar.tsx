@@ -15,7 +15,6 @@ import {
   Menu,
   ChevronDown,
   Sparkles,
-  ArrowRight,
 } from "lucide-react";
 
 export default function Navbar() {
@@ -197,17 +196,8 @@ export default function Navbar() {
               })}
             </div>
 
-            {/* Right: Direct Contact / Menu Toggle */}
+            {/* Right: Menu Toggle */}
             <div className="flex items-center gap-2 sm:gap-3">
-              {/* Direct CTA Button (Desktop) */}
-              <Link
-                href="/kontak"
-                className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-bold shadow-sm hover:shadow-md transition-all cursor-pointer"
-              >
-                <span>{t.navbar.quoteCta}</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-
               {/* MENU with Hamburger Icon */}
               <button
                 type="button"
