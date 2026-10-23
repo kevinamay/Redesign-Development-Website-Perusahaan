@@ -8,14 +8,11 @@ import Footer from "@/components/Footer";
 import { useLanguage } from "@/data/translations";
 import { aboutTranslations } from "@/data/aboutTranslations";
 import {
-  Sparkles,
   Award,
   CheckCircle2,
-  Cpu,
   ChevronRight,
   Home,
   Check,
-  Factory,
   Boxes,
 } from "lucide-react";
 
@@ -39,11 +36,6 @@ export default function AboutClientContent() {
 
         {/* Hero Content */}
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center text-white">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-300 text-xs sm:text-sm font-bold tracking-widest uppercase mb-6 backdrop-blur-xs">
-            <Sparkles className="w-4 h-4 text-blue-400" />
-            <span>{t.hero.badge}</span>
-          </div>
 
           {/* Heading 1 */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight drop-shadow-md">
@@ -74,11 +66,6 @@ export default function AboutClientContent() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 flex flex-col md:flex-row gap-16 items-center">
           {/* Left Side (Text) */}
           <div className="w-full md:w-1/2 space-y-6">
-            {/* Small Label */}
-            <div className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-bold tracking-widest text-xs uppercase">
-              <Factory className="w-4 h-4" />
-              <span>{t.customFabrication.eyebrow}</span>
-            </div>
 
             {/* H2 */}
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#1e3a5f] dark:text-blue-400 tracking-tight leading-tight">
@@ -162,11 +149,6 @@ export default function AboutClientContent() {
 
         {/* Centered Content */}
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white space-y-6">
-          {/* Label */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/20 dark:bg-blue-400/20 border border-blue-400/30 dark:border-blue-300/30 text-blue-300 dark:text-blue-200 text-xs sm:text-sm font-bold tracking-widest uppercase backdrop-blur-xs">
-            <Award className="w-4 h-4 text-blue-300" />
-            <span>{t.isoSection.badge}</span>
-          </div>
 
           {/* H2 */}
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight drop-shadow-md">
@@ -205,10 +187,6 @@ export default function AboutClientContent() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           {/* Header */}
           <div className="mb-14">
-            <div className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-bold tracking-widest text-xs uppercase mb-3">
-              <Sparkles className="w-4 h-4" />
-              <span>{t.visionMission.eyebrow}</span>
-            </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
               {t.visionMission.title}
             </h2>
@@ -289,10 +267,6 @@ export default function AboutClientContent() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row gap-16 items-center">
           {/* Text Left */}
           <div className="w-full md:w-1/2 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 dark:bg-blue-400/20 text-blue-300 dark:text-blue-200 text-xs font-bold tracking-widest uppercase border border-blue-400/30 backdrop-blur-xs">
-              <Cpu className="w-3.5 h-3.5" />
-              <span>{t.machinery.eyebrow}</span>
-            </div>
 
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight drop-shadow-sm">
               {t.machinery.title}
