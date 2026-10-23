@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, Suspense } from "react";
 import {
   ChevronRight,
   ChevronDown,
@@ -16,6 +16,7 @@ import {
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
+import PrototypeProductSwitcher from "@/components/prototype/PrototypeProductSwitcher";
 import { footerData } from "@/data/homeData";
 import { useLanguage } from "@/data/translations";
 import {
@@ -518,6 +519,11 @@ export default function ProductsPage() {
 
       {/* Footer */}
       <Footer />
+
+      {/* Floating Prototype Product Switcher */}
+      <Suspense fallback={null}>
+        <PrototypeProductSwitcher />
+      </Suspense>
     </div>
   );
 }
