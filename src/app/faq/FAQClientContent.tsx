@@ -14,21 +14,12 @@ import {
   Home,
   ChevronRight,
   Sparkles,
+  X,
 } from "lucide-react";
 import { useLanguage } from "@/data/translations";
 import { companyConfig } from "@/data/companyConfig";
 
-export default function FAQClientContent() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0); // Open first item by default
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState<string>("all");
-  const { lang } = useLanguage();
-
-  const toggleFAQ = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
-  const pageContent = {
+const PAGE_CONTENT = {
     id: {
       breadcrumbHome: "Beranda",
       breadcrumbCurrent: "FAQ",
@@ -274,7 +265,17 @@ export default function FAQClientContent() {
     },
   };
 
-  const current = pageContent[lang] || pageContent.id;
+export default function FAQClientContent() {
+  const [openIndex, setOpenIndex] = useState<number | null>(0); // Open first item by default
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
+  const { lang } = useLanguage();
+
+  const toggleFAQ = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+  const current = PAGE_CONTENT[lang] || PAGE_CONTENT.id;
 
   // Filter FAQs based on search and category
   const filteredFaqs = useMemo(() => {
@@ -322,7 +323,7 @@ export default function FAQClientContent() {
               <span>{current.eyebrow}</span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-6">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-6">
               {current.title}
             </h1>
 
@@ -341,19 +342,32 @@ export default function FAQClientContent() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder={current.searchPlaceholder}
-                className="w-full bg-slate-50 dark:bg-slate-800/60 text-slate-900 dark:text-white placeholder:text-slate-400 pl-12 pr-4 py-3.5 rounded-2xl border border-slate-200 dark:border-slate-700/80 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 text-sm sm:text-base transition-all"
+                aria-label={current.searchPlaceholder}
+                className="w-full bg-slate-50 dark:bg-slate-800/60 text-slate-900 dark:text-white placeholder:text-slate-400 placeholder:truncate pl-12 pr-11 py-3.5 rounded-2xl border border-slate-200 dark:border-slate-700/80 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 text-sm sm:text-base transition-all"
               />
+              {searchQuery && (
+                <button
+                  type="button"
+                  onClick={() => setSearchQuery("")}
+                  aria-label="Hapus pencarian"
+                  className="absolute right-3.5 top-1/2 -translate-y-1/2 p-1 rounded-full text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors cursor-pointer"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              )}
             </div>
 
             {/* Category Filter Pills */}
-            <div className="flex flex-wrap items-center gap-2 pt-1 border-t border-slate-100 dark:border-slate-800/80">
+            <div className="flex items-center gap-2 pt-1 border-t border-slate-100 dark:border-slate-800/80 overflow-x-auto no-scrollbar sm:flex-wrap pb-1">
               {current.categories.map((cat) => {
                 const isActive = selectedCategory === cat.id;
                 return (
                   <button
                     key={cat.id}
+                    type="button"
                     onClick={() => setSelectedCategory(cat.id)}
-                    className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer ${isActive
+                    aria-pressed={isActive}
+                    className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer whitespace-nowrap shrink-0 sm:shrink ${isActive
                       ? "bg-blue-600 text-white shadow-md shadow-blue-600/20"
                       : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700"
                       }`}
@@ -382,6 +396,8 @@ export default function FAQClientContent() {
                     {/* Header Button */}
                     <button
                       type="button"
+                      id={`faq-trigger-${index}`}
+                      aria-controls={`faq-panel-${index}`}
                       onClick={() => toggleFAQ(index)}
                       aria-expanded={isOpen}
                       className="w-full text-left p-4 sm:p-6 lg:p-7 flex items-center justify-between gap-3 sm:gap-4 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors cursor-pointer select-none group"
@@ -407,6 +423,9 @@ export default function FAQClientContent() {
 
                     {/* Buttery-Smooth CSS Grid Transition */}
                     <div
+                      id={`faq-panel-${index}`}
+                      role="region"
+                      aria-labelledby={`faq-trigger-${index}`}
                       className={`grid transition-all duration-300 ease-in-out ${isOpen
                         ? "grid-rows-[1fr] opacity-100"
                         : "grid-rows-[0fr] opacity-0"
