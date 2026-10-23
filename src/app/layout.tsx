@@ -44,6 +44,7 @@ export const metadata: Metadata = {
 };
 
 import FloatingActions from "@/components/FloatingActionsClient";
+import ParallaxScrollEngine from "@/components/ParallaxScrollEngine";
 
 export default function RootLayout({
   children,
@@ -85,6 +86,9 @@ export default function RootLayout({
             `,
           }}
         />
+        {/* Universal Parallax Background & Scroll Animation Engine for ALL pages */}
+        <ParallaxScrollEngine />
+
         {children}
         {/* Floating Quick Contact & AI Assistant Actions */}
         <FloatingActions />
