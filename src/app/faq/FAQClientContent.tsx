@@ -466,25 +466,25 @@ export default function FAQClientContent() {
           )}
 
           {/* DEDICATED SUPPORT CTA BANNER */}
-          <div className="mt-14 sm:mt-20 bg-gradient-to-br from-slate-900 to-slate-950 text-white rounded-3xl p-6 sm:p-10 lg:p-12 border border-slate-800 shadow-2xl relative overflow-hidden">
-            {/* Ambient subtle glow */}
-            <div className="absolute top-0 right-0 w-80 h-80 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="mt-14 sm:mt-20 bg-gradient-to-br from-slate-900 via-slate-900 to-slate-950 text-white rounded-3xl p-8 sm:p-12 lg:p-14 border border-slate-800 shadow-2xl relative overflow-hidden text-center">
+            {/* Ambient subtle glow centered */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
 
-            <div className="relative z-10 max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-wider mb-4">
+            <div className="relative z-10 max-w-2xl mx-auto flex flex-col items-center">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-wider mb-4 shadow-sm">
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>{current.supportBadge}</span>
               </div>
 
-              <h2 className="text-2xl sm:text-3xl font-extrabold mb-4">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold mb-4 tracking-tight">
                 {current.supportTitle}
               </h2>
 
-              <p className="text-slate-300 text-sm sm:text-base leading-relaxed mb-8">
+              <p className="text-slate-300 text-sm sm:text-base leading-relaxed mb-8 max-w-xl">
                 {current.supportDesc}
               </p>
 
-              <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 sm:gap-4">
+              <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3 sm:gap-4 w-full">
                 <a
                   href={companyConfig.contact.whatsapp.getChatUrl(
                     "primary",
@@ -492,7 +492,7 @@ export default function FAQClientContent() {
                   )}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-emerald-600 text-white font-semibold px-5 sm:px-6 py-3.5 rounded-xl hover:bg-emerald-500 hover:shadow-lg hover:shadow-emerald-600/20 transition-all inline-flex items-center justify-center gap-2.5 text-sm"
+                  className="w-full sm:w-auto bg-emerald-600 text-white font-semibold px-5 sm:px-6 py-3.5 rounded-xl hover:bg-emerald-500 hover:shadow-lg hover:shadow-emerald-600/20 transition-all inline-flex items-center justify-center gap-2.5 text-sm"
                 >
                   <MessageCircle className="w-4 h-4 shrink-0" />
                   <span>{current.whatsappBtn}</span>
@@ -500,7 +500,7 @@ export default function FAQClientContent() {
 
                 <a
                   href={`mailto:${companyConfig.contact.email}`}
-                  className="bg-blue-600 text-white font-semibold px-5 sm:px-6 py-3.5 rounded-xl hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-600/20 transition-all inline-flex items-center justify-center gap-2.5 text-sm"
+                  className="w-full sm:w-auto bg-blue-600 text-white font-semibold px-5 sm:px-6 py-3.5 rounded-xl hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-600/20 transition-all inline-flex items-center justify-center gap-2.5 text-sm"
                 >
                   <Mail className="w-4 h-4 shrink-0" />
                   <span>{current.emailBtn}</span>
@@ -508,7 +508,7 @@ export default function FAQClientContent() {
 
                 <a
                   href={`tel:${companyConfig.contact.phone.replace(/[^0-9+]/g, "")}`}
-                  className="bg-slate-800 text-slate-200 font-semibold px-5 sm:px-6 py-3.5 rounded-xl hover:bg-slate-700 transition-all inline-flex items-center justify-center gap-2.5 text-sm"
+                  className="w-full sm:w-auto bg-slate-800 text-slate-200 font-semibold px-5 sm:px-6 py-3.5 rounded-xl hover:bg-slate-700 transition-all inline-flex items-center justify-center gap-2.5 text-sm border border-slate-700/60"
                 >
                   <Phone className="w-4 h-4 shrink-0" />
                   <span>{companyConfig.contact.phoneFormattedFull}</span>
