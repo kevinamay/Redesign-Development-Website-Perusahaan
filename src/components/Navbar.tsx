@@ -165,7 +165,7 @@ export default function Navbar() {
               </button>
 
               {isLangOpen && (
-                <div className="absolute right-0 top-full mt-2 w-36 bg-slate-900 border border-slate-700 rounded-lg shadow-2xl py-1.5 z-[70] text-xs">
+                <div className="absolute right-0 top-full mt-2 w-36 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg shadow-xl dark:shadow-2xl py-1.5 z-[70] text-xs transition-colors duration-200">
                   {languageOptions.map((opt) => (
                     <button
                       key={opt.code}
@@ -174,13 +174,15 @@ export default function Navbar() {
                         setLanguage(opt.code);
                         setIsLangOpen(false);
                       }}
-                      className={`w-full text-left px-3 py-2 hover:bg-slate-800 flex items-center justify-between transition-colors cursor-pointer ${
-                        lang === opt.code ? "text-blue-400 font-bold bg-slate-800/50" : "text-slate-300"
+                      className={`w-full text-left px-3 py-2 flex items-center justify-between transition-colors cursor-pointer ${
+                        lang === opt.code
+                          ? "text-blue-600 dark:text-blue-400 font-bold bg-blue-50/80 dark:bg-slate-800/60"
+                          : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white"
                       }`}
                     >
                       <span>{opt.label}</span>
                       {lang === opt.code && (
-                        <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-blue-600 dark:bg-blue-400" />
                       )}
                     </button>
                   ))}
