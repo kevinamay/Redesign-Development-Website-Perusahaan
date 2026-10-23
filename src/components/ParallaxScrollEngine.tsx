@@ -9,20 +9,15 @@ export default function ParallaxScrollEngine() {
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
 
-  // Parallax refs for ultra-smooth 60fps GPU transform without React re-render overhead
+  // Parallax refs for ultra-smooth GPU transform without React re-render overhead
   const orb1Ref = useRef<HTMLDivElement>(null);
   const orb2Ref = useRef<HTMLDivElement>(null);
   const orb3Ref = useRef<HTMLDivElement>(null);
+  const orb4Ref = useRef<HTMLDivElement>(null);
   const gridPatternRef = useRef<HTMLDivElement>(null);
-
-  // Floating geometric depth markers
-  const floatAccent1Ref = useRef<HTMLDivElement>(null);
-  const floatAccent2Ref = useRef<HTMLDivElement>(null);
-  const floatAccent3Ref = useRef<HTMLDivElement>(null);
-
   const observerRef = useRef<IntersectionObserver | null>(null);
 
-  // 1. Continuous Parallax Engine (60fps rAF with high-visibility travel)
+  // 1. Continuous Multi-Layer Parallax & Scroll Engine (60fps rAF)
   useEffect(() => {
     let ticking = false;
 
@@ -35,42 +30,34 @@ export default function ParallaxScrollEngine() {
       // Scroll progress percentage (0 - 100)
       const progress = Math.min(100, Math.max(0, (scrollY / maxScroll) * 100));
       setScrollProgress(progress);
-      setShowBackToTop(scrollY > 300);
+      setShowBackToTop(scrollY > 320);
 
-      // Pronounced, clearly visible parallax shifts on ambient atmospheric layers
+      // Highly visible Parallax shifts on multi-depth atmospheric layers
       if (orb1Ref.current) {
-        orb1Ref.current.style.transform = `translate3d(0, ${scrollY * -0.32}px, 0)`;
+        orb1Ref.current.style.transform = `translate3d(0, ${scrollY * -0.35}px, 0)`;
       }
       if (orb2Ref.current) {
-        orb2Ref.current.style.transform = `translate3d(0, ${scrollY * -0.52}px, 0)`;
+        orb2Ref.current.style.transform = `translate3d(0, ${scrollY * -0.58}px, 0)`;
       }
       if (orb3Ref.current) {
         orb3Ref.current.style.transform = `translate3d(0, ${scrollY * -0.42}px, 0)`;
       }
+      if (orb4Ref.current) {
+        orb4Ref.current.style.transform = `translate3d(0, ${scrollY * -0.26}px, 0)`;
+      }
       if (gridPatternRef.current) {
-        gridPatternRef.current.style.transform = `translate3d(0, ${scrollY * -0.15}px, 0)`;
+        gridPatternRef.current.style.transform = `translate3d(0, ${scrollY * -0.16}px, 0)`;
       }
 
-      // Floating geometric depth markers (giving immediate optical parallax depth)
-      if (floatAccent1Ref.current) {
-        floatAccent1Ref.current.style.transform = `translate3d(0, ${scrollY * -0.28}px, 0) rotate(${scrollY * 0.04}deg)`;
-      }
-      if (floatAccent2Ref.current) {
-        floatAccent2Ref.current.style.transform = `translate3d(0, ${scrollY * -0.55}px, 0) rotate(${scrollY * -0.05}deg)`;
-      }
-      if (floatAccent3Ref.current) {
-        floatAccent3Ref.current.style.transform = `translate3d(0, ${scrollY * -0.38}px, 0) rotate(${scrollY * 0.03}deg)`;
-      }
-
-      // In-page content elements with [data-parallax] or .ap-parallax-element
-      const parallaxElements = document.querySelectorAll<HTMLElement>(
-        "[data-parallax], .ap-parallax-element"
+      // 2. Optical Image & Container Depth Parallax (Real 3D depth as user scrolls past content)
+      const parallaxTargets = document.querySelectorAll<HTMLElement>(
+        "[data-parallax], .ap-parallax-element, main section img.object-cover, main article img"
       );
-      parallaxElements.forEach((el) => {
+      parallaxTargets.forEach((el) => {
         const speedAttr = el.getAttribute("data-parallax-speed");
         const speed = speedAttr ? parseFloat(speedAttr) : 0.14;
         const rect = el.getBoundingClientRect();
-        // Calculate shift when element is near the viewport
+        // Calculate relative position within viewport
         if (rect.top < windowHeight + 150 && rect.bottom > -150) {
           const centerDiff = rect.top + rect.height / 2 - windowHeight / 2;
           const translateY = centerDiff * speed * -1;
@@ -96,7 +83,7 @@ export default function ParallaxScrollEngine() {
     };
   }, []);
 
-  // 2. High-Precision Universal Scroll Reveal Engine
+  // 3. High-Impact Universal Scroll Reveal Engine (Clearly Noticeable & Buttery Smooth)
   const setupObservers = useCallback(() => {
     if (observerRef.current) {
       observerRef.current.disconnect();
@@ -106,7 +93,7 @@ export default function ParallaxScrollEngine() {
     const elementsToReveal: HTMLElement[] = [];
     const seen = new Set<HTMLElement>();
 
-    // 2a. Observe direct children of all Content Grids (Products, Articles, About steps, Bento, FAQ items, Partner logos)
+    // 3a. Target all direct children of Grids (Products, Articles, Steps, Bento, FAQ, Partners)
     const grids = document.querySelectorAll<HTMLElement>(".grid");
     grids.forEach((grid) => {
       if (
@@ -123,27 +110,27 @@ export default function ParallaxScrollEngine() {
       children.forEach((child, idx) => {
         if (!seen.has(child) && child.offsetHeight > 20) {
           seen.add(child);
-          // Calculated kinetic wave delay for clearly visible sequential cascade
-          child.style.transitionDelay = `${(idx % 6) * 95}ms`;
+          // Pronounced cascading ripple delay (130ms per item)
+          child.style.transitionDelay = `${(idx % 6) * 130}ms`;
           child.classList.add("ap-card-hover");
           elementsToReveal.push(child);
         }
       });
     });
 
-    // 2b. Observe all Articles (Product cards, News cards, blog items, FAQ items)
+    // 3b. Target all Articles (News cards, Product cards, FAQ accordions)
     const articles = document.querySelectorAll<HTMLElement>("article");
     articles.forEach((art, idx) => {
       if (!seen.has(art) && art.offsetHeight > 20) {
         seen.add(art);
         if (!art.style.transitionDelay) {
-          art.style.transitionDelay = `${(idx % 6) * 90}ms`;
+          art.style.transitionDelay = `${(idx % 6) * 120}ms`;
         }
         elementsToReveal.push(art);
       }
     });
 
-    // 2c. Observe Headings (h2, section banners)
+    // 3c. Target Headings and Section headers
     const headings = document.querySelectorAll<HTMLElement>(
       "main h2, main .section-header, main [data-scroll-reveal]"
     );
@@ -157,7 +144,7 @@ export default function ParallaxScrollEngine() {
       }
     });
 
-    // 2d. Observe discrete section wrapper containers and forms
+    // 3d. Target Section Content Containers & Forms
     const sections = document.querySelectorAll<HTMLElement>(
       "main section > div.max-w-7xl, main form, main section > div.container"
     );
@@ -178,9 +165,7 @@ export default function ParallaxScrollEngine() {
       }
     });
 
-    // IntersectionObserver with distinct viewport triggering threshold
-    // Using rootMargin: "0px 0px -85px 0px" so the item is 85px inside the viewport
-    // before animating, ensuring the user's eyes clearly perceive the smooth entrance!
+    // IntersectionObserver with optimal trigger threshold (-110px so animation is seen in active view)
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -193,15 +178,15 @@ export default function ParallaxScrollEngine() {
         });
       },
       {
-        threshold: 0.15,
-        rootMargin: "0px 0px -85px 0px",
+        threshold: 0.14,
+        rootMargin: "0px 0px -110px 0px",
       }
     );
 
-    // Apply immediate reveal to above-the-fold content to avoid layout shift (CLS)
+    // Differentiate above-the-fold content vs below-the-fold content
     elementsToReveal.forEach((el) => {
       const rect = el.getBoundingClientRect();
-      const isAboveTheFold = rect.top < windowHeight * 0.8 && rect.bottom > 0;
+      const isAboveTheFold = rect.top < windowHeight * 0.72 && rect.bottom > 0;
 
       if (isAboveTheFold) {
         el.classList.add("ap-scroll-in");
@@ -254,54 +239,40 @@ export default function ParallaxScrollEngine() {
   return (
     <>
       {/* ========================================================================= */}
-      {/* 1. VISIBLE CONTINUOUS PARALLAX ATMOSPHERIC DEPTH (ALL PAGES)               */}
+      {/* 1. CONTINUOUS PROMINENT AMBIENT PARALLAX DEPTH LAYERS (ALL PAGES)         */}
       {/* ========================================================================= */}
       <div
         aria-hidden="true"
         className="fixed inset-0 pointer-events-none z-0 overflow-hidden"
       >
-        {/* Parallax Orb 1: Upper Right Sapphire / Royal Blue (Noticeable Glow) */}
+        {/* Parallax Orb 1: Upper Right Sapphire/Cyan Atmosphere (Velocity: -0.35x) */}
         <div
           ref={orb1Ref}
-          className="absolute -top-24 -right-28 w-[580px] h-[580px] rounded-full blur-[110px] bg-gradient-to-br from-blue-600/22 via-sky-500/16 to-transparent dark:from-blue-500/32 dark:via-cyan-400/18 dark:to-transparent transition-opacity duration-700 will-change-transform"
+          className="absolute -top-36 -right-36 w-[680px] h-[680px] rounded-full blur-[140px] bg-gradient-to-br from-blue-600/22 via-cyan-500/18 to-transparent dark:from-blue-500/30 dark:via-cyan-400/24 dark:to-transparent transition-opacity duration-700 will-change-transform"
         />
 
-        {/* Parallax Orb 2: Mid-Left Azure / Cyan (Faster Floating Glide) */}
+        {/* Parallax Orb 2: Mid-Left Azure Glow (Velocity: -0.58x) */}
         <div
           ref={orb2Ref}
-          className="absolute top-[35%] -left-32 w-[520px] h-[520px] rounded-full blur-[100px] bg-gradient-to-tr from-cyan-500/20 via-blue-600/15 to-transparent dark:from-cyan-400/28 dark:via-blue-500/18 dark:to-transparent transition-opacity duration-700 will-change-transform"
+          className="absolute top-[32%] -left-44 w-[600px] h-[600px] rounded-full blur-[130px] bg-gradient-to-tr from-cyan-500/20 via-indigo-600/18 to-transparent dark:from-cyan-400/26 dark:via-indigo-500/24 dark:to-transparent transition-opacity duration-700 will-change-transform"
         />
 
-        {/* Parallax Orb 3: Lower Right Deep Violet / Indigo Accent */}
+        {/* Parallax Orb 3: Lower Right Indigo Atmosphere (Velocity: -0.42x) */}
         <div
           ref={orb3Ref}
-          className="absolute top-[68%] -right-24 w-[480px] h-[480px] rounded-full blur-[105px] bg-gradient-to-bl from-indigo-600/20 via-purple-600/14 to-transparent dark:from-indigo-500/28 dark:via-purple-500/16 dark:to-transparent transition-opacity duration-700 will-change-transform"
+          className="absolute top-[65%] -right-36 w-[560px] h-[560px] rounded-full blur-[120px] bg-gradient-to-bl from-indigo-500/20 via-blue-600/18 to-transparent dark:from-indigo-400/26 dark:via-blue-500/24 dark:to-transparent transition-opacity duration-700 will-change-transform"
         />
 
-        {/* Parallax Tech Grid Matrix */}
+        {/* Parallax Orb 4: Lower Center Soft Teal Core (Velocity: -0.26x) */}
+        <div
+          ref={orb4Ref}
+          className="absolute top-[82%] left-[20%] w-[480px] h-[480px] rounded-full blur-[120px] bg-gradient-to-t from-teal-500/14 to-transparent dark:from-teal-400/18 dark:to-transparent transition-opacity duration-700 will-change-transform"
+        />
+
+        {/* Parallax Micro Tech Grid Dots (Velocity: -0.16x) */}
         <div
           ref={gridPatternRef}
-          className="absolute inset-0 w-full h-[180%] opacity-[0.045] dark:opacity-[0.08] bg-[radial-gradient(#2563eb_1.5px,transparent_1.5px)] [background-size:36px_36px] will-change-transform"
-        />
-
-        {/* Floating Geometric Parallax Marker 1 (Top-Right Frosted Pill) */}
-        <div
-          ref={floatAccent1Ref}
-          className="hidden lg:block absolute top-[22%] right-8 xl:right-16 w-16 h-16 rounded-2xl border-2 border-blue-500/20 dark:border-blue-400/30 bg-blue-50/20 dark:bg-blue-950/20 backdrop-blur-[2px] shadow-sm will-change-transform"
-        />
-
-        {/* Floating Geometric Parallax Marker 2 (Mid-Left Tech Crosshair Ring) */}
-        <div
-          ref={floatAccent2Ref}
-          className="hidden lg:block absolute top-[52%] left-6 xl:left-14 w-20 h-20 rounded-full border border-cyan-400/25 dark:border-cyan-400/35 flex items-center justify-center will-change-transform"
-        >
-          <div className="w-2.5 h-2.5 rounded-full bg-cyan-500/40 dark:bg-cyan-400/50" />
-        </div>
-
-        {/* Floating Geometric Parallax Marker 3 (Lower-Right Accent Ring) */}
-        <div
-          ref={floatAccent3Ref}
-          className="hidden lg:block absolute top-[78%] right-10 xl:right-20 w-14 h-14 rounded-2xl border border-indigo-500/25 dark:border-indigo-400/35 rotate-45 will-change-transform"
+          className="absolute inset-0 w-full h-[180%] opacity-[0.055] dark:opacity-[0.09] bg-[radial-gradient(#3b82f6_1.5px,transparent_1.5px)] [background-size:36px_36px] will-change-transform"
         />
       </div>
 
@@ -314,7 +285,7 @@ export default function ParallaxScrollEngine() {
           onClick={scrollToTop}
           title="Kembali ke atas"
           aria-label="Kembali ke atas halaman"
-          className="fixed bottom-6 left-6 z-[9980] w-11 h-11 rounded-full bg-white/95 dark:bg-slate-900/95 backdrop-blur-md text-slate-800 dark:text-white border border-slate-200/90 dark:border-slate-800/90 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex items-center justify-center cursor-pointer group active:scale-95"
+          className="fixed bottom-6 left-6 z-[9980] w-12 h-12 rounded-full bg-white/95 dark:bg-slate-900/95 backdrop-blur-md text-slate-800 dark:text-white border border-slate-200 dark:border-slate-800 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex items-center justify-center cursor-pointer group active:scale-95"
         >
           {/* Progress circle ring */}
           <svg
