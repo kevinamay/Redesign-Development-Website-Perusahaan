@@ -145,14 +145,9 @@ export default function NewProduct() {
               </div>
 
               {/* Product Title */}
-              <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight mb-3 sm:mb-4 tracking-tight">
+              <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight mb-6 sm:mb-8 tracking-tight">
                 {t.newProduct.title}
               </h2>
-
-              {/* Subtitle / Product Narrative */}
-              <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed mb-6 sm:mb-8">
-                {t.newProduct.description}
-              </p>
 
               {/* Product Specs (Bento-style 2x2 grid) */}
               <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-6 sm:mb-8">
