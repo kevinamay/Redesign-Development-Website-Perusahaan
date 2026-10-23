@@ -4,7 +4,6 @@ import React, { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/data/translations";
-import { ChevronRight } from "lucide-react";
 
 const HERO_SLIDES = [
   {
@@ -136,7 +135,7 @@ export default function Hero() {
       {/* ========================================================================= */}
       {/* 3. LAYER 3: HERO CONTENT & STATS                                          */}
       {/* ========================================================================= */}
-      <div className="relative z-20 flex flex-col justify-between min-h-[calc(100svh-110px)] lg:min-h-[calc(100svh-115px)] w-full max-w-[100vw] box-border">
+      <div className="relative z-20 flex flex-col justify-center min-h-[calc(100svh-110px)] lg:min-h-[calc(100svh-115px)] w-full max-w-[100vw] box-border">
         {/* HERO TYPOGRAPHY & LAYOUT */}
         <div className="flex-1 flex items-center w-full max-w-[100vw] overflow-hidden py-8 sm:py-12 lg:py-16">
           {/* Main Content Wrapper with safe mobile padding */}
@@ -195,49 +194,6 @@ export default function Hero() {
                     }`}
                   />
                 ))}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* 2. REFINED BOTTOM STATS SECTION */}
-        <div className="w-full border-t border-slate-200/80 dark:border-slate-800 bg-white/80 dark:bg-slate-950/85 backdrop-blur-md py-4 sm:py-5 px-4 sm:px-6 lg:px-8 box-border overflow-hidden">
-          <div className="max-w-7xl mx-auto w-full box-border">
-            {/* Statistics Grid: grid-cols-2 on mobile, lg:grid-cols-4 on desktop */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 w-full box-border">
-              {t.hero.metrics.map((metric, idx) => {
-                const is99 = metric.value === "99.8%" || idx === 2;
-                return (
-                  <div
-                    key={idx}
-                    className={`flex items-center gap-2 sm:gap-3 min-w-0 overflow-hidden box-border ${
-                      is99 ? "col-span-2 lg:col-span-1 justify-center lg:justify-start" : ""
-                    }`}
-                  >
-                    <span className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-blue-600 shrink-0">
-                      {metric.value}
-                    </span>
-                    <div className="flex flex-col min-w-0 overflow-hidden">
-                      <span className="font-bold text-slate-900 dark:text-white text-xs md:text-sm leading-tight truncate sm:whitespace-normal">
-                        {metric.label}
-                      </span>
-                      <span className="text-[10px] md:text-xs text-slate-500 dark:text-slate-400 leading-tight truncate sm:whitespace-normal">
-                        {metric.sublabel}
-                      </span>
-                    </div>
-                  </div>
-                );
-              })}
-
-              {/* Facility Quick Link integrated into 4th grid cell or full width on mobile */}
-              <div className="flex items-center justify-center lg:justify-start col-span-2 lg:col-span-1 pt-2 lg:pt-0 border-t lg:border-t-0 border-slate-200/50 dark:border-slate-800/50 min-w-0 overflow-hidden box-border">
-                <a
-                  href="/about#mesin-produksi"
-                  className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 font-semibold text-xs md:text-sm inline-flex items-center gap-1.5 transition-colors group min-w-0"
-                >
-                  <span className="group-hover:underline truncate sm:whitespace-normal">{t.hero.facilityLink}</span>
-                  <ChevronRight className="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-0.5" />
-                </a>
               </div>
             </div>
           </div>
