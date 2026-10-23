@@ -54,53 +54,123 @@ export default function GlobalScrollEnhancer() {
     document.documentElement.setAttribute("data-scroll-mode", settings.mode);
   }, [settings.mode]);
 
-  // 3. Universal Intersection Observer for ALL pages
+  // 3. Universal Kinetic Precision & Scale Lift Engine for ALL pages
   const setupObservers = useCallback(() => {
     if (observerRef.current) {
       observerRef.current.disconnect();
     }
 
-    // Identify candidate elements for scroll reveal across any page
-    const candidates = document.querySelectorAll(
-      "section, article, main > div, .scroll-reveal, [data-scroll-reveal]"
-    );
+    const windowHeight = window.innerHeight;
+    const elementsToReveal: HTMLElement[] = [];
+    const seen = new Set<HTMLElement>();
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("universal-scroll-in");
-            entry.target.classList.remove("universal-scroll-init");
-          }
-        });
-      },
-      {
-        threshold: 0.08,
-        rootMargin: "0px 0px -40px 0px",
-      }
-    );
-
-    candidates.forEach((el) => {
-      // Don't apply to navbar or footer or small elements
+    // 3a. Target all direct children of Grids (Product cards, article cards, features, bento boxes)
+    const grids = document.querySelectorAll<HTMLElement>(".grid");
+    grids.forEach((grid) => {
       if (
-        el.closest("nav") ||
-        el.closest("footer") ||
-        el.id === "global-navbar" ||
-        el.id === "global-footer" ||
-        el.classList.contains("no-scroll-reveal")
+        grid.closest("nav") ||
+        grid.closest("footer") ||
+        grid.closest("header") ||
+        grid.closest("#floating-actions") ||
+        grid.closest("#floating-ai-chat") ||
+        grid.closest("[role='dialog']")
       ) {
         return;
       }
 
+      const children = Array.from(grid.children) as HTMLElement[];
+      children.forEach((child, idx) => {
+        if (!seen.has(child) && child.offsetHeight > 24) {
+          seen.add(child);
+          // Calculated kinetic stagger delay for grid items
+          child.style.transitionDelay = `${(idx % 6) * 90}ms`;
+          child.classList.add("kinetic-card-hover");
+          elementsToReveal.push(child);
+        }
+      });
+    });
+
+    // 3b. Target all Articles (FAQ accordion items, article cards, news items)
+    const articles = document.querySelectorAll<HTMLElement>("article");
+    articles.forEach((art, idx) => {
+      if (!seen.has(art) && art.offsetHeight > 24) {
+        seen.add(art);
+        if (!art.style.transitionDelay) {
+          art.style.transitionDelay = `${(idx % 6) * 80}ms`;
+        }
+        elementsToReveal.push(art);
+      }
+    });
+
+    // 3c. Target discrete section containers, feature splits, forms, and hero metrics
+    const sectionContainers = document.querySelectorAll<HTMLElement>(
+      "main section > div, main form, [data-scroll-reveal], .kinetic-reveal, main section [role='tablist']"
+    );
+    sectionContainers.forEach((block) => {
+      if (
+        block.closest("nav") ||
+        block.closest("footer") ||
+        block.closest("header") ||
+        block.closest("#floating-actions") ||
+        block.closest("#floating-ai-chat") ||
+        block.classList.contains("no-scroll-reveal")
+      ) {
+        return;
+      }
+
+      // Avoid double-animating a giant wrapper if it only contains already observed grid children
+      if (!seen.has(block) && block.offsetHeight > 30) {
+        const containsSeenGrids = Array.from(seen).some((s) => block.contains(s) && block !== s);
+        if (!containsSeenGrids) {
+          seen.add(block);
+          elementsToReveal.push(block);
+        }
+      }
+    });
+
+    // 3d. Target Section Headings (h2) for smooth elevation with their sections
+    const headings = document.querySelectorAll<HTMLElement>("main h2, main .section-header");
+    headings.forEach((h) => {
+      if (!seen.has(h) && !h.closest("nav") && !h.closest("footer")) {
+        const isInsideSeen = Array.from(seen).some((s) => s.contains(h) && s !== h);
+        if (!isInsideSeen) {
+          seen.add(h);
+          elementsToReveal.push(h);
+        }
+      }
+    });
+
+    // Create the IntersectionObserver with optimal threshold for noticeable kinetic entrance
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const target = entry.target as HTMLElement;
+            target.classList.add("universal-scroll-in");
+            target.classList.remove("universal-scroll-init");
+            observer.unobserve(target);
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "0px 0px -40px 0px",
+      }
+    );
+
+    // Differentiate above-the-fold elements vs below-the-fold elements
+    elementsToReveal.forEach((el) => {
       const rect = el.getBoundingClientRect();
-      const isAlreadyVisible = rect.top < window.innerHeight * 0.9;
+      const isAlreadyVisible = rect.top < windowHeight * 0.88 && rect.bottom > 0;
 
       if (isAlreadyVisible) {
-        // Already on screen when page loads: keep instantly visible
+        // Above the fold: instantaneously visible with 0 CLS / no delay
         el.classList.add("universal-scroll-in");
+        el.classList.remove("universal-scroll-init");
       } else {
-        // Below the fold: attach transition class
+        // Below the fold: attach snappy kinetic entrance
         el.classList.add("universal-scroll-init");
+        el.classList.remove("universal-scroll-in");
         observer.observe(el);
       }
     });
@@ -108,15 +178,31 @@ export default function GlobalScrollEnhancer() {
     observerRef.current = observer;
   }, []);
 
-  // Run observer whenever pathname changes (navigating between pages)
+  // Run observer whenever pathname changes, with MutationObserver for dynamically added elements
   useEffect(() => {
-    // Small timeout to let the new page DOM render completely
     const timer = setTimeout(() => {
       setupObservers();
     }, 120);
 
+    const mutationObserver = new MutationObserver((mutations) => {
+      let shouldRefresh = false;
+      for (const m of mutations) {
+        if (m.addedNodes.length > 0) {
+          shouldRefresh = true;
+          break;
+        }
+      }
+      if (shouldRefresh) {
+        setupObservers();
+      }
+    });
+
+    const mainEl = document.querySelector("main") || document.body;
+    mutationObserver.observe(mainEl, { childList: true, subtree: true });
+
     return () => {
       clearTimeout(timer);
+      mutationObserver.disconnect();
       if (observerRef.current) {
         observerRef.current.disconnect();
       }

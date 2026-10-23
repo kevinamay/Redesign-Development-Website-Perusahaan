@@ -8,6 +8,7 @@ import GlobalDistribution from "@/components/GlobalDistribution";
 import NewProduct from "@/components/NewProduct";
 import CareerBanner from "@/components/CareerBanner";
 import Footer from "@/components/Footer";
+import AnimatedMetric from "@/components/AnimatedMetric";
 
 export default function HomeClient() {
   const [scrollY, setScrollY] = useState(0);
@@ -100,6 +101,18 @@ export default function HomeClient() {
         >
           <Hero />
         </section>
+
+        {/* ========================================================================= */}
+        {/* KINETIC FLOATING METRICS BAR (Scroll-Triggered Animated Counters)         */}
+        {/* ========================================================================= */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 sm:-mt-14 relative z-20 mb-6 sm:mb-10">
+          <div className="bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-200/80 dark:border-slate-800 grid grid-cols-2 lg:grid-cols-4 gap-6 items-center">
+            <AnimatedMetric target={38} suffix="+" label="Tahun Pengalaman (1985)" />
+            <AnimatedMetric target={100} suffix="+" label="Varian Produk Presisi" />
+            <AnimatedMetric target={500} suffix=" L" label="Kapasitas Blow Moulding" />
+            <AnimatedMetric target={100} suffix="%" label="Standar ISO 9001:2015" />
+          </div>
+        </div>
 
         {/* ========================================================================= */}
         {/* 2. ABOUT US PREVIEW SECTION (Universal Kinetic Scroll Entrance)           */}

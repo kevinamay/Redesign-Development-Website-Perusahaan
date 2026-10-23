@@ -45,9 +45,9 @@ const MODES: {
     id: "kinetic",
     name: "Kinetic Precision & Scale Lift",
     tag: "INDUSTRIAL B2B SNAPPY",
-    description: "Transisi vertikal 30px dengan micro scale-up (0.97 ke 1.0) tanpa blur. Terasa bertenaga, cepat, dan presisi tinggi.",
+    description: "Transisi vertikal 44px dengan scale lift ekspansif (0.935 ke 1.0) & staggered cascade antar kartu. Sangat terlihat, bertenaga, dan presisi tinggi.",
     icon: Zap,
-    timing: "cubic-bezier(0.2, 0.8, 0.2, 1) • 0.65s",
+    timing: "cubic-bezier(0.2, 0.85, 0.2, 1) • 0.68s",
   },
   {
     id: "parallax",
