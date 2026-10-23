@@ -34,7 +34,7 @@ export default function DrawerVariantB({
     { num: "01", label: t.navbar.home, href: "/", badge: "Utama" },
     { num: "02", label: t.navbar.about, href: "/about", badge: "Profil & Visi" },
     { num: "03", label: t.navbar.products, href: "/products", badge: "Katalog" },
-    { num: "04", label: t.navbar.facilities, href: "/about#mesin-produksi", badge: "Mesin Pabrik" },
+    { num: "04", label: t.navbar.articles, href: "/article", badge: "Berita" },
     { num: "05", label: t.navbar.contact, href: "/kontak", badge: "Hubungi Sales" },
   ];
 

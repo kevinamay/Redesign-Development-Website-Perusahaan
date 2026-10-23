@@ -12,6 +12,7 @@ import {
   Users,
   Package,
   ShieldCheck,
+  Newspaper,
   PhoneCall,
   MessageCircle,
   ChevronRight,
@@ -38,7 +39,7 @@ export default function DrawerVariantA({
     { label: t.navbar.home, href: "/", icon: Home, desc: "Halaman Utama & Ikhtisar" },
     { label: t.navbar.about, href: "/about", icon: Users, desc: "Profil, Visi & Standar Mutu" },
     { label: t.navbar.products, href: "/products", icon: Package, desc: "Katalog Botol, Jerigen & Pail" },
-    { label: t.navbar.facilities, href: "/about#mesin-produksi", icon: ShieldCheck, desc: "Mesin Injection & Blow Moulding" },
+    { label: t.navbar.articles, href: "/article", icon: Newspaper, desc: "Berita & Wawasan Industri" },
     { label: t.navbar.contact, href: "/kontak", icon: PhoneCall, desc: "Kontak Tim Sales & Alamat Pabrik" },
   ];
 

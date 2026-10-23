@@ -12,6 +12,7 @@ import {
   Users,
   Package,
   ShieldCheck,
+  Newspaper,
   PhoneCall,
   MessageCircle,
 } from "lucide-react";
@@ -37,7 +38,7 @@ export default function DrawerVariantC({
     { label: t.navbar.home, href: "/", icon: Home, subtitle: "Beranda Utama", tag: "Home" },
     { label: t.navbar.about, href: "/about", icon: Users, subtitle: "Tentang Kami", tag: "Company" },
     { label: t.navbar.products, href: "/products", icon: Package, subtitle: "Katalog Produk", tag: "Catalog" },
-    { label: t.navbar.facilities, href: "/about#mesin-produksi", icon: ShieldCheck, subtitle: "Fasilitas Mesin", tag: "Factory" },
+    { label: t.navbar.articles, href: "/article", icon: Newspaper, subtitle: "Berita & Wawasan", tag: "Articles" },
     { label: t.navbar.contact, href: "/kontak", icon: PhoneCall, subtitle: "Hubungi Penjualan", tag: "Sales" },
   ];
 

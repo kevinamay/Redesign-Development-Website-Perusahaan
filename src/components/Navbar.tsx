@@ -86,25 +86,25 @@ export default function Navbar() {
     { label: t.navbar.home, href: "/" },
     { label: t.navbar.about, href: "/about" },
     { label: t.navbar.products, href: "/products" },
-    { label: t.navbar.facilities, href: "/about#mesin-produksi" },
+    { label: t.navbar.articles, href: "/article" },
     { label: t.navbar.contact, href: "/kontak" },
   ];
 
   let activeHref = "";
   if (pathname === "/") {
     activeHref = "/";
-  } else if (pathname === "/about") {
-    activeHref = currentHash === "#mesin-produksi" ? "/about#mesin-produksi" : "/about";
+  } else if (pathname === "/about" || pathname?.startsWith("/about")) {
+    activeHref = "/about";
   } else if (pathname === "/products" || pathname?.startsWith("/products")) {
     activeHref = "/products";
+  } else if (pathname === "/article" || pathname?.startsWith("/article")) {
+    activeHref = "/article";
   } else if (pathname === "/kontak" || pathname?.startsWith("/kontak")) {
     activeHref = "/kontak";
-  } else if (pathname?.startsWith("/about")) {
-    activeHref = currentHash === "#mesin-produksi" ? "/about#mesin-produksi" : "/about";
   }
 
   // Jika kursor mouse mengarah (hover) ke suatu menu di navbar, HANYA menu tersebut yang menyala biru.
-  // Menu aktif seperti "Tentang Kami" otomatis tidak lagi berwarna biru saat menu lain diarahkan.
+  // Menu aktif otomatis tidak lagi berwarna biru saat menu lain diarahkan.
   const currentHighlight = hoveredHref || activeHref;
 
   return (
@@ -239,15 +239,7 @@ export default function Navbar() {
                     key={index}
                     href={item.href}
                     onMouseEnter={() => setHoveredHref(item.href)}
-                    onClick={() => {
-                      if (item.href.includes("#")) {
-                        const hash = item.href.slice(item.href.indexOf("#"));
-                        setCurrentHash(hash);
-                      } else {
-                        setCurrentHash("");
-                      }
-                      setHoveredHref(null);
-                    }}
+                    onClick={() => setHoveredHref(null)}
                     className={`text-sm font-semibold transition-colors duration-150 ${
                       isBlue
                         ? "text-blue-600 dark:text-blue-400 font-bold"
