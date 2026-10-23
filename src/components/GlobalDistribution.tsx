@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Globe, ChevronRight, Navigation } from "lucide-react";
+import { ChevronRight, Navigation } from "lucide-react";
 import { useLanguage } from "@/data/translations";
 
 export default function GlobalDistribution() {
@@ -93,11 +93,6 @@ export default function GlobalDistribution() {
           {/* 2. LEFT COLUMN: TEXT & CALL TO ACTION                                     */}
           {/* ========================================================================= */}
           <div className="flex flex-col items-start">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 border border-blue-100 dark:border-blue-900/60 text-blue-600 dark:text-blue-400 text-xs font-bold tracking-widest uppercase mb-4 sm:mb-6 shadow-2xs">
-              <Globe className="w-3.5 h-3.5" />
-              <span>{t.badge}</span>
-            </div>
 
             {/* Heading */}
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight mb-4 sm:mb-6 tracking-tight">

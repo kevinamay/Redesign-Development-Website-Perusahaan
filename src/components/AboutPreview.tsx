@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  Sparkles,
   ArrowRight,
   ChevronRight,
 } from "lucide-react";
@@ -173,11 +172,6 @@ export default function AboutPreview() {
           <div className="lg:col-span-5 flex flex-col justify-between space-y-8">
             {/* Header Area */}
             <div>
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 dark:bg-blue-950/60 border border-blue-200/60 dark:border-blue-800/60 text-blue-600 dark:text-blue-400 text-xs font-bold tracking-widest uppercase mb-4 shadow-2xs">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>{t.badge}</span>
-              </div>
 
               {/* Bold Title */}
               <h2 className="text-3xl sm:text-4xl lg:text-4xl font-extrabold text-slate-900 dark:text-white leading-tight tracking-tight mb-4">
