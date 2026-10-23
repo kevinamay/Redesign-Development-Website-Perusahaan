@@ -19,6 +19,7 @@ import ProductCardVariantB from "@/components/prototype/ProductCardVariantB";
 import ProductCardVariantC from "@/components/prototype/ProductCardVariantC";
 import ProductCardVariantD from "@/components/prototype/ProductCardVariantD";
 import ProductCardVariantE from "@/components/prototype/ProductCardVariantE";
+import CategorySidebar from "@/components/prototype/CategorySidebar";
 import PrototypeProductSwitcher, {
   PRODUCT_PROTOTYPE_VARIANTS,
 } from "@/components/prototype/PrototypeProductSwitcher";
@@ -60,11 +61,35 @@ const SAMPLE_PRODUCTS = [
   },
 ];
 
+const SAMPLE_CATEGORIES = [
+  { id: "pallet-industri", name: "Pallet Industri" },
+  { id: "keranjang-industri", name: "Keranjang Industri" },
+  { id: "box-lipat", name: "Box Lipat" },
+  { id: "jerigen-hdpe", name: "Jerigen HDPE" },
+  { id: "jerigen-chemical-hdpe", name: "Jerigen Chemical HDPE" },
+  { id: "jerigen-oli", name: "Jerigen Oli" },
+  { id: "kaleng-pail-plastik", name: "Kaleng & Pail Plastik" },
+  { id: "botol-minyak-goreng", name: "Botol Minyak Goreng" },
+  { id: "botol-pupuk-pet", name: "Botol Pupuk PET" },
+  { id: "kosmetik", name: "Kosmetik" },
+  { id: "blok-lalu-lintas", name: "Blok Lalu Lintas" },
+  { id: "perikanan-dan-kelautan", name: "Perikanan & Kelautan" },
+];
+
 function PrototypeProductContent() {
   const searchParams = useSearchParams();
-  const currentVariantId = searchParams.get("variant") ?? "A";
+  const currentVariantId = searchParams.get("variant") ?? "D";
+  const currentCatVariantId = searchParams.get("catVariant") ?? "A";
   const [selectedProductId, setSelectedProductId] = useState("pallet");
+  const [activeCatId, setActiveCatId] = useState("pallet-industri");
   const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const handleCategorySelect = (catId: string) => {
+    setActiveCatId(catId);
+    if (catId === "pallet-industri") setSelectedProductId("pallet");
+    else if (catId === "keranjang-industri") setSelectedProductId("keranjang");
+    else if (catId.startsWith("jerigen")) setSelectedProductId("jerigen");
+  };
 
   const activeProduct =
     SAMPLE_PRODUCTS.find((p) => p.id === selectedProductId) ||
@@ -165,14 +190,14 @@ function PrototypeProductContent() {
       </header>
 
       {/* MAIN PROTOTYPE WORKSPACE */}
-      <main className="max-w-5xl mx-auto px-4 sm:px-6 py-10 pb-36">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 pb-36">
         {/* HERO TITLE & EXPLANATION */}
-        <div className="text-center max-w-2xl mx-auto mb-8">
+        <div className="text-center max-w-3xl mx-auto mb-8">
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
-            Eksplorasi Desain Kartu Produk
+            Eksplorasi Desain Kartu & Sidebar Kategori
           </h1>
           <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed">
-            Pilih dan uji 3 variasi desain baru yang dirancang khusus untuk meningkatkan konversi B2B, kerapian spesifikasi teknis, dan kesan premium manufaktur.
+            Pilih dan uji kombinasi desain kartu produk serta navigasi kategori B2B. Semua varian dapat diganti langsung via floating switcher di bawah.
           </p>
         </div>
 
@@ -218,9 +243,24 @@ function PrototypeProductContent() {
           </div>
         </div>
 
-        {/* RENDER ACTIVE PRODUCT CARD */}
-        <div className="transition-all duration-300">
-          {renderCard()}
+        {/* 2-COLUMN STAGE: SIDEBAR KATEGORI (KIRI) + KARTU PRODUK (KANAN) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-12">
+          {/* Left Column: Category Sidebar (lg:col-span-4) */}
+          <div className="lg:col-span-4">
+            <CategorySidebar
+              categories={SAMPLE_CATEGORIES}
+              activeCategoryId={activeCatId}
+              onSelectCategory={handleCategorySelect}
+              sidebarTitle="Kategori Produk"
+            />
+          </div>
+
+          {/* Right Column: Product Card (lg:col-span-8) */}
+          <div className="lg:col-span-8">
+            <div className="transition-all duration-300">
+              {renderCard()}
+            </div>
+          </div>
         </div>
 
         {/* DESIGN COMPARISON GUIDE */}
@@ -275,7 +315,10 @@ function PrototypeProductContent() {
       </main>
 
       {/* FLOATING PROTOTYPE SWITCHER AT BOTTOM */}
-      <PrototypeProductSwitcher currentVariant={currentVariantId} />
+      <PrototypeProductSwitcher
+        currentVariant={currentVariantId}
+        currentCatVariant={currentCatVariantId}
+      />
     </div>
   );
 }
