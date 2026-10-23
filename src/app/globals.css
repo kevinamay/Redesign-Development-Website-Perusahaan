@@ -55,65 +55,6 @@ body {
   animation: fadeInUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* ========================================================================= */
-/* UNIVERSAL KINETIC PRECISION & SCALE LIFT TRANSITION (Active on ALL pages) */
-/* ========================================================================= */
-.universal-scroll-init {
-  opacity: 0;
-  transform: translateY(44px) scale(0.935);
-  transition: opacity 0.68s cubic-bezier(0.2, 0.85, 0.2, 1),
-              transform 0.68s cubic-bezier(0.2, 0.85, 0.2, 1);
-  will-change: opacity, transform;
-}
-
-.universal-scroll-in {
-  opacity: 1 !important;
-  transform: translateY(0) scale(1) !important;
-}
-
-/* Explicit Kinetic Mode: High-precision Snappy 44px lift & 6.5% scale expansion */
-[data-scroll-mode="kinetic"] .universal-scroll-init {
-  opacity: 0;
-  transform: translateY(44px) scale(0.935);
-  transition: opacity 0.68s cubic-bezier(0.2, 0.85, 0.2, 1),
-              transform 0.68s cubic-bezier(0.2, 0.85, 0.2, 1);
-}
-
-/* Mode: Silk Glide & Optical Blur (Switchable in prototype) */
-[data-scroll-mode="silk"] .universal-scroll-init {
-  transform: translateY(30px) scale(0.97);
-  filter: blur(4px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* Mode: Magnetic Parallax & Deep Fade (Switchable in prototype) */
-[data-scroll-mode="parallax"] .universal-scroll-init {
-  transform: translateY(52px) scale(0.92);
-  filter: blur(8px);
-  transition: opacity 0.98s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.98s cubic-bezier(0.16, 1, 0.3, 1),
-              filter 0.98s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* Tactile Kinetic Hover on cards after entrance */
-.universal-scroll-in.kinetic-card-hover:hover,
-article.universal-scroll-in:hover {
-  transform: translateY(-4px) scale(1.01) !important;
-  transition: transform 0.32s cubic-bezier(0.2, 0.85, 0.2, 1),
-              box-shadow 0.32s ease !important;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .universal-scroll-init {
-    opacity: 1 !important;
-    transform: none !important;
-    filter: none !important;
-    transition: none !important;
-  }
-}
-
 body.drawer-open #floating-actions,
 body.drawer-open #floating-ai-chat,
 body.drawer-open aside[aria-label="Kontak Cepat & Asisten AI"],

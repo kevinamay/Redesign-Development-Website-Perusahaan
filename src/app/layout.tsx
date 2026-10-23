@@ -44,7 +44,6 @@ export const metadata: Metadata = {
 };
 
 import FloatingActions from "@/components/FloatingActionsClient";
-import GlobalScrollEnhancer from "@/components/GlobalScrollEnhancer";
 
 export default function RootLayout({
   children,
@@ -86,8 +85,6 @@ export default function RootLayout({
             `,
           }}
         />
-        {/* Universal Scroll Transitions & Reading Progress across ALL pages */}
-        <GlobalScrollEnhancer />
         {children}
         {/* Floating Quick Contact & AI Assistant Actions */}
         <FloatingActions />
