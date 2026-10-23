@@ -110,7 +110,7 @@ export default function Navbar() {
   return (
     <>
       {/* 1. Top Bar (Dark Navy bar) - SCROLLS NATURALLY WITH PAGE (NOT STICKY) */}
-      <div className="w-full max-w-[100vw] bg-slate-950 text-slate-300 border-b border-slate-800 relative z-40">
+      <div className="w-full max-w-[100vw] bg-slate-950 text-slate-300 border-b border-slate-800 relative z-[60]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-1.5 sm:py-2 flex items-center justify-between w-full text-xs box-border">
           {/* Top Bar Left Tagline */}
           <div className="hidden md:flex items-center gap-2 text-slate-300">
@@ -147,7 +147,7 @@ export default function Navbar() {
             <span className="text-slate-700 select-none">|</span>
 
             {/* Language Toggle (ID, EN, ZH) */}
-            <div ref={langRef} className="relative shrink-0">
+            <div ref={langRef} className="relative shrink-0 z-50">
               <button
                 type="button"
                 onClick={() => setIsLangOpen(!isLangOpen)}
@@ -165,7 +165,7 @@ export default function Navbar() {
               </button>
 
               {isLangOpen && (
-                <div className="absolute right-0 top-full mt-2 w-36 bg-slate-900 border border-slate-700 rounded-lg shadow-2xl py-1.5 z-50 text-xs">
+                <div className="absolute right-0 top-full mt-2 w-36 bg-slate-900 border border-slate-700 rounded-lg shadow-2xl py-1.5 z-[70] text-xs">
                   {languageOptions.map((opt) => (
                     <button
                       key={opt.code}
