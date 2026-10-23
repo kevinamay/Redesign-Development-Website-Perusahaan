@@ -10,6 +10,9 @@ export interface ArticleUIContent {
   relatedBadge: string;
   relatedTitle: string;
   viewAll: string;
+  showMore: string;
+  showLess: string;
+  showingCount: (shown: number, total: number) => string;
 }
 
 export const articleUITranslations: Record<Language, ArticleUIContent> = {
@@ -22,6 +25,9 @@ export const articleUITranslations: Record<Language, ArticleUIContent> = {
     relatedBadge: "REKOMENDASI",
     relatedTitle: "BERITA & ARTIKEL LAINNYA",
     viewAll: "Lihat Semua Artikel",
+    showMore: "LIHAT LEBIH LANJUT",
+    showLess: "TAMPILKAN LEBIH SEDIKIT",
+    showingCount: (shown: number, total: number) => `Menampilkan ${shown} dari ${total} artikel`,
   },
   en: {
     pageTitle: "NEWS & OTHER ARTICLES",
@@ -32,6 +38,9 @@ export const articleUITranslations: Record<Language, ArticleUIContent> = {
     relatedBadge: "RECOMMENDED",
     relatedTitle: "OTHER NEWS & ARTICLES",
     viewAll: "View All Articles",
+    showMore: "SHOW MORE",
+    showLess: "SHOW LESS",
+    showingCount: (shown: number, total: number) => `Showing ${shown} of ${total} articles`,
   },
   zh: {
     pageTitle: "更多新闻与行业动态",
@@ -42,6 +51,9 @@ export const articleUITranslations: Record<Language, ArticleUIContent> = {
     relatedBadge: "推荐阅读",
     relatedTitle: "更多新闻与行业动态",
     viewAll: "查看全部文章",
+    showMore: "查看更多",
+    showLess: "收起",
+    showingCount: (shown: number, total: number) => `显示 ${shown} / ${total} 篇文章`,
   },
 };
 

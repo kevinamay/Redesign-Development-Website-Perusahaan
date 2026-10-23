@@ -1,9 +1,9 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Calendar, ArrowRight } from "lucide-react";
+import { Calendar, ArrowRight, ChevronDown, ChevronUp } from "lucide-react";
 import { useLanguage } from "@/data/translations";
 import { ArticleSummary } from "@/data/articlesSummary";
 import {
@@ -16,15 +16,33 @@ interface ArticleListClientProps {
   articles: ArticleSummary[];
 }
 
+const INITIAL_ARTICLE_COUNT = 6;
+
 export default function ArticleListClient({ articles }: ArticleListClientProps) {
   const { lang } = useLanguage();
   const t = articleUITranslations[lang] || articleUITranslations.id;
+  const [showAll, setShowAll] = useState(false);
+
+  const displayedArticles = showAll ? articles : articles.slice(0, INITIAL_ARTICLE_COUNT);
+  const hasMoreArticles = articles.length > INITIAL_ARTICLE_COUNT;
+
+  const handleToggleShow = () => {
+    if (showAll) {
+      setShowAll(false);
+      const topSection = document.getElementById("article-section-top");
+      if (topSection) {
+        topSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    } else {
+      setShowAll(true);
+    }
+  };
 
   return (
     <div className="bg-slate-50 dark:bg-slate-950 min-h-screen py-20 px-4 sm:px-6 lg:px-8 flex flex-col items-center transition-colors duration-300">
       <div className="max-w-7xl mx-auto w-full">
         {/* Section Header */}
-        <div className="text-center mb-14">
+        <div id="article-section-top" className="text-center mb-14 scroll-mt-24">
           <span className="text-xs font-bold tracking-widest text-blue-600 dark:text-blue-400 uppercase mb-2 block">
             {lang === "zh" ? "行业动态与最新资讯" : lang === "en" ? "Industry Insights & News" : "Wawasan Industri & Berita Terkini"}
           </span>
@@ -36,7 +54,7 @@ export default function ArticleListClient({ articles }: ArticleListClientProps) 
 
         {/* Article Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {articles.map((article, index) => {
+          {displayedArticles.map((article, index) => {
             const localized = getLocalizedArticle(article, lang);
             return (
               <article
@@ -89,6 +107,35 @@ export default function ArticleListClient({ articles }: ArticleListClientProps) 
             );
           })}
         </div>
+
+        {/* Show More / Show Less Button */}
+        {hasMoreArticles && (
+          <div className="mt-14 sm:mt-16 flex flex-col items-center justify-center gap-4 text-center">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-200/70 dark:bg-slate-800/80 border border-slate-300/50 dark:border-slate-700/50 text-xs sm:text-sm font-semibold text-slate-600 dark:text-slate-300 shadow-xs">
+              <span>
+                {t.showingCount(displayedArticles.length, articles.length)}
+              </span>
+            </div>
+
+            <button
+              id="btn-article-show-more"
+              type="button"
+              onClick={handleToggleShow}
+              className={`group relative inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full text-sm font-extrabold tracking-wider uppercase transition-all duration-300 cursor-pointer select-none active:scale-95 ${
+                showAll
+                  ? "bg-white dark:bg-slate-900 border-2 border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 hover:border-blue-600 dark:hover:border-blue-500 hover:text-blue-600 dark:hover:text-blue-400 shadow-md hover:shadow-lg"
+                  : "bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/40 hover:-translate-y-0.5"
+              }`}
+            >
+              <span>{showAll ? t.showLess : t.showMore}</span>
+              {showAll ? (
+                <ChevronUp className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-1" />
+              ) : (
+                <ChevronDown className="w-4 h-4 transition-transform duration-300 group-hover:translate-y-1" />
+              )}
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
