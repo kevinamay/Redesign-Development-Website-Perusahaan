@@ -40,10 +40,18 @@ export default function CareerBanner() {
 
   return (
     <section className="w-full max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      {/* 1. MODERN B2B CARD CONTAINER */}
-      <div className="bg-slate-900 rounded-3xl overflow-hidden shadow-2xl flex flex-col lg:flex-row border border-slate-800/80 relative group">
+      {/* 1. MODERN B2B CARD CONTAINER with Parallax Depth */}
+      <div
+        data-parallax="career"
+        data-parallax-speed="0.08"
+        className="bg-slate-900 rounded-3xl overflow-hidden shadow-2xl flex flex-col lg:flex-row border border-slate-800/80 relative group will-change-transform"
+      >
         {/* Ambient Subtle Glow */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
+        <div
+          data-parallax="accent"
+          data-parallax-speed="0.20"
+          className="absolute -top-12 -right-12 w-[450px] h-[450px] bg-gradient-to-br from-blue-600/25 to-indigo-500/20 rounded-full blur-3xl pointer-events-none will-change-transform"
+        />
 
         {/* 2. LEFT COLUMN (Image) */}
         <div className="w-full lg:w-5/12 relative min-h-[320px] lg:min-h-[460px] overflow-hidden">

@@ -34,8 +34,12 @@ export default function AboutClientContent() {
         {/* Dark gradient overlay in Light Mode, Corporate Blue overlay in Dark Mode */}
         <div className="absolute inset-0 bg-gradient-to-b from-slate-950/85 via-slate-900/75 to-slate-950/90 dark:from-[#1e3a5f]/90 dark:via-[#1e3a5f]/85 dark:to-[#1e3a5f]/90 backdrop-blur-xs pointer-events-none transition-all duration-500" />
 
-        {/* Hero Content */}
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center text-white">
+        {/* Hero Content with Parallax Depth */}
+        <div
+          data-parallax="hero-content"
+          data-parallax-speed="0.10"
+          className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center text-white will-change-transform"
+        >
 
           {/* Heading 1 */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight drop-shadow-md">

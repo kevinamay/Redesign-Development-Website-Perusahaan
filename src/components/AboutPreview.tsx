@@ -156,9 +156,17 @@ export default function AboutPreview() {
       id="about"
       className="relative w-full max-w-[100vw] overflow-hidden bg-slate-50/70 dark:bg-slate-950 py-20 sm:py-24 border-t border-slate-100 dark:border-slate-800/80 transition-colors duration-300"
     >
-      {/* Background Accent Gradients */}
-      <div className="absolute top-1/4 left-1/10 w-96 h-96 bg-blue-500/5 dark:bg-blue-600/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/10 w-96 h-96 bg-indigo-500/5 dark:bg-indigo-600/5 rounded-full blur-3xl pointer-events-none" />
+      {/* Background Accent Gradients with Visible Parallax Depth */}
+      <div
+        data-parallax="accent"
+        data-parallax-speed="0.22"
+        className="absolute top-1/6 -left-12 w-[420px] h-[420px] bg-gradient-to-br from-blue-500/16 to-cyan-400/12 dark:from-blue-500/26 dark:to-cyan-400/20 rounded-full blur-3xl pointer-events-none will-change-transform"
+      />
+      <div
+        data-parallax="accent"
+        data-parallax-speed="0.18"
+        className="absolute bottom-1/6 -right-12 w-[420px] h-[420px] bg-gradient-to-bl from-indigo-500/16 to-blue-600/12 dark:from-indigo-500/26 dark:to-blue-600/20 rounded-full blur-3xl pointer-events-none will-change-transform"
+      />
 
       {/* 1. SECTION LAYOUT */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

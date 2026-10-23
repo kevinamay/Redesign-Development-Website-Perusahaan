@@ -64,26 +64,26 @@ body {
 /* ========================================================================= */
 .ap-scroll-init {
   opacity: 0;
-  transform: translateY(32px);
-  filter: blur(4px);
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-              filter 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(54px) scale(0.975);
+  filter: blur(6px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform, filter;
 }
 
 .ap-scroll-in {
   opacity: 1 !important;
-  transform: translateY(0) !important;
+  transform: translateY(0) scale(1) !important;
   filter: blur(0px) !important;
 }
 
 /* Tactile smooth hover on cards once revealed */
 .ap-scroll-in.ap-card-hover:hover,
 article.ap-scroll-in:hover {
-  transform: translateY(-4px) !important;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.3s ease !important;
+  transform: translateY(-5px) scale(1.008) !important;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s ease !important;
 }
 
 /* Parallax element smoothing */
