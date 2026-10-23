@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo, Suspense } from "react";
+import React, { useState, useMemo } from "react";
 import {
   ChevronRight,
   ChevronDown,
@@ -16,8 +16,6 @@ import {
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
-import PrototypeProductSwitcher from "@/components/prototype/PrototypeProductSwitcher";
-import CategorySidebar from "@/components/prototype/CategorySidebar";
 import { footerData } from "@/data/homeData";
 import { useLanguage } from "@/data/translations";
 import {
@@ -185,18 +183,41 @@ export default function ProductsPage() {
 
       {/* Main Split Screen Page Container */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-12 lg:py-20 flex flex-col lg:flex-row gap-6 lg:gap-12 flex-1 w-full">
-        {/* DESKTOP SIDEBAR: Dynamic Prototype Category Sidebar (Hidden on Mobile) */}
-        <div className="hidden lg:block w-full lg:w-1/4">
-          <CategorySidebar
-            categories={categories}
-            activeCategoryId={isSearching ? "" : activeCategoryId}
-            onSelectCategory={(id) => {
-              setActiveCategoryId(id);
-              setSearchQuery("");
-            }}
-            sidebarTitle={ui.sidebarTitle}
-          />
-        </div>
+        {/* DESKTOP SIDEBAR: Sticky Category Sidebar (Hidden on Mobile) */}
+        <aside className="hidden lg:block w-full lg:w-1/4">
+          <div className="lg:sticky lg:top-32 h-fit">
+            <h2 className="text-sm font-bold text-slate-400 tracking-widest uppercase mb-6 flex items-center gap-2">
+              <Layers className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+              <span>{ui.sidebarTitle}</span>
+            </h2>
+
+            <div className="flex flex-col gap-2">
+              {categories.map((cat) => {
+                const isActive = !isSearching && activeCategoryId === cat.id;
+
+                return (
+                  <button
+                    key={cat.id}
+                    onClick={() => {
+                      setActiveCategoryId(cat.id);
+                      setSearchQuery("");
+                    }}
+                    className={`w-full text-left px-5 py-3.5 font-semibold text-sm transition-all duration-200 flex items-center justify-between group cursor-pointer ${
+                      isActive
+                        ? "bg-blue-600 text-white rounded-xl shadow-md"
+                        : "text-slate-600 hover:bg-slate-200 dark:text-slate-400 dark:hover:bg-slate-800 rounded-xl"
+                    }`}
+                  >
+                    <span>{cat.name}</span>
+                    {isActive && (
+                      <ChevronRight className="w-4 h-4 text-white shrink-0" />
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </aside>
 
         {/* Right Column: Product Display & Mobile Controls (lg:w-3/4) */}
         <section className="w-full lg:w-3/4">
@@ -497,11 +518,6 @@ export default function ProductsPage() {
 
       {/* Footer */}
       <Footer />
-
-      {/* Floating Prototype Product Switcher */}
-      <Suspense fallback={null}>
-        <PrototypeProductSwitcher />
-      </Suspense>
     </div>
   );
 }
