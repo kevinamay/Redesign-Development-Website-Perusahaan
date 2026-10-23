@@ -135,12 +135,8 @@ export default function GlobalDistribution() {
           {/* 3. RIGHT COLUMN: MODERN MAP VISUALIZATION                                 */}
           {/* ========================================================================= */}
           <div className="w-full">
-            {/* Container: Glass-like rounded showcase with Parallax Depth */}
-            <div
-              data-parallax="map"
-              data-parallax-speed="0.10"
-              className="relative w-full aspect-[4/3] bg-slate-50 dark:bg-slate-800/50 rounded-[2rem] border border-slate-100 dark:border-slate-800 shadow-inner flex items-center justify-center p-6 sm:p-8 overflow-hidden group will-change-transform"
-            >
+            {/* Container: Glass-like rounded showcase */}
+            <div className="relative w-full aspect-[4/3] bg-slate-50 dark:bg-slate-800/50 rounded-[2rem] border border-slate-100 dark:border-slate-800 shadow-inner flex items-center justify-center p-6 sm:p-8 overflow-hidden group">
               {/* Subtle Ambient Radial Glow */}
               <div className="absolute inset-0 bg-radial from-blue-500/5 via-transparent to-transparent pointer-events-none" />
 

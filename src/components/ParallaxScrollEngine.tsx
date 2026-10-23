@@ -17,7 +17,7 @@ export default function ParallaxScrollEngine() {
   const gridPatternRef = useRef<HTMLDivElement>(null);
   const observerRef = useRef<IntersectionObserver | null>(null);
 
-  // 1. Continuous Multi-Layer Parallax & Scroll Engine (60fps rAF)
+  // 1. Continuous Background Parallax & Scroll Engine (60fps rAF)
   useEffect(() => {
     let ticking = false;
 
@@ -32,38 +32,22 @@ export default function ParallaxScrollEngine() {
       setScrollProgress(progress);
       setShowBackToTop(scrollY > 320);
 
-      // Highly visible Parallax shifts on multi-depth atmospheric layers
+      // Smooth multi-depth parallax shifts on background atmospheric layers ONLY (isolated behind all sections)
       if (orb1Ref.current) {
-        orb1Ref.current.style.transform = `translate3d(0, ${scrollY * -0.35}px, 0)`;
+        orb1Ref.current.style.transform = `translate3d(0, ${scrollY * -0.28}px, 0)`;
       }
       if (orb2Ref.current) {
-        orb2Ref.current.style.transform = `translate3d(0, ${scrollY * -0.58}px, 0)`;
+        orb2Ref.current.style.transform = `translate3d(0, ${scrollY * -0.45}px, 0)`;
       }
       if (orb3Ref.current) {
-        orb3Ref.current.style.transform = `translate3d(0, ${scrollY * -0.42}px, 0)`;
+        orb3Ref.current.style.transform = `translate3d(0, ${scrollY * -0.34}px, 0)`;
       }
       if (orb4Ref.current) {
-        orb4Ref.current.style.transform = `translate3d(0, ${scrollY * -0.26}px, 0)`;
+        orb4Ref.current.style.transform = `translate3d(0, ${scrollY * -0.20}px, 0)`;
       }
       if (gridPatternRef.current) {
-        gridPatternRef.current.style.transform = `translate3d(0, ${scrollY * -0.16}px, 0)`;
+        gridPatternRef.current.style.transform = `translate3d(0, ${scrollY * -0.10}px, 0)`;
       }
-
-      // 2. Optical Image & Container Depth Parallax (Real 3D depth as user scrolls past content)
-      const parallaxTargets = document.querySelectorAll<HTMLElement>(
-        "[data-parallax], .ap-parallax-element, main section img.object-cover, main article img"
-      );
-      parallaxTargets.forEach((el) => {
-        const speedAttr = el.getAttribute("data-parallax-speed");
-        const speed = speedAttr ? parseFloat(speedAttr) : 0.14;
-        const rect = el.getBoundingClientRect();
-        // Calculate relative position within viewport
-        if (rect.top < windowHeight + 150 && rect.bottom > -150) {
-          const centerDiff = rect.top + rect.height / 2 - windowHeight / 2;
-          const translateY = centerDiff * speed * -1;
-          el.style.transform = `translate3d(0, ${translateY.toFixed(1)}px, 0)`;
-        }
-      });
 
       ticking = false;
     };
@@ -83,7 +67,7 @@ export default function ParallaxScrollEngine() {
     };
   }, []);
 
-  // 3. High-Impact Universal Scroll Reveal Engine (Clearly Noticeable & Buttery Smooth)
+  // 2. High-Precision Universal Scroll Reveal Engine (Contained strictly within each section)
   const setupObservers = useCallback(() => {
     if (observerRef.current) {
       observerRef.current.disconnect();
@@ -93,7 +77,7 @@ export default function ParallaxScrollEngine() {
     const elementsToReveal: HTMLElement[] = [];
     const seen = new Set<HTMLElement>();
 
-    // 3a. Target all direct children of Grids (Products, Articles, Steps, Bento, FAQ, Partners)
+    // 2a. Target direct children of Grids (Products, Articles, Steps, Bento, FAQ, Partners)
     const grids = document.querySelectorAll<HTMLElement>(".grid");
     grids.forEach((grid) => {
       if (
@@ -110,27 +94,26 @@ export default function ParallaxScrollEngine() {
       children.forEach((child, idx) => {
         if (!seen.has(child) && child.offsetHeight > 20) {
           seen.add(child);
-          // Pronounced cascading ripple delay (130ms per item)
-          child.style.transitionDelay = `${(idx % 6) * 130}ms`;
+          child.style.transitionDelay = `${(idx % 6) * 80}ms`;
           child.classList.add("ap-card-hover");
           elementsToReveal.push(child);
         }
       });
     });
 
-    // 3b. Target all Articles (News cards, Product cards, FAQ accordions)
+    // 2b. Target all Articles (News cards, Product cards, FAQ accordions)
     const articles = document.querySelectorAll<HTMLElement>("article");
     articles.forEach((art, idx) => {
       if (!seen.has(art) && art.offsetHeight > 20) {
         seen.add(art);
         if (!art.style.transitionDelay) {
-          art.style.transitionDelay = `${(idx % 6) * 120}ms`;
+          art.style.transitionDelay = `${(idx % 6) * 75}ms`;
         }
         elementsToReveal.push(art);
       }
     });
 
-    // 3c. Target Headings and Section headers
+    // 2c. Target Headings and Section headers
     const headings = document.querySelectorAll<HTMLElement>(
       "main h2, main .section-header, main [data-scroll-reveal]"
     );
@@ -144,7 +127,7 @@ export default function ParallaxScrollEngine() {
       }
     });
 
-    // 3d. Target Section Content Containers & Forms
+    // 2d. Target Section Content Containers & Forms
     const sections = document.querySelectorAll<HTMLElement>(
       "main section > div.max-w-7xl, main form, main section > div.container"
     );
@@ -165,7 +148,7 @@ export default function ParallaxScrollEngine() {
       }
     });
 
-    // IntersectionObserver with optimal trigger threshold (-110px so animation is seen in active view)
+    // IntersectionObserver with optimal trigger threshold (-60px for clean, smooth entrance)
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -178,15 +161,15 @@ export default function ParallaxScrollEngine() {
         });
       },
       {
-        threshold: 0.14,
-        rootMargin: "0px 0px -110px 0px",
+        threshold: 0.1,
+        rootMargin: "0px 0px -60px 0px",
       }
     );
 
-    // Differentiate above-the-fold content vs below-the-fold content
+    // Apply immediate reveal to above-the-fold content to avoid layout shift (CLS)
     elementsToReveal.forEach((el) => {
       const rect = el.getBoundingClientRect();
-      const isAboveTheFold = rect.top < windowHeight * 0.72 && rect.bottom > 0;
+      const isAboveTheFold = rect.top < windowHeight * 0.85 && rect.bottom > 0;
 
       if (isAboveTheFold) {
         el.classList.add("ap-scroll-in");
@@ -239,40 +222,40 @@ export default function ParallaxScrollEngine() {
   return (
     <>
       {/* ========================================================================= */}
-      {/* 1. CONTINUOUS PROMINENT AMBIENT PARALLAX DEPTH LAYERS (ALL PAGES)         */}
+      {/* 1. CONTINUOUS AMBIENT PARALLAX DEPTH LAYERS (ISOLATED BEHIND ALL SECTIONS) */}
       {/* ========================================================================= */}
       <div
         aria-hidden="true"
         className="fixed inset-0 pointer-events-none z-0 overflow-hidden"
       >
-        {/* Parallax Orb 1: Upper Right Sapphire/Cyan Atmosphere (Velocity: -0.35x) */}
+        {/* Parallax Orb 1: Upper Right Sapphire/Cyan Atmosphere (Velocity: -0.28x) */}
         <div
           ref={orb1Ref}
-          className="absolute -top-36 -right-36 w-[680px] h-[680px] rounded-full blur-[140px] bg-gradient-to-br from-blue-600/22 via-cyan-500/18 to-transparent dark:from-blue-500/30 dark:via-cyan-400/24 dark:to-transparent transition-opacity duration-700 will-change-transform"
+          className="absolute -top-36 -right-36 w-[640px] h-[640px] rounded-full blur-[140px] bg-gradient-to-br from-blue-600/18 via-cyan-500/14 to-transparent dark:from-blue-500/25 dark:via-cyan-400/18 dark:to-transparent transition-opacity duration-700 will-change-transform"
         />
 
-        {/* Parallax Orb 2: Mid-Left Azure Glow (Velocity: -0.58x) */}
+        {/* Parallax Orb 2: Mid-Left Azure Glow (Velocity: -0.45x) */}
         <div
           ref={orb2Ref}
-          className="absolute top-[32%] -left-44 w-[600px] h-[600px] rounded-full blur-[130px] bg-gradient-to-tr from-cyan-500/20 via-indigo-600/18 to-transparent dark:from-cyan-400/26 dark:via-indigo-500/24 dark:to-transparent transition-opacity duration-700 will-change-transform"
+          className="absolute top-[32%] -left-44 w-[560px] h-[560px] rounded-full blur-[130px] bg-gradient-to-tr from-cyan-500/16 via-indigo-600/14 to-transparent dark:from-cyan-400/22 dark:via-indigo-500/18 dark:to-transparent transition-opacity duration-700 will-change-transform"
         />
 
-        {/* Parallax Orb 3: Lower Right Indigo Atmosphere (Velocity: -0.42x) */}
+        {/* Parallax Orb 3: Lower Right Indigo Atmosphere (Velocity: -0.34x) */}
         <div
           ref={orb3Ref}
-          className="absolute top-[65%] -right-36 w-[560px] h-[560px] rounded-full blur-[120px] bg-gradient-to-bl from-indigo-500/20 via-blue-600/18 to-transparent dark:from-indigo-400/26 dark:via-blue-500/24 dark:to-transparent transition-opacity duration-700 will-change-transform"
+          className="absolute top-[65%] -right-36 w-[520px] h-[520px] rounded-full blur-[120px] bg-gradient-to-bl from-indigo-500/16 via-blue-600/14 to-transparent dark:from-indigo-400/22 dark:via-blue-500/18 dark:to-transparent transition-opacity duration-700 will-change-transform"
         />
 
-        {/* Parallax Orb 4: Lower Center Soft Teal Core (Velocity: -0.26x) */}
+        {/* Parallax Orb 4: Lower Center Soft Teal Core (Velocity: -0.20x) */}
         <div
           ref={orb4Ref}
-          className="absolute top-[82%] left-[20%] w-[480px] h-[480px] rounded-full blur-[120px] bg-gradient-to-t from-teal-500/14 to-transparent dark:from-teal-400/18 dark:to-transparent transition-opacity duration-700 will-change-transform"
+          className="absolute top-[82%] left-[20%] w-[440px] h-[440px] rounded-full blur-[120px] bg-gradient-to-t from-teal-500/12 to-transparent dark:from-teal-400/15 dark:to-transparent transition-opacity duration-700 will-change-transform"
         />
 
-        {/* Parallax Micro Tech Grid Dots (Velocity: -0.16x) */}
+        {/* Parallax Micro Tech Grid Dots (Velocity: -0.10x) */}
         <div
           ref={gridPatternRef}
-          className="absolute inset-0 w-full h-[180%] opacity-[0.055] dark:opacity-[0.09] bg-[radial-gradient(#3b82f6_1.5px,transparent_1.5px)] [background-size:36px_36px] will-change-transform"
+          className="absolute inset-0 w-full h-[180%] opacity-[0.045] dark:opacity-[0.07] bg-[radial-gradient(#3b82f6_1.5px,transparent_1.5px)] [background-size:36px_36px] will-change-transform"
         />
       </div>
 

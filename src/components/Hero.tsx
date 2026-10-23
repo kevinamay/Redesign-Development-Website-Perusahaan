@@ -62,16 +62,12 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-[calc(100svh-110px)] lg:min-h-[calc(100svh-115px)] w-full max-w-[100vw] overflow-x-clip isolate font-sans box-border"
+      className="relative min-h-[calc(100svh-110px)] lg:min-h-[calc(100svh-115px)] w-full max-w-[100vw] overflow-hidden isolate font-sans box-border"
     >
       {/* ========================================================================= */}
-      {/* 1. LAYER 1: CAROUSEL BACKGROUND SLIDES (WITH SMOOTH PARALLAX DEPTH)        */}
+      {/* 1. LAYER 1: CAROUSEL BACKGROUND SLIDES (CONTAINED WITHIN HERO)            */}
       {/* ========================================================================= */}
-      <div
-        data-parallax="hero-bg"
-        data-parallax-speed="0.14"
-        className="absolute -top-10 inset-x-0 w-full h-[calc(100%+80px)] -z-10 overflow-hidden will-change-transform"
-      >
+      <div className="absolute inset-0 w-full h-full -z-10 overflow-hidden">
         {HERO_SLIDES.map((slide, idx) => {
           let transformClass = "";
           let opacityClass = "";
