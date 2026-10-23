@@ -353,11 +353,10 @@ export default function FAQClientContent() {
                   <button
                     key={cat.id}
                     onClick={() => setSelectedCategory(cat.id)}
-                    className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
-                      isActive
-                        ? "bg-blue-600 text-white shadow-md shadow-blue-600/20"
-                        : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700"
-                    }`}
+                    className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer ${isActive
+                      ? "bg-blue-600 text-white shadow-md shadow-blue-600/20"
+                      : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700"
+                      }`}
                   >
                     {cat.label}
                   </button>
@@ -375,11 +374,10 @@ export default function FAQClientContent() {
                 return (
                   <article
                     key={index}
-                    className={`bg-white dark:bg-slate-900 border rounded-2xl shadow-sm transition-all duration-300 overflow-hidden ${
-                      isOpen
-                        ? "border-blue-500/50 dark:border-blue-500/50 ring-2 ring-blue-500/10 shadow-md"
-                        : "border-slate-100 dark:border-slate-800/80 hover:border-slate-200 dark:hover:border-slate-700"
-                    }`}
+                    className={`bg-white dark:bg-slate-900 border rounded-2xl shadow-sm transition-all duration-300 overflow-hidden ${isOpen
+                      ? "border-blue-500/50 dark:border-blue-500/50 ring-2 ring-blue-500/10 shadow-md"
+                      : "border-slate-100 dark:border-slate-800/80 hover:border-slate-200 dark:hover:border-slate-700"
+                      }`}
                   >
                     {/* Header Button */}
                     <button
@@ -389,21 +387,19 @@ export default function FAQClientContent() {
                       className="w-full text-left p-4 sm:p-6 lg:p-7 flex items-center justify-between gap-3 sm:gap-4 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors cursor-pointer select-none group"
                     >
                       <span
-                        className={`text-sm sm:text-base md:text-lg font-bold uppercase tracking-tight break-words leading-snug sm:leading-normal transition-colors ${
-                          isOpen
-                            ? "text-blue-600 dark:text-blue-400"
-                            : "text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400"
-                        }`}
+                        className={`text-sm sm:text-base md:text-lg font-bold uppercase tracking-tight break-words leading-snug sm:leading-normal transition-colors ${isOpen
+                          ? "text-blue-600 dark:text-blue-400"
+                          : "text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400"
+                          }`}
                       >
                         {faq.question}
                       </span>
 
                       <span
-                        className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${
-                          isOpen
-                            ? "bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 rotate-180"
-                            : "bg-slate-100 dark:bg-slate-800 text-slate-400 group-hover:bg-slate-200 dark:group-hover:bg-slate-700 group-hover:text-slate-600 dark:group-hover:text-slate-200"
-                        }`}
+                        className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${isOpen
+                          ? "bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 rotate-180"
+                          : "bg-slate-100 dark:bg-slate-800 text-slate-400 group-hover:bg-slate-200 dark:group-hover:bg-slate-700 group-hover:text-slate-600 dark:group-hover:text-slate-200"
+                          }`}
                       >
                         <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300" />
                       </span>
@@ -411,11 +407,10 @@ export default function FAQClientContent() {
 
                     {/* Buttery-Smooth CSS Grid Transition */}
                     <div
-                      className={`grid transition-all duration-300 ease-in-out ${
-                        isOpen
-                          ? "grid-rows-[1fr] opacity-100"
-                          : "grid-rows-[0fr] opacity-0"
-                      }`}
+                      className={`grid transition-all duration-300 ease-in-out ${isOpen
+                        ? "grid-rows-[1fr] opacity-100"
+                        : "grid-rows-[0fr] opacity-0"
+                        }`}
                     >
                       <div className="overflow-hidden">
                         <div className="px-4 sm:px-6 lg:px-7 pb-4 sm:pb-6 lg:pb-7 pt-1 border-t border-slate-100 dark:border-slate-800/60">

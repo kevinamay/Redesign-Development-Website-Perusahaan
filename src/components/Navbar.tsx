@@ -21,8 +21,44 @@ export default function Navbar() {
   const { lang, setLanguage, t } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
+  const [currentHash, setCurrentHash] = useState("");
+  const [hoveredHref, setHoveredHref] = useState<string | null>(null);
   const langRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const updateHashFromLocation = () => {
+      setCurrentHash(window.location.hash);
+    };
+
+    updateHashFromLocation();
+    window.addEventListener("hashchange", updateHashFromLocation);
+    window.addEventListener("popstate", updateHashFromLocation);
+
+    const handleScroll = () => {
+      if (pathname !== "/about") return;
+      const target = document.getElementById("mesin-produksi");
+      if (target) {
+        const rect = target.getBoundingClientRect();
+        if (rect.top <= 250 && rect.bottom >= 150) {
+          setCurrentHash("#mesin-produksi");
+        } else if (rect.top > 250) {
+          setCurrentHash("");
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+
+    return () => {
+      window.removeEventListener("hashchange", updateHashFromLocation);
+      window.removeEventListener("popstate", updateHashFromLocation);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [pathname]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -53,6 +89,23 @@ export default function Navbar() {
     { label: t.navbar.facilities, href: "/about#mesin-produksi" },
     { label: t.navbar.contact, href: "/kontak" },
   ];
+
+  let activeHref = "";
+  if (pathname === "/") {
+    activeHref = "/";
+  } else if (pathname === "/about") {
+    activeHref = currentHash === "#mesin-produksi" ? "/about#mesin-produksi" : "/about";
+  } else if (pathname === "/products" || pathname?.startsWith("/products")) {
+    activeHref = "/products";
+  } else if (pathname === "/kontak" || pathname?.startsWith("/kontak")) {
+    activeHref = "/kontak";
+  } else if (pathname?.startsWith("/about")) {
+    activeHref = currentHash === "#mesin-produksi" ? "/about#mesin-produksi" : "/about";
+  }
+
+  // Jika kursor mouse mengarah (hover) ke suatu menu di navbar, HANYA menu tersebut yang menyala biru.
+  // Menu aktif seperti "Tentang Kami" otomatis tidak lagi berwarna biru saat menu lain diarahkan.
+  const currentHighlight = hoveredHref || activeHref;
 
   return (
     <>
@@ -174,20 +227,31 @@ export default function Navbar() {
             </Link>
 
             {/* Center: Desktop Navigation Links */}
-            <div className="hidden lg:flex items-center gap-7">
+            <div
+              className="hidden lg:flex items-center gap-7"
+              onMouseLeave={() => setHoveredHref(null)}
+            >
               {navMenuItems.map((item, index) => {
-                const isActive =
-                  pathname === item.href ||
-                  (item.href !== "/" && pathname?.startsWith(item.href));
+                const isBlue = currentHighlight === item.href;
 
                 return (
                   <Link
                     key={index}
                     href={item.href}
-                    className={`text-sm font-semibold transition-colors ${
-                      isActive
+                    onMouseEnter={() => setHoveredHref(item.href)}
+                    onClick={() => {
+                      if (item.href.includes("#")) {
+                        const hash = item.href.slice(item.href.indexOf("#"));
+                        setCurrentHash(hash);
+                      } else {
+                        setCurrentHash("");
+                      }
+                      setHoveredHref(null);
+                    }}
+                    className={`text-sm font-semibold transition-colors duration-150 ${
+                      isBlue
                         ? "text-blue-600 dark:text-blue-400 font-bold"
-                        : "text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400"
+                        : "text-slate-700 dark:text-slate-200"
                     }`}
                   >
                     {item.label}
