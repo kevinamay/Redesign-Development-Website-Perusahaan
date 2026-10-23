@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
-import Image from "next/image";
+import React from "react";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -11,7 +10,6 @@ import { useLanguage } from "@/data/translations";
 
 export default function AboutPreview() {
   const { lang } = useLanguage();
-  const [activeTab, setActiveTab] = useState<number>(0);
 
   // Multilingual tab data & content specifications
   const content = {
@@ -152,7 +150,6 @@ export default function AboutPreview() {
   };
 
   const t = content[lang] || content.id;
-  const currentTab = t.tabs[activeTab] || t.tabs[0];
 
   return (
     <section
@@ -163,158 +160,62 @@ export default function AboutPreview() {
       <div className="absolute top-1/4 left-1/10 w-96 h-96 bg-blue-500/5 dark:bg-blue-600/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/10 w-96 h-96 bg-indigo-500/5 dark:bg-indigo-600/5 rounded-full blur-3xl pointer-events-none" />
 
-      {/* 1. SECTION LAYOUT (TWO-COLUMN SPLIT CONTAINER) */}
+      {/* 1. SECTION LAYOUT */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          {/* ========================================================================= */}
-          {/* 2. LEFT COLUMN: INTERACTIVE NAVIGATION & INTRO (5 cols)                   */}
-          {/* ========================================================================= */}
-          <div className="lg:col-span-5 flex flex-col justify-between space-y-8">
-            {/* Header Area */}
-            <div>
+        <div className="flex flex-col space-y-10">
+          {/* Header Area */}
+          <div className="max-w-3xl">
+            {/* Bold Title */}
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight tracking-tight mb-4">
+              {t.heading}
+            </h2>
 
-              {/* Bold Title */}
-              <h2 className="text-3xl sm:text-4xl lg:text-4xl font-extrabold text-slate-900 dark:text-white leading-tight tracking-tight mb-4">
-                {t.heading}
-              </h2>
-
-              {/* Subheading */}
-              <p className="text-base text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
-                {t.subheading}
-              </p>
-            </div>
-
-            {/* Interactive Steps List (Cards / Tabs) */}
-            <div className="space-y-3.5" role="tablist" aria-label="Company Overview Tabs">
-              {t.tabs.map((tab, index) => {
-                const isActive = activeTab === index;
-                return (
-                  <button
-                    key={tab.id}
-                    type="button"
-                    role="tab"
-                    aria-selected={isActive}
-                    aria-controls={`panel-${tab.id}`}
-                    onClick={() => setActiveTab(index)}
-                    className={`w-full text-left p-4 rounded-2xl transition-all duration-300 flex items-center justify-between group cursor-pointer ${
-                      isActive
-                        ? "bg-white dark:bg-slate-900 shadow-md shadow-slate-200/80 dark:shadow-none border border-slate-200/90 dark:border-slate-700/80 translate-x-1.5"
-                        : "bg-transparent hover:bg-white/60 dark:hover:bg-slate-900/40 border border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200"
-                    }`}
-                  >
-                    <div className="flex items-center gap-4">
-                      {/* Step Number Indicator */}
-                      <div
-                        className={`w-10 h-10 rounded-xl flex items-center justify-center font-bold text-xs transition-all duration-300 shrink-0 ${
-                          isActive
-                            ? "bg-blue-600 text-white shadow-md shadow-blue-500/30 scale-105"
-                            : "bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 group-hover:bg-slate-200 dark:group-hover:bg-slate-700 group-hover:text-slate-700 dark:group-hover:text-slate-200"
-                        }`}
-                      >
-                        {tab.step}
-                      </div>
-
-                      {/* Tab Text */}
-                      <div>
-                        <p
-                          className={`text-base font-bold transition-colors ${
-                            isActive
-                              ? "text-slate-900 dark:text-white"
-                              : "text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white"
-                          }`}
-                        >
-                          {tab.navTitle}
-                        </p>
-                        <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-1 mt-0.5">
-                          {tab.navSubtitle}
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Active Accent Indicator */}
-                    <div className="flex items-center gap-2">
-                      {isActive ? (
-                        <div className="w-2 h-2 rounded-full bg-blue-600 dark:bg-blue-400 animate-pulse" />
-                      ) : (
-                        <ChevronRight className="w-4 h-4 text-slate-300 dark:text-slate-600 group-hover:text-slate-500 dark:group-hover:text-slate-400 transition-colors" />
-                      )}
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Action Button: SELENGKAPNYA */}
-            <div className="pt-2">
-              <Link
-                href="/about"
-                className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full border-2 border-slate-900 dark:border-slate-100 text-slate-900 dark:text-white hover:bg-slate-900 hover:text-white dark:hover:bg-white dark:hover:text-slate-900 text-sm font-semibold transition-all duration-300 group shadow-xs cursor-pointer"
-              >
-                <span>{t.readMore}</span>
-                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
-            </div>
+            {/* Subheading */}
+            <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
+              {t.subheading}
+            </p>
           </div>
 
-          {/* ========================================================================= */}
-          {/* 3. RIGHT COLUMN: DYNAMIC CONTENT & IMAGE PLACEMENT (7 cols)               */}
-          {/* ========================================================================= */}
-          <div className="lg:col-span-7">
-            {/* Dedicated Showcase Card */}
-            <div
-              id={`panel-${currentTab.id}`}
-              role="tabpanel"
-              className="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xl border border-slate-200/80 dark:border-slate-800 transition-all duration-500 ease-in-out flex flex-col justify-between space-y-7"
-            >
-              {/* Header Info Area */}
-              <div className="space-y-3.5 transition-opacity duration-500">
-                {/* Active Indicator Tag */}
-                <div className="flex items-center gap-2 text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider">
-                  <span className="w-1.5 h-1.5 rounded-full bg-blue-600 dark:bg-blue-400" />
-                  <span>{currentTab.navTitle}</span>
-                </div>
-
-                {/* Main Showcase Title */}
-                <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-snug">
-                  {currentTab.title}
-                </h3>
-
-                {/* Description Paragraph */}
-                <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
-                  {currentTab.description}
-                </p>
-              </div>
-
-
-
-              {/* The Dedicated Image Showcase Container (NO MORE IMAGES BELOW TEXT) */}
-              <div className="relative h-[320px] sm:h-[380px] md:h-[420px] w-full rounded-3xl overflow-hidden shadow-2xl border border-slate-100 dark:border-slate-800 group">
-                <Image
-                  key={currentTab.image}
-                  src={currentTab.image}
-                  alt={currentTab.imageAlt}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 50vw"
-                  priority
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-
-                {/* Bottom Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/30 to-transparent pointer-events-none" />
-
-                {/* Dashboard-style Floating Badge at Bottom */}
-                <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between text-white drop-shadow-md">
-                  <div className="inline-flex items-center gap-2 bg-slate-900/80 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 text-xs sm:text-sm font-semibold">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                    <span>{currentTab.imageTag}</span>
+          {/* Interactive Steps List: 3 Clean Grid Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6" role="list" aria-label="Company Overview Features">
+            {t.tabs.map((tab) => (
+              <Link
+                key={tab.id}
+                href="/about"
+                className="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 shadow-md hover:shadow-xl border border-slate-200/80 dark:border-slate-800 hover:border-blue-500/50 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group cursor-pointer"
+              >
+                <div>
+                  {/* Step Number Indicator */}
+                  <div className="w-11 h-11 rounded-2xl flex items-center justify-center font-bold text-sm bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 group-hover:bg-blue-600 group-hover:text-white transition-colors mb-5">
+                    {tab.step}
                   </div>
 
-                  <span className="hidden sm:inline-flex text-xs font-medium text-slate-300 bg-black/40 backdrop-blur-xs px-3 py-1.5 rounded-full border border-white/10">
-                    {lang === "zh" ? "亚洲塑料有限公司" : "CV. Asia Plastik"}
-                  </span>
+                  {/* Card Title & Subtitle */}
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors mb-2">
+                    {tab.navTitle}
+                  </h3>
+                  <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+                    {tab.navSubtitle}
+                  </p>
                 </div>
-              </div>
-            </div>
+
+                <div className="pt-6 flex items-center gap-1.5 text-xs font-bold text-blue-600 dark:text-blue-400">
+                  <span>Lihat Selengkapnya</span>
+                  <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          {/* Action Button: SELENGKAPNYA */}
+          <div className="pt-2">
+            <Link
+              href="/about"
+              className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full border-2 border-slate-900 dark:border-slate-100 text-slate-900 dark:text-white hover:bg-slate-900 hover:text-white dark:hover:bg-white dark:hover:text-slate-900 text-sm font-semibold transition-all duration-300 group shadow-xs cursor-pointer"
+            >
+              <span>{t.readMore}</span>
+              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
           </div>
         </div>
       </div>
