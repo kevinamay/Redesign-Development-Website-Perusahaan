@@ -17,6 +17,8 @@ import ProductCardOriginal from "@/components/prototype/ProductCardOriginal";
 import ProductCardVariantA from "@/components/prototype/ProductCardVariantA";
 import ProductCardVariantB from "@/components/prototype/ProductCardVariantB";
 import ProductCardVariantC from "@/components/prototype/ProductCardVariantC";
+import ProductCardVariantD from "@/components/prototype/ProductCardVariantD";
+import ProductCardVariantE from "@/components/prototype/ProductCardVariantE";
 import PrototypeProductSwitcher, {
   PRODUCT_PROTOTYPE_VARIANTS,
 } from "@/components/prototype/PrototypeProductSwitcher";
@@ -91,12 +93,16 @@ function PrototypeProductContent() {
     };
 
     switch (currentVariantId.toUpperCase()) {
+      case "D":
+        return <ProductCardVariantD {...cardProps} />;
+      case "E":
+        return <ProductCardVariantE {...cardProps} />;
+      case "C":
+        return <ProductCardVariantC {...cardProps} />;
       case "A":
         return <ProductCardVariantA {...cardProps} />;
       case "B":
         return <ProductCardVariantB {...cardProps} />;
-      case "C":
-        return <ProductCardVariantC {...cardProps} />;
       case "ORIGINAL":
       default:
         return <ProductCardOriginal {...cardProps} />;
@@ -226,22 +232,24 @@ function PrototypeProductContent() {
             </h3>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-            <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-700/60">
-              <div className="font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider mb-1">
-                Varian A: Industrial Studio
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+            <div className="p-4 rounded-2xl bg-blue-50/70 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900/60">
+              <div className="font-extrabold text-blue-600 dark:text-blue-400 uppercase tracking-wider mb-1 flex items-center gap-1">
+                <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+                <span>Varian D: Enterprise Hybrid</span>
               </div>
               <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
-                Fokus pada <strong>presisi engineering & spesifikasi B2B</strong>. Menghadirkan panggung studio 3D di sisi kiri dan matriks 4 parameter teknis di sisi kanan dengan tombol RFQ kontras tinggi.
+                <strong>Kombinasi Terbaik Original + Varian C:</strong> Mempertahankan top header otoritatif yang disukai pada Original, dipadu studio frame bersih & pita 4 keunggulan horizontal ala Varian C.
               </p>
             </div>
 
-            <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-700/60">
-              <div className="font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider mb-1">
-                Varian B: Modern B2B Bento
+            <div className="p-4 rounded-2xl bg-purple-50/70 dark:bg-purple-950/40 border border-purple-200 dark:border-purple-900/60">
+              <div className="font-extrabold text-purple-600 dark:text-purple-400 uppercase tracking-wider mb-1 flex items-center gap-1">
+                <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+                <span>Varian E: Executive Tech Stage</span>
               </div>
               <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
-                Gaya <strong>modular Bento Box kontemporer</strong> (ala Apple/Linear). Memisahkan hero spotlight, fitur keunggulan, dan panel spesifikasi gelap (HUD) secara seimbang dan mudah dipindai mata.
+                <strong>Evolusi Mewah Varian C:</strong> Panggung sinematik lapang di atas, dipadu pita 4-metrik teknis (Dimensi, Bobot, Beban Dinamis, Statis), dan B2B Conversion Box modern di kanan bawah.
               </p>
             </div>
 
@@ -250,7 +258,16 @@ function PrototypeProductContent() {
                 Varian C: Panoramic Ribbon
               </div>
               <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
-                Tampilan <strong>sinematik panggung lebar</strong> dengan pita spesifikasi horizontal di tengah. Memberikan kesan mewah, bersih, dan rapi seperti katalog perusahaan multinasional modern.
+                Tampilan <strong>sinematik panggung lebar</strong> dengan pita spesifikasi horizontal di tengah. Memberikan kesan mewah, bersih, dan rapi seperti katalog perusahaan multinasional.
+              </p>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-700/60">
+              <div className="font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
+                Desain Awal (Original)
+              </div>
+              <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
+                <strong>Layout Standar:</strong> Header penuh di atas dengan split grid foto & spesifikasi 2-kolom untuk referensi pembanding.
               </p>
             </div>
           </div>

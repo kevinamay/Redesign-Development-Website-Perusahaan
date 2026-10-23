@@ -19,6 +19,24 @@ export const PRODUCT_PROTOTYPE_VARIANTS: PrototypeProductVariant[] = [
     description: "Layout kartu bawaan dengan split grid gambar & deskripsi",
   },
   {
+    id: "C",
+    label: "Varian C (Panoramic Ribbon)",
+    shortName: "Varian C",
+    description: "Showcase panggung lebar dengan horizontal technical spec ribbon",
+  },
+  {
+    id: "D",
+    label: "Varian D (Enterprise Hybrid)",
+    shortName: "Varian D ⭐",
+    description: "Kombinasi terbaik Original + C: Header penuh, split studio, & ribbon bawah",
+  },
+  {
+    id: "E",
+    label: "Varian E (Executive Tech Stage)",
+    shortName: "Varian E ⭐",
+    description: "Evolusi mewah Varian C: Panggung sinematik, 4-metrik ribbon, & B2B RFQ box",
+  },
+  {
     id: "A",
     label: "Varian A (Industrial Studio)",
     shortName: "Varian A",
@@ -29,12 +47,6 @@ export const PRODUCT_PROTOTYPE_VARIANTS: PrototypeProductVariant[] = [
     label: "Varian B (Modern B2B Bento)",
     shortName: "Varian B",
     description: "Apple/Linear-style Bento 3-tile grid modular, terstruktur & high-conversion",
-  },
-  {
-    id: "C",
-    label: "Varian C (Panoramic Ribbon)",
-    shortName: "Varian C",
-    description: "Showcase panggung lebar dengan horizontal technical spec ribbon",
   },
 ];
 
@@ -52,13 +64,13 @@ export default function PrototypeProductSwitcher({
   const searchParams = useSearchParams();
 
   const activeVariantId =
-    currentVariant || searchParams.get("variant") || "A";
+    currentVariant || searchParams.get("variant") || "D";
 
   const currentIndex = PRODUCT_PROTOTYPE_VARIANTS.findIndex(
     (v) => v.id.toLowerCase() === activeVariantId.toLowerCase()
   );
   const activeVariant =
-    PRODUCT_PROTOTYPE_VARIANTS[currentIndex >= 0 ? currentIndex : 1]; // Default to Variant A if not found
+    PRODUCT_PROTOTYPE_VARIANTS[currentIndex >= 0 ? currentIndex : 2]; // Default to Variant D if not found
 
   const setVariant = useCallback(
     (variantId: string) => {
@@ -102,6 +114,10 @@ export default function PrototypeProductSwitcher({
         setVariant("B");
       } else if (e.key === "3") {
         setVariant("C");
+      } else if (e.key === "4" || e.key.toLowerCase() === "d") {
+        setVariant("D");
+      } else if (e.key === "5" || e.key.toLowerCase() === "e") {
+        setVariant("E");
       } else if (e.key === "0") {
         setVariant("original");
       }

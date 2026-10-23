@@ -6,6 +6,8 @@ import ProductCardOriginal from "@/components/prototype/ProductCardOriginal";
 import ProductCardVariantA from "@/components/prototype/ProductCardVariantA";
 import ProductCardVariantB from "@/components/prototype/ProductCardVariantB";
 import ProductCardVariantC from "@/components/prototype/ProductCardVariantC";
+import ProductCardVariantD from "@/components/prototype/ProductCardVariantD";
+import ProductCardVariantE from "@/components/prototype/ProductCardVariantE";
 
 export interface ProductBadge {
   label: string;
@@ -28,12 +30,16 @@ function ProductCardRenderer(props: ProductCardProps) {
   const variant = searchParams?.get("variant")?.toUpperCase();
 
   switch (variant) {
+    case "D":
+      return <ProductCardVariantD {...props} />;
+    case "E":
+      return <ProductCardVariantE {...props} />;
+    case "C":
+      return <ProductCardVariantC {...props} />;
     case "A":
       return <ProductCardVariantA {...props} />;
     case "B":
       return <ProductCardVariantB {...props} />;
-    case "C":
-      return <ProductCardVariantC {...props} />;
     case "ORIGINAL":
       return <ProductCardOriginal {...props} />;
     default:
