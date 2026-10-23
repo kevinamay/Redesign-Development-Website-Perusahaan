@@ -1,13 +1,10 @@
 "use client";
 
-import React, { useEffect, useRef, useState, useCallback } from "react";
+import React, { useEffect, useRef, useCallback } from "react";
 import { usePathname } from "next/navigation";
-import { ArrowUp } from "lucide-react";
 
 export default function ParallaxScrollEngine() {
   const pathname = usePathname();
-  const [showBackToTop, setShowBackToTop] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
 
   // Parallax refs for ultra-smooth GPU transform without React re-render overhead
   const orb1Ref = useRef<HTMLDivElement>(null);
@@ -17,20 +14,12 @@ export default function ParallaxScrollEngine() {
   const gridPatternRef = useRef<HTMLDivElement>(null);
   const observerRef = useRef<IntersectionObserver | null>(null);
 
-  // 1. Continuous Background Parallax & Scroll Engine (60fps rAF)
+  // 1. Continuous Background Parallax Engine (60fps rAF)
   useEffect(() => {
     let ticking = false;
 
     const updateParallax = () => {
       const scrollY = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const docHeight = document.documentElement.scrollHeight;
-      const maxScroll = Math.max(1, docHeight - windowHeight);
-
-      // Scroll progress percentage (0 - 100)
-      const progress = Math.min(100, Math.max(0, (scrollY / maxScroll) * 100));
-      setScrollProgress(progress);
-      setShowBackToTop(scrollY > 320);
 
       // Smooth multi-depth parallax shifts on background atmospheric layers ONLY (isolated behind all sections)
       if (orb1Ref.current) {
@@ -215,10 +204,6 @@ export default function ParallaxScrollEngine() {
     };
   }, [pathname, setupObservers]);
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   return (
     <>
       {/* ========================================================================= */}
@@ -258,43 +243,6 @@ export default function ParallaxScrollEngine() {
           className="absolute inset-0 w-full h-[180%] opacity-[0.045] dark:opacity-[0.07] bg-[radial-gradient(#3b82f6_1.5px,transparent_1.5px)] [background-size:36px_36px] will-change-transform"
         />
       </div>
-
-      {/* ========================================================================= */}
-      {/* 2. ELEGANT FLOATING BACK-TO-TOP BUTTON WITH CIRCULAR SCROLL PROGRESS RING  */}
-      {/* ========================================================================= */}
-      {showBackToTop && (
-        <button
-          id="btn-parallax-back-to-top"
-          onClick={scrollToTop}
-          title="Kembali ke atas"
-          aria-label="Kembali ke atas halaman"
-          className="fixed bottom-6 left-6 z-[9980] w-12 h-12 rounded-full bg-white/95 dark:bg-slate-900/95 backdrop-blur-md text-slate-800 dark:text-white border border-slate-200 dark:border-slate-800 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex items-center justify-center cursor-pointer group active:scale-95"
-        >
-          {/* Progress circle ring */}
-          <svg
-            className="absolute inset-0 w-full h-full -rotate-90 p-0.5"
-            viewBox="0 0 36 36"
-          >
-            <path
-              className="text-slate-100 dark:text-slate-800"
-              strokeWidth="2.5"
-              stroke="currentColor"
-              fill="none"
-              d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-            />
-            <path
-              className="text-blue-600 dark:text-blue-400 transition-all duration-150"
-              strokeDasharray={`${scrollProgress}, 100`}
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              stroke="currentColor"
-              fill="none"
-              d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-            />
-          </svg>
-          <ArrowUp className="w-4 h-4 text-blue-600 dark:text-blue-400 group-hover:-translate-y-0.5 transition-transform" />
-        </button>
-      )}
     </>
   );
 }
