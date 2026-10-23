@@ -110,13 +110,7 @@ export default function ArticleListClient({ articles }: ArticleListClientProps) 
 
         {/* Show More / Show Less Button */}
         {hasMoreArticles && (
-          <div className="mt-14 sm:mt-16 flex flex-col items-center justify-center gap-4 text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-200/70 dark:bg-slate-800/80 border border-slate-300/50 dark:border-slate-700/50 text-xs sm:text-sm font-semibold text-slate-600 dark:text-slate-300 shadow-xs">
-              <span>
-                {t.showingCount(displayedArticles.length, articles.length)}
-              </span>
-            </div>
-
+          <div className="mt-14 sm:mt-16 flex justify-center text-center">
             <button
               id="btn-article-show-more"
               type="button"
