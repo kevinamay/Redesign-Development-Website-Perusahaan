@@ -33,7 +33,7 @@ const SAMPLE_PRODUCTS = [
     berat: "12 KG",
     deskripsi:
       "Palet plastik dari Asia Plastik dirancang khusus untuk memenuhi kebutuhan industri dan logistik modern. Dibuat dari material HDPE/PP berkualitas tinggi berstandar ekspor, palet ini menawarkan ketahanan optimal terhadap benturan, kelembapan, bahan kimia, serta kompatibel dengan automated racking & forklift 4 arah.",
-    imagePath: "/images/products/pallet.png",
+    imagePath: "/images/product/Pallet/pallet-floating.png",
     categoryName: "Pallet Industri",
   },
   {
@@ -44,7 +44,7 @@ const SAMPLE_PRODUCTS = [
     berat: "2.8 KG",
     deskripsi:
       "Keranjang plastik industri Asia Plastik berdaya tampung tinggi dan dapat ditumpuk secara presisi (stackable). Ideal untuk perakitan otomotif, hasil panen, cold storage, dan rantai pasok ritel modern.",
-    imagePath: "/images/products/keranjang.png",
+    imagePath: "/images/product/Keranjang/keranjang-besar.png",
     categoryName: "Keranjang Plastik",
   },
   {
@@ -55,7 +55,7 @@ const SAMPLE_PRODUCTS = [
     berat: "950 GRAM",
     deskripsi:
       "Jerigen kimia & industri terbuat dari 100% High-Density Polyethylene berdensitas tinggi dengan ketahanan anti-bocor, tutup segel ganda (tamper-evident), serta lulus uji drop test industri.",
-    imagePath: "/images/products/jerigen-hdpe.png",
+    imagePath: "/images/product/jerigen HDPE/20l.png",
     categoryName: "Jerigen Industri",
   },
 ];
