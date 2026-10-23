@@ -81,13 +81,6 @@ export default function ScrollVariantA() {
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 font-sans selection:bg-blue-600 selection:text-white transition-colors duration-300 relative">
-      {/* 1. TOP DYNAMIC SCROLL READING PROGRESS BAR (Apple Style) */}
-      <div className="fixed top-0 left-0 right-0 h-1.5 z-[99999] bg-slate-200/50 dark:bg-slate-800/50 backdrop-blur-xs">
-        <div
-          className="h-full bg-gradient-to-r from-blue-600 via-cyan-400 to-indigo-600 shadow-md shadow-cyan-500/30 transition-all duration-100 ease-out"
-          style={{ width: `${scrollPercent}%` }}
-        />
-      </div>
 
       {/* 2. FLOATING RIGHT-HAND SECTION WAYPOINTS (Dot Navigator) */}
       <nav aria-label="Waypoint Navigation" className="fixed right-4 sm:right-6 top-1/2 -translate-y-1/2 z-[9999] hidden lg:flex flex-col gap-3 p-2 rounded-full bg-white/70 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200/80 dark:border-slate-800 shadow-xl">

@@ -43,23 +43,6 @@ export default function ScrollVariantD() {
         />
       </div>
 
-      {/* 2. FLOATING AMBIENT GLOW BAR AT TOP */}
-      <div className="fixed top-0 left-0 right-0 h-1 z-[99999] bg-slate-900">
-        <div
-          className="h-full bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 shadow-lg shadow-cyan-400/50"
-          style={{
-            width: `${Math.min(
-              100,
-              (scrollY /
-                (typeof document !== "undefined"
-                  ? document.documentElement.scrollHeight - window.innerHeight || 1
-                  : 1)) *
-                100
-            )}%`,
-          }}
-        />
-      </div>
-
       <Navbar />
 
       <main className="w-full max-w-[100vw] overflow-x-clip relative z-10 space-y-16 py-6">

@@ -102,14 +102,6 @@ function PrototypeStudioContent() {
     setAnimKey((prev) => prev + 1);
   };
 
-  const toggleProgressBar = () => {
-    const updated: ScrollSettings = { ...settings, showProgressBar: !settings.showProgressBar };
-    setSettings(updated);
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
-    } catch {}
-    window.dispatchEvent(new CustomEvent("ap-scroll-settings-change", { detail: updated }));
-  };
 
   const toggleBackToTop = () => {
     const updated: ScrollSettings = { ...settings, showBackToTop: !settings.showBackToTop };
@@ -233,17 +225,6 @@ function PrototypeStudioContent() {
               Fitur Tambahan Terintegrasi (Semua Halaman)
             </h3>
             <div className="flex flex-col gap-3">
-              <label className="flex items-center justify-between p-3.5 rounded-xl bg-slate-950/70 border border-slate-800 cursor-pointer hover:border-slate-700 transition-colors">
-                <span className="text-xs font-bold text-slate-200">
-                  Top Reading Progress Bar (Gradien Cyan-Blue)
-                </span>
-                <input
-                  type="checkbox"
-                  checked={settings.showProgressBar}
-                  onChange={toggleProgressBar}
-                  className="w-4 h-4 accent-blue-600 rounded cursor-pointer"
-                />
-              </label>
               <label className="flex items-center justify-between p-3.5 rounded-xl bg-slate-950/70 border border-slate-800 cursor-pointer hover:border-slate-700 transition-colors">
                 <span className="text-xs font-bold text-slate-200">
                   Universal Back-to-Top Button dengan Progress Ring

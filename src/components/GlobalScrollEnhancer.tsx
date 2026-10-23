@@ -8,7 +8,6 @@ export type ScrollTransitionMode = "silk" | "kinetic" | "parallax";
 
 export interface ScrollSettings {
   mode: ScrollTransitionMode;
-  showProgressBar: boolean;
   showBackToTop: boolean;
 }
 
@@ -16,7 +15,6 @@ const STORAGE_KEY = "ap_scroll_settings_v1";
 
 export const DEFAULT_SCROLL_SETTINGS: ScrollSettings = {
   mode: "kinetic",
-  showProgressBar: true,
   showBackToTop: true,
 };
 
@@ -149,15 +147,6 @@ export default function GlobalScrollEnhancer() {
 
   return (
     <>
-      {/* 1. UNIVERSAL TOP READING PROGRESS BAR (Works on EVERY page) */}
-      {settings.showProgressBar && (
-        <div className="fixed top-0 left-0 right-0 h-1 sm:h-1.5 z-[999999] pointer-events-none bg-slate-200/30 dark:bg-slate-800/30 backdrop-blur-xs">
-          <div
-            className="h-full bg-gradient-to-r from-blue-600 via-cyan-400 to-indigo-600 shadow-sm shadow-cyan-400/50 transition-all duration-75 ease-out"
-            style={{ width: `${scrollPercent}%` }}
-          />
-        </div>
-      )}
 
       {/* 2. UNIVERSAL FLOATING BACK-TO-TOP BUTTON WITH PROGRESS RING (Works on EVERY page) */}
       {settings.showBackToTop && showBackToTop && (
