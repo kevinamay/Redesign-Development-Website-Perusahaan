@@ -155,11 +155,6 @@ export default function Hero() {
                 </span>
               </h1>
 
-              {/* Sub-headline */}
-              <p className="mt-3 sm:mt-5 font-medium text-slate-600 dark:text-slate-300 text-sm sm:text-base lg:text-lg tracking-wide max-w-xl leading-relaxed">
-                {t.hero.subtitle}
-              </p>
-
               {/* Action Buttons: Responsive Stack on mobile, side-by-side on sm+ */}
               <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 w-full sm:w-auto">
                 {/* 1. Primary Button */}
