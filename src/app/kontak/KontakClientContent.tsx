@@ -17,7 +17,6 @@ import {
   CheckCircle2,
   Building2,
   Clock,
-  Sparkles,
   MessageCircle,
 } from "lucide-react";
 import { useLanguage } from "@/data/translations";
@@ -285,14 +284,6 @@ export default function KontakClientContent() {
                 />
 
                 <div className="relative z-10">
-                  {/* Eyebrow */}
-                  <div className="flex items-center gap-2 mb-2">
-                    <Sparkles className="w-4 h-4 text-blue-300" />
-                    <span className="text-blue-300 font-bold tracking-widest text-sm uppercase">
-                      {content.eyebrow}
-                    </span>
-                  </div>
-
                   {/* Title */}
                   <h1 className="text-4xl lg:text-5xl font-extrabold mb-10 tracking-tight text-white">
                     {content.title}
