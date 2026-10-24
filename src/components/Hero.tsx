@@ -155,12 +155,12 @@ export default function Hero() {
             {/* Visual Accent: Thin, elegant vertical line */}
             <div className="border-l-4 border-blue-600 pl-4 sm:pl-7 lg:pl-9 max-w-2xl lg:max-w-3xl animate-fade-in-up">
               {/* Top Label Badge */}
-              <div className="text-[11px] sm:text-xs md:text-sm font-bold tracking-wider text-blue-600 uppercase mb-2.5 sm:mb-3 flex items-center gap-2">
+              <div className="text-xs sm:text-xs md:text-sm font-bold tracking-wider text-blue-600 uppercase mb-2.5 sm:mb-3 flex items-center gap-2">
                 <span>{t.hero.badge}</span>
               </div>
 
               {/* Main Headline (H1) with consistent multi-line arrangement across mobile & desktop */}
-              <h1 className="font-extrabold text-slate-900 dark:text-white text-[24px] sm:text-4xl md:text-5xl lg:text-6xl leading-[1.15] sm:leading-[1.12] tracking-tight uppercase">
+              <h1 className="font-extrabold text-slate-900 dark:text-white text-[26px] min-[360px]:text-[28px] min-[390px]:text-[31px] sm:text-4xl md:text-5xl lg:text-6xl leading-[1.12] tracking-tight uppercase">
                 {t.hero.titleLines && t.hero.titleLines.length > 0 ? (
                   <>
                     {t.hero.titleLines.map((line, idx) => {
