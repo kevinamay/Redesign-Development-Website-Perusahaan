@@ -8,15 +8,27 @@ import { useLanguage } from "@/data/translations";
 const HERO_SLIDES = [
   {
     src: "/images/3840%20x%202160%20px%202.jpg.jpeg",
-    alt: "Fasilitas Pabrik & Manufaktur CV. Asia Plastik Surabaya 1",
+    alt: "Gedung Kantor & Fasilitas CV. Asia Plastik Surabaya",
     imageClass:
       "object-cover object-[65%_center] sm:object-[70%_center] md:object-center md:scale-105 md:translate-x-[5%] lg:translate-x-[8%] dark:brightness-[0.72] dark:contrast-[1.08] transition-[filter] duration-500",
   },
   {
+    src: "/images/WhatsApp%20Image%202026-10-23%20at%2015.47.56.jpeg",
+    alt: "Fasilitas Pabrik & Area Produksi Manufaktur CV. Asia Plastik Surabaya",
+    imageClass:
+      "object-cover object-[60%_center] sm:object-[65%_center] md:object-[60%_center] md:scale-105 md:translate-x-[4%] lg:translate-x-[6%] dark:brightness-[0.72] dark:contrast-[1.08] transition-[filter] duration-500",
+  },
+  {
     src: "/images/3840%20x%202160%20px%204.jpg.jpeg",
-    alt: "Fasilitas Pabrik & Manufaktur CV. Asia Plastik Surabaya 2",
+    alt: "Gedung Utama Pabrik CV. Asia Plastik Surabaya",
     imageClass:
       "object-cover object-[24%_center] sm:object-[28%_center] md:object-[30%_center] md:scale-115 lg:scale-120 md:translate-x-[20%] lg:translate-x-[24%] dark:brightness-[0.72] dark:contrast-[1.08] transition-[filter] duration-500",
+  },
+  {
+    src: "/images/WhatsApp%20Image%202026-10-23%20at%2015.47.57.jpeg",
+    alt: "Fasilitas Mesin Injection Moulding CV. Asia Plastik Surabaya",
+    imageClass:
+      "object-cover object-[55%_center] sm:object-[60%_center] md:object-[55%_center] md:scale-105 md:translate-x-[4%] lg:translate-x-[6%] dark:brightness-[0.72] dark:contrast-[1.08] transition-[filter] duration-500",
   },
 ];
 
@@ -176,12 +188,12 @@ export default function Hero() {
 
               {/* Slide Indicators: Subtle Dots */}
               <div className="flex items-center gap-2 mt-6 sm:mt-8">
-                {HERO_SLIDES.map((_, i) => (
+                {HERO_SLIDES.map((slide, i) => (
                   <button
                     key={i}
                     type="button"
                     onClick={() => goToSlide(i)}
-                    aria-label={`Foto Gedung ${i + 1}`}
+                    aria-label={slide.alt}
                     className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
                       currentSlide === i
                         ? "w-8 bg-blue-600 shadow-xs shadow-blue-500/50"

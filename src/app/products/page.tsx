@@ -453,10 +453,6 @@ export default function ProductsPage() {
                   {activeCategory.displayName}
                 </h1>
 
-                <p className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm lg:text-base leading-relaxed">
-                  {activeCategory.subtitle}
-                </p>
-
                 <div className="border-t border-slate-200 dark:border-slate-800 mt-4 sm:mt-6 pt-2" />
               </div>
 
