@@ -101,6 +101,10 @@ export default function Navbar() {
     activeHref = "/article";
   } else if (pathname === "/kontak" || pathname?.startsWith("/kontak")) {
     activeHref = "/kontak";
+  } else if (pathname === "/faq" || pathname?.startsWith("/faq")) {
+    activeHref = "/faq";
+  } else if (pathname === "/partner" || pathname?.startsWith("/partner")) {
+    activeHref = "/partner";
   }
 
   // Jika kursor mouse mengarah (hover) ke suatu menu di navbar, HANYA menu tersebut yang menyala biru.

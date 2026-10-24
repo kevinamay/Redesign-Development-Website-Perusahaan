@@ -28,6 +28,8 @@ export interface TranslationSchema {
     products: string;
     articles: string;
     facilities?: string;
+    faq?: string;
+    partner?: string;
     contact: string;
     searchPlaceholder: string;
     searchClose: string;
@@ -117,6 +119,8 @@ export const translations: Record<Language, TranslationSchema> = {
       products: "Produk & Layanan",
       articles: "Artikel",
       facilities: "Artikel",
+      faq: "FAQ",
+      partner: "Partner",
       contact: "Hubungi Penjualan",
       searchPlaceholder: "Cari kebutuhan cetak plastik, botol HDPE, mold tooling, jerigen...",
       searchClose: "Tutup",
@@ -227,6 +231,8 @@ export const translations: Record<Language, TranslationSchema> = {
       products: "Products & Services",
       articles: "Articles",
       facilities: "Articles",
+      faq: "FAQ",
+      partner: "Partners",
       contact: "Contact Sales",
       searchPlaceholder: "Search plastic molding, HDPE bottles, mold tooling, crates...",
       searchClose: "Close",
@@ -337,6 +343,8 @@ export const translations: Record<Language, TranslationSchema> = {
       products: "产品与服务",
       articles: "文章资讯",
       facilities: "文章资讯",
+      faq: "常见问题",
+      partner: "合作伙伴",
       contact: "联系销售",
       searchPlaceholder: "搜索塑料模具、HDPE塑料瓶、定制模具、工业周转筐...",
       searchClose: "关闭",

@@ -3,6 +3,7 @@
 import React, { useEffect } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import ThemeToggle from "@/components/ThemeToggle";
 import { useLanguage, Language } from "@/data/translations";
 import { companyConfig } from "@/data/companyConfig";
@@ -13,6 +14,8 @@ import {
   Package,
   ShieldCheck,
   Newspaper,
+  HelpCircle,
+  Handshake,
   PhoneCall,
   MessageCircle,
   ChevronRight,
@@ -104,6 +107,7 @@ const socialMediaChannels = [
 
 export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
   const { lang, setLanguage, t } = useLanguage();
+  const pathname = usePathname();
 
   // Lock body scroll when drawer is open
   useEffect(() => {
@@ -139,6 +143,8 @@ export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
       about: "Profil & Sertifikasi ISO 9001:2015",
       products: "Katalog Botol, Jerigen & Pail",
       articles: "Wawasan & Berita Manufaktur",
+      faq: "Pertanyaan Umum & Jawaban",
+      partner: "Klien & Mitra Industri Kami",
       facilities: "Mesin Injection & Blow Moulding",
       contact: "Alamat Kantor & Kontak Sales",
       langLabel: "Pilih Bahasa:",
@@ -151,6 +157,8 @@ export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
       about: "Company Profile & ISO 9001:2015",
       products: "Bottle, Jerrycan & Pail Catalog",
       articles: "Manufacturing News & Insights",
+      faq: "Frequently Asked Questions",
+      partner: "Our Industry Clients & Partners",
       facilities: "Injection & Blow Moulding",
       contact: "Office Address & Sales Team",
       langLabel: "Select Language:",
@@ -163,6 +171,8 @@ export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
       about: "企业介绍与ISO 9001认证",
       products: "塑料瓶、塑料桶产品目录",
       articles: "塑料制造行业资讯与文章",
+      faq: "常见问题解答与咨询",
+      partner: "企业客户与合作伙伴",
       facilities: "注塑吹塑500L精密机械",
       contact: "泗水总部地址与业务对接",
       langLabel: "选择语言：",
@@ -177,6 +187,8 @@ export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
     { label: t.navbar.about, href: "/about", icon: Users, hint: hints.about },
     { label: t.navbar.products, href: "/products", icon: Package, hint: hints.products },
     { label: t.navbar.articles, href: "/article", icon: Newspaper, hint: hints.articles },
+    { label: t.navbar.faq || "FAQ", href: "/faq", icon: HelpCircle, hint: hints.faq },
+    { label: t.navbar.partner || "Partner", href: "/partner", icon: Handshake, hint: hints.partner },
     { label: t.navbar.contact, href: "/kontak", icon: PhoneCall, hint: hints.contact },
   ];
 
@@ -240,19 +252,38 @@ export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
           <nav className="flex flex-col gap-1.5">
             {navLinks.map((item, idx) => {
               const Icon = item.icon;
+              const isActive =
+                item.href === "/" ? pathname === "/" : pathname?.startsWith(item.href);
+
               return (
                 <Link
                   key={idx}
                   href={item.href}
                   onClick={onClose}
-                  className="group flex items-center justify-between p-3.5 rounded-2xl hover:bg-slate-100 dark:hover:bg-slate-800/70 transition-colors"
+                  className={`group flex items-center justify-between p-3 sm:p-3.5 rounded-2xl transition-colors ${
+                    isActive
+                      ? "bg-blue-50/90 dark:bg-slate-800/90 text-blue-600 dark:text-blue-400"
+                      : "hover:bg-slate-100 dark:hover:bg-slate-800/70"
+                  }`}
                 >
-                  <div className="flex items-center gap-3.5">
-                    <div className="w-10 h-10 rounded-2xl bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 group-hover:bg-blue-600 group-hover:text-white flex items-center justify-center transition-colors shrink-0 shadow-2xs">
+                  <div className="flex items-center gap-3 sm:gap-3.5">
+                    <div
+                      className={`w-10 h-10 rounded-2xl flex items-center justify-center transition-colors shrink-0 shadow-2xs ${
+                        isActive
+                          ? "bg-blue-600 text-white shadow-blue-500/20"
+                          : "bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 group-hover:bg-blue-600 group-hover:text-white"
+                      }`}
+                    >
                       <Icon className="w-5 h-5" />
                     </div>
                     <div>
-                      <div className="text-sm font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                      <div
+                        className={`text-sm font-bold transition-colors ${
+                          isActive
+                            ? "text-blue-600 dark:text-blue-400 font-extrabold"
+                            : "text-slate-800 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400"
+                        }`}
+                      >
                         {item.label}
                       </div>
                       <div className="text-[11px] text-slate-400 dark:text-slate-500">
@@ -260,7 +291,13 @@ export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
                       </div>
                     </div>
                   </div>
-                  <ChevronRight className="w-4 h-4 text-slate-400 group-hover:translate-x-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-all" />
+                  <ChevronRight
+                    className={`w-4 h-4 transition-all ${
+                      isActive
+                        ? "text-blue-600 dark:text-blue-400 translate-x-1"
+                        : "text-slate-400 group-hover:translate-x-1 group-hover:text-blue-600 dark:group-hover:text-blue-400"
+                    }`}
+                  />
                 </Link>
               );
             })}
