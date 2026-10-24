@@ -13,7 +13,6 @@ import {
   Phone,
   Home,
   ChevronRight,
-  Sparkles,
   X,
 } from "lucide-react";
 import { useLanguage } from "@/data/translations";
@@ -226,11 +225,6 @@ export default function FAQClientContent() {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
 
             <div className="relative z-10 max-w-2xl mx-auto flex flex-col items-center">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-wider mb-4 shadow-sm">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>{current.supportBadge}</span>
-              </div>
-
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold mb-4 tracking-tight">
                 {current.supportTitle}
               </h2>
