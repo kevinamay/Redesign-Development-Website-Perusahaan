@@ -159,12 +159,38 @@ export default function Hero() {
                 <span>{t.hero.badge}</span>
               </div>
 
-              {/* Main Headline (H1) with responsive sizing */}
-              <h1 className="font-extrabold text-slate-900 dark:text-white text-2xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.18] sm:leading-[1.14] tracking-tight uppercase break-words">
-                {t.hero.titleStart}{" "}
-                <span className="text-blue-600 dark:text-blue-400">
-                  {t.hero.titleHighlight}
-                </span>
+              {/* Main Headline (H1) with consistent multi-line arrangement across mobile & desktop */}
+              <h1 className="font-extrabold text-slate-900 dark:text-white text-[24px] sm:text-4xl md:text-5xl lg:text-6xl leading-[1.15] sm:leading-[1.12] tracking-tight uppercase">
+                {t.hero.titleLines && t.hero.titleLines.length > 0 ? (
+                  <>
+                    {t.hero.titleLines.map((line, idx) => {
+                      const isLast = idx === t.hero.titleLines!.length - 1;
+                      return (
+                        <span
+                          key={idx}
+                          className={`block ${isLast ? "whitespace-nowrap sm:whitespace-normal" : ""}`}
+                        >
+                          {line}
+                          {isLast && (
+                            <>
+                              {" "}
+                              <span className="text-blue-600 dark:text-blue-400">
+                                {t.hero.titleHighlight}
+                              </span>
+                            </>
+                          )}
+                        </span>
+                      );
+                    })}
+                  </>
+                ) : (
+                  <>
+                    {t.hero.titleStart}{" "}
+                    <span className="text-blue-600 dark:text-blue-400">
+                      {t.hero.titleHighlight}
+                    </span>
+                  </>
+                )}
               </h1>
 
               {/* Action Buttons: Responsive Stack on mobile, side-by-side on sm+ */}

@@ -12,7 +12,6 @@ import {
   Home,
   Users,
   Package,
-  ShieldCheck,
   Newspaper,
   HelpCircle,
   Handshake,

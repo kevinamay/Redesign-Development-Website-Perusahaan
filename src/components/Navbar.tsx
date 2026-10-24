@@ -21,44 +21,9 @@ export default function Navbar() {
   const { lang, setLanguage, t } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
-  const [currentHash, setCurrentHash] = useState("");
   const [hoveredHref, setHoveredHref] = useState<string | null>(null);
   const langRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const updateHashFromLocation = () => {
-      setCurrentHash(window.location.hash);
-    };
-
-    updateHashFromLocation();
-    window.addEventListener("hashchange", updateHashFromLocation);
-    window.addEventListener("popstate", updateHashFromLocation);
-
-    const handleScroll = () => {
-      if (pathname !== "/about") return;
-      const target = document.getElementById("mesin-produksi");
-      if (target) {
-        const rect = target.getBoundingClientRect();
-        if (rect.top <= 250 && rect.bottom >= 150) {
-          setCurrentHash("#mesin-produksi");
-        } else if (rect.top > 250) {
-          setCurrentHash("");
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-
-    return () => {
-      window.removeEventListener("hashchange", updateHashFromLocation);
-      window.removeEventListener("popstate", updateHashFromLocation);
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [pathname]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {

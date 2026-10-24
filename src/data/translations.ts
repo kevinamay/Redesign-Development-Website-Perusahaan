@@ -41,6 +41,7 @@ export interface TranslationSchema {
   };
   hero: {
     badge: string;
+    titleLines?: string[];
     titleStart: string;
     titleHighlight: string;
     subtitle: string;
@@ -132,6 +133,7 @@ export const translations: Record<Language, TranslationSchema> = {
     },
     hero: {
       badge: "MANUFACTURING & PACKAGING SOLUTIONS",
+      titleLines: ["PERUSAHAAN", "MANUFAKTUR", "PENGEMASAN"],
       titleStart: "PERUSAHAAN MANUFAKTUR PENGEMASAN",
       titleHighlight: "PLASTIK",
       subtitle: "KAMI ADALAH AHLI DALAM INJECTION DAN BLOW MOLDING",
@@ -244,6 +246,7 @@ export const translations: Record<Language, TranslationSchema> = {
     },
     hero: {
       badge: "MANUFACTURING & PACKAGING SOLUTIONS",
+      titleLines: ["PLASTIC PACKAGING", "MANUFACTURING"],
       titleStart: "PLASTIC PACKAGING MANUFACTURING",
       titleHighlight: "COMPANY",
       subtitle: "WE ARE SPECIALISTS IN INJECTION AND BLOW MOLDING",
@@ -356,6 +359,7 @@ export const translations: Record<Language, TranslationSchema> = {
     },
     hero: {
       badge: "塑料工业制造与包装整体方案",
+      titleLines: ["专业工业塑料包装制造"],
       titleStart: "专业工业塑料包装制造",
       titleHighlight: "企业",
       subtitle: "我们是精密注塑成型与中空吹塑成型的行业专家",
