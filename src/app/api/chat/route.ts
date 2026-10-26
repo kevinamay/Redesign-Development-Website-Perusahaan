@@ -368,12 +368,6 @@ function getClientIp(request: Request): string {
   );
 }
 
-// ============================================================================
-// KONFIGURASI GEMINI API KEY DI CODINGAN (SERVER-SIDE)
-// ============================================================================
-// API Key tersimpan secara aman di backend server Next.js (terenkripsi)
-const SECURE_FALLBACK_KEY = "QVEuQWI4Uk42TEM1T2VLaUlxVkY3a0ZHQUU0VUlpNklwSnUweHhTTWIyeXp5Sm4zTVFSaUE=";
-
 export async function POST(request: Request) {
   try {
     // 0. Keamanan: Cek rate limiting berbasis IP client
@@ -411,8 +405,7 @@ export async function POST(request: Request) {
     const apiKey =
       process.env.GEMINI_API_KEY ||
       process.env.GOOGLE_AI_API_KEY ||
-      process.env.GOOGLE_API_KEY ||
-      Buffer.from(SECURE_FALLBACK_KEY, "base64").toString("utf-8");
+      process.env.GOOGLE_API_KEY;
 
     // If a valid Gemini API Key is available, invoke the official Gemini API directly
     if (apiKey && apiKey.trim() !== "") {
