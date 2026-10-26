@@ -137,7 +137,7 @@ export const translations: Record<Language, TranslationSchema> = {
       titleStart: "PERUSAHAAN MANUFAKTUR PENGEMASAN",
       titleHighlight: "PLASTIK",
       subtitle: "KAMI ADALAH AHLI DALAM INJECTION DAN BLOW MOLDING",
-      primaryCta: "Lihat Produk Kami →",
+      primaryCta: "Lihat Produk Kami",
       secondaryCta: "Hubungi Penjualan",
       features: [
         { title: "Presisi Cetak Tinggi", subtitle: "Injection & Blow Mold" },
@@ -250,7 +250,7 @@ export const translations: Record<Language, TranslationSchema> = {
       titleStart: "PLASTIC PACKAGING MANUFACTURING",
       titleHighlight: "COMPANY",
       subtitle: "WE ARE SPECIALISTS IN INJECTION AND BLOW MOLDING",
-      primaryCta: "Explore Our Products →",
+      primaryCta: "Explore Our Products",
       secondaryCta: "Contact Sales Team",
       features: [
         { title: "High Molding Precision", subtitle: "Injection & Blow Mold" },
@@ -363,7 +363,7 @@ export const translations: Record<Language, TranslationSchema> = {
       titleStart: "专业工业塑料包装制造",
       titleHighlight: "企业",
       subtitle: "我们是精密注塑成型与中空吹塑成型的行业专家",
-      primaryCta: "浏览产品中心 →",
+      primaryCta: "浏览产品中心",
       secondaryCta: "咨询销售团队",
       features: [
         { title: "高精密成型技术", subtitle: "注塑与吹塑模具" },
