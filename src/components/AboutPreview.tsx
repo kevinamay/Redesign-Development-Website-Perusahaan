@@ -14,10 +14,6 @@ export default function AboutPreview() {
   // Multilingual tab data & content specifications
   const content = {
     id: {
-      badge: "GAMBARAN PERUSAHAAN",
-      heading: "Membangun Masa Depan Industri Plastik",
-      subheading:
-        "Solusi manufaktur kemasan plastik presisi injection dan blow molding dengan dedikasi standar kualitas berkelas dunia.",
       readMore: "SELENGKAPNYA",
       tabs: [
         {
@@ -59,10 +55,6 @@ export default function AboutPreview() {
       ],
     },
     en: {
-      badge: "COMPANY OVERVIEW",
-      heading: "Building the Future of Plastic Industry",
-      subheading:
-        "Precision injection and blow molding packaging solutions engineered to international quality standards.",
       readMore: "LEARN MORE",
       tabs: [
         {
@@ -104,9 +96,6 @@ export default function AboutPreview() {
       ],
     },
     zh: {
-      badge: "企业概况",
-      heading: "打造塑料制造产业的美好未来",
-      subheading: "专注于精密注塑与吹塑成型包装，坚持国际高标准质量管理。",
       readMore: "了解更多",
       tabs: [
         {
@@ -163,19 +152,6 @@ export default function AboutPreview() {
       {/* 1. SECTION LAYOUT */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col space-y-10">
-          {/* Header Area */}
-          <div className="max-w-3xl">
-            {/* Bold Title */}
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight tracking-tight mb-4">
-              {t.heading}
-            </h2>
-
-            {/* Subheading */}
-            <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
-              {t.subheading}
-            </p>
-          </div>
-
           {/* Interactive Steps List: 3 Clean Grid Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6" role="list" aria-label="Company Overview Features">
             {t.tabs.map((tab) => (
