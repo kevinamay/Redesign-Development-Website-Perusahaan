@@ -152,14 +152,8 @@ export default function Hero() {
         <div className="flex-1 flex items-center w-full max-w-[100vw] overflow-hidden py-8 sm:py-12 lg:py-16">
           {/* Main Content Wrapper with safe mobile padding */}
           <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 box-border">
-            {/* Visual Accent: Clean vertical line on tablet/desktop, modern accent pill on mobile */}
+            {/* Visual Accent: Clean vertical line on tablet & desktop, hidden on mobile */}
             <div className="border-l-0 md:border-l-4 md:border-blue-600 pl-0 md:pl-7 lg:pl-9 max-w-2xl lg:max-w-3xl animate-fade-in-up">
-              {/* Variant C: Modern Horizontal Accent Pill on Mobile (hidden on tablet & desktop) */}
-              <div
-                aria-hidden="true"
-                className="block md:hidden w-12 h-1.5 rounded-full bg-blue-600 dark:bg-blue-500 mb-3.5 shadow-sm shadow-blue-500/30"
-              />
-
               {/* Top Label Badge */}
               <div className="text-xs sm:text-xs md:text-sm font-bold tracking-wider text-blue-600 dark:text-blue-400 uppercase mb-2.5 sm:mb-3 flex items-center gap-2">
                 <span>{t.hero.badge}</span>
