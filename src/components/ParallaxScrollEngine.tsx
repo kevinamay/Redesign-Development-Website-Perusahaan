@@ -12,7 +12,6 @@ export default function ParallaxScrollEngine() {
   const orb3Ref = useRef<HTMLDivElement>(null);
   const orb4Ref = useRef<HTMLDivElement>(null);
   const gridPatternRef = useRef<HTMLDivElement>(null);
-  const progressBarRef = useRef<HTMLDivElement>(null);
   const observerRef = useRef<IntersectionObserver | null>(null);
 
   // 1. Continuous Background Parallax & Scroll Progress Engine (60fps rAF)
@@ -21,13 +20,6 @@ export default function ParallaxScrollEngine() {
 
     const updateParallax = () => {
       const scrollY = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = docHeight > 0 ? (scrollY / docHeight) * 100 : 0;
-
-      // Continuous dynamic top scroll progress bar
-      if (progressBarRef.current) {
-        progressBarRef.current.style.width = `${Math.min(100, Math.max(0, progress))}%`;
-      }
 
       // Smooth multi-depth parallax shifts on background atmospheric layers
       if (orb1Ref.current) {
@@ -227,18 +219,7 @@ export default function ParallaxScrollEngine() {
 
   return (
     <>
-      {/* ========================================================================= */}
-      {/* 0. CONTINUOUS SCROLL PROGRESS INDICATOR (ULTRA-SMOOTH AT TOP OF PAGE)      */}
-      {/* ========================================================================= */}
-      <div
-        aria-hidden="true"
-        className="fixed top-0 left-0 right-0 h-[3.5px] z-[9999] pointer-events-none bg-transparent"
-      >
-        <div
-          ref={progressBarRef}
-          className="h-full w-0 bg-gradient-to-r from-blue-600 via-cyan-400 to-indigo-600 shadow-[0_0_12px_rgba(59,130,246,0.65)] transition-all duration-75 ease-out"
-        />
-      </div>
+
 
       {/* ========================================================================= */}
       {/* 1. CONTINUOUS AMBIENT PARALLAX DEPTH LAYERS (ISOLATED BEHIND ALL SECTIONS) */}
