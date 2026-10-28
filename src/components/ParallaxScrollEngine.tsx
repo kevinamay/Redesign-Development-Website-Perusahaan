@@ -12,16 +12,24 @@ export default function ParallaxScrollEngine() {
   const orb3Ref = useRef<HTMLDivElement>(null);
   const orb4Ref = useRef<HTMLDivElement>(null);
   const gridPatternRef = useRef<HTMLDivElement>(null);
+  const progressBarRef = useRef<HTMLDivElement>(null);
   const observerRef = useRef<IntersectionObserver | null>(null);
 
-  // 1. Continuous Background Parallax Engine (60fps rAF)
+  // 1. Continuous Background Parallax & Scroll Progress Engine (60fps rAF)
   useEffect(() => {
     let ticking = false;
 
     const updateParallax = () => {
       const scrollY = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? (scrollY / docHeight) * 100 : 0;
 
-      // Smooth multi-depth parallax shifts on background atmospheric layers ONLY (isolated behind all sections)
+      // Continuous dynamic top scroll progress bar
+      if (progressBarRef.current) {
+        progressBarRef.current.style.width = `${Math.min(100, Math.max(0, progress))}%`;
+      }
+
+      // Smooth multi-depth parallax shifts on background atmospheric layers
       if (orb1Ref.current) {
         orb1Ref.current.style.transform = `translate3d(0, ${scrollY * -0.28}px, 0)`;
       }
@@ -56,7 +64,7 @@ export default function ParallaxScrollEngine() {
     };
   }, []);
 
-  // 2. High-Precision Universal Scroll Reveal Engine (Contained strictly within each section)
+  // 2. High-Precision Universal Scroll Reveal Engine (Continuously re-arms on repeated scroll)
   const setupObservers = useCallback(() => {
     if (observerRef.current) {
       observerRef.current.disconnect();
@@ -83,7 +91,9 @@ export default function ParallaxScrollEngine() {
       children.forEach((child, idx) => {
         if (!seen.has(child) && child.offsetHeight > 20) {
           seen.add(child);
-          child.style.transitionDelay = `${(idx % 6) * 80}ms`;
+          const delay = `${(idx % 6) * 80}ms`;
+          child.dataset.scrollDelay = delay;
+          child.style.transitionDelay = delay;
           child.classList.add("ap-card-hover");
           elementsToReveal.push(child);
         }
@@ -95,14 +105,14 @@ export default function ParallaxScrollEngine() {
     articles.forEach((art, idx) => {
       if (!seen.has(art) && art.offsetHeight > 20) {
         seen.add(art);
-        if (!art.style.transitionDelay) {
-          art.style.transitionDelay = `${(idx % 6) * 75}ms`;
-        }
+        const delay = art.style.transitionDelay || `${(idx % 6) * 75}ms`;
+        art.dataset.scrollDelay = delay;
+        art.style.transitionDelay = delay;
         elementsToReveal.push(art);
       }
     });
 
-    // 2c. Target Headings and Section headers
+    // 2c. Target Headings, Section headers, and marked elements
     const headings = document.querySelectorAll<HTMLElement>(
       "main h2, main .section-header, main [data-scroll-reveal]"
     );
@@ -116,9 +126,9 @@ export default function ParallaxScrollEngine() {
       }
     });
 
-    // 2d. Target Section Content Containers & Forms
+    // 2d. Target Section Content Containers, Banners, & Forms
     const sections = document.querySelectorAll<HTMLElement>(
-      "main section > div.max-w-7xl, main form, main section > div.container"
+      "main section > div.max-w-7xl, main form, main section > div.container, main section > div[class*='rounded']"
     );
     sections.forEach((sec) => {
       if (
@@ -137,37 +147,48 @@ export default function ParallaxScrollEngine() {
       }
     });
 
-    // IntersectionObserver with optimal trigger threshold (-60px for clean, smooth entrance)
+    // IntersectionObserver configured for continuous repeated triggers on every scroll in both directions
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
+          const target = entry.target as HTMLElement;
+
           if (entry.isIntersecting) {
-            const target = entry.target as HTMLElement;
+            // Restore staggered transition delay on entrance
+            if (target.dataset.scrollDelay) {
+              target.style.transitionDelay = target.dataset.scrollDelay;
+            }
             target.classList.add("ap-scroll-in");
             target.classList.remove("ap-scroll-init");
-            observer.unobserve(target);
+          } else {
+            // Re-arm animation without delay when scrolled out of view so it's ready to re-animate upon re-entry
+            target.style.transitionDelay = "0ms";
+            target.classList.remove("ap-scroll-in");
+            target.classList.add("ap-scroll-init");
           }
         });
       },
       {
-        threshold: 0.1,
-        rootMargin: "0px 0px -60px 0px",
+        threshold: 0.08,
+        rootMargin: "0px",
       }
     );
 
-    // Apply immediate reveal to above-the-fold content to avoid layout shift (CLS)
+    // Initial state: elements currently in the viewport start visible (ap-scroll-in)
+    // Elements outside the viewport start hidden (ap-scroll-init)
+    // ALL elements are observed continuously so they react to scroll repeatedly
     elementsToReveal.forEach((el) => {
       const rect = el.getBoundingClientRect();
-      const isAboveTheFold = rect.top < windowHeight * 0.85 && rect.bottom > 0;
+      const isCurrentlyVisible = rect.top < windowHeight * 0.9 && rect.bottom > 50;
 
-      if (isAboveTheFold) {
+      if (isCurrentlyVisible) {
         el.classList.add("ap-scroll-in");
         el.classList.remove("ap-scroll-init");
       } else {
         el.classList.add("ap-scroll-init");
         el.classList.remove("ap-scroll-in");
-        observer.observe(el);
       }
+      observer.observe(el);
     });
 
     observerRef.current = observer;
@@ -206,6 +227,19 @@ export default function ParallaxScrollEngine() {
 
   return (
     <>
+      {/* ========================================================================= */}
+      {/* 0. CONTINUOUS SCROLL PROGRESS INDICATOR (ULTRA-SMOOTH AT TOP OF PAGE)      */}
+      {/* ========================================================================= */}
+      <div
+        aria-hidden="true"
+        className="fixed top-0 left-0 right-0 h-[3.5px] z-[9999] pointer-events-none bg-transparent"
+      >
+        <div
+          ref={progressBarRef}
+          className="h-full w-0 bg-gradient-to-r from-blue-600 via-cyan-400 to-indigo-600 shadow-[0_0_12px_rgba(59,130,246,0.65)] transition-all duration-75 ease-out"
+        />
+      </div>
+
       {/* ========================================================================= */}
       {/* 1. CONTINUOUS AMBIENT PARALLAX DEPTH LAYERS (ISOLATED BEHIND ALL SECTIONS) */}
       {/* ========================================================================= */}

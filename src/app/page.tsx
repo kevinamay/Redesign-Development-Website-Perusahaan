@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <div className="min-h-screen w-full max-w-[100vw] overflow-x-clip flex flex-col bg-slate-50 dark:bg-slate-950 font-sans selection:bg-blue-600 selection:text-white transition-colors duration-300">
+    <div className="min-h-screen w-full max-w-[100vw] overflow-x-clip flex flex-col bg-transparent font-sans selection:bg-blue-600 selection:text-white transition-colors duration-300 relative z-10">
       {/* 1. Sticky Global Navigation (Top Bar & Navbar) */}
       <Navbar />
 
