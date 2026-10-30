@@ -208,7 +208,7 @@ export default function ThemeToggle({ className = "", showLabels = false }: Them
   }
 
   return (
-    <div className={`inline-flex items-center gap-2 select-none ${className}`}>
+    <div className={`items-center gap-2 select-none ${className || "inline-flex"}`}>
       {showLabels && (
         <span
           className={`text-[11px] font-semibold tracking-wider uppercase transition-colors duration-200 ${

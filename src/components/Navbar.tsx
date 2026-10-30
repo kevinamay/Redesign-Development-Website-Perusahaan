@@ -78,8 +78,8 @@ export default function Navbar() {
 
   return (
     <>
-      {/* 1. Top Bar (Dark Navy bar) - SCROLLS NATURALLY WITH PAGE (NOT STICKY) */}
-      <div className="w-full max-w-[100vw] bg-slate-950 text-slate-300 border-b border-slate-800 relative z-[60]">
+      {/* 1. Top Bar (Dark Navy bar) - SCROLLS NATURALLY WITH PAGE (NOT STICKY) - Disembunyikan di HP, Tampil di Tablet & Desktop */}
+      <div className="hidden sm:block w-full max-w-[100vw] bg-slate-950 text-slate-300 border-b border-slate-800 relative z-[60]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-1.5 sm:py-2 flex items-center justify-between w-full text-xs box-border">
           {/* Top Bar Left Tagline */}
           <div className="hidden md:flex items-center gap-2 text-slate-300">
