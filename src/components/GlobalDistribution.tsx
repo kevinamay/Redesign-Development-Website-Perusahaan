@@ -177,11 +177,13 @@ export default function GlobalDistribution() {
                       />
                     </div>
 
-                    {/* Tooltip / HQ Label */}
+                    {/* Tooltip / HQ Label (Posisikan di ATAS pin agar tidak bertumpuk dengan pin Australia di bawahnya) */}
                     {loc.isHq ? (
-                      <div className="absolute top-5 left-1/2 -translate-x-1/2 whitespace-nowrap bg-blue-600 text-white text-[10px] sm:text-xs font-bold px-2.5 py-1 rounded-full shadow-md flex items-center gap-1.5 border border-white/20">
+                      <div className="absolute bottom-full mb-2.5 left-1/2 -translate-x-[68%] sm:-translate-x-1/2 whitespace-nowrap bg-blue-600 text-white text-[10px] sm:text-xs font-bold px-2.5 py-1 rounded-full shadow-lg flex items-center gap-1.5 border border-white/20 z-30 pointer-events-none">
                         <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
                         <span>{loc.name}</span>
+                        {/* Segitiga penunjuk ke arah titik pin Surabaya */}
+                        <div className="absolute top-full left-[68%] sm:left-1/2 -translate-x-1/2 -mt-0.5 border-4 border-transparent border-t-blue-600" />
                       </div>
                     ) : (
                       <div className="opacity-0 group-hover/pin:opacity-100 transition-opacity duration-200 pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap bg-slate-900/90 text-white text-[10px] font-medium px-2 py-0.5 rounded-md shadow-md">
