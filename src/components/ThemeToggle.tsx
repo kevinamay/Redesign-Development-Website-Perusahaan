@@ -23,14 +23,39 @@ function subscribeTheme(callback: () => void) {
   if (typeof window === "undefined") return () => {};
   window.addEventListener("theme-change", callback);
   window.addEventListener("storage", callback);
+
+  const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+  const handleMediaChange = () => callback();
+
+  try {
+    mediaQuery.addEventListener("change", handleMediaChange);
+  } catch {
+    mediaQuery.addListener?.(handleMediaChange);
+  }
+
+  const handleResize = () => callback();
+  window.addEventListener("resize", handleResize, { passive: true });
+
   return () => {
     window.removeEventListener("theme-change", callback);
     window.removeEventListener("storage", callback);
+    try {
+      mediaQuery.removeEventListener("change", handleMediaChange);
+    } catch {
+      mediaQuery.removeListener?.(handleMediaChange);
+    }
+    window.removeEventListener("resize", handleResize);
   };
 }
 
 function getThemeSnapshot(): "light" | "dark" {
   if (typeof window === "undefined") return "light";
+  const isMobile = window.innerWidth < 640;
+  if (isMobile) {
+    // Mode HP: Otomatis mengikuti tema bawaan HP
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
+  // Mode Tablet / Desktop / Laptop: Mengikuti pilihan switch (localStorage)
   const stored = localStorage.getItem("theme");
   if (stored === "dark" || stored === "light") return stored;
   return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";

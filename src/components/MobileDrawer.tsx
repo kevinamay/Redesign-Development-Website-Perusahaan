@@ -214,7 +214,7 @@ export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
           </div>
 
           <div className="flex items-center gap-2">
-            <ThemeToggle />
+            <ThemeToggle className="hidden sm:inline-flex" />
             <button
               onClick={onClose}
               className="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-800 dark:hover:text-white transition-colors cursor-pointer"

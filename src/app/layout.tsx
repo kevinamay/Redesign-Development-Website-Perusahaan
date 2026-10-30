@@ -45,6 +45,7 @@ export const metadata: Metadata = {
 
 import FloatingActions from "@/components/FloatingActionsClient";
 import ParallaxScrollEngine from "@/components/ParallaxScrollEngine";
+import ThemeSyncEngine from "@/components/ThemeSyncEngine";
 
 export default function RootLayout({
   children,
@@ -67,12 +68,31 @@ export default function RootLayout({
             __html: `
               (function() {
                 try {
-                  var saved = localStorage.getItem('theme');
-                  if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                  var isMobile = window.innerWidth < 640;
+                  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                  var isDark = false;
+
+                  if (isMobile) {
+                    // Mode HP: 100% Otomatis mengikuti tema sistem perangkat HP (Dark/Light)
+                    isDark = prefersDark;
+                  } else {
+                    // Mode Desktop / Laptop / Tab / Tablet: Menghormati pilihan manual dari switch (localStorage)
+                    var saved = localStorage.getItem('theme');
+                    if (saved === 'dark') {
+                      isDark = true;
+                    } else if (saved === 'light') {
+                      isDark = false;
+                    } else {
+                      isDark = prefersDark;
+                    }
+                  }
+
+                  if (isDark) {
                     document.documentElement.classList.add('dark');
                   } else {
                     document.documentElement.classList.remove('dark');
                   }
+
                   var savedLang = localStorage.getItem('language');
                   if (savedLang === 'zh') {
                     document.documentElement.lang = 'zh-CN';
@@ -86,6 +106,9 @@ export default function RootLayout({
             `,
           }}
         />
+        {/* Real-time Theme Adaptation Engine for Mobile Device System Theme & Desktop Switches */}
+        <ThemeSyncEngine />
+
         {/* Universal Parallax Background & Scroll Animation Engine for ALL pages */}
         <ParallaxScrollEngine />
 

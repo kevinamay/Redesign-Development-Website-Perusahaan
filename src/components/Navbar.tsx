@@ -159,10 +159,11 @@ export default function Navbar() {
               )}
             </div>
 
-            <span className="text-slate-700 select-none">|</span>
+            {/* Divider hanya tampil di Tablet / Laptop / Desktop saat switch tema aktif */}
+            <span className="hidden sm:inline text-slate-700 select-none">|</span>
 
-            {/* THEME TOGGLE SWITCH: KIRI = GELAP, KANAN = TERANG */}
-            <ThemeToggle />
+            {/* THEME TOGGLE SWITCH: KIRI = GELAP, KANAN = TERANG (Hanya muncul di Tablet / Laptop / Desktop, disembunyikan di HP) */}
+            <ThemeToggle className="hidden sm:inline-flex" />
           </div>
         </div>
       </div>
