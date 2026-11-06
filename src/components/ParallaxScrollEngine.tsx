@@ -74,7 +74,9 @@ export default function ParallaxScrollEngine() {
         grid.closest("footer") ||
         grid.closest("header") ||
         grid.closest("#floating-actions") ||
-        grid.closest("[role='dialog']")
+        grid.closest("[role='dialog']") ||
+        grid.closest("article") ||
+        grid.closest("[data-no-scroll]")
       ) {
         return;
       }
@@ -95,7 +97,12 @@ export default function ParallaxScrollEngine() {
     // 2b. Target all Articles (News cards, Product cards, FAQ accordions)
     const articles = document.querySelectorAll<HTMLElement>("article");
     articles.forEach((art, idx) => {
-      if (!seen.has(art) && art.offsetHeight > 20) {
+      if (
+        !seen.has(art) &&
+        art.offsetHeight > 20 &&
+        !art.closest("[data-no-scroll]") &&
+        !art.hasAttribute("data-no-scroll")
+      ) {
         seen.add(art);
         const delay = art.style.transitionDelay || `${(idx % 6) * 75}ms`;
         art.dataset.scrollDelay = delay;
@@ -109,7 +116,14 @@ export default function ParallaxScrollEngine() {
       "main h2, main .section-header, main [data-scroll-reveal]"
     );
     headings.forEach((h) => {
-      if (!seen.has(h) && !h.closest("nav") && !h.closest("footer")) {
+      if (
+        !seen.has(h) &&
+        !h.closest("nav") &&
+        !h.closest("footer") &&
+        !h.closest("article") &&
+        !h.closest("[data-no-scroll]") &&
+        !h.hasAttribute("data-no-scroll")
+      ) {
         const isInsideSeen = Array.from(seen).some((s) => s.contains(h) && s !== h);
         if (!isInsideSeen) {
           seen.add(h);
@@ -127,6 +141,8 @@ export default function ParallaxScrollEngine() {
         !seen.has(sec) &&
         !sec.closest("nav") &&
         !sec.closest("footer") &&
+        !sec.closest("article") &&
+        !sec.closest("[data-no-scroll]") &&
         sec.offsetHeight > 30
       ) {
         const containsSeenChildren = Array.from(seen).some(
@@ -188,9 +204,17 @@ export default function ParallaxScrollEngine() {
 
   // Re-run observer on page change with dynamic mutation support
   useEffect(() => {
+    let debounceTimer: ReturnType<typeof setTimeout> | null = null;
+    const scheduleRefresh = () => {
+      if (debounceTimer) clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => {
+        setupObservers();
+      }, 200);
+    };
+
     const timer = setTimeout(() => {
       setupObservers();
-    }, 120);
+    }, 200);
 
     const mutationObserver = new MutationObserver((mutations) => {
       let shouldRefresh = false;
@@ -201,7 +225,7 @@ export default function ParallaxScrollEngine() {
         }
       }
       if (shouldRefresh) {
-        setupObservers();
+        scheduleRefresh();
       }
     });
 
@@ -210,6 +234,7 @@ export default function ParallaxScrollEngine() {
 
     return () => {
       clearTimeout(timer);
+      if (debounceTimer) clearTimeout(debounceTimer);
       mutationObserver.disconnect();
       if (observerRef.current) {
         observerRef.current.disconnect();

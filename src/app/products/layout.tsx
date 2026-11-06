@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ProductsPrototypeBar } from "@/components/product-variants";
 
 export const metadata: Metadata = {
   title: "Katalog Produk - CV. ASIA PLASTIK | Pallet Industri P Series",
@@ -31,5 +32,10 @@ export default function ProductsLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return (
+    <>
+      {children}
+      <ProductsPrototypeBar />
+    </>
+  );
 }
