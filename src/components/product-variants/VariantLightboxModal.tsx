@@ -6,6 +6,7 @@ import { PhoneCall, X, Maximize2 } from "lucide-react";
 import { footerData } from "@/data/homeData";
 import { useLanguage } from "@/data/translations";
 import { catalogUiTranslations } from "@/data/catalogTranslations";
+import { getWhatsAppProductUrl } from "@/lib/whatsapp";
 import { ProductVariantProps } from "./types";
 
 export default function VariantLightboxModal({
@@ -56,12 +57,6 @@ export default function VariantLightboxModal({
       return ui.badges.factoryOfficial;
     }
     return rawLabel;
-  };
-
-  const getWhatsAppLink = (productTitle: string) => {
-    const rawNumber = footerData.contact.whatsapp.replace(/[^0-9]/g, "");
-    const message = encodeURIComponent(ui.whatsappMessage(productTitle));
-    return `https://wa.me/${rawNumber}?text=${message}`;
   };
 
   // Tutup modal dengan Escape & kunci scroll halaman belakang
@@ -319,7 +314,7 @@ export default function VariantLightboxModal({
                 </button>
 
                 <a
-                  href={getWhatsAppLink(cleanTitle)}
+                  href={getWhatsAppProductUrl(cleanTitle, lang)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-sm hover:shadow transition-all"

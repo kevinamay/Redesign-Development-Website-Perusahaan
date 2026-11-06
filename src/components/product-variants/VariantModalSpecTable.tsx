@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { PhoneCall, X, FileText } from "lucide-react";
-import { footerData } from "@/data/homeData";
+import { getWhatsAppProductUrl } from "@/lib/whatsapp";
 import { ProductVariantProps } from "./types";
 
 /**
@@ -22,14 +22,6 @@ export default function VariantModalSpecTable({
 
   const cleanTitle = (title || "").replace(/^[\s—–-]+/, "").trim();
   const isPng = (imagePath || "").toLowerCase().endsWith(".png");
-
-  const getWhatsAppLink = (productTitle: string) => {
-    const rawNumber = footerData.contact.whatsapp.replace(/[^0-9]/g, "");
-    const message = encodeURIComponent(
-      `Halo Asia Plastik, saya ingin menanyakan lembar spesifikasi & RFQ produk: ${productTitle}`
-    );
-    return `https://wa.me/${rawNumber}?text=${message}`;
-  };
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -195,7 +187,7 @@ export default function VariantModalSpecTable({
                 </button>
 
                 <a
-                  href={getWhatsAppLink(cleanTitle)}
+                  href={getWhatsAppProductUrl(cleanTitle)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-xs hover:shadow transition-all"

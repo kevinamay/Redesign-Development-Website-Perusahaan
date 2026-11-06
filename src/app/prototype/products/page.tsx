@@ -59,27 +59,25 @@ function ProductPrototypeContent() {
     PRODUCT_VARIANTS_META.find((v) => v.key === currentVariant) ||
     PRODUCT_VARIANTS_META[2];
 
+  const variantMap: Record<
+    ProductCardVariantKey,
+    React.ComponentType<any>
+  > = {
+    "lightbox-modal": VariantLightboxModal,
+    "modal-spec-table": VariantModalSpecTable,
+    "clean-corporate": VariantCleanCorporate,
+    "value-focus": VariantValueFocus,
+    "soft-minimal": VariantSoftMinimal,
+    "tabbed-deck": Variant3TabbedDeck,
+    "original": VariantOriginal,
+  };
+
   const renderVariantComponent = (
     key: ProductCardVariantKey,
     product: typeof sampleProducts[0]
   ) => {
-    switch (key) {
-      case "lightbox-modal":
-        return <VariantLightboxModal {...product} />;
-      case "modal-spec-table":
-        return <VariantModalSpecTable {...product} />;
-      case "clean-corporate":
-        return <VariantCleanCorporate {...product} />;
-      case "value-focus":
-        return <VariantValueFocus {...product} />;
-      case "soft-minimal":
-        return <VariantSoftMinimal {...product} />;
-      case "tabbed-deck":
-        return <Variant3TabbedDeck {...product} />;
-      case "original":
-      default:
-        return <VariantOriginal {...product} />;
-    }
+    const Component = variantMap[key] || VariantLightboxModal;
+    return <Component {...product} />;
   };
 
   return (
