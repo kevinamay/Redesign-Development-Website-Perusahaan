@@ -8,7 +8,6 @@ import {
   ArrowRight,
   ChevronLeft,
   ChevronRight,
-  Sparkles,
   PhoneCall,
   Briefcase,
   Layers,
@@ -96,10 +95,6 @@ export default function Variant2CarouselRibbon() {
       {/* ========================================================================= */}
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-6">
         <div>
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 border border-blue-200/60 dark:border-blue-800/60 text-blue-600 dark:text-blue-400 text-xs font-bold tracking-wider uppercase mb-2.5">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>{t.badge}</span>
-          </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
             {t.heading}
           </h2>
