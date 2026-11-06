@@ -161,6 +161,7 @@ export default function ProductsPage() {
         categoryId: catItem.id,
         categoryName: catName,
         categoryDisplayName: catDisplayName,
+        categorySubtitle: catMeta?.subtitle || "",
         allCategorySearchText: allCategoryNames,
       }));
     });
@@ -402,14 +403,21 @@ export default function ProductsPage() {
                         berat={localized.berat}
                         deskripsi={localized.deskripsi}
                         imagePath={p.imagePath}
-                        subtitle={localized.subtitle}
-                        badges={[
-                          {
-                            label: p.categoryName,
-                            icon: <Tag className="w-3.5 h-3.5 text-blue-500" />,
-                            variant: "blue",
-                          },
-                        ]}
+                        subtitle={localized.subtitle || p.categorySubtitle}
+                        badges={
+                          p.categoryId === "pallet-industri" || p.title === "PALLET P SERIES"
+                            ? [
+                                { label: "B2B INDUSTRIAL FLAGSHIP", variant: "blue" },
+                                { label: "PRODUKSI PABRIK RESMI", variant: "emerald" },
+                              ]
+                            : [
+                                {
+                                  label: p.categoryName,
+                                  icon: <Tag className="w-3.5 h-3.5 text-blue-500" />,
+                                  variant: "blue",
+                                },
+                              ]
+                        }
                       />
                     );
                   })}
@@ -467,7 +475,21 @@ export default function ProductsPage() {
                         berat={localized.berat}
                         deskripsi={localized.deskripsi}
                         imagePath={p.imagePath}
-                        subtitle={localized.subtitle}
+                        subtitle={localized.subtitle || activeCategory.subtitle}
+                        badges={
+                          activeCategoryId === "pallet-industri" || p.title === "PALLET P SERIES"
+                            ? [
+                                { label: "B2B INDUSTRIAL FLAGSHIP", variant: "blue" },
+                                { label: "PRODUKSI PABRIK RESMI", variant: "emerald" },
+                              ]
+                            : [
+                                {
+                                  label: activeCategory.name,
+                                  icon: <Tag className="w-3.5 h-3.5 text-blue-500" />,
+                                  variant: "blue",
+                                },
+                              ]
+                        }
                       />
                     );
                   })}
