@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, PhoneCall, X, Maximize2 } from "lucide-react";
+import { PhoneCall, X, Maximize2 } from "lucide-react";
 import { footerData } from "@/data/homeData";
 import { ProductVariantProps } from "./types";
 
@@ -12,36 +12,11 @@ export default function VariantLightboxModal({
   berat,
   deskripsi,
   imagePath,
-  isPallet,
 }: ProductVariantProps) {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [activeImageIdx, setActiveImageIdx] = useState<number>(0);
 
   const cleanTitle = (title || "").replace(/^[\s—–-]+/, "").trim();
-
-  const isPalletItem =
-    isPallet ||
-    imagePath.toLowerCase().includes("pallet") ||
-    cleanTitle.toLowerCase().includes("pallet");
-
-  const galleryImages = isPalletItem
-    ? [
-        imagePath,
-        "/images/product/Pallet/pallet-product-detail.jpg",
-        "/images/product/Pallet/pallet-studio-crop.jpg",
-        "/images/product/Pallet/pallet.jpg",
-      ]
-    : [imagePath];
-
-  const handlePrevImage = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setActiveImageIdx((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
-  };
-
-  const handleNextImage = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setActiveImageIdx((prev) => (prev + 1) % galleryImages.length);
-  };
+  const isPng = (imagePath || "").toLowerCase().endsWith(".png");
 
   const getWhatsAppLink = (productTitle: string) => {
     const rawNumber = footerData.contact.whatsapp.replace(/[^0-9]/g, "");
@@ -62,9 +37,6 @@ export default function VariantLightboxModal({
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isModalOpen]);
 
-  const currentSrc = galleryImages[activeImageIdx] || imagePath;
-  const isPng = currentSrc.toLowerCase().endsWith(".png");
-
   const displayDescription =
     deskripsi && deskripsi.trim().length > 0
       ? deskripsi
@@ -73,7 +45,7 @@ export default function VariantLightboxModal({
   return (
     <>
       {/* ========================================================================= */}
-      {/* KARTU KATALOG UTAMA (GAMBAR PERTAMA): PERSIS SESUAI FOTO 1               */}
+      {/* KARTU KATALOG UTAMA (1 FOTO BERSIH, BEBAS SLIDER PAKSAAN)                */}
       {/* ========================================================================= */}
       <article
         suppressHydrationWarning
@@ -81,61 +53,29 @@ export default function VariantLightboxModal({
         className="bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl border border-slate-200/90 dark:border-slate-800 shadow-sm hover:shadow-md transition-all duration-300 max-w-2xl mx-auto overflow-hidden group cursor-pointer"
         onClick={() => setIsModalOpen(true)}
       >
-        {/* Slider Foto Produk */}
-        <div className="relative w-full h-72 sm:h-96 bg-slate-50/70 dark:bg-slate-800/40 flex items-center justify-center p-4 select-none">
+        {/* Kontainer Foto Produk Tunggal */}
+        <div className="relative w-full h-72 sm:h-96 bg-slate-50/70 dark:bg-slate-800/40 flex items-center justify-center p-6 select-none">
           <div className="relative w-full h-full flex items-center justify-center">
             <Image
-              src={currentSrc}
+              src={imagePath}
               alt={cleanTitle}
               fill
               priority
               sizes="(max-width: 640px) 100vw, 650px"
               className={`object-contain transition-all duration-300 ${
-                isPng ? "drop-shadow-md scale-100 group-hover:scale-105" : "mix-blend-multiply dark:mix-blend-normal"
+                isPng
+                  ? "drop-shadow-md scale-100 group-hover:scale-105"
+                  : "mix-blend-multiply dark:mix-blend-normal"
               }`}
             />
           </div>
 
-          {/* Panah Slider & Indikator jika lebih dari 1 foto */}
-          {galleryImages.length > 1 && (
-            <>
-              <button
-                type="button"
-                onClick={handlePrevImage}
-                aria-label="Foto Sebelumnya"
-                className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/80 dark:bg-slate-900/80 hover:bg-white text-slate-700 dark:text-slate-200 shadow-md flex items-center justify-center cursor-pointer transition-all hover:scale-105 active:scale-95"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
-              <button
-                type="button"
-                onClick={handleNextImage}
-                aria-label="Foto Berikutnya"
-                className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/80 dark:bg-slate-900/80 hover:bg-white text-slate-700 dark:text-slate-200 shadow-md flex items-center justify-center cursor-pointer transition-all hover:scale-105 active:scale-95"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </button>
-
-              {/* Indicator Dots */}
-              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/70 dark:bg-slate-900/70">
-                {galleryImages.map((_, idx) => (
-                  <span
-                    key={idx}
-                    className={`h-1.5 rounded-full transition-all ${
-                      activeImageIdx === idx ? "w-5 bg-blue-600" : "w-1.5 bg-slate-300"
-                    }`}
-                  />
-                ))}
-              </div>
-            </>
-          )}
-
-          <div className="absolute top-3 right-3 p-1.5 rounded-lg bg-white/80 dark:bg-slate-900/80 text-slate-500 hover:text-blue-600 transition-colors">
+          <div className="absolute top-3 right-3 p-2 rounded-xl bg-white/90 dark:bg-slate-900/90 text-slate-500 hover:text-blue-600 shadow-xs border border-slate-200/60 dark:border-slate-700 transition-colors">
             <Maximize2 className="w-4 h-4" />
           </div>
         </div>
 
-        {/* Informasi Ringkas (Gambar 1) */}
+        {/* Informasi Produk Ringkas */}
         <div className="p-6 sm:p-8 space-y-3.5">
           <div className="flex items-center justify-between">
             <h2
@@ -168,7 +108,7 @@ export default function VariantLightboxModal({
       </article>
 
       {/* ========================================================================= */}
-      {/* MODAL POPUP LIGHTBOX (GAMBAR KEDUA): TAMPILAN DETAIL DENGAN TOMBOL ◀ KEMBALI */}
+      {/* MODAL POPUP LIGHTBOX (1 FOTO UTAMA DENGAN TOMBOL ◀ KEMBALI)               */}
       {/* ========================================================================= */}
       {isModalOpen && (
         <div
@@ -179,11 +119,11 @@ export default function VariantLightboxModal({
             className="relative w-full max-w-xl bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden max-h-[92vh] flex flex-col animate-in zoom-in-95 duration-200"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Foto Slider di Atas Modal */}
-            <div className="relative w-full h-64 sm:h-80 bg-slate-50/70 dark:bg-slate-800/40 flex items-center justify-center p-4 select-none">
+            {/* Foto Produk di Atas Modal */}
+            <div className="relative w-full h-64 sm:h-80 bg-slate-50/70 dark:bg-slate-800/40 flex items-center justify-center p-6 select-none">
               <div className="relative w-full h-full flex items-center justify-center">
                 <Image
-                  src={currentSrc}
+                  src={imagePath}
                   alt={cleanTitle}
                   fill
                   priority
@@ -193,28 +133,6 @@ export default function VariantLightboxModal({
                   }`}
                 />
               </div>
-
-              {/* Slider Controls jika lebih dari 1 foto */}
-              {galleryImages.length > 1 && (
-                <>
-                  <button
-                    type="button"
-                    onClick={handlePrevImage}
-                    aria-label="Foto Sebelumnya"
-                    className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/80 dark:bg-slate-900/80 hover:bg-white text-slate-700 dark:text-slate-200 shadow-md flex items-center justify-center cursor-pointer"
-                  >
-                    <ChevronLeft className="w-5 h-5" />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={handleNextImage}
-                    aria-label="Foto Berikutnya"
-                    className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/80 dark:bg-slate-900/80 hover:bg-white text-slate-700 dark:text-slate-200 shadow-md flex items-center justify-center cursor-pointer"
-                  >
-                    <ChevronRight className="w-5 h-5" />
-                  </button>
-                </>
-              )}
 
               {/* Close Button X pojok kanan atas */}
               <button
@@ -227,7 +145,7 @@ export default function VariantLightboxModal({
               </button>
             </div>
 
-            {/* Konten Detail Sesuai Gambar 2 */}
+            {/* Konten Detail Modal */}
             <div className="p-6 sm:p-8 space-y-5 overflow-y-auto">
               <div className="text-center pb-1">
                 <h2

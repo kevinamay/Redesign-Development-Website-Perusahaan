@@ -2,14 +2,14 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, PhoneCall, X, FileText } from "lucide-react";
+import { PhoneCall, X, FileText } from "lucide-react";
 import { footerData } from "@/data/homeData";
 import { ProductVariantProps } from "./types";
 
 /**
  * 9-B: Technical Spec-Sheet Modal (Engineering & Procurement Standard)
  * Menampilkan lembar spesifikasi teknis rapi terstruktur (tabel data pabrik).
- * Sangat disukai oleh tim purchasing & procurement logistik industri.
+ * Menggunakan 1 foto bersih produk tanpa slider paksaan.
  */
 export default function VariantModalSpecTable({
   title,
@@ -19,24 +19,9 @@ export default function VariantModalSpecTable({
   imagePath,
 }: ProductVariantProps) {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [activeImageIdx, setActiveImageIdx] = useState<number>(0);
 
-  const galleryImages = [
-    imagePath,
-    "/images/product/Pallet/pallet-product-detail.jpg",
-    "/images/product/Pallet/pallet-studio-crop.jpg",
-    "/images/product/Pallet/pallet.jpg",
-  ];
-
-  const handlePrevImage = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setActiveImageIdx((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
-  };
-
-  const handleNextImage = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setActiveImageIdx((prev) => (prev + 1) % galleryImages.length);
-  };
+  const cleanTitle = (title || "").replace(/^[\s—–-]+/, "").trim();
+  const isPng = (imagePath || "").toLowerCase().endsWith(".png");
 
   const getWhatsAppLink = (productTitle: string) => {
     const rawNumber = footerData.contact.whatsapp.replace(/[^0-9]/g, "");
@@ -54,17 +39,14 @@ export default function VariantModalSpecTable({
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isModalOpen]);
 
-  const currentSrc = galleryImages[activeImageIdx] || imagePath;
-  const isPng = currentSrc.toLowerCase().endsWith(".png");
-
-  const fullDescription =
-    deskripsi && deskripsi.length > 80
+  const displayDescription =
+    deskripsi && deskripsi.trim().length > 0
       ? deskripsi
       : "Palet plastik dari Asia Plastik dirancang khusus untuk memenuhi kebutuhan industri dan logistik modern. Dibuat dari material berkualitas tinggi, Palet Plastik ini menawarkan ketahanan luar biasa terhadap beban berat, benturan, serta kondisi lingkungan ekstrem. Tidak seperti palet kayu, Palet Plastik bebas dari serpihan, tidak menyerap air, dan lebih tahan terhadap serangan hama.";
 
   return (
     <>
-      {/* 1. KARTU KATALOG UTAMA */}
+      {/* 1. KARTU KATALOG UTAMA (1 FOTO TUNGGAL) */}
       <article
         suppressHydrationWarning
         data-no-scroll="true"
@@ -74,8 +56,8 @@ export default function VariantModalSpecTable({
         <div className="relative w-full h-64 sm:h-80 bg-slate-50/80 dark:bg-slate-800/40 flex items-center justify-center p-6 select-none border-b border-slate-100 dark:border-slate-800">
           <div className="relative w-full h-full flex items-center justify-center">
             <Image
-              src={currentSrc}
-              alt={title}
+              src={imagePath}
+              alt={cleanTitle}
               fill
               priority
               sizes="(max-width: 640px) 100vw, 550px"
@@ -84,24 +66,6 @@ export default function VariantModalSpecTable({
               }`}
             />
           </div>
-
-          {/* Slider Arrows */}
-          <button
-            type="button"
-            onClick={handlePrevImage}
-            aria-label="Foto Sebelumnya"
-            className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 dark:bg-slate-900/90 text-slate-700 dark:text-slate-200 shadow-sm border border-slate-200/60 dark:border-slate-700 flex items-center justify-center cursor-pointer transition-transform active:scale-95"
-          >
-            <ChevronLeft className="w-4 h-4" />
-          </button>
-          <button
-            type="button"
-            onClick={handleNextImage}
-            aria-label="Foto Berikutnya"
-            className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 dark:bg-slate-900/90 text-slate-700 dark:text-slate-200 shadow-sm border border-slate-200/60 dark:border-slate-700 flex items-center justify-center cursor-pointer transition-transform active:scale-95"
-          >
-            <ChevronRight className="w-4 h-4" />
-          </button>
         </div>
 
         {/* Deskripsi Singkat Card */}
@@ -111,7 +75,7 @@ export default function VariantModalSpecTable({
               suppressHydrationWarning
               className="text-xl font-bold text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors"
             >
-              {title}
+              {cleanTitle}
             </h2>
             <span className="text-[11px] font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider flex items-center gap-1">
               <FileText className="w-3.5 h-3.5 text-blue-500" /> Lembar Data
@@ -130,7 +94,8 @@ export default function VariantModalSpecTable({
           </div>
 
           <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed line-clamp-2">
-            <span className="font-semibold text-slate-700 dark:text-slate-300">DESKRIPSI :</span> Palet plastik dari Asia Plastik dirancang khusus untuk memenuhi kebutuhan industri dan logistik modern...
+            <span className="font-semibold text-slate-700 dark:text-slate-300">DESKRIPSI : </span>
+            {displayDescription}
           </p>
 
           <div className="pt-2 text-right">
@@ -141,7 +106,7 @@ export default function VariantModalSpecTable({
         </div>
       </article>
 
-      {/* 2. MODAL TABEL SPESIFIKASI TEKNIS LENGKAP */}
+      {/* 2. MODAL TABEL SPESIFIKASI TEKNIS LENGKAP (1 FOTO TUNGGAL) */}
       {isModalOpen && (
         <div
           className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-xs animate-in fade-in-50 duration-150"
@@ -151,12 +116,12 @@ export default function VariantModalSpecTable({
             className="relative w-full max-w-lg bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden max-h-[90vh] flex flex-col animate-in zoom-in-95 duration-150"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Foto Slider Modal */}
+            {/* Foto Modal */}
             <div className="relative w-full h-60 sm:h-72 bg-slate-50 dark:bg-slate-800/40 flex items-center justify-center p-6 border-b border-slate-100 dark:border-slate-800 select-none">
               <div className="relative w-full h-full flex items-center justify-center">
                 <Image
-                  src={currentSrc}
-                  alt={title}
+                  src={imagePath}
+                  alt={cleanTitle}
                   fill
                   priority
                   sizes="(max-width: 640px) 100vw, 500px"
@@ -165,24 +130,6 @@ export default function VariantModalSpecTable({
                   }`}
                 />
               </div>
-
-              {/* Slider Controls */}
-              <button
-                type="button"
-                onClick={handlePrevImage}
-                aria-label="Foto Sebelumnya"
-                className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 dark:bg-slate-900/90 text-slate-700 dark:text-slate-200 shadow-sm border border-slate-200 dark:border-slate-700 flex items-center justify-center cursor-pointer"
-              >
-                <ChevronLeft className="w-4 h-4" />
-              </button>
-              <button
-                type="button"
-                onClick={handleNextImage}
-                aria-label="Foto Berikutnya"
-                className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 dark:bg-slate-900/90 text-slate-700 dark:text-slate-200 shadow-sm border border-slate-200 dark:border-slate-700 flex items-center justify-center cursor-pointer"
-              >
-                <ChevronRight className="w-4 h-4" />
-              </button>
 
               <button
                 type="button"
@@ -201,7 +148,7 @@ export default function VariantModalSpecTable({
                   suppressHydrationWarning
                   className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tight"
                 >
-                  {title}
+                  {cleanTitle}
                 </h2>
               </div>
 
@@ -220,20 +167,20 @@ export default function VariantModalSpecTable({
                 <div className="grid grid-cols-2 divide-x divide-slate-200 dark:divide-slate-800 bg-white dark:bg-slate-900">
                   <div className="p-2.5">
                     <span className="text-slate-400 block text-[10px] uppercase font-medium">Material Plastik</span>
-                    <span className="font-bold text-slate-900 dark:text-white">HDPE Virgin / Recycled</span>
+                    <span className="font-bold text-slate-900 dark:text-white">HDPE Industri</span>
                   </div>
                   <div className="p-2.5">
                     <span className="text-slate-400 block text-[10px] uppercase font-medium">Handling Masuk</span>
-                    <span className="font-bold text-slate-900 dark:text-white">4 Arah (Forklift & Hand Pallet)</span>
+                    <span className="font-bold text-slate-900 dark:text-white">Standar Logistik</span>
                   </div>
                 </div>
               </div>
 
-              {/* Paragraf Deskripsi Sesuai Gambar 2 */}
+              {/* Paragraf Deskripsi */}
               <div className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed text-justify space-y-2">
                 <p>
                   <strong className="text-slate-900 dark:text-white font-bold">DESKRIPSI : </strong>
-                  {fullDescription}
+                  {displayDescription}
                 </p>
               </div>
 
@@ -248,7 +195,7 @@ export default function VariantModalSpecTable({
                 </button>
 
                 <a
-                  href={getWhatsAppLink(title)}
+                  href={getWhatsAppLink(cleanTitle)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-xs hover:shadow transition-all"
@@ -264,4 +211,3 @@ export default function VariantModalSpecTable({
     </>
   );
 }
-
