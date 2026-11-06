@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { Sparkles, Layers, Video, ArrowRight, Compass } from "lucide-react";
+import { Sparkles, Layers, Video, ArrowRight } from "lucide-react";
 
 export default function PrototypeIndexPage() {
   const labs = [

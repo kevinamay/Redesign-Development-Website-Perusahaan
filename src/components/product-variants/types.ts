@@ -80,9 +80,9 @@ export const PRODUCT_VARIANTS_META: VariantMeta[] = [
     key: "lightbox-modal",
     number: 9,
     badgeText: "Opsi 9",
-    name: "Opsi 9: Focus Lightbox Modal (Desain 9 Biasa)",
-    shortDesc: "Desain 9 Biasa: Kartu ringkas foto slider dengan modal pop-up detail sesuai foto referensi Anda",
-    tag: "9 Biasa",
+    name: "Opsi 9: Focus Lightbox Modal (Desain Fix)",
+    shortDesc: "Desain Fix: Kartu ringkas 1 foto jernih dengan modal pop-up detail sesuai foto referensi Anda",
+    tag: "Desain Fix",
   },
   {
     key: "modal-spec-table",

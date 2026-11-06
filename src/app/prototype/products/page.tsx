@@ -1,23 +1,9 @@
 "use client";
 
 import React, { useState, Suspense } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-import {
-  Sparkles,
-  Layers,
-  LayoutGrid,
-  Maximize2,
-  ArrowRight,
-  ExternalLink,
-  CheckCircle2,
-  Sliders,
-  Eye,
-  Box,
-  Compass,
-} from "lucide-react";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import { ArrowRight, ExternalLink, Box } from "lucide-react";
 import {
   PRODUCT_VARIANTS_META,
   ProductCardVariantKey,
@@ -61,7 +47,6 @@ const sampleProducts = [
 
 function ProductPrototypeContent() {
   const searchParams = useSearchParams();
-  const router = useRouter();
 
   const urlVariantParam = searchParams.get("variant");
   const currentVariant: ProductCardVariantKey = resolveVariantKey(urlVariantParam);
