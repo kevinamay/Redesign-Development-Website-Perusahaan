@@ -110,14 +110,25 @@ export default function VariantModalSpecTable({
     }
   }, [isModalOpen]);
 
+  const handleKeyDownCard = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      setIsModalOpen(true);
+    }
+  };
+
   return (
     <>
       {/* 1. KARTU KATALOG UTAMA (1 FOTO TUNGGAL) */}
       <article
         suppressHydrationWarning
         data-no-scroll="true"
+        role="button"
+        tabIndex={0}
+        aria-label={`${cleanTitle} - ${openSpecLabel}`}
+        onKeyDown={handleKeyDownCard}
         onClick={() => setIsModalOpen(true)}
-        className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xs hover:shadow-md transition-all duration-200 max-w-xl mx-auto overflow-hidden group cursor-pointer"
+        className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xs hover:shadow-md transition-all duration-200 w-full overflow-hidden group cursor-pointer focus:outline-hidden focus:ring-2 focus:ring-blue-500"
       >
         <div className="relative w-full h-64 sm:h-80 bg-slate-50/80 dark:bg-slate-800/40 flex items-center justify-center p-6 select-none border-b border-slate-100 dark:border-slate-800">
           <div className="relative w-full h-full flex items-center justify-center">
