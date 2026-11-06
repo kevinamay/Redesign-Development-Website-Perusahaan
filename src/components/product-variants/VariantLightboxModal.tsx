@@ -3,9 +3,11 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { PhoneCall, X, Maximize2 } from "lucide-react";
-import { footerData } from "@/data/homeData";
 import { useLanguage } from "@/data/translations";
-import { catalogUiTranslations } from "@/data/catalogTranslations";
+import {
+  catalogUiTranslations,
+  getLocalizedProduct,
+} from "@/data/catalogTranslations";
 import { getWhatsAppProductUrl } from "@/lib/whatsapp";
 import { ProductVariantProps } from "./types";
 
@@ -22,10 +24,27 @@ export default function VariantLightboxModal({
   const { lang } = useLanguage();
   const ui = catalogUiTranslations[lang] || catalogUiTranslations.id;
 
-  const cleanTitle = (title || "").replace(/^[\s—–-]+/, "").trim();
+  // Multi-language product resolution
+  const localized = getLocalizedProduct(
+    {
+      title: title || "",
+      dimensi: dimensi || "",
+      berat: berat || "",
+      deskripsi: deskripsi || "",
+      imagePath: imagePath || "",
+      subtitle,
+    },
+    lang
+  );
+
+  const cleanTitle = (localized.title || title || "").replace(/^[\s—–-]+/, "").trim();
+  const displayDimensi = localized.dimensi || dimensi;
+  const displayBerat = localized.berat || berat;
+  const displayDescription = localized.deskripsi || deskripsi;
+  const displaySubtitle = localized.subtitle || subtitle;
   const isPng = (imagePath || "").toLowerCase().endsWith(".png");
 
-  // Multi-language labels
+  // Multi-language UI labels
   const descLabel =
     lang === "en" ? "DESCRIPTION" : lang === "zh" ? "产品描述" : "DESKRIPSI";
   const rfqLabel =
@@ -42,6 +61,8 @@ export default function VariantLightboxModal({
       : lang === "zh"
       ? "点击卡片查看完整技术规格 (画廊弹窗) →"
       : "Klik kartu untuk membuka lembar spesifikasi (Lightbox) ➔";
+  const closeLabel =
+    lang === "en" ? "Close modal" : lang === "zh" ? "关闭弹窗" : "Tutup Modal";
 
   const getBadgeLabel = (rawLabel: string) => {
     const lower = rawLabel.toLowerCase();
@@ -148,42 +169,42 @@ export default function VariantLightboxModal({
             >
               {cleanTitle}
             </h2>
-            {subtitle && (
+            {displaySubtitle && (
               <p className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1 leading-relaxed">
-                {subtitle}
+                {displaySubtitle}
               </p>
             )}
           </div>
 
           {/* Spesifikasi Dimensi & Berat (Dinamis Sesuai Produk) */}
-          {(dimensi || berat) && (
+          {(displayDimensi || displayBerat) && (
             <div className="space-y-1.5 text-xs sm:text-sm text-slate-800 dark:text-slate-200">
-              {dimensi && (
+              {displayDimensi && (
                 <p className="flex items-center gap-2">
                   <span className="text-slate-500 dark:text-slate-400 font-medium uppercase">
                     {ui.specsLabels.dimensions} :
                   </span>
-                  <span className="font-bold">{dimensi}</span>
+                  <span className="font-bold">{displayDimensi}</span>
                 </p>
               )}
-              {berat && (
+              {displayBerat && (
                 <p className="flex items-center gap-2">
                   <span className="text-slate-500 dark:text-slate-400 font-medium uppercase">
                     {ui.specsLabels.weight} :
                   </span>
-                  <span className="font-bold">{berat}</span>
+                  <span className="font-bold">{displayBerat}</span>
                 </p>
               )}
             </div>
           )}
 
           {/* Deskripsi Produk Dinamis */}
-          {deskripsi && (
+          {displayDescription && (
             <p className="text-slate-600 dark:text-slate-300 leading-relaxed pt-1 text-xs sm:text-sm line-clamp-3">
               <span className="font-semibold text-slate-800 dark:text-slate-200 uppercase">
                 {descLabel} :{" "}
               </span>
-              {deskripsi}
+              {displayDescription}
             </p>
           )}
 
@@ -228,7 +249,7 @@ export default function VariantLightboxModal({
                 type="button"
                 onClick={() => setIsModalOpen(false)}
                 className="absolute top-3 right-3 w-8 h-8 rounded-full bg-slate-900/60 hover:bg-slate-900 text-white flex items-center justify-center cursor-pointer transition-all"
-                aria-label="Tutup Modal"
+                aria-label={closeLabel}
               >
                 <X className="w-4 h-4" />
               </button>
@@ -262,43 +283,43 @@ export default function VariantLightboxModal({
                 >
                   {cleanTitle}
                 </h2>
-                {subtitle && (
+                {displaySubtitle && (
                   <p className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1 leading-relaxed">
-                    {subtitle}
+                    {displaySubtitle}
                   </p>
                 )}
               </div>
 
               {/* Spesifikasi Teknis */}
-              {(dimensi || berat) && (
+              {(displayDimensi || displayBerat) && (
                 <div className="space-y-1.5 text-xs sm:text-sm text-slate-800 dark:text-slate-200 bg-slate-50/60 dark:bg-slate-800/40 p-4 rounded-2xl border border-slate-100 dark:border-slate-800">
-                  {dimensi && (
+                  {displayDimensi && (
                     <p className="flex items-center gap-2">
                       <span className="font-bold text-slate-900 dark:text-white uppercase">
                         {ui.specsLabels.dimensions} :
                       </span>
-                      <span>{dimensi}</span>
+                      <span>{displayDimensi}</span>
                     </p>
                   )}
-                  {berat && (
+                  {displayBerat && (
                     <p className="flex items-center gap-2">
                       <span className="font-bold text-slate-900 dark:text-white uppercase">
                         {ui.specsLabels.weight} :
                       </span>
-                      <span>{berat}</span>
+                      <span>{displayBerat}</span>
                     </p>
                   )}
                 </div>
               )}
 
               {/* Deskripsi Lengkap */}
-              {deskripsi && (
+              {displayDescription && (
                 <div className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed text-justify space-y-2">
                   <p>
                     <strong className="text-slate-900 dark:text-white font-bold uppercase">
                       {descLabel} :{" "}
                     </strong>
-                    {deskripsi}
+                    {displayDescription}
                   </p>
                 </div>
               )}

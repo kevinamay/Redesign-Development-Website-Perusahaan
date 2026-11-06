@@ -3,13 +3,18 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { PhoneCall, X, FileText } from "lucide-react";
+import { useLanguage } from "@/data/translations";
+import {
+  catalogUiTranslations,
+  getLocalizedProduct,
+} from "@/data/catalogTranslations";
 import { getWhatsAppProductUrl } from "@/lib/whatsapp";
 import { ProductVariantProps } from "./types";
 
 /**
  * 9-B: Technical Spec-Sheet Modal (Engineering & Procurement Standard)
  * Menampilkan lembar spesifikasi teknis rapi terstruktur (tabel data pabrik).
- * Menggunakan 1 foto bersih produk tanpa slider paksaan.
+ * Menggunakan 1 foto bersih produk tanpa slider paksaan dengan dukungan i18n penuh.
  */
 export default function VariantModalSpecTable({
   title,
@@ -17,24 +22,93 @@ export default function VariantModalSpecTable({
   berat,
   deskripsi,
   imagePath,
+  subtitle,
+  badges,
 }: ProductVariantProps) {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const { lang } = useLanguage();
+  const ui = catalogUiTranslations[lang] || catalogUiTranslations.id;
 
-  const cleanTitle = (title || "").replace(/^[\s—–-]+/, "").trim();
+  const localized = getLocalizedProduct(
+    {
+      title: title || "",
+      dimensi: dimensi || "",
+      berat: berat || "",
+      deskripsi: deskripsi || "",
+      imagePath: imagePath || "",
+      subtitle,
+    },
+    lang
+  );
+
+  const cleanTitle = (localized.title || title || "").replace(/^[\s—–-]+/, "").trim();
+  const displayDimensi = localized.dimensi || dimensi;
+  const displayBerat = localized.berat || berat;
+  const displayDescription = localized.deskripsi || deskripsi;
   const isPng = (imagePath || "").toLowerCase().endsWith(".png");
+
+  // Multi-language UI labels
+  const descLabel =
+    lang === "en" ? "DESCRIPTION" : lang === "zh" ? "产品描述" : "DESKRIPSI";
+  const rfqLabel =
+    lang === "en"
+      ? "Request Quote (RFQ)"
+      : lang === "zh"
+      ? "索取报价 (RFQ)"
+      : "Minta Penawaran (RFQ)";
+  const backLabel =
+    lang === "en" ? "BACK" : lang === "zh" ? "返回" : "KEMBALI";
+  const specSheetLabel =
+    lang === "en"
+      ? "Data Sheet"
+      : lang === "zh"
+      ? "技术数据表"
+      : "Lembar Data";
+  const openSpecLabel =
+    lang === "en"
+      ? "Open Technical Spec Sheet ➔"
+      : lang === "zh"
+      ? "查看完整技术规格 ➔"
+      : "Buka Lembar Spesifikasi Lengkap ➔";
+  const materialLabel =
+    lang === "en"
+      ? "Plastic Material"
+      : lang === "zh"
+      ? "塑料材质"
+      : "Material Plastik";
+  const handlingLabel =
+    lang === "en"
+      ? "Forklift Entry"
+      : lang === "zh"
+      ? "进叉方向"
+      : "Handling Masuk";
+  const materialVal =
+    lang === "en"
+      ? "Industrial HDPE"
+      : lang === "zh"
+      ? "工业级高密度聚乙烯 (HDPE)"
+      : "HDPE Industri";
+  const handlingVal =
+    lang === "en"
+      ? "Logistics Standard"
+      : lang === "zh"
+      ? "标准物流进叉"
+      : "Standar Logistik";
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") setIsModalOpen(false);
     };
-    if (isModalOpen) window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
+    if (isModalOpen) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      window.addEventListener("keydown", handleKeyDown);
+      return () => {
+        document.body.style.overflow = originalOverflow;
+        window.removeEventListener("keydown", handleKeyDown);
+      };
+    }
   }, [isModalOpen]);
-
-  const displayDescription =
-    deskripsi && deskripsi.trim().length > 0
-      ? deskripsi
-      : "Palet plastik dari Asia Plastik dirancang khusus untuk memenuhi kebutuhan industri dan logistik modern. Dibuat dari material berkualitas tinggi, Palet Plastik ini menawarkan ketahanan luar biasa terhadap beban berat, benturan, serta kondisi lingkungan ekstrem. Tidak seperti palet kayu, Palet Plastik bebas dari serpihan, tidak menyerap air, dan lebih tahan terhadap serangan hama.";
 
   return (
     <>
@@ -70,29 +144,47 @@ export default function VariantModalSpecTable({
               {cleanTitle}
             </h2>
             <span className="text-[11px] font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider flex items-center gap-1">
-              <FileText className="w-3.5 h-3.5 text-blue-500" /> Lembar Data
+              <FileText className="w-3.5 h-3.5 text-blue-500" /> {specSheetLabel}
             </span>
           </div>
 
-          <div className="grid grid-cols-2 gap-2 text-xs">
-            <div className="bg-slate-50 dark:bg-slate-800/50 p-2.5 rounded-lg border border-slate-100 dark:border-slate-800">
-              <span className="text-[10px] text-slate-400 uppercase font-medium block">Dimensi</span>
-              <span className="font-bold text-slate-900 dark:text-white">{dimensi || "1200 x 1165 x 140 MM"}</span>
+          {(displayDimensi || displayBerat) && (
+            <div className="grid grid-cols-2 gap-2 text-xs">
+              {displayDimensi && (
+                <div className="bg-slate-50 dark:bg-slate-800/50 p-2.5 rounded-lg border border-slate-100 dark:border-slate-800">
+                  <span className="text-[10px] text-slate-400 uppercase font-medium block">
+                    {ui.specsLabels.dimensions}
+                  </span>
+                  <span className="font-bold text-slate-900 dark:text-white">
+                    {displayDimensi}
+                  </span>
+                </div>
+              )}
+              {displayBerat && (
+                <div className="bg-slate-50 dark:bg-slate-800/50 p-2.5 rounded-lg border border-slate-100 dark:border-slate-800">
+                  <span className="text-[10px] text-slate-400 uppercase font-medium block">
+                    {ui.specsLabels.weight}
+                  </span>
+                  <span className="font-bold text-slate-900 dark:text-white">
+                    {displayBerat}
+                  </span>
+                </div>
+              )}
             </div>
-            <div className="bg-slate-50 dark:bg-slate-800/50 p-2.5 rounded-lg border border-slate-100 dark:border-slate-800">
-              <span className="text-[10px] text-slate-400 uppercase font-medium block">Berat Bersih</span>
-              <span className="font-bold text-slate-900 dark:text-white">{berat || "12 KG"}</span>
-            </div>
-          </div>
+          )}
 
-          <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed line-clamp-2">
-            <span className="font-semibold text-slate-700 dark:text-slate-300">DESKRIPSI : </span>
-            {displayDescription}
-          </p>
+          {displayDescription && (
+            <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed line-clamp-2">
+              <span className="font-semibold text-slate-700 dark:text-slate-300 uppercase">
+                {descLabel} :{" "}
+              </span>
+              {displayDescription}
+            </p>
+          )}
 
           <div className="pt-2 text-right">
             <span className="text-[11px] font-bold text-blue-600 dark:text-blue-400 group-hover:underline">
-              Buka Lembar Spesifikasi Lengkap ➔
+              {openSpecLabel}
             </span>
           </div>
         </div>
@@ -148,33 +240,53 @@ export default function VariantModalSpecTable({
               <div className="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden text-xs">
                 <div className="grid grid-cols-2 divide-x divide-slate-200 dark:divide-slate-800 border-b border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30">
                   <div className="p-2.5">
-                    <span className="text-slate-400 block text-[10px] uppercase font-medium">Dimensi Fisik</span>
-                    <span className="font-bold text-slate-900 dark:text-white">{dimensi || "1200 X 1165 X 140 MM"}</span>
+                    <span className="text-slate-400 block text-[10px] uppercase font-medium">
+                      {ui.specsLabels.dimensions}
+                    </span>
+                    <span className="font-bold text-slate-900 dark:text-white">
+                      {displayDimensi}
+                    </span>
                   </div>
                   <div className="p-2.5">
-                    <span className="text-slate-400 block text-[10px] uppercase font-medium">Berat Bersih</span>
-                    <span className="font-bold text-slate-900 dark:text-white">{berat || "12 KG"}</span>
+                    <span className="text-slate-400 block text-[10px] uppercase font-medium">
+                      {ui.specsLabels.weight}
+                    </span>
+                    <span className="font-bold text-slate-900 dark:text-white">
+                      {displayBerat}
+                    </span>
                   </div>
                 </div>
                 <div className="grid grid-cols-2 divide-x divide-slate-200 dark:divide-slate-800 bg-white dark:bg-slate-900">
                   <div className="p-2.5">
-                    <span className="text-slate-400 block text-[10px] uppercase font-medium">Material Plastik</span>
-                    <span className="font-bold text-slate-900 dark:text-white">HDPE Industri</span>
+                    <span className="text-slate-400 block text-[10px] uppercase font-medium">
+                      {materialLabel}
+                    </span>
+                    <span className="font-bold text-slate-900 dark:text-white">
+                      {materialVal}
+                    </span>
                   </div>
                   <div className="p-2.5">
-                    <span className="text-slate-400 block text-[10px] uppercase font-medium">Handling Masuk</span>
-                    <span className="font-bold text-slate-900 dark:text-white">Standar Logistik</span>
+                    <span className="text-slate-400 block text-[10px] uppercase font-medium">
+                      {handlingLabel}
+                    </span>
+                    <span className="font-bold text-slate-900 dark:text-white">
+                      {handlingVal}
+                    </span>
                   </div>
                 </div>
               </div>
 
               {/* Paragraf Deskripsi */}
-              <div className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed text-justify space-y-2">
-                <p>
-                  <strong className="text-slate-900 dark:text-white font-bold">DESKRIPSI : </strong>
-                  {displayDescription}
-                </p>
-              </div>
+              {displayDescription && (
+                <div className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed text-justify space-y-2">
+                  <p>
+                    <strong className="text-slate-900 dark:text-white font-bold uppercase">
+                      {descLabel} :{" "}
+                    </strong>
+                    {displayDescription}
+                  </p>
+                </div>
+              )}
 
               {/* Footer Tombol KEMBALI + RFQ */}
               <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3">
@@ -183,17 +295,17 @@ export default function VariantModalSpecTable({
                   onClick={() => setIsModalOpen(false)}
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-2 rounded-full border border-slate-700 dark:border-slate-400 text-slate-800 dark:text-slate-100 font-bold text-xs tracking-wider uppercase hover:bg-slate-900 hover:text-white dark:hover:bg-white dark:hover:text-slate-900 transition-all cursor-pointer active:scale-95"
                 >
-                  <span>◀</span> KEMBALI
+                  <span>◀</span> {backLabel}
                 </button>
 
                 <a
-                  href={getWhatsAppProductUrl(cleanTitle)}
+                  href={getWhatsAppProductUrl(cleanTitle, lang)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-xs hover:shadow transition-all"
                 >
                   <PhoneCall className="w-3.5 h-3.5" />
-                  Minta Penawaran (RFQ)
+                  {rfqLabel}
                 </a>
               </div>
             </div>
