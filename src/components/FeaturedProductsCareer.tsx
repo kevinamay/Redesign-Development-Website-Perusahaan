@@ -39,12 +39,14 @@ export default function FeaturedProductsCareer() {
 
   const t = {
     id: {
-      badge: "SHOWCASE PRODUK FAVORIT",
       heading: "Eksplorasi Produk Unggulan Terpopuler",
       subheading:
         "Geser untuk melihat rangkaian produk pilihan utama yang paling banyak dipesan oleh ribuan mitra industri di seluruh Indonesia.",
       allProducts: "Katalog Lengkap",
       rfq: "Pesan / RFQ",
+      dimensiLabel: "Dimensi:",
+      bebanStatisLabel: "Beban Statis:",
+      kapasitasLabel: "Kapasitas:",
       careerEyebrow: "REKRUTMEN & TALENTA",
       careerHeading: "Peluang Karir di Industri Manufaktur",
       careerDesc:
@@ -52,12 +54,14 @@ export default function FeaturedProductsCareer() {
       careerBtn: "Kirim Berkas Lamaran",
     },
     en: {
-      badge: "FAVORITE PRODUCTS SHOWCASE",
       heading: "Discover Our Most Demanded Industrial Products",
       subheading:
         "Swipe to explore our flagship items trusted by manufacturing, supply-chain, and retail partners nationwide.",
       allProducts: "Full Catalog",
       rfq: "Request Quote",
+      dimensiLabel: "Dimensions:",
+      bebanStatisLabel: "Static Load:",
+      kapasitasLabel: "Capacity:",
       careerEyebrow: "CAREERS & TALENT",
       careerHeading: "Join Our Manufacturing Operations",
       careerDesc:
@@ -65,12 +69,14 @@ export default function FeaturedProductsCareer() {
       careerBtn: "Submit Application",
     },
     zh: {
-      badge: "核心热销产品巡礼",
       heading: "探索工业级高需求热销产品全矩阵",
       subheading:
         "左右滑动浏览受到全国各大型物流、仓储与农业客户高度认可的代表性注塑与吹塑产品。",
       allProducts: "完整产品目录",
       rfq: "询价咨询",
+      dimensiLabel: "外形尺寸:",
+      bebanStatisLabel: "静载负荷:",
+      kapasitasLabel: "容量规格:",
       careerEyebrow: "人才与招聘",
       careerHeading: "加入亚洲塑料现代工业制造团队",
       careerDesc:
@@ -78,12 +84,14 @@ export default function FeaturedProductsCareer() {
       careerBtn: "发送求职简历",
     },
   }[lang] || {
-    badge: "SHOWCASE PRODUK FAVORIT",
     heading: "Eksplorasi Produk Unggulan Terpopuler",
     subheading:
       "Geser untuk melihat rangkaian produk pilihan utama yang paling banyak dipesan oleh ribuan mitra industri di seluruh Indonesia.",
     allProducts: "Katalog Lengkap",
     rfq: "Pesan / RFQ",
+    dimensiLabel: "Dimensi:",
+    bebanStatisLabel: "Beban Statis:",
+    kapasitasLabel: "Kapasitas:",
     careerEyebrow: "REKRUTMEN & TALENTA",
     careerHeading: "Peluang Karir di Industri Manufaktur",
     careerDesc:
@@ -181,13 +189,13 @@ export default function FeaturedProductsCareer() {
                 <div className="mt-3 bg-slate-50 dark:bg-slate-800/60 p-2.5 rounded-xl border border-slate-100 dark:border-slate-800 text-[11px] text-slate-700 dark:text-slate-300 space-y-1">
                   {p.specs.dimensions && (
                     <div className="flex justify-between">
-                      <span className="text-slate-400">Dimensi:</span>
+                      <span className="text-slate-400">{t.dimensiLabel}</span>
                       <span className="font-semibold">{p.specs.dimensions}</span>
                     </div>
                   )}
                   {p.specs.loadStatic && (
                     <div className="flex justify-between">
-                      <span className="text-slate-400">Beban Statis:</span>
+                      <span className="text-slate-400">{t.bebanStatisLabel}</span>
                       <span className="font-semibold text-emerald-600 dark:text-emerald-400">
                         {p.specs.loadStatic}
                       </span>
@@ -195,7 +203,7 @@ export default function FeaturedProductsCareer() {
                   )}
                   {p.specs.capacity && (
                     <div className="flex justify-between">
-                      <span className="text-slate-400">Kapasitas:</span>
+                      <span className="text-slate-400">{t.kapasitasLabel}</span>
                       <span className="font-semibold">{p.specs.capacity}</span>
                     </div>
                   )}
@@ -229,6 +237,7 @@ export default function FeaturedProductsCareer() {
             src="/images/career-handshake.jpg"
             alt="Asia Plastik Careers"
             fill
+            sizes="(max-width: 768px) 100vw, 320px"
             className="object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-white dark:to-slate-900/90 hidden md:block" />

@@ -23,7 +23,6 @@ export default function VariantModalSpecTable({
   deskripsi,
   imagePath,
   subtitle,
-  badges,
 }: ProductVariantProps) {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const { lang } = useLanguage();

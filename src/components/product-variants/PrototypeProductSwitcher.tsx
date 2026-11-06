@@ -1,16 +1,12 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import {
   ChevronLeft,
   ChevronRight,
-  Layers,
   Sparkles,
-  Eye,
-  SlidersHorizontal,
   X,
-  Maximize2,
   ExternalLink,
 } from "lucide-react";
 import Link from "next/link";
@@ -36,26 +32,29 @@ export function PrototypeProductSwitcher({
   const activeIndex = currentIndex >= 0 ? currentIndex : 2; // default to clean-corporate
   const activeMeta = PRODUCT_VARIANTS_META[activeIndex];
 
-  const navigateToVariant = (key: ProductCardVariantKey) => {
-    if (onVariantChange) {
-      onVariantChange(key);
-    }
-    const params = new URLSearchParams(searchParams.toString());
-    params.set("variant", key);
-    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
-  };
+  const navigateToVariant = useCallback(
+    (key: ProductCardVariantKey) => {
+      if (onVariantChange) {
+        onVariantChange(key);
+      }
+      const params = new URLSearchParams(searchParams.toString());
+      params.set("variant", key);
+      router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+    },
+    [onVariantChange, pathname, router, searchParams]
+  );
 
-  const handlePrev = () => {
+  const handlePrev = useCallback(() => {
     const prevIdx =
       (activeIndex - 1 + PRODUCT_VARIANTS_META.length) %
       PRODUCT_VARIANTS_META.length;
     navigateToVariant(PRODUCT_VARIANTS_META[prevIdx].key);
-  };
+  }, [activeIndex, navigateToVariant]);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     const nextIdx = (activeIndex + 1) % PRODUCT_VARIANTS_META.length;
     navigateToVariant(PRODUCT_VARIANTS_META[nextIdx].key);
-  };
+  }, [activeIndex, navigateToVariant]);
 
   // Keyboard navigation: Left/Right arrows
   useEffect(() => {
@@ -80,7 +79,7 @@ export function PrototypeProductSwitcher({
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [activeIndex]);
+  }, [handleNext, handlePrev]);
 
   if (isMinimized) {
     return (

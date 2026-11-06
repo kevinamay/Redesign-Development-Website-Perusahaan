@@ -1,14 +1,12 @@
 "use client";
 
-import React, { Suspense, useState, useEffect } from "react";
+import React, { Suspense, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { resolveCareerVariantKey, CareerVariantKey } from "./types";
-import { PrototypeCareerSwitcher } from "./PrototypeCareerSwitcher";
-import Variant1GridCompactDark from "./Variant1GridCompactDark";
-import Variant2CarouselRibbon from "./Variant2CarouselRibbon";
-import Variant3BentoSplit from "./Variant3BentoSplit";
-import Variant4TabsGlass from "./Variant4TabsGlass";
-import Variant5EnterpriseSpec from "./Variant5EnterpriseSpec";
+import {
+  CAREER_VARIANT_COMPONENTS,
+  PrototypeCareerSwitcher,
+} from "./index";
 
 interface FavoriteProductsCareerSectionProps {
   initialVariant?: CareerVariantKey;
@@ -19,41 +17,25 @@ function FavoriteCareerContent({
 }: FavoriteProductsCareerSectionProps) {
   const searchParams = useSearchParams();
   const variantParam = searchParams.get("variant");
-  const [selectedVariant, setSelectedVariant] = useState<CareerVariantKey>(
-    initialVariant || resolveCareerVariantKey(variantParam)
-  );
+  const [overrideVariant, setOverrideVariant] = useState<CareerVariantKey | null>(null);
 
-  useEffect(() => {
-    if (variantParam) {
-      setSelectedVariant(resolveCareerVariantKey(variantParam));
-    }
-  }, [variantParam]);
+  const selectedVariant =
+    overrideVariant ||
+    (variantParam ? resolveCareerVariantKey(variantParam) : initialVariant || "1");
 
-  const renderVariant = () => {
-    switch (selectedVariant) {
-      case "2":
-        return <Variant2CarouselRibbon />;
-      case "3":
-        return <Variant3BentoSplit />;
-      case "4":
-        return <Variant4TabsGlass />;
-      case "5":
-        return <Variant5EnterpriseSpec />;
-      case "1":
-      default:
-        return <Variant1GridCompactDark />;
-    }
-  };
+  const ActiveVariantComponent =
+    CAREER_VARIANT_COMPONENTS[selectedVariant] ||
+    CAREER_VARIANT_COMPONENTS["1"];
 
   return (
     <div className="relative w-full">
       {/* 1. Komponen Desain Aktif */}
-      {renderVariant()}
+      <ActiveVariantComponent />
 
       {/* 2. Floating Prototype Switcher */}
       <PrototypeCareerSwitcher
         currentVariant={selectedVariant}
-        onSelectVariant={(key) => setSelectedVariant(key)}
+        onSelectVariant={(key) => setOverrideVariant(key)}
       />
     </div>
   );
@@ -66,7 +48,7 @@ export default function FavoriteProductsCareerSection(
     <Suspense
       fallback={
         <div className="w-full py-16 flex items-center justify-center">
-          <Variant1GridCompactDark />
+          <div className="w-8 h-8 rounded-full border-2 border-blue-600 border-t-transparent animate-spin" />
         </div>
       }
     >

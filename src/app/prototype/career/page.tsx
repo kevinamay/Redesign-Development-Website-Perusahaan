@@ -3,22 +3,16 @@
 import React, { Suspense, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import {
   CAREER_VARIANTS_META,
   CareerVariantKey,
   resolveCareerVariantKey,
 } from "@/components/featured-career-variants/types";
 import {
-  Variant1GridCompactDark,
-  Variant2CarouselRibbon,
-  Variant3BentoSplit,
-  Variant4TabsGlass,
-  Variant5EnterpriseSpec,
+  CAREER_VARIANT_COMPONENTS,
   PrototypeCareerSwitcher,
 } from "@/components/featured-career-variants";
-import { Sparkles, Layers, ArrowLeft, CheckCircle2 } from "lucide-react";
+import { Sparkles, ArrowLeft } from "lucide-react";
 
 function CareerPrototypeContent() {
   const searchParams = useSearchParams();
@@ -30,19 +24,8 @@ function CareerPrototypeContent() {
     CAREER_VARIANTS_META[0];
 
   const renderVariant = (key: CareerVariantKey) => {
-    switch (key) {
-      case "2":
-        return <Variant2CarouselRibbon />;
-      case "3":
-        return <Variant3BentoSplit />;
-      case "4":
-        return <Variant4TabsGlass />;
-      case "5":
-        return <Variant5EnterpriseSpec />;
-      case "1":
-      default:
-        return <Variant1GridCompactDark />;
-    }
+    const Component = CAREER_VARIANT_COMPONENTS[key] || CAREER_VARIANT_COMPONENTS["1"];
+    return <Component />;
   };
 
   return (

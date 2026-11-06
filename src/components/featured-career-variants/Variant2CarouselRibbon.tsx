@@ -10,7 +10,6 @@ import {
   ChevronRight,
   PhoneCall,
   Briefcase,
-  Layers,
 } from "lucide-react";
 import { companyConfig } from "@/data/companyConfig";
 import { useLanguage } from "@/data/translations";
@@ -40,7 +39,6 @@ export default function Variant2CarouselRibbon() {
 
   const t = {
     id: {
-      badge: "SHOWCASE PRODUK FAVORIT",
       heading: "Eksplorasi Produk Unggulan Terpopuler",
       subheading:
         "Geser untuk melihat rangkaian produk pilihan utama yang paling banyak dipesan oleh ribuan mitra industri di seluruh Indonesia.",
@@ -52,7 +50,6 @@ export default function Variant2CarouselRibbon() {
       hiringBtn: "Kirim CV",
     },
     en: {
-      badge: "FAVORITE PRODUCTS SHOWCASE",
       heading: "Discover Our Most Demanded Industrial Products",
       subheading:
         "Swipe to explore our flagship items trusted by manufacturing, supply-chain, and retail partners nationwide.",
@@ -64,7 +61,6 @@ export default function Variant2CarouselRibbon() {
       hiringBtn: "Submit CV",
     },
     zh: {
-      badge: "核心热销产品巡礼",
       heading: "探索工业级高需求热销产品全矩阵",
       subheading:
         "左右滑动浏览受到全国各大型物流、仓储与农业客户高度认可的代表性注塑与吹塑产品。",
@@ -76,7 +72,6 @@ export default function Variant2CarouselRibbon() {
       hiringBtn: "投递简历",
     },
   }[lang] || {
-    badge: "SHOWCASE PRODUK FAVORIT",
     heading: "Eksplorasi Produk Unggulan Terpopuler",
     subheading:
       "Geser untuk melihat rangkaian produk pilihan utama yang paling banyak dipesan oleh ribuan mitra industri di seluruh Indonesia.",

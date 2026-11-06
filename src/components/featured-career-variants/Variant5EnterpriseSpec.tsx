@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Mail, ArrowRight, ShieldCheck, PhoneCall, Cpu, Users, Building2 } from "lucide-react";
+import { Mail, ArrowRight, PhoneCall, Cpu, Users } from "lucide-react";
 import { companyConfig } from "@/data/companyConfig";
 import { useLanguage } from "@/data/translations";
 import { FEATURED_PRODUCTS } from "./types";

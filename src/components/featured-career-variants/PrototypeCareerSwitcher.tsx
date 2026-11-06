@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import Link from "next/link";
 import {
@@ -33,24 +33,30 @@ export function PrototypeCareerSwitcher({
     CAREER_VARIANTS_META.find((v) => v.key === currentVariant) ||
     CAREER_VARIANTS_META[0];
 
-  const handleSelect = (key: CareerVariantKey) => {
-    if (onSelectVariant) {
-      onSelectVariant(key);
-    }
-    const params = new URLSearchParams(searchParams.toString());
-    params.set("variant", key);
-    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
-  };
+  const handleSelect = useCallback(
+    (key: CareerVariantKey) => {
+      if (onSelectVariant) {
+        onSelectVariant(key);
+      }
+      const params = new URLSearchParams(searchParams.toString());
+      params.set("variant", key);
+      router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+    },
+    [onSelectVariant, searchParams, pathname, router]
+  );
 
-  const cycleVariant = (direction: "prev" | "next") => {
-    const keys: CareerVariantKey[] = ["1", "2", "3", "4", "5"];
-    const currentIndex = keys.indexOf(currentVariant);
-    let nextIndex =
-      direction === "next" ? currentIndex + 1 : currentIndex - 1;
-    if (nextIndex < 0) nextIndex = keys.length - 1;
-    if (nextIndex >= keys.length) nextIndex = 0;
-    handleSelect(keys[nextIndex]);
-  };
+  const cycleVariant = useCallback(
+    (direction: "prev" | "next") => {
+      const keys: CareerVariantKey[] = ["1", "2", "3", "4", "5"];
+      const currentIndex = keys.indexOf(currentVariant);
+      let nextIndex =
+        direction === "next" ? currentIndex + 1 : currentIndex - 1;
+      if (nextIndex < 0) nextIndex = keys.length - 1;
+      if (nextIndex >= keys.length) nextIndex = 0;
+      handleSelect(keys[nextIndex]);
+    },
+    [currentVariant, handleSelect]
+  );
 
   // Keyboard shortcut: Panah Kiri dan Panah Kanan
   useEffect(() => {
@@ -72,7 +78,7 @@ export function PrototypeCareerSwitcher({
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [currentVariant]);
+  }, [cycleVariant]);
 
   if (isCollapsed) {
     return (

@@ -11,8 +11,6 @@ import {
   Plane,
 } from "lucide-react";
 import { footerData } from "@/data/homeData";
-import { useLanguage } from "@/data/translations";
-import { catalogUiTranslations } from "@/data/catalogTranslations";
 import { ProductVariantProps } from "./types";
 
 export default function Variant3TabbedDeck({
@@ -25,8 +23,6 @@ export default function Variant3TabbedDeck({
 }: ProductVariantProps) {
   const [activeTab, setActiveTab] = useState<"summary" | "specs" | "apps">("summary");
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
-  const { lang } = useLanguage();
-  const ui = catalogUiTranslations[lang] || catalogUiTranslations.id;
   const isPng = imagePath.toLowerCase().endsWith(".png");
 
   const getWhatsAppLink = (productTitle: string) => {

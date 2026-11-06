@@ -2,10 +2,8 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { Ruler, Weight, ShieldCheck, PhoneCall } from "lucide-react";
+import { ShieldCheck, PhoneCall } from "lucide-react";
 import { footerData } from "@/data/homeData";
-import { useLanguage } from "@/data/translations";
-import { catalogUiTranslations } from "@/data/catalogTranslations";
 import { ProductVariantProps } from "./types";
 
 export default function VariantCleanCorporate({
@@ -17,8 +15,6 @@ export default function VariantCleanCorporate({
   subtitle,
 }: ProductVariantProps) {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
-  const { lang } = useLanguage();
-  const ui = catalogUiTranslations[lang] || catalogUiTranslations.id;
   const isPng = imagePath.toLowerCase().endsWith(".png");
 
   const getWhatsAppLink = (productTitle: string) => {

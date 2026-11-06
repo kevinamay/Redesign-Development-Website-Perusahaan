@@ -17,6 +17,7 @@ import {
   VariantModalSpecTable,
   PrototypeProductSwitcher,
 } from "@/components/product-variants";
+import type { ProductVariantProps } from "@/components/product-variants/types";
 
 // Sample test products
 const sampleProducts = [
@@ -66,7 +67,7 @@ function ProductPrototypeContent() {
 
   const variantMap: Record<
     ProductCardVariantKey,
-    React.ComponentType<any>
+    React.ComponentType<ProductVariantProps>
   > = {
     "lightbox-modal": VariantLightboxModal,
     "modal-spec-table": VariantModalSpecTable,

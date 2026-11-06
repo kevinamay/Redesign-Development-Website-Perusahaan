@@ -4,8 +4,6 @@ import React from "react";
 import Image from "next/image";
 import { CheckCircle2, PhoneCall } from "lucide-react";
 import { footerData } from "@/data/homeData";
-import { useLanguage } from "@/data/translations";
-import { catalogUiTranslations } from "@/data/catalogTranslations";
 import { ProductVariantProps } from "./types";
 
 export default function VariantValueFocus({
@@ -16,8 +14,6 @@ export default function VariantValueFocus({
   imagePath,
   subtitle,
 }: ProductVariantProps) {
-  const { lang } = useLanguage();
-  const ui = catalogUiTranslations[lang] || catalogUiTranslations.id;
   const isPng = imagePath.toLowerCase().endsWith(".png");
 
   const getWhatsAppLink = (productTitle: string) => {
