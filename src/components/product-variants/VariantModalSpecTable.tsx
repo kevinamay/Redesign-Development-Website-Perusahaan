@@ -14,7 +14,7 @@ import { ProductVariantProps } from "./types";
 /**
  * 9-B: Technical Spec-Sheet Modal (Engineering & Procurement Standard)
  * Menampilkan lembar spesifikasi teknis rapi terstruktur (tabel data pabrik).
- * Menggunakan 1 foto bersih produk tanpa slider paksaan dengan dukungan i18n penuh.
+ * Menggunakan 1 foto produk beresolusi tinggi dengan dukungan i18n penuh.
  */
 export default function VariantModalSpecTable({
   title,
