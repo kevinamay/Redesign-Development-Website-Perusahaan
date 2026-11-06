@@ -50,15 +50,8 @@ function subscribeTheme(callback: () => void) {
 
 function getThemeSnapshot(): "light" | "dark" {
   if (typeof window === "undefined") return "light";
-  const isMobile = window.innerWidth < 640;
-  if (isMobile) {
-    // Mode HP: Otomatis mengikuti tema bawaan HP
-    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-  }
-  // Mode Tablet / Desktop / Laptop: Mengikuti pilihan switch (localStorage)
   const stored = localStorage.getItem("theme");
-  if (stored === "dark" || stored === "light") return stored;
-  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  return stored === "dark" ? "dark" : "light";
 }
 
 function getServerSnapshot(): "light" | "dark" {

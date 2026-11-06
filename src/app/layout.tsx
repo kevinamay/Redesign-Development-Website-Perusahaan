@@ -68,24 +68,9 @@ export default function RootLayout({
             __html: `
               (function() {
                 try {
-                  var isMobile = window.innerWidth < 640;
-                  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                  var isDark = false;
-
-                  if (isMobile) {
-                    // Mode HP: 100% Otomatis mengikuti tema sistem perangkat HP (Dark/Light)
-                    isDark = prefersDark;
-                  } else {
-                    // Mode Desktop / Laptop / Tab / Tablet: Menghormati pilihan manual dari switch (localStorage)
-                    var saved = localStorage.getItem('theme');
-                    if (saved === 'dark') {
-                      isDark = true;
-                    } else if (saved === 'light') {
-                      isDark = false;
-                    } else {
-                      isDark = prefersDark;
-                    }
-                  }
+                  // Default Mode Terang (Light Mode)
+                  var saved = localStorage.getItem('theme');
+                  var isDark = saved === 'dark';
 
                   if (isDark) {
                     document.documentElement.classList.add('dark');

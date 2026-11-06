@@ -20,22 +20,9 @@ export function isMobileScreen(): boolean {
 export function applyAdaptiveTheme(): "light" | "dark" {
   if (typeof window === "undefined") return "light";
 
-  const isMobile = window.innerWidth < 640;
-  const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  let effectiveTheme: "light" | "dark" = "light";
-
-  if (isMobile) {
-    // Mode HP: Otomatis mengikuti tema HP
-    effectiveTheme = systemPrefersDark ? "dark" : "light";
-  } else {
-    // Mode Desktop / Laptop / Tab / Tablet: Menghormati pilihan manual dari switch (localStorage)
-    const stored = localStorage.getItem("theme");
-    if (stored === "dark" || stored === "light") {
-      effectiveTheme = stored;
-    } else {
-      effectiveTheme = systemPrefersDark ? "dark" : "light";
-    }
-  }
+  // Default adalah Mode Terang (Light Mode)
+  const stored = localStorage.getItem("theme");
+  const effectiveTheme: "light" | "dark" = stored === "dark" ? "dark" : "light";
 
   // Terapkan class .dark pada elemen <html>
   if (effectiveTheme === "dark") {

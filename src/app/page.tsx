@@ -5,7 +5,7 @@ import Hero from "@/components/Hero";
 import AboutPreview from "@/components/AboutPreview";
 import GlobalDistribution from "@/components/GlobalDistribution";
 import NewProduct from "@/components/NewProduct";
-import CareerBanner from "@/components/CareerBanner";
+import FeaturedProductsCareer from "@/components/FeaturedProductsCareer";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
@@ -34,8 +34,8 @@ export default function Home() {
         {/* 4. New Product Flagship Showcase (Bento-box style) */}
         <NewProduct />
 
-        {/* 5. Career / Recruitment Banner */}
-        <CareerBanner />
+        {/* 5. Produk Favorit & Career Compact Section (Eksplorasi Carousel + Loker Micro-Card) */}
+        <FeaturedProductsCareer />
       </main>
 
       {/* 6. Corporate Footer */}
