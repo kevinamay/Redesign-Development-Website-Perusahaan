@@ -133,8 +133,8 @@ export const translations: Record<Language, TranslationSchema> = {
     },
     hero: {
       badge: "MANUFACTURING & PACKAGING SOLUTIONS",
-      titleLines: ["PERUSAHAAN", "MANUFAKTUR", "PENGEMASAN"],
-      titleStart: "PERUSAHAAN MANUFAKTUR PENGEMASAN",
+      titleLines: ["PERUSAHAAN", "MANUFAKTUR", "KEMASAN"],
+      titleStart: "PERUSAHAAN MANUFAKTUR KEMASAN",
       titleHighlight: "PLASTIK",
       subtitle: "KAMI ADALAH AHLI DALAM INJECTION DAN BLOW MOLDING",
       primaryCta: "Lihat Produk Kami",
