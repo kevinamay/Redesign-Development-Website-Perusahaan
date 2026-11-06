@@ -14,3 +14,4 @@ export function getWhatsAppProductUrl(
   const message = encodeURIComponent(ui.whatsappMessage(productTitle));
   return `https://wa.me/${rawNumber}?text=${message}`;
 }
+

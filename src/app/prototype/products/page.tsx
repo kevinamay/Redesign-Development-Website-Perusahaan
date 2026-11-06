@@ -30,7 +30,6 @@ const sampleProducts = [
     subtitle:
       "Palet Plastik Standar Heavy Duty untuk Pergudangan, Ekspor, & Racking Otomasi",
     imagePath: "/images/product/Pallet/pallet-floating.png",
-    isPallet: true,
   },
   {
     id: "keranjang",
@@ -41,7 +40,6 @@ const sampleProducts = [
       "Keranjang Plastik Industri T-25 dari Asia Plastik adalah solusi ideal untuk kebutuhan penyimpanan dan distribusi dalam berbagai sektor industri. Terbuat dari bahan plastik berkualitas tinggi, keranjang ini kokoh, tahan lama, dan mampu menahan beban berat.",
     subtitle: "Wadah Logistik Berpori untuk Pergudangan & Industri Pangan",
     imagePath: "/images/product/Keranjang/keranjang-t25.png",
-    isPallet: false,
   },
 ];
 

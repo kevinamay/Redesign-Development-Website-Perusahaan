@@ -73,7 +73,6 @@ const palletProductData = {
   subtitle:
     "Palet Plastik Standar Heavy Duty untuk Pergudangan, Ekspor, & Racking Otomasi",
   imagePath: "/images/product/Pallet/pallet-floating.png",
-  isPallet: true,
 };
 
 // Pemetaan data produk per kategori
@@ -86,7 +85,6 @@ const categoryProductsMap: Record<
     deskripsi: string;
     imagePath: string;
     subtitle?: string;
-    isPallet?: boolean;
   }>
 > = {
   "pallet-industri": [palletProductData],

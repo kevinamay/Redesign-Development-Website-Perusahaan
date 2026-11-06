@@ -8,7 +8,6 @@ export interface SearchableProduct {
   deskripsi: string;
   imagePath: string;
   subtitle?: string;
-  isPallet?: boolean;
   categoryId: string;
   categoryName: string;
   categoryDisplayName: string;
