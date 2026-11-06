@@ -248,7 +248,7 @@ export default function FeaturedProductsCareer() {
             </p>
           </div>
 
-          <div className="shrink-0 flex flex-col items-start sm:items-end gap-1.5 w-full sm:w-auto">
+          <div className="shrink-0 w-full sm:w-auto">
             <a
               href={`mailto:${companyConfig.contact.recruitmentEmail}`}
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl font-bold text-xs shadow-md shadow-blue-600/25 transition-all cursor-pointer whitespace-nowrap"
@@ -257,9 +257,6 @@ export default function FeaturedProductsCareer() {
               <span>{t.careerBtn}</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </a>
-            <span className="text-[11px] text-slate-500 dark:text-slate-400 font-mono">
-              {companyConfig.contact.recruitmentEmail}
-            </span>
           </div>
         </div>
       </div>
