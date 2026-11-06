@@ -204,7 +204,7 @@ export default function VariantModalSpecTable({
       {/* 2. MODAL TABEL SPESIFIKASI TEKNIS LENGKAP (1 FOTO TUNGGAL) */}
       {isModalOpen && (
         <div
-          className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-xs animate-in fade-in-50 duration-150"
+          className="fixed inset-0 z-[9999] flex items-center justify-center p-3 sm:p-4 bg-slate-950/60 backdrop-blur-xs animate-in fade-in-50 duration-150"
           onClick={() => setIsModalOpen(false)}
         >
           <div
@@ -212,7 +212,7 @@ export default function VariantModalSpecTable({
             onClick={(e) => e.stopPropagation()}
           >
             {/* Foto Modal */}
-            <div className="relative w-full h-60 sm:h-72 bg-slate-50 dark:bg-slate-800/40 flex items-center justify-center p-6 border-b border-slate-100 dark:border-slate-800 select-none">
+            <div className="relative w-full h-56 sm:h-72 bg-slate-50 dark:bg-slate-800/40 flex items-center justify-center p-4 sm:p-6 border-b border-slate-100 dark:border-slate-800 select-none shrink-0">
               <div className="relative w-full h-full flex items-center justify-center">
                 <Image
                   src={imagePath}
@@ -229,15 +229,15 @@ export default function VariantModalSpecTable({
               <button
                 type="button"
                 onClick={() => setIsModalOpen(false)}
-                className="absolute top-3 right-3 w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-900 dark:hover:text-white flex items-center justify-center cursor-pointer transition-colors"
+                className="absolute top-3 right-3 w-9 h-9 sm:w-8 sm:h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-900 dark:hover:text-white flex items-center justify-center cursor-pointer transition-all active:scale-95"
                 aria-label="Tutup"
               >
-                <X className="w-4 h-4" />
+                <X className="w-5 h-5 sm:w-4 sm:h-4" />
               </button>
             </div>
 
             {/* Isi Detail */}
-            <div className="p-6 sm:p-7 space-y-4 overflow-y-auto">
+            <div className="p-5 sm:p-7 space-y-4 overflow-y-auto min-h-0">
               <div className="text-center pb-1">
                 <h2
                   suppressHydrationWarning

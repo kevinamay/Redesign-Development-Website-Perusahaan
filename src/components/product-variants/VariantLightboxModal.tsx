@@ -120,7 +120,7 @@ export default function VariantLightboxModal({
         className="bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl border border-slate-200/90 dark:border-slate-800 shadow-sm hover:shadow-md transition-all duration-300 w-full overflow-hidden group cursor-pointer focus:outline-hidden focus:ring-2 focus:ring-blue-500"
       >
         {/* Kontainer Foto Produk Tunggal */}
-        <div className="relative w-full h-64 sm:h-80 md:h-96 bg-slate-50/70 dark:bg-slate-800/40 flex items-center justify-center p-6 select-none border-b border-slate-100 dark:border-slate-800/60">
+        <div className="relative w-full h-64 sm:h-80 md:h-96 bg-slate-50/70 dark:bg-slate-800/40 flex items-center justify-center p-4 sm:p-6 select-none border-b border-slate-100 dark:border-slate-800/60">
           <div className="relative w-full h-full flex items-center justify-center">
             <Image
               src={imagePath}
@@ -142,7 +142,7 @@ export default function VariantLightboxModal({
         </div>
 
         {/* Informasi Produk Ringkas */}
-        <div className="p-6 sm:p-8 space-y-3.5">
+        <div className="p-5 sm:p-8 space-y-3.5">
           {/* Badges / Tag Kategori */}
           {badges && badges.length > 0 && (
             <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
@@ -222,15 +222,15 @@ export default function VariantLightboxModal({
           role="dialog"
           aria-modal="true"
           aria-label={cleanTitle}
-          className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm animate-in fade-in duration-200"
+          className="fixed inset-0 z-[9999] flex items-center justify-center p-3 sm:p-4 bg-slate-950/70 backdrop-blur-sm animate-in fade-in duration-200"
           onClick={() => setIsModalOpen(false)}
         >
           <div
-            className="relative w-full max-w-xl bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden max-h-[92vh] flex flex-col animate-in zoom-in-95 duration-200"
+            className="relative w-full max-w-xl bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden max-h-[92vh] flex flex-col animate-in zoom-in-95 duration-200"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Foto Produk di Atas Modal */}
-            <div className="relative w-full h-64 sm:h-80 bg-slate-50/70 dark:bg-slate-800/40 flex items-center justify-center p-6 select-none border-b border-slate-100 dark:border-slate-800/60">
+            <div className="relative w-full h-56 sm:h-72 md:h-80 bg-slate-50/70 dark:bg-slate-800/40 flex items-center justify-center p-4 sm:p-6 select-none border-b border-slate-100 dark:border-slate-800/60 shrink-0">
               <div className="relative w-full h-full flex items-center justify-center">
                 <Image
                   src={imagePath}
@@ -248,15 +248,15 @@ export default function VariantLightboxModal({
               <button
                 type="button"
                 onClick={() => setIsModalOpen(false)}
-                className="absolute top-3 right-3 w-8 h-8 rounded-full bg-slate-900/60 hover:bg-slate-900 text-white flex items-center justify-center cursor-pointer transition-all"
+                className="absolute top-3 right-3 w-9 h-9 sm:w-8 sm:h-8 rounded-full bg-slate-900/60 hover:bg-slate-900 text-white flex items-center justify-center cursor-pointer transition-all active:scale-95"
                 aria-label={closeLabel}
               >
-                <X className="w-4 h-4" />
+                <X className="w-5 h-5 sm:w-4 sm:h-4" />
               </button>
             </div>
 
             {/* Konten Detail Modal */}
-            <div className="p-6 sm:p-8 space-y-5 overflow-y-auto">
+            <div className="p-5 sm:p-8 space-y-4 sm:space-y-5 overflow-y-auto min-h-0">
               {/* Badges Modal */}
               {badges && badges.length > 0 && (
                 <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2">
