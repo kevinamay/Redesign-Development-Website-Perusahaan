@@ -101,10 +101,13 @@ export default function VariantModalSpecTable({
     };
     if (isModalOpen) {
       const originalOverflow = document.body.style.overflow;
+      const originalTouchAction = document.body.style.touchAction;
       document.body.style.overflow = "hidden";
+      document.body.style.touchAction = "none";
       window.addEventListener("keydown", handleKeyDown);
       return () => {
         document.body.style.overflow = originalOverflow;
+        document.body.style.touchAction = originalTouchAction;
         window.removeEventListener("keydown", handleKeyDown);
       };
     }
@@ -204,7 +207,7 @@ export default function VariantModalSpecTable({
       {/* 2. MODAL TABEL SPESIFIKASI TEKNIS LENGKAP (1 FOTO TUNGGAL) */}
       {isModalOpen && (
         <div
-          className="fixed inset-0 z-[9999] flex items-center justify-center p-3 sm:p-4 bg-slate-950/60 backdrop-blur-xs animate-in fade-in-50 duration-150"
+          className="fixed inset-0 z-[9999] flex items-center justify-center p-3 sm:p-4 bg-slate-950/60 backdrop-blur-xs overscroll-contain animate-in fade-in-50 duration-150"
           onClick={() => setIsModalOpen(false)}
         >
           <div
@@ -212,7 +215,7 @@ export default function VariantModalSpecTable({
             onClick={(e) => e.stopPropagation()}
           >
             {/* Foto Modal */}
-            <div className="relative w-full h-56 sm:h-72 bg-slate-50 dark:bg-slate-800/40 flex items-center justify-center p-4 sm:p-6 border-b border-slate-100 dark:border-slate-800 select-none shrink-0">
+            <div className="relative w-full h-48 sm:h-64 bg-slate-50 dark:bg-slate-800/40 flex items-center justify-center p-4 sm:p-6 border-b border-slate-100 dark:border-slate-800 select-none shrink-0">
               <div className="relative w-full h-full flex items-center justify-center">
                 <Image
                   src={imagePath}
@@ -229,7 +232,7 @@ export default function VariantModalSpecTable({
               <button
                 type="button"
                 onClick={() => setIsModalOpen(false)}
-                className="absolute top-3 right-3 w-9 h-9 sm:w-8 sm:h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-900 dark:hover:text-white flex items-center justify-center cursor-pointer transition-all active:scale-95"
+                className="absolute top-2.5 right-2.5 sm:top-3 sm:right-3 w-11 h-11 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-900 dark:hover:text-white flex items-center justify-center cursor-pointer transition-all active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 aria-label="Tutup"
               >
                 <X className="w-5 h-5 sm:w-4 sm:h-4" />
@@ -237,7 +240,10 @@ export default function VariantModalSpecTable({
             </div>
 
             {/* Isi Detail */}
-            <div className="p-5 sm:p-7 space-y-4 overflow-y-auto min-h-0">
+            <div
+              className="p-5 sm:p-7 space-y-4 overflow-y-auto overscroll-contain min-h-0"
+              style={{ WebkitOverflowScrolling: "touch" }}
+            >
               <div className="text-center pb-1">
                 <h2
                   suppressHydrationWarning
@@ -299,12 +305,12 @@ export default function VariantModalSpecTable({
                 </div>
               )}
 
-              {/* Footer Tombol KEMBALI + RFQ */}
+              {/* Footer Tombol KEMBALI + RFQ (Touch target >= 44px) */}
               <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3">
                 <button
                   type="button"
                   onClick={() => setIsModalOpen(false)}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-2 rounded-full border border-slate-700 dark:border-slate-400 text-slate-800 dark:text-slate-100 font-bold text-xs tracking-wider uppercase hover:bg-slate-900 hover:text-white dark:hover:bg-white dark:hover:text-slate-900 transition-all cursor-pointer active:scale-95"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 min-h-[44px] px-8 py-3 rounded-full border border-slate-700 dark:border-slate-400 text-slate-800 dark:text-slate-100 font-bold text-xs sm:text-sm tracking-wider uppercase hover:bg-slate-900 hover:text-white dark:hover:bg-white dark:hover:text-slate-900 transition-all cursor-pointer active:scale-95"
                 >
                   <span>◀</span> {backLabel}
                 </button>
@@ -313,9 +319,9 @@ export default function VariantModalSpecTable({
                   href={getWhatsAppProductUrl(cleanTitle, lang)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-xs hover:shadow transition-all"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 min-h-[44px] px-6 py-3 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm shadow-xs hover:shadow transition-all active:scale-95"
                 >
-                  <PhoneCall className="w-3.5 h-3.5" />
+                  <PhoneCall className="w-4 h-4" />
                   {rfqLabel}
                 </a>
               </div>

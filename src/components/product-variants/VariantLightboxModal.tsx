@@ -80,7 +80,7 @@ export default function VariantLightboxModal({
     return rawLabel;
   };
 
-  // Tutup modal dengan Escape & kunci scroll halaman belakang
+  // Tutup modal dengan Escape & kunci scroll halaman belakang (termasuk iOS Safari touch)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") setIsModalOpen(false);
@@ -88,10 +88,13 @@ export default function VariantLightboxModal({
 
     if (isModalOpen) {
       const originalOverflow = document.body.style.overflow;
+      const originalTouchAction = document.body.style.touchAction;
       document.body.style.overflow = "hidden";
+      document.body.style.touchAction = "none";
       window.addEventListener("keydown", handleKeyDown);
       return () => {
         document.body.style.overflow = originalOverflow;
+        document.body.style.touchAction = originalTouchAction;
         window.removeEventListener("keydown", handleKeyDown);
       };
     }
@@ -222,15 +225,15 @@ export default function VariantLightboxModal({
           role="dialog"
           aria-modal="true"
           aria-label={cleanTitle}
-          className="fixed inset-0 z-[9999] flex items-center justify-center p-3 sm:p-4 bg-slate-950/70 backdrop-blur-sm animate-in fade-in duration-200"
+          className="fixed inset-0 z-[9999] flex items-center justify-center p-3 sm:p-4 bg-slate-950/70 backdrop-blur-sm overscroll-contain animate-in fade-in duration-200"
           onClick={() => setIsModalOpen(false)}
         >
           <div
             className="relative w-full max-w-xl bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden max-h-[92vh] flex flex-col animate-in zoom-in-95 duration-200"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Foto Produk di Atas Modal */}
-            <div className="relative w-full h-56 sm:h-72 md:h-80 bg-slate-50/70 dark:bg-slate-800/40 flex items-center justify-center p-4 sm:p-6 select-none border-b border-slate-100 dark:border-slate-800/60 shrink-0">
+            {/* Foto Produk di Atas Modal (Proporsional untuk layar hp pendek maupun lebar) */}
+            <div className="relative w-full h-48 sm:h-64 md:h-72 bg-slate-50/70 dark:bg-slate-800/40 flex items-center justify-center p-4 sm:p-6 select-none border-b border-slate-100 dark:border-slate-800/60 shrink-0">
               <div className="relative w-full h-full flex items-center justify-center">
                 <Image
                   src={imagePath}
@@ -244,19 +247,22 @@ export default function VariantLightboxModal({
                 />
               </div>
 
-              {/* Close Button X pojok kanan atas */}
+              {/* Close Button X: Target sentuh nyaman 44x44px standar mobile */}
               <button
                 type="button"
                 onClick={() => setIsModalOpen(false)}
-                className="absolute top-3 right-3 w-9 h-9 sm:w-8 sm:h-8 rounded-full bg-slate-900/60 hover:bg-slate-900 text-white flex items-center justify-center cursor-pointer transition-all active:scale-95"
+                className="absolute top-2.5 right-2.5 sm:top-3 sm:right-3 w-11 h-11 rounded-full bg-slate-900/60 hover:bg-slate-900 text-white flex items-center justify-center cursor-pointer transition-all active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 aria-label={closeLabel}
               >
                 <X className="w-5 h-5 sm:w-4 sm:h-4" />
               </button>
             </div>
 
-            {/* Konten Detail Modal */}
-            <div className="p-5 sm:p-8 space-y-4 sm:space-y-5 overflow-y-auto min-h-0">
+            {/* Konten Detail Modal (Smooth momentum scrolling untuk iOS Safari & Android) */}
+            <div
+              className="p-5 sm:p-8 space-y-4 sm:space-y-5 overflow-y-auto overscroll-contain min-h-0"
+              style={{ WebkitOverflowScrolling: "touch" }}
+            >
               {/* Badges Modal */}
               {badges && badges.length > 0 && (
                 <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2">
@@ -324,12 +330,12 @@ export default function VariantLightboxModal({
                 </div>
               )}
 
-              {/* Footer Modal: Tombol KEMBALI + WhatsApp / RFQ */}
+              {/* Footer Modal: Tombol KEMBALI + WhatsApp / RFQ (Touch target >= 44px) */}
               <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3">
                 <button
                   type="button"
                   onClick={() => setIsModalOpen(false)}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-2.5 rounded-full border-2 border-slate-700 dark:border-slate-400 text-slate-800 dark:text-slate-100 font-extrabold text-xs tracking-wider uppercase hover:bg-slate-900 hover:text-white dark:hover:bg-white dark:hover:text-slate-900 transition-all cursor-pointer active:scale-95 shadow-xs"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 min-h-[44px] px-8 py-3 rounded-full border-2 border-slate-700 dark:border-slate-400 text-slate-800 dark:text-slate-100 font-extrabold text-xs sm:text-sm tracking-wider uppercase hover:bg-slate-900 hover:text-white dark:hover:bg-white dark:hover:text-slate-900 transition-all cursor-pointer active:scale-95 shadow-xs"
                 >
                   <span>◀</span> {backLabel}
                 </button>
@@ -338,9 +344,9 @@ export default function VariantLightboxModal({
                   href={getWhatsAppProductUrl(cleanTitle, lang)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-sm hover:shadow transition-all"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 min-h-[44px] px-6 py-3 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm shadow-sm hover:shadow transition-all active:scale-95"
                 >
-                  <PhoneCall className="w-3.5 h-3.5" />
+                  <PhoneCall className="w-4 h-4" />
                   {rfqLabel}
                 </a>
               </div>
