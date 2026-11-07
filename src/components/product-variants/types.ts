@@ -17,6 +17,7 @@ export interface ProductVariantProps {
   bebanStatis?: string;
   kapasitas?: string;
   category?: string;
+  priority?: boolean;
 }
 
 export type ProductCardVariantKey =

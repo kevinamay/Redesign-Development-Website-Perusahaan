@@ -22,6 +22,7 @@ export default function VariantLightboxModal({
   bebanStatis,
   kapasitas,
   category,
+  priority = false,
 }: ProductVariantProps) {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const { lang } = useLanguage();
@@ -173,7 +174,7 @@ export default function VariantLightboxModal({
                 src={imagePath}
                 alt={cleanTitle}
                 fill
-                priority
+                priority={priority}
                 quality={95}
                 sizes="(max-width: 640px) 260px, 320px"
                 className={`object-contain transition-transform duration-500 group-hover:scale-105 ${

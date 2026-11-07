@@ -406,6 +406,7 @@ export default function ProductsPage() {
                         imagePath={p.imagePath}
                         subtitle={localized.subtitle || p.categorySubtitle}
                         category={p.categoryName}
+                        priority={idx === 0}
                         bebanStatis={p.title.includes("PALLET") ? "3.000 KG" : undefined}
                         badges={
                           p.categoryId === "pallet-industri" || p.title === "PALLET P SERIES"
@@ -468,7 +469,7 @@ export default function ProductsPage() {
               {/* Active Category Products List */}
               {activeProducts.length > 0 ? (
                 <div className="flex flex-col gap-6 sm:gap-8 lg:gap-12">
-                  {activeProducts.map((p) => {
+                  {activeProducts.map((p, idx) => {
                     const localized = getLocalizedProduct(p, lang);
                     return (
                       <ProductCard
@@ -480,6 +481,7 @@ export default function ProductsPage() {
                         imagePath={p.imagePath}
                         subtitle={localized.subtitle || activeCategory.subtitle}
                         category={activeCategory.name}
+                        priority={idx === 0}
                         bebanStatis={p.title.includes("PALLET") ? "3.000 KG" : undefined}
                         badges={
                           activeCategoryId === "pallet-industri" || p.title === "PALLET P SERIES"
