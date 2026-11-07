@@ -49,7 +49,6 @@ export default function VariantLightboxModal({
   // Inferred specs for ticket data sheet
   const isPallet = cleanTitle.toUpperCase().includes("PALLET");
   const displayBebanStatis = bebanStatis || (isPallet ? "3.000 KG" : undefined);
-  const displayKapasitas = kapasitas;
 
   // Multi-language UI labels
   const descLabel =
@@ -251,14 +250,14 @@ export default function VariantLightboxModal({
               </div>
             )}
 
-            {displayKapasitas && (
+            {kapasitas && (
               <div className="flex items-baseline justify-between gap-2">
                 <span className="text-slate-500 dark:text-slate-400 font-medium">
                   {capacityLabel}
                 </span>
                 <span className="flex-1 border-b border-dotted border-slate-200 dark:border-slate-800 mx-2" />
                 <span className="font-bold text-blue-600 dark:text-blue-400">
-                  {displayKapasitas}
+                  {kapasitas}
                 </span>
               </div>
             )}
@@ -356,7 +355,7 @@ export default function VariantLightboxModal({
               </div>
 
               {/* Spesifikasi Teknis */}
-              {(displayDimensi || displayBerat) && (
+              {(displayDimensi || displayBerat || displayBebanStatis || kapasitas) && (
                 <div className="space-y-1.5 text-xs sm:text-sm text-slate-800 dark:text-slate-200 bg-slate-50/60 dark:bg-slate-800/40 p-4 rounded-2xl border border-slate-100 dark:border-slate-800">
                   {displayDimensi && (
                     <p className="flex items-center gap-2">
@@ -372,6 +371,26 @@ export default function VariantLightboxModal({
                         {ui.specsLabels.weight} :
                       </span>
                       <span>{displayBerat}</span>
+                    </p>
+                  )}
+                  {displayBebanStatis && (
+                    <p className="flex items-center gap-2">
+                      <span className="font-bold text-slate-900 dark:text-white uppercase">
+                        {staticLoadLabel} :
+                      </span>
+                      <span className="font-bold text-emerald-600 dark:text-emerald-400">
+                        {displayBebanStatis}
+                      </span>
+                    </p>
+                  )}
+                  {kapasitas && (
+                    <p className="flex items-center gap-2">
+                      <span className="font-bold text-slate-900 dark:text-white uppercase">
+                        {capacityLabel} :
+                      </span>
+                      <span className="font-bold text-blue-600 dark:text-blue-400">
+                        {kapasitas}
+                      </span>
                     </p>
                   )}
                 </div>

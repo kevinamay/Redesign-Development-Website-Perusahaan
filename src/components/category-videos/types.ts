@@ -131,13 +131,13 @@ export const CATEGORY_VIDEO_VARIANTS_META: CategoryVideoVariantMeta[] = [
 export function resolveVideoVariantKey(
   param: string | null | undefined
 ): CategoryVideoVariantKey {
+  if (param === "1") return "1";
   if (param === "2") return "2";
   if (param === "3") return "3";
   if (param === "3-rev" || param === "3r" || param === "6") return "3-rev";
   if (param === "4") return "4";
-  if (param === "4-rev" || param === "4r" || param === "7") return "4-rev";
   if (param === "5") return "5";
-  return "1";
+  return "4-rev";
 }
 
 export interface VideoVariantProps {

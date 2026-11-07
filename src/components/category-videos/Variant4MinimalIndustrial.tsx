@@ -17,9 +17,9 @@ export default function Variant4MinimalIndustrial({ data }: VideoVariantProps) {
     <div
       className={`grid gap-5 sm:gap-6 ${
         videos.length === 1
-          ? "grid-cols-1 max-w-sm"
+          ? "grid-cols-1 max-w-sm mx-auto"
           : videos.length === 2
-          ? "grid-cols-1 sm:grid-cols-2 max-w-2xl"
+          ? "grid-cols-1 sm:grid-cols-2 max-w-2xl mx-auto"
           : "grid-cols-1 md:grid-cols-3"
       }`}
     >
