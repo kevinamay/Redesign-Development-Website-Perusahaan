@@ -145,12 +145,13 @@ export default function Variant2CarouselRibbon() {
               <span className="absolute top-3 left-3 px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase bg-blue-600 text-white shadow-xs z-10">
                 {p.badge.label}
               </span>
-              <div className="relative w-full h-full flex items-center justify-center">
+              <div className="relative w-full h-full max-w-[220px] max-h-[85%] flex items-center justify-center mx-auto">
                 <Image
                   src={p.imagePath}
                   alt={p.title}
                   fill
-                  sizes="320px"
+                  quality={95}
+                  sizes="260px"
                   className="object-contain group-hover:scale-105 transition-transform duration-300 drop-shadow-sm"
                 />
               </div>

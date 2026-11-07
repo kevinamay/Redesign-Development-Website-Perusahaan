@@ -132,14 +132,15 @@ export default function VariantModalSpecTable({
         onClick={() => setIsModalOpen(true)}
         className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xs hover:shadow-md transition-all duration-200 w-full overflow-hidden group cursor-pointer focus:outline-hidden focus:ring-2 focus:ring-blue-500"
       >
-        <div className="relative w-full h-64 sm:h-80 bg-slate-50/80 dark:bg-slate-800/40 flex items-center justify-center p-6 select-none border-b border-slate-100 dark:border-slate-800">
-          <div className="relative w-full h-full flex items-center justify-center">
+        <div className="relative w-full h-52 sm:h-60 md:h-64 bg-slate-50/80 dark:bg-slate-800/40 flex items-center justify-center p-5 sm:p-7 select-none border-b border-slate-100 dark:border-slate-800">
+          <div className="relative w-full h-full max-w-[280px] sm:max-w-[340px] md:max-w-[380px] max-h-[88%] flex items-center justify-center mx-auto">
             <Image
               src={imagePath}
               alt={cleanTitle}
               fill
               priority
-              sizes="(max-width: 640px) 100vw, 550px"
+              quality={95}
+              sizes="(max-width: 640px) 280px, (max-width: 1024px) 340px, 380px"
               className={`object-contain transition-transform duration-300 ${
                 isPng ? "drop-shadow-md group-hover:scale-105" : "mix-blend-multiply dark:mix-blend-normal"
               }`}
@@ -214,16 +215,17 @@ export default function VariantModalSpecTable({
             onClick={(e) => e.stopPropagation()}
           >
             {/* Foto Modal */}
-            <div className="relative w-full h-48 sm:h-64 bg-slate-50 dark:bg-slate-800/40 flex items-center justify-center p-4 sm:p-6 border-b border-slate-100 dark:border-slate-800 select-none shrink-0">
-              <div className="relative w-full h-full flex items-center justify-center">
+            <div className="relative w-full h-44 sm:h-56 md:h-60 bg-slate-50 dark:bg-slate-800/40 flex items-center justify-center p-4 sm:p-6 border-b border-slate-100 dark:border-slate-800 select-none shrink-0">
+              <div className="relative w-full h-full max-w-[300px] sm:max-w-[360px] max-h-[88%] flex items-center justify-center mx-auto">
                 <Image
                   src={imagePath}
                   alt={cleanTitle}
                   fill
                   priority
-                  sizes="(max-width: 640px) 100vw, 500px"
+                  quality={95}
+                  sizes="(max-width: 640px) 300px, 360px"
                   className={`object-contain ${
-                    isPng ? "drop-shadow-md scale-95" : "mix-blend-multiply dark:mix-blend-normal"
+                    isPng ? "drop-shadow-md" : "mix-blend-multiply dark:mix-blend-normal"
                   }`}
                 />
               </div>

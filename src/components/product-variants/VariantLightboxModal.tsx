@@ -122,18 +122,19 @@ export default function VariantLightboxModal({
         onClick={() => setIsModalOpen(true)}
         className="bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl border border-slate-200/90 dark:border-slate-800 shadow-sm hover:shadow-md transition-all duration-300 w-full overflow-hidden group cursor-pointer focus:outline-hidden focus:ring-2 focus:ring-blue-500"
       >
-        {/* Kontainer Foto Produk Tunggal */}
-        <div className="relative w-full h-64 sm:h-80 md:h-96 bg-slate-50/70 dark:bg-slate-800/40 flex items-center justify-center p-4 sm:p-6 select-none border-b border-slate-100 dark:border-slate-800/60">
-          <div className="relative w-full h-full flex items-center justify-center">
+        {/* Kontainer Foto Produk Tunggal: Ukuran proporsional & tajam tanpa peregangan berlebih */}
+        <div className="relative w-full h-52 sm:h-60 md:h-64 bg-slate-50/70 dark:bg-slate-800/40 flex items-center justify-center p-5 sm:p-7 select-none border-b border-slate-100 dark:border-slate-800/60">
+          <div className="relative w-full h-full max-w-[280px] sm:max-w-[340px] md:max-w-[380px] max-h-[88%] flex items-center justify-center mx-auto">
             <Image
               src={imagePath}
               alt={cleanTitle}
               fill
               priority
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              quality={95}
+              sizes="(max-width: 640px) 280px, (max-width: 1024px) 340px, 380px"
               className={`object-contain transition-all duration-300 ${
                 isPng
-                  ? "drop-shadow-md scale-100 group-hover:scale-105"
+                  ? "drop-shadow-md group-hover:scale-105"
                   : "mix-blend-multiply dark:mix-blend-normal"
               }`}
             />
@@ -233,16 +234,17 @@ export default function VariantLightboxModal({
             onClick={(e) => e.stopPropagation()}
           >
             {/* Foto Produk di Atas Modal (Proporsional untuk layar hp pendek maupun lebar) */}
-            <div className="relative w-full h-48 sm:h-64 md:h-72 bg-slate-50/70 dark:bg-slate-800/40 flex items-center justify-center p-4 sm:p-6 select-none border-b border-slate-100 dark:border-slate-800/60 shrink-0">
-              <div className="relative w-full h-full flex items-center justify-center">
+            <div className="relative w-full h-44 sm:h-56 md:h-60 bg-slate-50/70 dark:bg-slate-800/40 flex items-center justify-center p-4 sm:p-6 select-none border-b border-slate-100 dark:border-slate-800/60 shrink-0">
+              <div className="relative w-full h-full max-w-[300px] sm:max-w-[360px] max-h-[88%] flex items-center justify-center mx-auto">
                 <Image
                   src={imagePath}
                   alt={cleanTitle}
                   fill
                   priority
-                  sizes="(max-width: 640px) 100vw, 600px"
+                  quality={95}
+                  sizes="(max-width: 640px) 300px, 360px"
                   className={`object-contain ${
-                    isPng ? "drop-shadow-md scale-95" : "mix-blend-multiply dark:mix-blend-normal"
+                    isPng ? "drop-shadow-md" : "mix-blend-multiply dark:mix-blend-normal"
                   }`}
                 />
               </div>
