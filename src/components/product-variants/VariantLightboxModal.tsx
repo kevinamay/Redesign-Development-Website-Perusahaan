@@ -44,7 +44,6 @@ export default function VariantLightboxModal({
   const displayDimensi = localized.dimensi || dimensi;
   const displayBerat = localized.berat || berat;
   const displayDescription = localized.deskripsi || deskripsi;
-  const displaySubtitle = localized.subtitle || subtitle;
   const isPng = (imagePath || "").toLowerCase().endsWith(".png");
 
   // Inferred specs for ticket data sheet
@@ -154,29 +153,20 @@ export default function VariantLightboxModal({
         <div className="relative p-6 sm:p-8 bg-slate-50/70 dark:bg-slate-800/40 select-none">
           {/* Top Ticket Header Tab */}
           <div className="flex items-center justify-between gap-3 mb-4">
-            <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-              <span className="text-[10px] font-mono font-bold tracking-widest text-emerald-600 dark:text-emerald-400 uppercase">
-                QC PASSED • ASIA PLASTIK FACTORY
-              </span>
-            </div>
-
-            <div className="flex items-center gap-1.5">
-              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase bg-blue-600 text-white shadow-xs">
-                {categoryTag}
-              </span>
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setIsModalOpen(true);
-                }}
-                className="p-1.5 rounded-lg bg-white/80 dark:bg-slate-800 text-slate-500 hover:text-blue-600 shadow-xs border border-slate-200/60 dark:border-slate-700 transition-colors cursor-pointer"
-                title={clickPrompt}
-              >
-                <Maximize2 className="w-3.5 h-3.5" />
-              </button>
-            </div>
+            <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase bg-blue-600 text-white shadow-xs">
+              {categoryTag}
+            </span>
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsModalOpen(true);
+              }}
+              className="p-1.5 rounded-lg bg-white/80 dark:bg-slate-800 text-slate-500 hover:text-blue-600 shadow-xs border border-slate-200/60 dark:border-slate-700 transition-colors cursor-pointer"
+              title={clickPrompt}
+            >
+              <Maximize2 className="w-3.5 h-3.5" />
+            </button>
           </div>
 
           {/* Product Photo: Sharp & Centered */}
@@ -196,7 +186,7 @@ export default function VariantLightboxModal({
             </div>
           </div>
 
-          {/* Product Title & Subtitle */}
+          {/* Product Title */}
           <div className="text-center mt-2 px-2">
             <h2
               suppressHydrationWarning
@@ -204,11 +194,6 @@ export default function VariantLightboxModal({
             >
               {cleanTitle}
             </h2>
-            {displaySubtitle && (
-              <p className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1 max-w-md mx-auto line-clamp-1">
-                {displaySubtitle}
-              </p>
-            )}
           </div>
         </div>
 
@@ -370,11 +355,6 @@ export default function VariantLightboxModal({
                 >
                   {cleanTitle}
                 </h2>
-                {displaySubtitle && (
-                  <p className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1 leading-relaxed">
-                    {displaySubtitle}
-                  </p>
-                )}
               </div>
 
               {/* Spesifikasi Teknis */}

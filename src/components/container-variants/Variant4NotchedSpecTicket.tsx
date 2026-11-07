@@ -36,25 +36,16 @@ export default function Variant4NotchedSpecTicket({ product }: Variant4Props) {
       <div className="relative p-6 sm:p-8 bg-slate-50/70 dark:bg-slate-800/40 select-none">
         {/* Top Ticket Header Tab */}
         <div className="flex items-center justify-between gap-3 mb-4">
-          <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-[10px] font-mono font-bold tracking-widest text-emerald-600 dark:text-emerald-400 uppercase">
-              QC PASSED • ASIA PLASTIK FACTORY
-            </span>
-          </div>
-
-          <div className="flex items-center gap-1.5">
-            <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase bg-blue-600 text-white shadow-xs">
-              {product.category}
-            </span>
-            <button
-              type="button"
-              className="p-1.5 rounded-lg bg-white/80 dark:bg-slate-800 text-slate-500 hover:text-blue-600 shadow-xs"
-              title="Perbesar"
-            >
-              <Maximize2 className="w-3.5 h-3.5" />
-            </button>
-          </div>
+          <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase bg-blue-600 text-white shadow-xs">
+            {product.category}
+          </span>
+          <button
+            type="button"
+            className="p-1.5 rounded-lg bg-white/80 dark:bg-slate-800 text-slate-500 hover:text-blue-600 shadow-xs cursor-pointer"
+            title="Perbesar"
+          >
+            <Maximize2 className="w-3.5 h-3.5" />
+          </button>
         </div>
 
         {/* Product Photo: Sharp & Centered */}
@@ -78,9 +69,6 @@ export default function Variant4NotchedSpecTicket({ product }: Variant4Props) {
           <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
             {product.title}
           </h3>
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 max-w-md mx-auto line-clamp-1">
-            {product.subtitle}
-          </p>
         </div>
       </div>
 
