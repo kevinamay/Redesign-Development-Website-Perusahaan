@@ -74,8 +74,6 @@ export default function VariantLightboxModal({
       : "Kapasitas Beban Statis";
   const capacityLabel =
     lang === "en" ? "Volume / Capacity" : lang === "zh" ? "容量规格" : "Volume / Kapasitas";
-  const backLabel =
-    lang === "en" ? "BACK" : lang === "zh" ? "返回" : "KEMBALI";
   const clickPrompt =
     lang === "en"
       ? "Click card to view full specifications (Lightbox) →"
@@ -391,21 +389,13 @@ export default function VariantLightboxModal({
                 </div>
               )}
 
-              {/* Footer Modal: Tombol KEMBALI + WhatsApp / RFQ (Touch target >= 44px) */}
-              <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3">
-                <button
-                  type="button"
-                  onClick={() => setIsModalOpen(false)}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 min-h-[44px] px-8 py-3 rounded-full border-2 border-slate-700 dark:border-slate-400 text-slate-800 dark:text-slate-100 font-extrabold text-xs sm:text-sm tracking-wider uppercase hover:bg-slate-900 hover:text-white dark:hover:bg-white dark:hover:text-slate-900 transition-all cursor-pointer active:scale-95 shadow-xs"
-                >
-                  <span>◀</span> {backLabel}
-                </button>
-
+              {/* Footer Modal: Tombol WhatsApp / RFQ (Touch target >= 44px) */}
+              <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-end">
                 <a
                   href={getWhatsAppProductUrl(cleanTitle, lang)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 min-h-[44px] px-6 py-3 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm shadow-sm hover:shadow transition-all active:scale-95"
+                  className="w-full inline-flex items-center justify-center gap-2 min-h-[44px] px-6 py-3 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm shadow-sm hover:shadow transition-all active:scale-95"
                 >
                   <PhoneCall className="w-4 h-4" />
                   {rfqLabel}
