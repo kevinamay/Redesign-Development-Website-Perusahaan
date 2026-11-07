@@ -1,16 +1,24 @@
 import React from "react";
 import Link from "next/link";
-import { Sparkles, Layers, Video, ArrowRight, Shapes } from "lucide-react";
+import { Sparkles, Layers, Video, ArrowRight, Shapes, Film } from "lucide-react";
 
 export default function PrototypeIndexPage() {
   const labs = [
+    {
+      title: "Video Showcase Kategori Produk (5 Desain Hasil Scraping)",
+      desc: "5 format presentasi video pengujian resmi hasil scraping dari web asiaplastik.com untuk diletakkan di bawah foto & deskripsi produk setiap kategori.",
+      href: "/prototype/category-videos",
+      badge: "Baru (Local)",
+      icon: Film,
+      highlight: true,
+    },
     {
       title: "Bentuk Container Kartu Produk (5 Desain Non-Persegi)",
       desc: "Eksplorasi 5 alternatif bentuk container non-persegi panjang (Kapsul Horizontal, Dual-Pod Terpisah, Chamfer Teknik, Tiket Berlekuk, Pebble Organik).",
       href: "/prototype/container",
       badge: "Desain Baru (Local)",
       icon: Shapes,
-      highlight: true,
+      highlight: false,
     },
     {
       title: "Desain Halaman Produk (7 Pilihan Mode Terang)",

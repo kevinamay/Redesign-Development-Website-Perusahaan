@@ -16,6 +16,7 @@ import {
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
+import { CategoryVideoSection } from "@/components/category-videos";
 import { footerData } from "@/data/homeData";
 import { useLanguage } from "@/data/translations";
 import {
@@ -531,6 +532,11 @@ export default function ProductsPage() {
                   </div>
                 </div>
               )}
+
+              {/* 4. DOKUMENTASI VIDEO RESMI KATEGORI (SCRAPED DARI ASIAPLASTIK.COM) */}
+              <div className="pt-10 sm:pt-14">
+                <CategoryVideoSection categoryId={activeCategoryId} />
+              </div>
             </div>
           )}
         </section>
