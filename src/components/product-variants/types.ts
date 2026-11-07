@@ -14,6 +14,9 @@ export interface ProductVariantProps {
   imagePath: string;
   subtitle?: string;
   badges?: ProductBadge[];
+  bebanStatis?: string;
+  kapasitas?: string;
+  category?: string;
 }
 
 export type ProductCardVariantKey =

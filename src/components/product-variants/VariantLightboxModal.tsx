@@ -19,6 +19,9 @@ export default function VariantLightboxModal({
   imagePath,
   subtitle,
   badges,
+  bebanStatis,
+  kapasitas,
+  category,
 }: ProductVariantProps) {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const { lang } = useLanguage();
@@ -44,6 +47,11 @@ export default function VariantLightboxModal({
   const displaySubtitle = localized.subtitle || subtitle;
   const isPng = (imagePath || "").toLowerCase().endsWith(".png");
 
+  // Inferred specs for ticket data sheet
+  const isPallet = cleanTitle.toUpperCase().includes("PALLET");
+  const displayBebanStatis = bebanStatis || (isPallet ? "3.000 KG" : undefined);
+  const displayKapasitas = kapasitas;
+
   // Multi-language UI labels
   const descLabel =
     lang === "en" ? "DESCRIPTION" : lang === "zh" ? "产品描述" : "DESKRIPSI";
@@ -53,6 +61,20 @@ export default function VariantLightboxModal({
       : lang === "zh"
       ? "索取报价 (RFQ)"
       : "Minta Penawaran (RFQ)";
+  const rfqTicketLabel =
+    lang === "en"
+      ? "Claim Price Quotation (RFQ Ticket)"
+      : lang === "zh"
+      ? "索取报价 (RFQ 询价单)"
+      : "Klaim Penawaran Harga (RFQ Tiket)";
+  const staticLoadLabel =
+    lang === "en"
+      ? "Static Load Capacity"
+      : lang === "zh"
+      ? "静态负荷能力"
+      : "Kapasitas Beban Statis";
+  const capacityLabel =
+    lang === "en" ? "Volume / Capacity" : lang === "zh" ? "容量规格" : "Volume / Kapasitas";
   const backLabel =
     lang === "en" ? "BACK" : lang === "zh" ? "返回" : "KEMBALI";
   const clickPrompt =
@@ -79,6 +101,10 @@ export default function VariantLightboxModal({
     }
     return rawLabel;
   };
+
+  const categoryTag =
+    category ||
+    (badges && badges.length > 0 ? getBadgeLabel(badges[0].label) : "PRODUK INDUSTRI");
 
   // Tutup modal dengan Escape & kunci scroll halaman belakang (termasuk iOS Safari touch)
   useEffect(() => {
@@ -110,7 +136,7 @@ export default function VariantLightboxModal({
   return (
     <>
       {/* ========================================================================= */}
-      {/* KARTU KATALOG UTAMA (1 FOTO BERSIH + DUKUNGAN MULTILINGUAL ID/EN/ZH)       */}
+      {/* KARTU KATALOG UTAMA (DESAIN 4: NOTCHED SPEC-TICKET SESUAI DESAIN FIX)     */}
       {/* ========================================================================= */}
       <article
         suppressHydrationWarning
@@ -120,53 +146,58 @@ export default function VariantLightboxModal({
         aria-label={`${cleanTitle} - ${clickPrompt}`}
         onKeyDown={handleKeyDownCard}
         onClick={() => setIsModalOpen(true)}
-        className="bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl border border-slate-200/90 dark:border-slate-800 shadow-sm hover:shadow-md transition-all duration-300 w-full overflow-hidden group cursor-pointer focus:outline-hidden focus:ring-2 focus:ring-blue-500"
+        className="relative bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/90 dark:border-slate-800 shadow-md hover:shadow-2xl transition-all duration-300 w-full overflow-hidden group cursor-pointer focus:outline-hidden focus:ring-2 focus:ring-blue-500 max-w-2xl mx-auto"
       >
-        {/* Kontainer Foto Produk Tunggal: Ukuran proporsional & tajam tanpa peregangan berlebih */}
-        <div className="relative w-full h-52 sm:h-60 md:h-64 bg-slate-50/70 dark:bg-slate-800/40 flex items-center justify-center p-5 sm:p-7 select-none border-b border-slate-100 dark:border-slate-800/60">
-          <div className="relative w-full h-full max-w-[280px] sm:max-w-[340px] md:max-w-[380px] max-h-[88%] flex items-center justify-center mx-auto">
-            <Image
-              src={imagePath}
-              alt={cleanTitle}
-              fill
-              priority
-              quality={95}
-              sizes="(max-width: 640px) 280px, (max-width: 1024px) 340px, 380px"
-              className={`object-contain transition-all duration-300 ${
-                isPng
-                  ? "drop-shadow-md group-hover:scale-105"
-                  : "mix-blend-multiply dark:mix-blend-normal"
-              }`}
-            />
-          </div>
-
-          <div className="absolute top-3 right-3 p-2 rounded-xl bg-white/90 dark:bg-slate-900/90 text-slate-500 group-hover:text-blue-600 shadow-xs border border-slate-200/60 dark:border-slate-700 transition-colors">
-            <Maximize2 className="w-4 h-4" />
-          </div>
-        </div>
-
-        {/* Informasi Produk Ringkas */}
-        <div className="p-5 sm:p-8 space-y-3.5">
-          {/* Badges / Tag Kategori */}
-          {badges && badges.length > 0 && (
-            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
-              {badges.map((b, i) => (
-                <span
-                  key={i}
-                  className={`inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-bold tracking-wider uppercase ${
-                    b.variant === "emerald"
-                      ? "bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-400"
-                      : "bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400"
-                  }`}
-                >
-                  {b.icon}
-                  <span>{getBadgeLabel(b.label)}</span>
-                </span>
-              ))}
+        {/* ======================================================================= */}
+        {/* 1. BAGIAN ATAS: TIKET HEADER & PANGGUNG FOTO PRODUK                    */}
+        {/* ======================================================================= */}
+        <div className="relative p-6 sm:p-8 bg-slate-50/70 dark:bg-slate-800/40 select-none">
+          {/* Top Ticket Header Tab */}
+          <div className="flex items-center justify-between gap-3 mb-4">
+            <div className="flex items-center gap-2">
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="text-[10px] font-mono font-bold tracking-widest text-emerald-600 dark:text-emerald-400 uppercase">
+                QC PASSED • ASIA PLASTIK FACTORY
+              </span>
             </div>
-          )}
 
-          <div>
+            <div className="flex items-center gap-1.5">
+              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase bg-blue-600 text-white shadow-xs">
+                {categoryTag}
+              </span>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsModalOpen(true);
+                }}
+                className="p-1.5 rounded-lg bg-white/80 dark:bg-slate-800 text-slate-500 hover:text-blue-600 shadow-xs border border-slate-200/60 dark:border-slate-700 transition-colors cursor-pointer"
+                title={clickPrompt}
+              >
+                <Maximize2 className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          </div>
+
+          {/* Product Photo: Sharp & Centered */}
+          <div className="relative w-full h-48 sm:h-56 flex items-center justify-center my-2">
+            <div className="relative w-full h-full max-w-[260px] sm:max-w-[320px] max-h-[90%] flex items-center justify-center mx-auto">
+              <Image
+                src={imagePath}
+                alt={cleanTitle}
+                fill
+                priority
+                quality={95}
+                sizes="(max-width: 640px) 260px, 320px"
+                className={`object-contain transition-transform duration-500 group-hover:scale-105 ${
+                  isPng ? "drop-shadow-md" : "mix-blend-multiply dark:mix-blend-normal"
+                }`}
+              />
+            </div>
+          </div>
+
+          {/* Product Title & Subtitle */}
+          <div className="text-center mt-2 px-2">
             <h2
               suppressHydrationWarning
               className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors"
@@ -174,46 +205,94 @@ export default function VariantLightboxModal({
               {cleanTitle}
             </h2>
             {displaySubtitle && (
-              <p className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1 leading-relaxed">
+              <p className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1 max-w-md mx-auto line-clamp-1">
                 {displaySubtitle}
               </p>
             )}
           </div>
+        </div>
 
-          {/* Spesifikasi Dimensi & Berat (Dinamis Sesuai Produk) */}
-          {(displayDimensi || displayBerat) && (
-            <div className="space-y-1.5 text-xs sm:text-sm text-slate-800 dark:text-slate-200">
-              {displayDimensi && (
-                <p className="flex items-center gap-2">
-                  <span className="text-slate-500 dark:text-slate-400 font-medium uppercase">
-                    {ui.specsLabels.dimensions} :
-                  </span>
-                  <span className="font-bold">{displayDimensi}</span>
-                </p>
-              )}
-              {displayBerat && (
-                <p className="flex items-center gap-2">
-                  <span className="text-slate-500 dark:text-slate-400 font-medium uppercase">
-                    {ui.specsLabels.weight} :
-                  </span>
-                  <span className="font-bold">{displayBerat}</span>
-                </p>
-              )}
-            </div>
-          )}
+        {/* ======================================================================= */}
+        {/* 2. PEMISAH TIKET: PERFORASI + NOTCH CEKUNG KIRI DAN KANAN               */}
+        {/* ======================================================================= */}
+        <div className="relative w-full h-7 flex items-center justify-center bg-transparent">
+          {/* Left Concave Cutout Notch */}
+          <div className="absolute -left-3.5 w-7 h-7 rounded-full bg-slate-50 dark:bg-slate-950 border-r border-slate-200/90 dark:border-slate-800 shadow-inner z-20" />
 
-          {/* Deskripsi Produk Dinamis */}
-          {displayDescription && (
-            <p className="text-slate-600 dark:text-slate-300 leading-relaxed pt-1 text-xs sm:text-sm line-clamp-3">
-              <span className="font-semibold text-slate-800 dark:text-slate-200 uppercase">
-                {descLabel} :{" "}
-              </span>
-              {displayDescription}
-            </p>
-          )}
+          {/* Dashed Perforation Line */}
+          <div className="w-full border-t-2 border-dashed border-slate-200 dark:border-slate-800 mx-5 z-10" />
 
-          <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-blue-600 dark:text-blue-400 font-bold">
-            <span>{clickPrompt}</span>
+          {/* Right Concave Cutout Notch */}
+          <div className="absolute -right-3.5 w-7 h-7 rounded-full bg-slate-50 dark:bg-slate-950 border-l border-slate-200/90 dark:border-slate-800 shadow-inner z-20" />
+        </div>
+
+        {/* ======================================================================= */}
+        {/* 3. BAGIAN BAWAH: DATA SHEET TIKET & AKSI                                */}
+        {/* ======================================================================= */}
+        <div className="p-6 sm:p-7 space-y-4 bg-white dark:bg-slate-900">
+          {/* Dotted Leader Line Specs */}
+          <div className="space-y-2 text-xs">
+            {displayDimensi && (
+              <div className="flex items-baseline justify-between gap-2">
+                <span className="text-slate-500 dark:text-slate-400 font-medium">
+                  {ui.specsLabels.dimensions}
+                </span>
+                <span className="flex-1 border-b border-dotted border-slate-200 dark:border-slate-800 mx-2" />
+                <span className="font-bold text-slate-900 dark:text-white">
+                  {displayDimensi}
+                </span>
+              </div>
+            )}
+
+            {displayBerat && (
+              <div className="flex items-baseline justify-between gap-2">
+                <span className="text-slate-500 dark:text-slate-400 font-medium">
+                  {ui.specsLabels.weight}
+                </span>
+                <span className="flex-1 border-b border-dotted border-slate-200 dark:border-slate-800 mx-2" />
+                <span className="font-bold text-slate-900 dark:text-white">
+                  {displayBerat}
+                </span>
+              </div>
+            )}
+
+            {displayBebanStatis && (
+              <div className="flex items-baseline justify-between gap-2">
+                <span className="text-slate-500 dark:text-slate-400 font-medium">
+                  {staticLoadLabel}
+                </span>
+                <span className="flex-1 border-b border-dotted border-slate-200 dark:border-slate-800 mx-2" />
+                <span className="font-bold text-emerald-600 dark:text-emerald-400">
+                  {displayBebanStatis}
+                </span>
+              </div>
+            )}
+
+            {displayKapasitas && (
+              <div className="flex items-baseline justify-between gap-2">
+                <span className="text-slate-500 dark:text-slate-400 font-medium">
+                  {capacityLabel}
+                </span>
+                <span className="flex-1 border-b border-dotted border-slate-200 dark:border-slate-800 mx-2" />
+                <span className="font-bold text-blue-600 dark:text-blue-400">
+                  {displayKapasitas}
+                </span>
+              </div>
+            )}
+          </div>
+
+          {/* Action Button: RFQ Tiket WhatsApp */}
+          <div className="pt-2">
+            <a
+              href={getWhatsAppProductUrl(cleanTitle, lang)}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="w-full inline-flex items-center justify-center gap-2 py-3 px-5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-md shadow-blue-600/20 active:scale-95 transition-all"
+            >
+              <PhoneCall className="w-3.5 h-3.5" />
+              <span>{rfqTicketLabel}</span>
+            </a>
           </div>
         </div>
       </article>

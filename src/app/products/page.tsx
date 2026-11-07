@@ -404,6 +404,8 @@ export default function ProductsPage() {
                         deskripsi={localized.deskripsi}
                         imagePath={p.imagePath}
                         subtitle={localized.subtitle || p.categorySubtitle}
+                        category={p.categoryName}
+                        bebanStatis={p.title.includes("PALLET") ? "3.000 KG" : undefined}
                         badges={
                           p.categoryId === "pallet-industri" || p.title === "PALLET P SERIES"
                             ? [
@@ -476,6 +478,8 @@ export default function ProductsPage() {
                         deskripsi={localized.deskripsi}
                         imagePath={p.imagePath}
                         subtitle={localized.subtitle || activeCategory.subtitle}
+                        category={activeCategory.name}
+                        bebanStatis={p.title.includes("PALLET") ? "3.000 KG" : undefined}
                         badges={
                           activeCategoryId === "pallet-industri" || p.title === "PALLET P SERIES"
                             ? [

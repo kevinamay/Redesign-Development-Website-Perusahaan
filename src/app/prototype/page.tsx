@@ -1,16 +1,24 @@
 import React from "react";
 import Link from "next/link";
-import { Sparkles, Layers, Video, ArrowRight } from "lucide-react";
+import { Sparkles, Layers, Video, ArrowRight, Shapes } from "lucide-react";
 
 export default function PrototypeIndexPage() {
   const labs = [
     {
+      title: "Bentuk Container Kartu Produk (5 Desain Non-Persegi)",
+      desc: "Eksplorasi 5 alternatif bentuk container non-persegi panjang (Kapsul Horizontal, Dual-Pod Terpisah, Chamfer Teknik, Tiket Berlekuk, Pebble Organik).",
+      href: "/prototype/container",
+      badge: "Desain Baru (Local)",
+      icon: Shapes,
+      highlight: true,
+    },
+    {
       title: "Desain Halaman Produk (7 Pilihan Mode Terang)",
       desc: "Eksplorasi 7 konsep radikal desain kartu produk Pallet Industri & kemasan B2B dengan switcher interaktif (Default Mode Terang).",
       href: "/prototype/products",
-      badge: "Terbaru / Aktif",
+      badge: "Katalog Lab",
       icon: Layers,
-      highlight: true,
+      highlight: false,
     },
     {
       title: "Eksplorasi Video Showcase",
