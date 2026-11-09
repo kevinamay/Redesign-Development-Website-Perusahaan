@@ -16,7 +16,7 @@ import {
   Variant4MinimalIndustrial,
   Variant5BentoMediaPods,
 } from "@/components/category-videos";
-import { getCategoryVideos } from "@/data/categoryVideos";
+import { getCategoryVideos, CATEGORY_VIDEOS } from "@/data/categoryVideos";
 import { ArrowLeft, Film, Eye, Layers, CheckCircle2 } from "lucide-react";
 
 function CategoryVideoPrototypeContent() {
@@ -25,7 +25,8 @@ function CategoryVideoPrototypeContent() {
   const [selectedCategoryId, setSelectedCategoryId] = useState<string>("pallet-industri");
   const [viewMode, setViewMode] = useState<"single" | "all">("single");
 
-  const activeCategoryData = getCategoryVideos(selectedCategoryId);
+  const activeCategoryData =
+    getCategoryVideos(selectedCategoryId) || CATEGORY_VIDEOS["pallet-industri"];
   const activeMeta =
     CATEGORY_VIDEO_VARIANTS_META.find((v) => v.key === currentKey) ||
     CATEGORY_VIDEO_VARIANTS_META[0];
@@ -59,8 +60,8 @@ function CategoryVideoPrototypeContent() {
             <Film className="w-3.5 h-3.5" />
             <span>LAB DESAIN VIDEO SHOWCASE (HASIL SCRAPING)</span>
           </span>
-          <span className="text-xs text-amber-600 dark:text-amber-400 font-mono font-semibold hidden md:inline bg-amber-50 dark:bg-amber-950/50 px-2.5 py-0.5 rounded-full border border-amber-200/60">
-            LOCAL ONLY (TIDAK DI-PUSH)
+          <span className="text-xs text-slate-500 dark:text-slate-400 font-mono font-medium hidden md:inline bg-slate-100 dark:bg-slate-800 px-2.5 py-0.5 rounded-full border border-slate-200 dark:border-slate-700">
+            PROTOTYPE LAB
           </span>
         </div>
 

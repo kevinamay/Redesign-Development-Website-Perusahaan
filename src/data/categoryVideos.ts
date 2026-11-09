@@ -468,13 +468,11 @@ export const CATEGORY_VIDEOS: Record<string, CategoryVideoData> = {
 };
 
 /**
- * Helper untuk mendapatkan data video kategori dengan fallback yang aman
+ * Helper untuk mendapatkan data video kategori
+ * Mengembalikan undefined jika kategori tidak memiliki video,
+ * sehingga section video dapat disembunyikan dengan aman tanpa membocorkan video kategori lain.
  */
-export function getCategoryVideos(categoryId: string): CategoryVideoData {
-  if (CATEGORY_VIDEOS[categoryId]) {
-    return CATEGORY_VIDEOS[categoryId];
-  }
-  // Fallback default
-  return CATEGORY_VIDEOS["pallet-industri"];
+export function getCategoryVideos(categoryId: string): CategoryVideoData | undefined {
+  return CATEGORY_VIDEOS[categoryId];
 }
 

@@ -17,7 +17,6 @@ export default function VariantLightboxModal({
   berat,
   deskripsi,
   imagePath,
-  subtitle,
   badges,
   bebanStatis,
   kapasitas,
@@ -36,7 +35,6 @@ export default function VariantLightboxModal({
       berat: berat || "",
       deskripsi: deskripsi || "",
       imagePath: imagePath || "",
-      subtitle,
     },
     lang
   );
@@ -302,7 +300,6 @@ export default function VariantLightboxModal({
                   src={imagePath}
                   alt={cleanTitle}
                   fill
-                  priority
                   quality={95}
                   sizes="(max-width: 640px) 300px, 360px"
                   className={`object-contain ${

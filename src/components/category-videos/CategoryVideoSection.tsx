@@ -1,18 +1,21 @@
 "use client";
 
 import React from "react";
+import dynamic from "next/dynamic";
 import { getCategoryVideos } from "@/data/categoryVideos";
 import {
   CategoryVideoVariantKey,
   resolveVideoVariantKey,
 } from "./types";
-import Variant1ModernTripleCard from "./Variant1ModernTripleCard";
-import Variant2SpotlightCinema from "./Variant2SpotlightCinema";
-import Variant3HorizontalCarousel from "./Variant3HorizontalCarousel";
-import Variant3CompactCarousel from "./Variant3CompactCarousel";
-import Variant4IndustrialProofCard from "./Variant4IndustrialProofCard";
 import Variant4MinimalIndustrial from "./Variant4MinimalIndustrial";
-import Variant5BentoMediaPods from "./Variant5BentoMediaPods";
+
+// Lazy-load varian prototipe agar bundle awal halaman produksi (/products) tetap ramping & cepat
+const Variant1ModernTripleCard = dynamic(() => import("./Variant1ModernTripleCard"));
+const Variant2SpotlightCinema = dynamic(() => import("./Variant2SpotlightCinema"));
+const Variant3HorizontalCarousel = dynamic(() => import("./Variant3HorizontalCarousel"));
+const Variant3CompactCarousel = dynamic(() => import("./Variant3CompactCarousel"));
+const Variant4IndustrialProofCard = dynamic(() => import("./Variant4IndustrialProofCard"));
+const Variant5BentoMediaPods = dynamic(() => import("./Variant5BentoMediaPods"));
 
 interface CategoryVideoSectionProps {
   categoryId: string;

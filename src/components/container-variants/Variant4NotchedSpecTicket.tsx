@@ -39,13 +39,12 @@ export default function Variant4NotchedSpecTicket({ product }: Variant4Props) {
           <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase bg-blue-600 text-white shadow-xs">
             {product.category}
           </span>
-          <button
-            type="button"
-            className="p-1.5 rounded-lg bg-white/80 dark:bg-slate-800 text-slate-500 hover:text-blue-600 shadow-xs cursor-pointer"
-            title="Perbesar"
+          <span
+            className="p-1.5 rounded-lg bg-white/80 dark:bg-slate-800 text-slate-400 group-hover:text-blue-600 shadow-2xs transition-colors"
+            aria-hidden="true"
           >
             <Maximize2 className="w-3.5 h-3.5" />
-          </button>
+          </span>
         </div>
 
         {/* Product Photo: Sharp & Centered */}

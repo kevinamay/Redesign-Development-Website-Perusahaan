@@ -35,6 +35,11 @@ export const palletPSeries: ProductItem = {
       label: "Berat",
       value: "12 KG",
     },
+    {
+      icon: "Weight",
+      label: "Beban Statis",
+      value: "3.000 KG",
+    },
   ],
   description:
     "Palet plastik dari Asia Plastik dirancang khusus untuk memenuhi kebutuhan industri dan logistik modern. Dibuat dari material berkualitas tinggi, Palet Plastik ini menawarkan ketahanan luar biasa terhadap beban berat, benturan, serta kondisi lingkungan ekstrem. Tidak seperti palet kayu, Palet Plastik bebas dari serpihan, tidak menyerap air, dan lebih tahan terhadap serangan hama.",

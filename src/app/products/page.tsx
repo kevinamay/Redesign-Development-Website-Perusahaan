@@ -69,10 +69,9 @@ const palletProductData = {
   title: "PALLET P SERIES",
   dimensi: "1200 x 1165 x 140 MM",
   berat: "12 KG",
+  bebanStatis: "3.000 KG",
   deskripsi:
     "Palet plastik dari Asia Plastik dirancang khusus untuk memenuhi kebutuhan industri dan logistik modern. Dibuat dari material berkualitas tinggi, Palet Plastik ini menawarkan ketahanan luar biasa terhadap beban berat, benturan, serta kondisi lingkungan ekstrem. Tidak seperti palet kayu, Palet Plastik bebas dari serpihan, tidak menyerap air, dan lebih tahan terhadap serangan hama.",
-  subtitle:
-    "Palet Plastik Standar Heavy Duty untuk Pergudangan, Ekspor, & Racking Otomasi",
   imagePath: "/images/product/Pallet/pallet-floating.png",
 };
 
@@ -85,7 +84,8 @@ const categoryProductsMap: Record<
     berat: string;
     deskripsi: string;
     imagePath: string;
-    subtitle?: string;
+    bebanStatis?: string;
+    kapasitas?: string;
   }>
 > = {
   "pallet-industri": [palletProductData],
@@ -162,7 +162,6 @@ export default function ProductsPage() {
         categoryId: catItem.id,
         categoryName: catName,
         categoryDisplayName: catDisplayName,
-        categorySubtitle: catMeta?.subtitle || "",
         allCategorySearchText: allCategoryNames,
       }));
     });
@@ -404,10 +403,10 @@ export default function ProductsPage() {
                         berat={localized.berat}
                         deskripsi={localized.deskripsi}
                         imagePath={p.imagePath}
-                        subtitle={localized.subtitle || p.categorySubtitle}
                         category={p.categoryName}
                         priority={idx === 0}
-                        bebanStatis={p.title.includes("PALLET") ? "3.000 KG" : undefined}
+                        bebanStatis={p.bebanStatis}
+                        kapasitas={p.kapasitas}
                         badges={
                           p.categoryId === "pallet-industri" || p.title === "PALLET P SERIES"
                             ? [
@@ -479,10 +478,10 @@ export default function ProductsPage() {
                         berat={localized.berat}
                         deskripsi={localized.deskripsi}
                         imagePath={p.imagePath}
-                        subtitle={localized.subtitle || activeCategory.subtitle}
                         category={activeCategory.name}
                         priority={idx === 0}
-                        bebanStatis={p.title.includes("PALLET") ? "3.000 KG" : undefined}
+                        bebanStatis={p.bebanStatis}
+                        kapasitas={p.kapasitas}
                         badges={
                           activeCategoryId === "pallet-industri" || p.title === "PALLET P SERIES"
                             ? [

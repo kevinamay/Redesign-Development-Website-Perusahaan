@@ -50,8 +50,8 @@ function ContainerPrototypeContent() {
             <Shapes className="w-3.5 h-3.5" />
             <span>LAB BENTUK CONTAINER (NON-PERSEGI PANJANG)</span>
           </span>
-          <span className="text-xs text-amber-600 dark:text-amber-400 font-mono font-semibold hidden md:inline bg-amber-50 dark:bg-amber-950/50 px-2.5 py-0.5 rounded-full border border-amber-200/60">
-            LOCAL ONLY (TIDAK DI-PUSH)
+          <span className="text-xs text-slate-500 dark:text-slate-400 font-mono font-medium hidden md:inline bg-slate-100 dark:bg-slate-800 px-2.5 py-0.5 rounded-full border border-slate-200 dark:border-slate-700">
+            PROTOTYPE LAB
           </span>
         </div>
 
