@@ -225,7 +225,7 @@ export default function Variant3BentoSplit() {
         {/* Left Side: Thumbnail Handshake (25% on desktop) */}
         <div className="relative md:w-3/12 min-h-[140px] md:min-h-auto bg-slate-100 dark:bg-slate-800">
           <Image
-            src="/images/career-handshake.jpg"
+            src="/images/baru/job.jpeg"
             alt="Asia Plastik Careers"
             fill
             className="object-cover"

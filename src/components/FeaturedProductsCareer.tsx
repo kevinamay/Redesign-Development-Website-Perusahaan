@@ -235,7 +235,7 @@ export default function FeaturedProductsCareer() {
         {/* Left Side: Thumbnail Handshake */}
         <div className="relative md:w-3/12 min-h-[160px] md:min-h-auto bg-slate-100 dark:bg-slate-800 shrink-0">
           <Image
-            src="/images/career-handshake.jpg"
+            src="/images/baru/job.jpeg"
             alt="Asia Plastik Careers"
             fill
             sizes="(max-width: 768px) 100vw, 320px"

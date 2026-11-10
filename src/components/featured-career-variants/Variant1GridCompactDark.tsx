@@ -180,7 +180,7 @@ export default function Variant1GridCompactDark() {
         <div className="flex items-center gap-4 sm:gap-5 w-full md:w-auto">
           <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden shrink-0 border border-slate-200 dark:border-slate-700/80 shadow-xs hidden xs:block">
             <Image
-              src="/images/career-handshake.jpg"
+              src="/images/baru/job.jpeg"
               alt="Asia Plastik Recruitment"
               fill
               className="object-cover"
