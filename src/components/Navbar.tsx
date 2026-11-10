@@ -78,12 +78,12 @@ export default function Navbar() {
 
   return (
     <>
-      {/* 1. Top Bar (Dark Navy bar) - SCROLLS NATURALLY WITH PAGE (NOT STICKY) - Disembunyikan di HP, Tampil di Tablet & Desktop */}
-      <div className="hidden sm:block w-full max-w-[100vw] bg-slate-950 text-slate-300 border-b border-slate-800 relative z-[60]">
+      {/* 1. Top Bar (Baby Blue / Soft Blue bar) - SCROLLS NATURALLY WITH PAGE (NOT STICKY) - Disembunyikan di HP, Tampil di Tablet & Desktop */}
+      <div className="hidden sm:block w-full max-w-[100vw] bg-[#edf5fd] dark:bg-slate-950 text-slate-900 dark:text-slate-300 border-b border-blue-100 dark:border-slate-800 relative z-[60] transition-colors duration-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-1.5 sm:py-2 flex items-center justify-between w-full text-xs box-border">
           {/* Top Bar Left Tagline */}
-          <div className="hidden md:flex items-center gap-2 text-slate-300">
-            <Sparkles className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+          <div className="hidden md:flex items-center gap-2 text-slate-900 dark:text-slate-300 font-medium">
+            <Sparkles className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 shrink-0" />
             <span className="truncate">{t.topBar.tagline}</span>
           </div>
 
@@ -92,43 +92,43 @@ export default function Navbar() {
             {/* Email - hidden on small mobile screen to prevent stretching */}
             <a
               href={`mailto:${companyConfig.contact.email}`}
-              className="hidden sm:flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors text-xs"
+              className="hidden sm:flex items-center gap-1.5 text-slate-900 hover:text-blue-600 dark:text-slate-300 dark:hover:text-white transition-colors font-medium text-xs"
               aria-label="Email Asia Plastik"
             >
-              <Mail className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+              <Mail className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 shrink-0" />
               <span className="hidden md:inline">{companyConfig.contact.email}</span>
               <span className="inline md:hidden">{t.topBar.emailLabel}</span>
             </a>
 
-            <span className="hidden sm:inline text-slate-700 select-none">|</span>
+            <span className="hidden sm:inline text-blue-300 dark:text-slate-700 select-none">|</span>
 
             {/* Phone */}
             <a
               href={`tel:${companyConfig.contact.phone.replace(/\s+/g, "")}`}
-              className="flex items-center gap-1 text-slate-300 hover:text-white transition-colors font-medium text-xs shrink-0"
+              className="flex items-center gap-1 text-slate-900 hover:text-blue-600 dark:text-slate-300 dark:hover:text-white transition-colors font-semibold text-xs shrink-0"
               aria-label="Telepon Asia Plastik"
             >
-              <Phone className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+              <Phone className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 shrink-0" />
               <span className="hidden md:inline">{companyConfig.contact.phoneDisplay}</span>
               <span className="inline md:hidden">{t.topBar.phoneLabel}</span>
             </a>
 
-            <span className="text-slate-700 select-none">|</span>
+            <span className="text-blue-300 dark:text-slate-700 select-none">|</span>
 
             {/* Language Toggle (ID, EN, ZH) */}
             <div ref={langRef} className="relative shrink-0 z-50">
               <button
                 type="button"
                 onClick={() => setIsLangOpen(!isLangOpen)}
-                className="flex items-center gap-1 px-2 py-0.5 rounded hover:bg-slate-800 text-white font-semibold transition-colors focus:outline-hidden cursor-pointer"
+                className="flex items-center gap-1 px-2 py-0.5 rounded hover:bg-blue-100/70 dark:hover:bg-slate-800 text-slate-900 dark:text-white font-semibold transition-colors focus:outline-hidden cursor-pointer"
                 aria-label="Pilih Bahasa / Select Language / 选择语言"
                 aria-expanded={isLangOpen}
               >
-                <Globe className="w-3.5 h-3.5 text-blue-400" />
+                <Globe className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
                 <span>{currentBadge}</span>
                 <ChevronDown
-                  className={`w-3 h-3 text-slate-400 transition-transform duration-200 ${
-                    isLangOpen ? "rotate-180 text-blue-400" : ""
+                  className={`w-3 h-3 text-slate-600 dark:text-slate-400 transition-transform duration-200 ${
+                    isLangOpen ? "rotate-180 text-blue-600 dark:text-blue-400" : ""
                   }`}
                 />
               </button>
@@ -160,7 +160,7 @@ export default function Navbar() {
             </div>
 
             {/* Divider hanya tampil di Tablet / Laptop / Desktop saat switch tema aktif */}
-            <span className="hidden sm:inline text-slate-700 select-none">|</span>
+            <span className="hidden sm:inline text-blue-300 dark:text-slate-700 select-none">|</span>
 
             {/* THEME TOGGLE SWITCH: KIRI = GELAP, KANAN = TERANG (Hanya muncul di Tablet / Laptop / Desktop, disembunyikan di HP) */}
             <ThemeToggle className="hidden sm:inline-flex" />
