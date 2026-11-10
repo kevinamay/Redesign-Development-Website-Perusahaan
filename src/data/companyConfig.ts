@@ -5,7 +5,15 @@
  */
 
 export interface CompanySocialLink {
-  platform: "Facebook" | "Instagram" | "YouTube" | "TikTok" | "LinkedIn" | "WhatsApp";
+  platform:
+    | "Facebook"
+    | "Instagram"
+    | "YouTube"
+    | "TikTok"
+    | "LinkedIn"
+    | "WhatsApp"
+    | "Shopee"
+    | "Tokopedia";
   name: string;
   href: string;
   isExternal: boolean;
@@ -95,6 +103,11 @@ export const companyConfig = {
     tiktok: "https://www.tiktok.com/@asiaplastik",
     linkedin:
       "https://www.linkedin.com/company/asia-plastik-plastic-packaging-manufacturing/?originalSubdomain=id",
+  },
+
+  marketplace: {
+    shopee: "https://share.google/k5CfS73MQTEjzelVU",
+    tokopedia: "https://www.tokopedia.com/asia-plastik-official",
   },
 
   certifications: [
