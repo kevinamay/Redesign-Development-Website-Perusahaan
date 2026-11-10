@@ -220,11 +220,10 @@ export default function Hero() {
                     type="button"
                     onClick={() => goToSlide(i)}
                     aria-label={slide.alt}
-                    className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                      currentSlide === i
+                    className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${currentSlide === i
                         ? "w-8 bg-blue-600 shadow-xs shadow-blue-500/50"
                         : "w-2.5 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400 dark:hover:bg-slate-600"
-                    }`}
+                      }`}
                   />
                 ))}
               </div>
