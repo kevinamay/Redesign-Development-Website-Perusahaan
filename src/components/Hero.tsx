@@ -13,19 +13,19 @@ const HERO_SLIDES = [
       "object-cover object-[65%_center] sm:object-[70%_center] md:object-center md:scale-105 md:translate-x-[5%] lg:translate-x-[8%] dark:brightness-[0.72] dark:contrast-[1.08] transition-[filter] duration-500",
   },
   {
-    src: "/images/hero-pabrik-1.jpeg",
+    src: "/images/baru/slide2.jpeg",
     alt: "Fasilitas Pabrik & Area Produksi Manufaktur CV. Asia Plastik Surabaya",
     imageClass:
       "object-cover object-[60%_center] sm:object-[65%_center] md:object-[60%_center] md:scale-105 md:translate-x-[4%] lg:translate-x-[6%] dark:brightness-[0.72] dark:contrast-[1.08] transition-[filter] duration-500",
   },
   {
-    src: "/images/hero-gedung-2.jpeg",
+    src: "/images/baru/slide3.jpeg",
     alt: "Gedung Utama Pabrik CV. Asia Plastik Surabaya",
     imageClass:
-      "object-cover object-[24%_center] sm:object-[28%_center] md:object-[30%_center] md:scale-115 lg:scale-120 md:translate-x-[20%] lg:translate-x-[24%] dark:brightness-[0.72] dark:contrast-[1.08] transition-[filter] duration-500",
+      "object-cover object-center md:scale-105 md:translate-x-[4%] lg:translate-x-[6%] dark:brightness-[0.72] dark:contrast-[1.08] transition-[filter] duration-500",
   },
   {
-    src: "/images/hero-pabrik-2.jpeg",
+    src: "/images/baru/slide4.jpeg",
     alt: "Fasilitas Mesin Injection Moulding CV. Asia Plastik Surabaya",
     imageClass:
       "object-cover object-[55%_center] sm:object-[60%_center] md:object-[55%_center] md:scale-105 md:translate-x-[4%] lg:translate-x-[6%] dark:brightness-[0.72] dark:contrast-[1.08] transition-[filter] duration-500",
