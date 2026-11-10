@@ -197,8 +197,8 @@ export default function Footer() {
               )}
             </Link>
 
-            {/* Social Media & Marketplace Links */}
-            <div className="mt-6 sm:mt-8 flex items-center flex-wrap gap-4 sm:gap-5 text-blue-200">
+            {/* Social Media & Marketplace Links (2 Baris: 4 Atas, 4 Bawah) */}
+            <div className="mt-6 sm:mt-8 grid grid-cols-4 w-fit gap-x-5 gap-y-4 text-blue-200">
               {socialLinks.map((item, idx) => (
                 <a
                   key={idx}
@@ -208,7 +208,7 @@ export default function Footer() {
                     : {})}
                   aria-label={item.name}
                   title={item.name}
-                  className="text-blue-200 hover:text-white transition-colors duration-200 inline-flex items-center justify-center focus:outline-none"
+                  className="w-6 h-6 text-blue-200 hover:text-white transition-colors duration-200 inline-flex items-center justify-center focus:outline-none"
                 >
                   {item.icon}
                 </a>

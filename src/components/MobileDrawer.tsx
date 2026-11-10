@@ -356,7 +356,7 @@ export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
             <div className="text-[10px] font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider">
               {hints.socialLabel}
             </div>
-            <div className="flex items-center justify-center gap-2 sm:gap-2.5 w-full flex-wrap">
+            <div className="grid grid-cols-4 gap-2.5">
               {socialMediaChannels.map((s, idx) => (
                 <a
                   key={idx}
