@@ -9,7 +9,6 @@ import {
   MessageCircle,
   Mail,
   Clock,
-  ArrowUp,
 } from "lucide-react";
 import { useLanguage } from "@/data/translations";
 import { companyConfig } from "@/data/companyConfig";
@@ -17,15 +16,6 @@ import { companyConfig } from "@/data/companyConfig";
 export default function Footer() {
   const { t } = useLanguage();
   const [logoError, setLogoError] = useState(false);
-
-  const scrollToTop = () => {
-    if (typeof window !== "undefined") {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    }
-  };
 
   const quickNavLinks = t.footer?.quickNavLinks || [
     { label: "BERANDA", href: "/" },
@@ -334,15 +324,6 @@ export default function Footer() {
             >
               {t.footer?.termsOfService || "Syarat & Ketentuan"}
             </Link>
-            <button
-              type="button"
-              onClick={scrollToTop}
-              className="inline-flex items-center gap-1.5 hover:text-white transition-colors cursor-pointer text-blue-200/90"
-              aria-label="Kembali ke Atas"
-            >
-              <span>{t.footer?.backToTop || "Kembali ke Atas"}</span>
-              <ArrowUp className="w-4 h-4 text-blue-300" />
-            </button>
           </div>
         </div>
       </div>
