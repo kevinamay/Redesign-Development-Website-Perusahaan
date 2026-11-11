@@ -116,17 +116,17 @@ export default function Navbar() {
             <span className="text-blue-300 dark:text-slate-700 select-none">|</span>
 
             {/* Marketplace Official Store Links (Shopee & Tokopedia) */}
-            <div className="flex items-center gap-1 sm:gap-1.5 shrink-0">
+            <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
               <a
                 href={companyConfig.marketplace.shopee}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-slate-800 hover:text-[#EE4D2D] dark:text-slate-300 dark:hover:text-[#EE4D2D] transition-colors p-1 rounded-md hover:bg-blue-100/70 dark:hover:bg-slate-800 flex items-center justify-center cursor-pointer"
+                className="text-slate-800 hover:text-[#EE4D2D] dark:text-slate-200 dark:hover:text-[#EE4D2D] transition-all duration-200 p-1 rounded-md hover:bg-blue-100/70 dark:hover:bg-slate-800 flex items-center justify-center cursor-pointer hover:scale-110 active:scale-95"
                 aria-label="Shopee Official Store CV. Asia Plastik"
                 title="Shopee Official Store"
               >
                 <svg
-                  className="w-4 h-4 fill-none"
+                  className="w-[22px] h-[22px] sm:w-[24px] sm:h-[24px] fill-none"
                   viewBox="0 0 192 192"
                   aria-hidden="true"
                 >
@@ -150,12 +150,12 @@ export default function Navbar() {
                 href={companyConfig.marketplace.tokopedia}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-slate-800 hover:text-[#42B549] dark:text-slate-300 dark:hover:text-[#42B549] transition-colors p-1 rounded-md hover:bg-blue-100/70 dark:hover:bg-slate-800 flex items-center justify-center cursor-pointer"
+                className="text-slate-800 hover:text-[#42B549] dark:text-slate-200 dark:hover:text-[#42B549] transition-all duration-200 p-1 rounded-md hover:bg-blue-100/70 dark:hover:bg-slate-800 flex items-center justify-center cursor-pointer hover:scale-110 active:scale-95"
                 aria-label="Tokopedia Official Store CV. Asia Plastik"
                 title="Tokopedia Official Store"
               >
                 <svg
-                  className="w-4 h-4 fill-current"
+                  className="w-[22px] h-[22px] sm:w-[24px] sm:h-[24px] fill-current"
                   viewBox="0 0 192 192"
                   aria-hidden="true"
                 >
