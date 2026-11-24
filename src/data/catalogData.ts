@@ -23,7 +23,7 @@ export interface ProductCategory {
 export const palletPSeries: ProductItem = {
   id: "pallet-p-series",
   name: "PALLET P SERIES",
-  image: "/images/product/Pallet/pallet-floating.png",
+  image: "/products2/1. Palet Industri/palet-plastik.jpg",
   specs: [
     {
       icon: "Ruler",
@@ -51,42 +51,42 @@ export const keranjangProducts = [
     dimensi: "620 X 430 X 150 MM",
     berat: "1,5 KG",
     deskripsi: "Keranjang Industri T-15 dirancang khusus untuk kebutuhan industri yang menuntut ketahanan dan keamanan dalam penyimpanan maupun distribusi. Terbuat dari material plastik berkualitas tinggi yang kuat, tahan lama, dan bersertifikasi food grade, keranjang ini ideal digunakan di industri makanan, manufaktur, pertanian, hingga logistik.",
-    imagePath: "/images/product/Keranjang/keranjang-kecil.png",
+    imagePath: "/products2/2. Keranjang Industri/keranjang-industri-plastik-t15-kecil.jpg",
   },
   {
     title: "KERANJANG INDUSTRI T-25",
     dimensi: "620 X 430 X 250 MM",
     berat: "1,82 KG",
     deskripsi: "Keranjang Plastik Industri T-25 dari Asia Plastik adalah solusi ideal untuk kebutuhan penyimpanan dan distribusi dalam berbagai sektor industri. Terbuat dari bahan plastik berkualitas tinggi, keranjang ini kokoh, tahan lama, dan mampu menahan beban berat. Didesain dengan ventilasi optimal untuk menjaga sirkulasi udara, T-25 sangat cocok digunakan di pabrik, gudang, maupun pasar tradisional. Ukurannya yang efisien memudahkan penumpukan dan pengangkutan, menjadikannya pilihan praktis dan ekonomis bagi bisnis Anda.",
-    imagePath: "/images/product/Keranjang/keranjang-t25.png",
+    imagePath: "/products2/2. Keranjang Industri/keranjang-plastik-t25.jpg",
   },
   {
     title: "KERANJANG INDUSTRI BESAR",
     dimensi: "620 X 430 X 320 MM",
     berat: "2,25 KG",
     deskripsi: "Keranjang Plastik Industri Besar (Tinggi 32 cm) dari Asia Plastik dirancang untuk memenuhi kebutuhan penyimpanan dan distribusi dalam skala besar. Terbuat dari material plastik berkualitas tinggi yang kuat dan tahan lama, keranjang ini ideal untuk penggunaan di lingkungan industri, pertanian, maupun logistik. Dengan tinggi 32 cm, kapasitasnya besar namun tetap mudah ditata dan ditumpuk, menjadikannya solusi efisien untuk pengelolaan barang dalam jumlah banyak.",
-    imagePath: "/images/product/Keranjang/keranjang-besar.png",
+    imagePath: "/products2/2. Keranjang Industri/keranjang-industri-plastik-besar.jpg",
   },
   {
     title: "KERANJANG TERTUTUP",
     dimensi: "430 X 620 X 320 MM",
     berat: "2,5 KG",
     deskripsi: "Keranjang Plastik Industri Besar Tertutup dari Asia Plastik merupakan pilihan tepat untuk kebutuhan penyimpanan yang aman dan terlindungi. Dengan desain sisi-sisi tertutup, keranjang ini menjaga isi tetap terlindungi dari debu dan kotoran, cocok untuk menyimpan barang kecil maupun bahan sensitif. Terbuat dari plastik berkualitas tinggi yang kokoh dan tahan lama, keranjang ini ideal digunakan di industri manufaktur, pergudangan, hingga distribusi logistik. Desain ergonomisnya juga memudahkan penataan dan pengangkutan.",
-    imagePath: "/images/product/Keranjang/keranjang-tertutup.png",
+    imagePath: "/products2/2. Keranjang Industri/keranjang-industri-tertutup.jpg",
   },
   {
     title: "KERANJANG INDUSTRI T-38",
     dimensi: "620 X 430 X 380 MM",
     berat: "2,3 KG",
     deskripsi: "Keranjang Industri Plastik T-38 adalah varian terbesar dari lini keranjang industri Asia Plastik, dirancang khusus untuk memenuhi kebutuhan penyimpanan dan distribusi dalam volume besar. Terbuat dari bahan plastik berkualitas tinggi yang kuat dan tahan lama, T-38 ideal digunakan di sektor industri, pergudangan, dan logistik. Kapasitas ekstra besar dan konstruksi yang kokoh menjadikannya solusi efisien untuk mengangkut barang berat maupun dalam jumlah banyak, dengan tetap mengutamakan kemudahan dalam penataan dan pemindahan.",
-    imagePath: "/images/product/Keranjang/keranjang-t38.png",
+    imagePath: "/products2/2. Keranjang Industri/keranjang-industri-plastik-T38.jpg",
   },
   {
     title: "DAYS OLD CHICKEN BOX",
     dimensi: "668 X 495 X 145 MM",
     berat: "2,07 KG",
     deskripsi: "Days Old Chicken Box dari Asia Plastik adalah keranjang khusus yang dirancang untuk transportasi ayam (DOC) dengan aman dan nyaman. Terbuat dari bahan plastik yang kuat, higienis, dan mudah dibersihkan, keranjang ini memiliki ventilasi optimal untuk menjaga sirkulasi udara dan kesehatan ayam selama pengiriman. Desainnya yang ergonomis dan kokoh menjadikannya pilihan ideal bagi peternak dan distributor unggas profesional.",
-    imagePath: "/images/product/Keranjang/doc-box.png",
+    imagePath: "/products2/2. Keranjang Industri/days-old-chicken-box-keranjang-ayam.jpg",
   },
 ];
 
@@ -97,7 +97,7 @@ export const boxLipatProducts = [
     berat: "2,6 KG",
     deskripsi:
       "Box Lipat Plastik dari Asia Plastik adalah solusi penyimpanan inovatif yang mengutamakan efisiensi dan kepraktisan. Dirancang dengan sistem lipat yang mudah digunakan, keranjang ini dapat dilipat saat tidak digunakan untuk menghemat ruang penyimpanan. Terbuat dari bahan plastik berkualitas tinggi yang kokoh dan tahan lama, box ini cocok untuk kebutuhan industri, logistik, maupun penggunaan sehari-hari. Desain modern dan fungsional menjadikannya pilihan tepat untuk penyimpanan cerdas di era praktis dan dinamis.",
-    imagePath: "/images/product/Box Lipat/box-lipat.png",
+    imagePath: "/products2/3. Box Lipat/box-lipat.jpg",
   },
   {
     title: "BOX LIPAT LUBANG",
@@ -105,7 +105,7 @@ export const boxLipatProducts = [
     berat: "2,6 KG",
     deskripsi:
       "Box Lipat Plastik Berlubang Samping dari Asia Plastik adalah keranjang serbaguna dengan desain inovatif yang dapat dilipat untuk menghemat ruang penyimpanan. Dilengkapi lubang di sisi kanan dan kiri untuk sirkulasi udara serta kemudahan saat diangkat, box ini ideal untuk kebutuhan distribusi, penyimpanan, maupun display produk. Terbuat dari plastik berkualitas tinggi yang kokoh dan tahan lama, produk ini menawarkan solusi praktis dan modern untuk berbagai keperluan industri maupun sehari-hari.",
-    imagePath: "/images/product/Box Lipat/box-lipat-lubang.png",
+    imagePath: "/products2/3. Box Lipat/box-lipat-lubang.jpg",
   },
 ];
 
@@ -116,7 +116,7 @@ export const laluLintasProducts = [
     berat: "1,8 KG",
     deskripsi:
       "Kerucut Lalu Lintas 50 cm (Traffic Cone 50 cm) dari Asia Plastik dirancang khusus untuk manajemen lalu lintas jalan, pembatas zonasi area proyek, serta pengamanan area parkir. Dibuat dari material komposit plastik dan karet berkualitas tinggi yang fleksibel, tahan benturan, serta tidak mudah pecah saat tertabrak kendaraan. Dilengkapi dengan dua lapis stiker reflektif prismatik berdaya pantul tinggi untuk visibilitas maksimal di malam hari dan kondisi cuaca ekstrem. Alas dasar persegi yang stabil memberikan daya tahan terhadap hembusan angin jalan raya.",
-    imagePath: "/images/product/Lalu Lintas/cone50.png",
+    imagePath: "/products2/4. Traffic Block dan cone/traffic-cone-lalu-lintas-50-50.jpg",
   },
   {
     title: "ROAD BARRIER / TRAFFIC BLOCK",
@@ -124,7 +124,7 @@ export const laluLintasProducts = [
     berat: "16 - 17 KG",
     deskripsi:
       "Traffic Block / Road Barrier Plastik dari Asia Plastik adalah pembatas jalan portabel berstandar industri yang dirancang untuk rekayasa lalu lintas, pembatas jalur jalan raya, serta pengamanan zona konstruksi. Diproduksi dari bahan HDPE (High Density Polyethylene) murni yang tahan cuaca tropis, radiasi UV, dan benturan keras kendaraan. Dilengkapi lubang pengisian (inlet) untuk air atau pasir guna memberikan bobot serta stabilitas kokoh saat dipasang di lapangan, pengait interkoneksi antar-blok, dan stiker reflektif panah pengarah chevron untuk visibilitas optimal.",
-    imagePath: "/images/product/Lalu Lintas/trafficblock1.png",
+    imagePath: "/products2/4. Traffic Block dan cone/traffic-block-traffic-box.jpg",
   },
   {
     title: "KERUCUT LALU LINTAS STANDAR (RING TOP)",
@@ -132,7 +132,7 @@ export const laluLintasProducts = [
     berat: "3,0 KG",
     deskripsi:
       "Kerucut Lalu Lintas Standar Ring Top dari Asia Plastik merupakan traffic cone spesifikasi berat (heavy duty) dengan alas lebar 500 x 500 mm untuk stabilitas maksimal di area jalan bertrafik tinggi dan berangin kencang. Terbuat dari material karet (rubber) sintetis berkualitas yang lentur, tahan tekanan, dan anti penyok saat terlindas. Dilengkapi lubang cincin (ring top) pada bagian ujung atas yang memudahkan pemasangan rantai pembatas, tali barikade, atau lampu peringatan (warning light), serta dua garis pita reflektif sarang lebah untuk visibilitas optimal.",
-    imagePath: "/images/product/Lalu Lintas/cone1.png",
+    imagePath: "/products2/4. Traffic Block dan cone/traffic-cone-lalu-lintas.jpg",
   },
 ];
 
@@ -143,7 +143,7 @@ export const botolPupukProducts = [
     berat: "23 GR",
     deskripsi:
       "Botol kecil berbahan PET berkualitas untuk pupuk cair atau nutrisi tanaman dalam skala kecil. Desainnya yang ringkas sangat ideal untuk produk sampel atau kemasan ritel, dengan material yang memastikan keamanan dan keawetan cairan di dalamnya.",
-    imagePath: "/images/product/Botol Pupuk/pupuk100.png",
+    imagePath: "/products2/5. Botol Pupuk PET/botol-pupuk-100cc.jpg",
   },
   {
     title: "BOTOL PUPUK PET 250 CC",
@@ -151,7 +151,7 @@ export const botolPupukProducts = [
     berat: "30 GR",
     deskripsi:
       "Dirancang untuk kebutuhan pertanian dalam kemasan sedang, botol ini ideal untuk produk pupuk cair. Material PET memberikan tingkat kejernihan dan ketahanan yang baik terhadap bahan kimia pertanian, menjaga kualitas produk Anda hingga ke tangan konsumen.",
-    imagePath: "/images/product/Botol Pupuk/pupuk250.png",
+    imagePath: "/products2/5. Botol Pupuk PET/botol-pupuk-250cc.jpg",
   },
   {
     title: "BOTOL PUPUK PET 250 CC WITH LINING",
@@ -159,7 +159,7 @@ export const botolPupukProducts = [
     berat: "30 GR",
     deskripsi:
       "Alternatif bentuk botol 250 cc dengan desain bergaris (lining) untuk memberikan cengkeraman yang lebih baik dan tampilan estetika yang berbeda. Botol ini mempertahankan standar kualitas PET yang kuat dan aman untuk berbagai formulasi pupuk cair.",
-    imagePath: "/images/product/Botol Pupuk/pupuk250w.png",
+    imagePath: "/products2/5. Botol Pupuk PET/botol-pupuk-250cc-garis.jpg",
   },
   {
     title: "BOTOL PUPUK PET 500 CC NATURAL",
@@ -167,7 +167,7 @@ export const botolPupukProducts = [
     berat: "55 GR",
     deskripsi:
       "Botol pupuk setengah liter berbahan PET kokoh, cocok untuk pupuk cair dan produk pertanian. Warna naturalnya memudahkan pengguna untuk melihat sisa volume cairan, sementara ketebalannya menjamin keamanan selama proses distribusi.",
-    imagePath: "/images/product/Botol Pupuk/pupuk500.png",
+    imagePath: "/products2/5. Botol Pupuk PET/botol-pupuk-500cc-transparan.jpg",
   },
   {
     title: "BOTOL PUPUK PET 1 LITER NATURAL",
@@ -175,7 +175,7 @@ export const botolPupukProducts = [
     berat: "55 GR",
     deskripsi:
       "Ukuran besar untuk kebutuhan distribusi pupuk cair dalam volume lebih banyak. Botol ini ringan namun sangat kuat, dirancang khusus untuk menahan tekanan dan benturan, menjadikannya kemasan andalan untuk produk pertanian komersial.",
-    imagePath: "/images/product/Botol Pupuk/pupuk1l.png",
+    imagePath: "/products2/5. Botol Pupuk PET/botol-pupuk-1-liter-transparan.jpg",
   },
 ];
 
@@ -186,7 +186,7 @@ export const kosmetikProducts = [
     berat: "28 GR",
     deskripsi:
       "Botol Kosmetik PET 100 CC dari Asia Plastik dilengkapi dengan foam pump yang praktis dan higienis, ideal untuk produk perawatan wajah seperti facial wash atau sabun cair. Terbuat dari bahan PET berkualitas, botol ini ringan, kuat, dan tampil elegan dengan desain modern, cocok untuk brand kosmetik yang mengutamakan tampilan profesional dan kemudahan penggunaan.",
-    imagePath: "/images/product/Kosmetik/kosmetik100.png",
+    imagePath: "/products2/6. Botol Kosmetik/botol-kosmetik-pet-100cc.jpg",
   },
   {
     title: "BOTOL PET GOLD 300 CC WITH PUMP",
@@ -194,7 +194,7 @@ export const kosmetikProducts = [
     berat: "30 GR",
     deskripsi:
       "Botol PET 300 CC dengan tutup pump dari Asia Plastik cocok untuk berbagai produk cair, termasuk kosmetik seperti lotion, serum tubuh, atau toner. Terbuat dari bahan PET yang bening, ringan, dan tahan lama, botol ini tampil elegan dan profesional. Dilengkapi dengan pump yang praktis dan higienis, sangat ideal untuk kemasan produk skincare dan personal care.",
-    imagePath: "/images/product/Kosmetik/kosmetik300.png",
+    imagePath: "/products2/6. Botol Kosmetik/botol-kosmetik-300cc-pump-pet.jpg",
   },
   {
     title: "BOTOL PET 500 ML WITH PUMP",
@@ -202,7 +202,7 @@ export const kosmetikProducts = [
     berat: "55 GR",
     deskripsi:
       "Botol PET 500 ml transparan dengan tutup pump dari Asia Plastik ideal untuk produk cair berukuran besar seperti sabun mandi, sampo, hand sanitizer, atau skincare tubuh. Terbuat dari bahan PET yang kuat dan jernih, botol ini menampilkan isi produk dengan menarik sekaligus menjaga kualitasnya. Dilengkapi pump yang praktis dan higienis, cocok untuk kebutuhan industri kosmetik, perawatan pribadi, maupun rumah tangga.",
-    imagePath: "/images/product/Kosmetik/kosmetik500.png",
+    imagePath: "/products2/6. Botol Kosmetik/botol-pet-500ml-pump.jpg",
   },
 ];
 
@@ -213,7 +213,7 @@ export const minyakGorengProducts = [
     berat: "38 GR",
     deskripsi:
       "Botol PET Minyak Goreng 2 Liter kemasan volume tinggi untuk pasar grosir dan distribusi luas. Struktur kokoh, tahan tekanan, dan hemat ruang penyimpanan.",
-    imagePath: "/images/product/minyak goreng/2liter.png",
+    imagePath: "/products2/7. Botol PET Minyak Goreng/botol-pet-minyak-goreng-2liter-ulir.jpg",
   },
   {
     title: "BOTOL MINYAK GORENG PET 1,5 LITER",
@@ -221,7 +221,7 @@ export const minyakGorengProducts = [
     berat: "32 GR",
     deskripsi:
       "Botol PET Minyak Goreng 1,5 Liter kapasitas lebih besar untuk meningkatkan efisiensi distribusi. Cocok untuk pengisian otomatis dan penggunaan skala industri.",
-    imagePath: "/images/product/minyak goreng/1.5liter.png",
+    imagePath: "/products2/7. Botol PET Minyak Goreng/botol-pet-minyak-goreng-1,5liter.jpg",
   },
   {
     title: "BOTOL MINYAK GORENG PET 1 LITER A",
@@ -229,7 +229,7 @@ export const minyakGorengProducts = [
     berat: "28 GR",
     deskripsi:
       "Botol PET Minyak Goreng 1 Liter standar industri untuk distribusi minyak goreng. Tersedia dalam desain ergonomis dan siap memenuhi kebutuhan produksi massal.",
-    imagePath: "/images/product/minyak goreng/1literA.png",
+    imagePath: "/products2/7. Botol PET Minyak Goreng/botol-pet-minyak-goreng-1literA.jpg",
   },
   {
     title: "BOTOL MINYAK GORENG PET 900 ML",
@@ -237,7 +237,7 @@ export const minyakGorengProducts = [
     berat: "28 GR",
     deskripsi:
       "Botol PET Minyak Goreng 900 ml hampir setara 1 liter, ideal untuk efisiensi logistik dan distribusi retail. Kuat, aman, dan memiliki tampilan yang profesional di rak penjualan.",
-    imagePath: "/images/product/minyak goreng/900ml.png",
+    imagePath: "/products2/7. Botol PET Minyak Goreng/botol-pet-minyak-goreng-900ml.jpg",
   },
   {
     title: "BOTOL MINYAK GORENG PET 800 ML",
@@ -245,7 +245,7 @@ export const minyakGorengProducts = [
     berat: "28 GR",
     deskripsi:
       "Botol PET Minyak Goreng 800 ml cocok untuk kebutuhan pengemasan skala menengah. Stabil secara struktur dan kompatibel dengan berbagai jenis tutup dan mesin filling.",
-    imagePath: "/images/product/minyak goreng/800ml.png",
+    imagePath: "/products2/7. Botol PET Minyak Goreng/botol-pet-minyak-goreng-800ml.jpg",
   },
   {
     title: "BOTOL MINYAK GORENG PET 620 ML",
@@ -253,7 +253,7 @@ export const minyakGorengProducts = [
     berat: "28 GR",
     deskripsi:
       "Botol PET Minyak Goreng 620 ml, ukuran menengah yang ideal untuk pasar retail modern. Desain ergonomis dan material PET berkualitas tinggi menjamin keamanan produk selama pengiriman.",
-    imagePath: "/images/product/minyak goreng/620ml.png",
+    imagePath: "/products2/7. Botol PET Minyak Goreng/botol-pet-minyak-goreng-620ml.jpg",
   },
   {
     title: "BOTOL MINYAK GORENG PET 250 ML",
@@ -261,7 +261,7 @@ export const minyakGorengProducts = [
     berat: "11,5 GR",
     deskripsi:
       "Botol PET Minyak Goreng 250 ml solusi efisien untuk sampel produk atau kemasan retail kecil. Ringan, kuat, dan mudah didistribusikan dalam jumlah besar.",
-    imagePath: "/images/product/minyak goreng/250ml.png",
+    imagePath: "/products2/7. Botol PET Minyak Goreng/botol-pet-minyak-goreng-250ml.jpg",
   },
 ];
 
@@ -272,7 +272,7 @@ export const kemasanPETProducts = [
     berat: "650 GR",
     deskripsi:
       "Galon PET 19 Liter (5 Gallon) standar industri air minum dalam kemasan (AMDK) dan depot air minum isi ulang. Diproduksi dari material Virgin PET murni berstandar Food Grade, bebas BPA, dengan kejernihan kristal tinggi serta dinding ribbed kokoh yang tahan benturan dan tahan tumpuk untuk distribusi logistik skala besar.",
-    imagePath: "/images/product/kemasan PET/galon19.png",
+    imagePath: "/products2/8. PET/galon-pet-19-liter.jpg",
   },
   {
     title: "GALON PET 15 LITER WITH HANDLE",
@@ -280,7 +280,7 @@ export const kemasanPETProducts = [
     berat: "450 GR",
     deskripsi:
       "Galon PET 15 Liter dengan tutup pegangan (handle) ergonomis yang memudahkan pengangkatan dan mobilitas distribusi. Sangat ideal untuk kebutuhan air minum keluarga, perkantoran, maupun depot isi ulang modern dengan bahan PET food grade higienis dan tidak berbau.",
-    imagePath: "/images/product/kemasan PET/galon15.png",
+    imagePath: "/products2/8. PET/galon-pet-15-liter-ulir.jpg",
   },
   {
     title: "GALON PET KOTAK 5 LITER WITH HANDLE",
@@ -288,7 +288,7 @@ export const kemasanPETProducts = [
     berat: "140 GR",
     deskripsi:
       "Galon PET 5 Liter desain kotak hemat ruang (space-saving) dengan pegangan jinjing kokoh dan tutup ulir anti-bocor. Cocok untuk kemasan air minum higienis, minyak kelapa, sabun isi ulang, maupun produk cairan industri retail.",
-    imagePath: "/images/product/kemasan PET/galon5.png",
+    imagePath: "/products2/8. PET/botol-square-5-liter-pet.jpg",
   },
   {
     title: "BOTOL PET MINUMAN BULAT 350 ML / 500 ML",
@@ -296,7 +296,7 @@ export const kemasanPETProducts = [
     berat: "28 GR",
     deskripsi:
       "Botol kemasan minuman PET silinder bulat dengan tutup ulir segel tamper-evident hitam. Didesain dengan kejernihan premium untuk memperlihatkan warna alami produk minuman segar seperti jus buah, kopi susu cold brew, teh tarik, susu kedelai, dan minuman kekinian.",
-    imagePath: "/images/product/kemasan PET/minuman.png",
+    imagePath: "/products2/8. PET/botol-pet-500-ml-minuman.jpg",
   },
   {
     title: "BOTOL PET SABUN CAIR 450 ML (PUSH PULL CAP)",
@@ -304,7 +304,7 @@ export const kemasanPETProducts = [
     berat: "32 GR",
     deskripsi:
       "Botol PET ergonomis dengan grip samping anti-slip dan tutup push-pull praktis yang presisi dalam mengatur aliran cairan. Sangat sesuai untuk kemasan produk pembersih rumah tangga, sabun cuci piring, sabun tangan cair, deterjen, dan pembersih higienis.",
-    imagePath: "/images/product/kemasan PET/sabun.png",
+    imagePath: "/products2/8. PET/botol-pet-dishwash.jpg",
   },
   {
     title: "BOTOL PET AIR ZAM-ZAM 250 ML",
@@ -312,7 +312,7 @@ export const kemasanPETProducts = [
     berat: "22 GR",
     deskripsi:
       "Botol PET 250 ml model ringkas dengan tutup ulir bersegel rapat dan leher kuat. Pilihan utama untuk kemasan air zam-zam oleh-oleh haji dan umroh, madu cair, jamu herbal, minyak habbatussauda, dan sirup konsentrat berkualitas.",
-    imagePath: "/images/product/kemasan PET/zamzam.png",
+    imagePath: "/products2/8. PET/botol-pet-zam-zam-50-ml.jpg",
   },
   {
     title: "TOPLES PET BUMBU 200 ML DENGAN FLIP-TOP SHAKER",
@@ -320,7 +320,7 @@ export const kemasanPETProducts = [
     berat: "24 GR",
     deskripsi:
       "Toples silinder berbahan PET food grade jernih dilengkapi tutup shaker dwifungsi (lubang tabur bumbu halus dan bukaan tuang takar). Sangat cocok untuk mengemas garam dapur, lada bubuk, bumbu tabur instan, penyedap rasa, dan rempah-rempah kuliner.",
-    imagePath: "/images/product/kemasan PET/bumbu.png",
+    imagePath: "/products2/8. PET/botol-pet-bumbu-toples-lada.jpg",
   },
 ];
 
@@ -331,7 +331,7 @@ export const jerigenHdpeProducts = [
     berat: "1200 GR",
     deskripsi:
       "Jerigen 27 liter merupakan pilihan terbaik untuk kebutuhan penyimpanan cairan dalam jumlah besar. Terbuat dari plastik berkualitas tinggi yang tebal dan kuat, jerigen ini dirancang untuk menampung cairan industri, bahan kimia, maupun kebutuhan distribusi air dan minyak dalam skala besar. Dengan kapasitas maksimal, jerigen ini cocok digunakan oleh industri, pabrik, maupun usaha distribusi.",
-    imagePath: "/images/product/jerigen HDPE/27l.png",
+    imagePath: "/products2/9. Jerigen HDPE/jerigen-27-liter-hdpe.jpg",
   },
   {
     title: "JERIGEN 22 LITER",
@@ -339,7 +339,7 @@ export const jerigenHdpeProducts = [
     berat: "1200 GR",
     deskripsi:
       "Ukuran 22 liter memberikan keseimbangan antara daya tampung besar dan kemudahan mobilitas. Jerigen ini praktis digunakan untuk usaha menengah, seperti penyimpanan air minum isi ulang, cairan pembersih, maupun kebutuhan pertanian. Bahan plastiknya tahan lama dan tidak mudah bocor, sehingga aman digunakan berulang kali.",
-    imagePath: "/images/product/jerigen HDPE/22l.png",
+    imagePath: "/products2/9. Jerigen HDPE/jerigen-22-liter-hdpe.jpg",
   },
   {
     title: "JERIGEN 20 LITER",
@@ -347,7 +347,7 @@ export const jerigenHdpeProducts = [
     berat: "870 GR",
     deskripsi:
       "Jerigen 20 liter adalah ukuran paling populer yang serbaguna untuk berbagai kebutuhan. Cocok untuk usaha depot air, industri makanan dan minuman, hingga penyimpanan cairan rumah tangga. Dengan desain ergonomis, jerigen ini mudah dibawa dan dipindahkan, meski berisi penuh.",
-    imagePath: "/images/product/jerigen HDPE/20l.png",
+    imagePath: "/products2/9. Jerigen HDPE/jerigen-20-liter-hdpe.jpg",
   },
   {
     title: "JERIGEN 20 LITER MGE",
@@ -355,7 +355,7 @@ export const jerigenHdpeProducts = [
     berat: "1000 GR",
     deskripsi:
       "Varian MGE hadir dengan desain dan kekuatan ekstra untuk kebutuhan khusus. Jerigen ini dirancang lebih kokoh, sehingga sangat cocok digunakan dalam industri minyak goreng atau cairan yang membutuhkan keamanan lebih. Kapasitas besar dengan perlindungan ekstra membuatnya menjadi pilihan tepat untuk sektor profesional.",
-    imagePath: "/images/product/jerigen HDPE/20lMGE.png",
+    imagePath: "/products2/9. Jerigen HDPE/jerigen-20-liter-MGE-hdpe.jpg",
   },
   {
     title: "JERIGEN 18 LITER",
@@ -363,7 +363,7 @@ export const jerigenHdpeProducts = [
     berat: "860 GR",
     deskripsi:
       "Jerigen 18 liter adalah solusi praktis untuk kebutuhan penyimpanan cairan dalam kapasitas cukup besar, tetapi tetap hemat ruang. Cocok untuk usaha rumah tangga, pertanian, maupun keperluan sehari-hari. Dengan bahan plastik tebal, jerigen ini awet digunakan dalam jangka panjang.",
-    imagePath: "/images/product/jerigen HDPE/18L.png",
+    imagePath: "/products2/9. Jerigen HDPE/jerigen-18-liter-hdpe.jpg",
   },
   {
     title: "JERIGEN 5 LITER LEBAR",
@@ -371,7 +371,7 @@ export const jerigenHdpeProducts = [
     berat: "340 GR",
     deskripsi:
       "Jerigen 5 liter lebar memiliki bentuk khusus yang lebih stabil dan mudah ditata. Kapasitas sedang membuatnya ideal untuk penyimpanan air, minyak, atau cairan pembersih dalam skala rumah tangga maupun usaha kecil. Desain lebar juga memudahkan penempatan dan penyimpanan.",
-    imagePath: "/images/product/jerigen HDPE/5llebar.png",
+    imagePath: "/products2/9. Jerigen HDPE/jerigen-5-liter-lebar-hdpe.jpg",
   },
   {
     title: "JERIGEN 5 LITER",
@@ -379,7 +379,7 @@ export const jerigenHdpeProducts = [
     berat: "180 GR",
     deskripsi:
       "Jerigen serbaguna dengan ukuran sedang ini menjadi pilihan favorit untuk pemakaian sehari-hari. Ringan, mudah dibawa, dan praktis digunakan untuk kebutuhan rumah tangga maupun usaha kecil, seperti kuliner, pertanian, atau perbengkelan.",
-    imagePath: "/images/product/jerigen HDPE/5l.png",
+    imagePath: "/products2/9. Jerigen HDPE/jerigen-5-liter-hdpe.jpg",
   },
   {
     title: "JERIGEN 4,5 LITER",
@@ -387,7 +387,7 @@ export const jerigenHdpeProducts = [
     berat: "180 GR",
     deskripsi:
       "Dengan kapasitas hampir sama dengan jerigen 5 liter, jerigen 4,5 liter hadir dengan desain ringkas yang membuatnya lebih mudah disimpan. Cocok untuk cairan rumah tangga, kebutuhan traveling, maupun untuk usaha yang memerlukan kemasan sedang.",
-    imagePath: "/images/product/jerigen HDPE/4.5l.png",
+    imagePath: "/products2/9. Jerigen HDPE/jerigen-4,5-liter-hdpe.jpg",
   },
   {
     title: "JERIGEN 4 LITER",
@@ -395,7 +395,7 @@ export const jerigenHdpeProducts = [
     berat: "170 GR",
     deskripsi:
       "Jerigen 4 liter dirancang dengan kapasitas pas untuk kebutuhan industri dan rumah tangga, seperti menyimpan air, minyak, maupun cairan pembersih. Ukurannya yang tidak terlalu besar membuatnya mudah dibawa dan digunakan siapa saja.",
-    imagePath: "/images/product/jerigen HDPE/4l.png",
+    imagePath: "/products2/9. Jerigen HDPE/jerigen-4-liter-hdpe.jpg",
   },
   {
     title: "JERIGEN 2 LITER",
@@ -403,7 +403,7 @@ export const jerigenHdpeProducts = [
     berat: "99,6 GR",
     deskripsi:
       "Jerigen ukuran 2 liter adalah pilihan praktis untuk penyimpanan cairan dalam jumlah kecil hingga sedang. Mudah dibawa bepergian, cocok untuk pemakaian pribadi, usaha kecil, atau kebutuhan harian.",
-    imagePath: "/images/product/jerigen HDPE/2l.png",
+    imagePath: "/products2/9. Jerigen HDPE/jerigen-2-liter-hdpe.jpg",
   },
   {
     title: "JERIGEN 1,8 LITER",
@@ -411,7 +411,7 @@ export const jerigenHdpeProducts = [
     berat: "90 GR",
     deskripsi:
       "Dengan kapasitas yang sedikit lebih kecil dari 2 liter, jerigen ini sangat praktis untuk penggunaan ringan. Cocok digunakan untuk cairan konsumsi maupun non-konsumsi, baik di rumah maupun untuk usaha sampel produk.",
-    imagePath: "/images/product/jerigen HDPE/1.8l.png",
+    imagePath: "/products2/9. Jerigen HDPE/jerigen-1,8-liter-hdpe.jpg",
   },
   {
     title: "JERIGEN 1 LITER TINGGI",
@@ -419,7 +419,7 @@ export const jerigenHdpeProducts = [
     berat: "72 GR",
     deskripsi:
       "Desain ramping dan tinggi membuat jerigen ini lebih mudah disimpan dalam rak atau ruang terbatas. Cocok untuk cairan kemasan seperti minyak, gula cair, pembersih, atau cairan konsumsi dalam jumlah kecil.",
-    imagePath: "/images/product/jerigen HDPE/1l.png",
+    imagePath: "/products2/9. Jerigen HDPE/jerigen-1-liter-tinggi-hdpe.jpg",
   },
   {
     title: "JERIGEN 1 LITER LEBAR",
@@ -427,7 +427,7 @@ export const jerigenHdpeProducts = [
     berat: "65 GR",
     deskripsi:
       "Berbeda dengan versi tinggi, jerigen 1 liter lebar memiliki bentuk lebih pendek dan stabil. Ideal untuk penggunaan sehari-hari, dengan kemudahan menuang cairan tanpa khawatir tumpah.",
-    imagePath: "/images/product/jerigen HDPE/1llebar.png",
+    imagePath: "/products2/9. Jerigen HDPE/jerigen-1-liter-lebar-hdpe.jpg",
   },
   {
     title: "JERIGEN 500 ML",
@@ -435,7 +435,7 @@ export const jerigenHdpeProducts = [
     berat: "40 GR",
     deskripsi:
       "Jerigen 500 ml adalah ukuran paling kecil dan sangat praktis untuk kebutuhan pribadi maupun produk sampel. Cocok digunakan untuk cairan rumah tangga, kosmetik cair, atau produk kemasan usaha kecil. Ringkas, ringan, dan mudah dibawa ke mana saja.",
-    imagePath: "/images/product/jerigen HDPE/500ml.png",
+    imagePath: "/products2/9. Jerigen HDPE/jerigen-500-ml-hdpe.jpg",
   },
 ];
 
@@ -446,7 +446,7 @@ export const jerigenChemicalProducts = [
     berat: "1500 GR",
     deskripsi:
       "Jerigen 32,5 liter didesain khusus untuk kebutuhan industri dengan kapasitas besar. Terbuat dari plastik HDPE berkualitas tinggi yang tahan terhadap bahan kimia agresif, jerigen ini ideal digunakan untuk penyimpanan maupun distribusi cairan kimia, bahan baku industri, atau cairan berbahaya. Dengan konstruksi tebal dan tutup yang rapat, produk ini menjamin keamanan isi dari kebocoran maupun kontaminasi.",
-    imagePath: "/images/product/jerigen chemical/32.5l.png",
+    imagePath: "/products2/10. Jerigen Chemical HDPE/jerigen-32,5-liter-hdpe.jpg",
   },
   {
     title: "JERIGEN 30 KG CHEMICAL BIRU",
@@ -454,7 +454,7 @@ export const jerigenChemicalProducts = [
     berat: "1400 GR",
     deskripsi:
       "Jerigen 30 kg Chemical Blue merupakan pilihan utama untuk industri yang memerlukan wadah tangguh dalam menyimpan cairan kimia. Warna biru berfungsi sebagai identifikasi khusus untuk produk chemical dan membantu melindungi isi dari paparan cahaya. Dengan material yang kuat dan tahan lama, jerigen ini memastikan keamanan dalam transportasi maupun penyimpanan jangka panjang.",
-    imagePath: "/images/product/jerigen chemical/30kg.png",
+    imagePath: "/products2/10. Jerigen Chemical HDPE/jerigen-30kg-liter-hdpe.jpg",
   },
   {
     title: "JERIGEN 25 KG CHEMICAL BIRU",
@@ -462,7 +462,7 @@ export const jerigenChemicalProducts = [
     berat: "1200 GR",
     deskripsi:
       "Dengan kapasitas 25 kg, jerigen Chemical Blue ini praktis digunakan untuk kebutuhan distribusi dan penyimpanan bahan kimia dalam skala menengah. Terbuat dari plastik berkualitas tinggi, jerigen ini tahan terhadap berbagai jenis zat kimia, serta dilengkapi tutup rapat untuk mencegah kebocoran. Cocok untuk industri kimia, farmasi, hingga pertanian.",
-    imagePath: "/images/product/jerigen chemical/25kg.png",
+    imagePath: "/products2/10. Jerigen Chemical HDPE/jerigen-25kg-hdpe-chemical.jpg",
   },
   {
     title: "JERIGEN 20 KG CHEMICAL",
@@ -470,7 +470,7 @@ export const jerigenChemicalProducts = [
     berat: "900 GR",
     deskripsi:
       "Jerigen 20 kg Chemical dirancang sebagai solusi wadah serbaguna untuk cairan kimia dengan kapasitas sedang. Desain ergonomis memudahkan pengangkutan, sementara material HDPE yang digunakan memberikan ketahanan optimal terhadap reaksi kimia. Aman digunakan untuk penyimpanan cairan pembersih, bahan industri, maupun produk berbasis kimia lainnya.",
-    imagePath: "/images/product/jerigen chemical/20kg.png",
+    imagePath: "/products2/10. Jerigen Chemical HDPE/jerigen-20kg-hdpe-chemical.jpg",
   },
 ];
 
@@ -481,7 +481,7 @@ export const jerigenOliProducts = [
     berat: "360 GR",
     deskripsi:
       "Jerigen oli 5 liter dirancang khusus untuk kebutuhan industri pelumas maupun otomotif. Terbuat dari plastik berkualitas tinggi yang tahan terhadap cairan berminyak dan tidak mudah rusak, jerigen ini dilengkapi desain ergonomis dengan pegangan kokoh untuk memudahkan pemindahan. Kapasitas 5 liter sangat ideal untuk kemasan oli kendaraan pribadi hingga usaha bengkel.",
-    imagePath: "/images/product/jerigen Oli/5l.png",
+    imagePath: "/products2/11. Jerigen Oli HDPE/jerigen-oli-5-liter.jpg",
   },
   {
     title: "JERIGEN OLI 4,5 LITER",
@@ -489,7 +489,7 @@ export const jerigenOliProducts = [
     berat: "240 GR",
     deskripsi:
       "Dengan kapasitas 4,5 liter, jerigen oli ini menawarkan ukuran yang lebih ringkas namun tetap cukup untuk kebutuhan distribusi dan penjualan oli. Bentuknya dirancang praktis dengan mulut jerigen yang pas untuk tuangan, sehingga memudahkan saat digunakan oleh konsumen maupun teknisi bengkel.",
-    imagePath: "/images/product/jerigen Oli/4.5l.png",
+    imagePath: "/products2/11. Jerigen Oli HDPE/jerigen-oli-4,5-liter.jpg",
   },
   {
     title: "JERIGEN OLI 4 LITER",
@@ -497,7 +497,7 @@ export const jerigenOliProducts = [
     berat: "240 GR",
     deskripsi:
       "Jerigen oli 4 liter merupakan pilihan kemasan standar yang banyak digunakan untuk berbagai merek oli kendaraan. Ukurannya pas untuk sekali penggantian oli mobil, sementara bahan plastiknya tahan terhadap sifat pelumas dan menjaga kualitas isi tetap terjamin. Desain kokoh dengan tampilan profesional menjadikan jerigen ini cocok untuk produk oli kemasan premium.",
-    imagePath: "/images/product/jerigen Oli/4l.png",
+    imagePath: "/products2/11. Jerigen Oli HDPE/jerigen-oli-4-liter.jpg",
   },
 ];
 
@@ -508,7 +508,7 @@ export const jerigenLipatProducts = [
     berat: "140 GR",
     deskripsi:
       "Jerigen lipat 5 liter ini terbuat dari bahan plastik LDPE (Low Density Polyethylene) yang fleksibel namun tetap kuat. Desain lipatnya membuat jerigen mudah disimpan saat tidak digunakan, sehingga sangat praktis untuk kebutuhan rumah tangga, perjalanan, camping, hingga darurat air.",
-    imagePath: "/images/product/jerikan Lipat/5l.png",
+    imagePath: "/products2/12. Jerigen Lipat/jerigen-lipat-5-liter.jpg",
   },
 ];
 
@@ -519,7 +519,7 @@ export const botolHdpeProducts = [
     berat: "80 GR",
     deskripsi:
       "Botol HDPE 1 liter panjang hadir dengan desain ramping sehingga mudah disimpan dan ditangani. Cocok digunakan untuk cairan industri, pembersih rumah tangga, hingga kebutuhan laboratorium. Material HDPE membuat botol ini tahan terhadap bahan kimia ringan dan menjaga isi tetap aman.",
-    imagePath: "/images/product/botol HDPE/1l.png",
+    imagePath: "/products2/13. Botol HDPE/botol-hdpe-1-liter-panjang.jpg",
   },
   {
     title: "BOTOL M 1000 MK TUTUP TAKAR",
@@ -527,7 +527,7 @@ export const botolHdpeProducts = [
     berat: "140 GR",
     deskripsi:
       "Botol M1000 MK dilengkapi dengan tutup takar yang memudahkan pengguna dalam mengukur cairan sesuai kebutuhan. Ideal untuk produk kimia cair, deterjen, pembersih, maupun pupuk cair. Terbuat dari HDPE berkualitas tinggi yang kuat, tahan bocor, dan praktis digunakan.",
-    imagePath: "/images/product/botol HDPE/1000mk.png",
+    imagePath: "/products2/13. Botol HDPE/botol-hdpe-1-liter-tutup-takar-pupuk.jpg",
   },
   {
     title: "BOTOL M 1000",
@@ -535,7 +535,7 @@ export const botolHdpeProducts = [
     berat: "80 GR",
     deskripsi:
       "Botol M1000 adalah pilihan serbaguna untuk berbagai aplikasi. Dengan kapasitas 1 liter, botol ini cocok untuk cairan pembersih, produk kimia, maupun kebutuhan industri lainnya. Desain ergonomis dan tutup rapat menjaga isi tetap aman saat penyimpanan maupun distribusi.",
-    imagePath: "/images/product/botol HDPE/1000m.png",
+    imagePath: "/products2/13. Botol HDPE/Botol M1000.jpg",
   },
   {
     title: "BOTOL KOTAK 0,5 KG",
@@ -543,7 +543,7 @@ export const botolHdpeProducts = [
     berat: "35 GR",
     deskripsi:
       "Botol HDPE berbentuk kotak dengan kapasitas 0,5 kg ini praktis untuk produk cair maupun semi-cair. Desain kotak memudahkan penyusunan di rak atau gudang, serta efisien dalam distribusi. Cocok untuk kemasan kecil produk industri, farmasi, maupun rumah tangga.",
-    imagePath: "/images/product/botol HDPE/0.5kg.png",
+    imagePath: "/products2/13. Botol HDPE/botol-hdpe-kotak-0,5kg.jpg",
   },
   {
     title: "BOTOL KOTAK 1 KG",
@@ -551,7 +551,7 @@ export const botolHdpeProducts = [
     berat: "75 GR",
     deskripsi:
       "Dengan kapasitas lebih besar, botol kotak 1 kg memberikan fleksibilitas lebih untuk berbagai kebutuhan. Bentuk kotak menjadikannya mudah ditata, hemat ruang, dan efisien untuk pengiriman maupun penyimpanan berskala besar.",
-    imagePath: "/images/product/botol HDPE/1kg.png",
+    imagePath: "/products2/13. Botol HDPE/botol-hdpe-kotak-1kg.jpg",
   },
   {
     title: "BOTOL BIOCLIN",
@@ -559,7 +559,7 @@ export const botolHdpeProducts = [
     berat: "65 GR",
     deskripsi:
       "Botol Bioclin didesain khusus untuk produk cairan pembersih dan desinfektan. Bentuknya ergonomis dengan leher botol yang memudahkan pemasangan tutup flip top atau trigger sprayer. HDPE yang digunakan menjamin ketahanan terhadap bahan kimia pembersih.",
-    imagePath: "/images/product/botol HDPE/bioclin.png",
+    imagePath: "/products2/13. Botol HDPE/botol-hdpe-bioclin.jpg",
   },
   {
     title: "BOTOL LYSOL 1 LITER",
@@ -567,7 +567,7 @@ export const botolHdpeProducts = [
     berat: "110 GR",
     deskripsi:
       "Botol ini cocok untuk kemasan cairan pembersih dan disinfektan rumah tangga maupun industri. Dengan kapasitas 1 liter, botol Lysol dibuat dari HDPE yang kuat, tahan benturan, dan aman untuk penyimpanan cairan berbasis kimia.",
-    imagePath: "/images/product/botol HDPE/lysol.png",
+    imagePath: "/products2/13. Botol HDPE/botol-hdpe-lysol-1-liter.jpg",
   },
   {
     title: "BOTOL HYDRO",
@@ -575,7 +575,7 @@ export const botolHdpeProducts = [
     berat: "57,2 GR",
     deskripsi:
       "Botol Hydro dirancang untuk produk cair seperti pupuk cair, nutrisi tanaman, maupun bahan kimia pertanian lainnya. Kapasitas ideal dan desain praktis menjadikan botol ini mudah dibawa, disimpan, dan digunakan.",
-    imagePath: "/images/product/botol HDPE/hydro.png",
+    imagePath: "/products2/13. Botol HDPE/botol-hdpe-hydro-putih-susu.jpg",
   },
   {
     title: "BOTOL 500 CC NECK 24 MM WITH PUMP",
@@ -583,7 +583,7 @@ export const botolHdpeProducts = [
     berat: "53,4 GR",
     deskripsi:
       "Botol HDPE kapasitas 500 cc ini dilengkapi dengan pump berleher 24 mm, ideal untuk cairan pembersih, sabun cair, sanitizer, atau produk kosmetik. Desainnya praktis, higienis, dan memudahkan pengeluaran isi secara terukur.",
-    imagePath: "/images/product/botol HDPE/24mm.png",
+    imagePath: "/products2/13. Botol HDPE/Botol-500-CC-Neck-24-mm-With-Pump.jpg",
   },
   {
     title: "BOTOL 500 CC NECK 28 MM WITH PUMP",
@@ -591,7 +591,7 @@ export const botolHdpeProducts = [
     berat: "58,4 GR",
     deskripsi:
       "Mirip dengan versi 24 mm, botol 500 cc ini menggunakan pump berleher 28 mm untuk cairan dengan viskositas lebih tinggi. Cocok untuk lotion, cairan pembersih, hingga produk kesehatan. Material HDPE membuatnya tahan lama dan aman digunakan.",
-    imagePath: "/images/product/botol HDPE/28mm.png",
+    imagePath: "/products2/13. Botol HDPE/Botol-500-CC-Neck-28-mm-With-Pump.jpg",
   },
   {
     title: "BOTOL OLI 900 ML",
@@ -599,7 +599,7 @@ export const botolHdpeProducts = [
     berat: "80 GR",
     deskripsi:
       "Botol oli 900 ml hadir dengan desain khusus untuk cairan pelumas otomotif. Bentuk ergonomis memudahkan menuang, sementara HDPE yang digunakan menjamin ketahanan terhadap sifat kimia oli. Kapasitasnya pas untuk kebutuhan servis kendaraan roda dua maupun empat.",
-    imagePath: "/images/product/botol HDPE/oli.png",
+    imagePath: "/products2/13. Botol HDPE/Botol Oli 900 ml.jpg",
   },
   {
     title: "BOTOL M 50-500 ML",
@@ -607,7 +607,7 @@ export const botolHdpeProducts = [
     berat: "9 - 40 GR",
     deskripsi:
       "Botol plastik Seri M tersedia dalam berbagai ukuran mulai dari 50 ml, 100 ml, 250 ml, hingga 500 ml, sehingga fleksibel digunakan sesuai kebutuhan. Terbuat dari bahan plastik berkualitas tinggi yang aman, kuat, dan tahan lama.",
-    imagePath: "/images/product/botol HDPE/500ml.png",
+    imagePath: "/products2/13. Botol HDPE/botol-hdpe-50ml-100ml-250ml-500ml.jpg",
   },
 ];
 
@@ -618,7 +618,7 @@ export const kalengPailProducts = [
     berat: "55 GR",
     deskripsi:
       "Kaleng plastik 0,75 kg dirancang khusus sebagai wadah kemasan untuk industri cat dinding, plamir, wood polish, dan produk sejenisnya. Terbuat dari plastik berkualitas tinggi yang kuat dan tahan lama, kaleng ini menjaga isi tetap aman, tidak mudah bocor, serta memiliki tutup rapat untuk mencegah penguapan.",
-    imagePath: "/images/product/kaleng&pail/0.75kg.png",
+    imagePath: "/products2/14. Kaleng & Pail Plastik/kaleng-plastik-0,75-kg.jpg",
   },
   {
     title: "KALENG PLASTIK 1 KG",
@@ -626,7 +626,7 @@ export const kalengPailProducts = [
     berat: "58 GR",
     deskripsi:
       "Ukuran Kaleng Plastik 1 kg sangat ideal untuk penjualan ritel hingga skala proyek kecil, dengan tutup rapat yang menjaga kualitas isi tetap konsisten hingga digunakan. Kaleng ini juga mudah dilabeli untuk branding produk sesuai kebutuhan industri.",
-    imagePath: "/images/product/kaleng&pail/1kg.png",
+    imagePath: "/products2/14. Kaleng & Pail Plastik/kaleng-plastik-1-kg.jpg",
   },
   {
     title: "PAIL 1 KG MB2 NATURAL",
@@ -634,7 +634,7 @@ export const kalengPailProducts = [
     berat: "55 GR",
     deskripsi:
       "Pail plastik 1 kg food grade dirancang aman untuk kemasan makanan seperti snack, kurma, bumbu, dan produk pangan lainnya. Terbuat dari plastik berkualitas tinggi yang tidak berbau, bebas racun, dan sudah memenuhi standar keamanan pangan.",
-    imagePath: "/images/product/kaleng&pail/1kgmb2.png",
+    imagePath: "/products2/14. Kaleng & Pail Plastik/pail-1kg-natural.jpg",
   },
   {
     title: "PAIL 1 KG MB2 PUTIH SUSU",
@@ -642,7 +642,7 @@ export const kalengPailProducts = [
     berat: "55 GR",
     deskripsi:
       "Dengan ukuran praktis 1 kg, pail ini sangat cocok untuk kemasan ritel, menjaga produk tetap higienis, segar, dan terlindung dari kontaminasi. Tutup rapatnya memastikan isi tidak mudah tumpah dan tetap terjaga kualitasnya.",
-    imagePath: "/images/product/kaleng&pail/1kgmb2Ssusu.png",
+    imagePath: "/products2/14. Kaleng & Pail Plastik/pail-1kg-susu.jpg",
   },
   {
     title: "PAIL 5 KG PANJANG",
@@ -650,7 +650,7 @@ export const kalengPailProducts = [
     berat: "200 GR",
     deskripsi:
       "Pail plastik 5 kg adalah kemasan serbaguna yang bisa digunakan baik untuk industri makanan (seperti margarin, saus, atau adonan) maupun produk non-pangan seperti cat, lem, atau bahan kimia. Dengan kapasitas sedang, pail ini mudah diangkut dan disimpan, serta dilengkapi tutup rapat agar isi tetap aman dari kebocoran dan kontaminasi.",
-    imagePath: "/images/product/kaleng&pail/5kg.png",
+    imagePath: "/products2/14. Kaleng & Pail Plastik/pail-5kg-panjang-putih-susu.jpg",
   },
   {
     title: "PAIL 10 KG MB2",
@@ -658,7 +658,7 @@ export const kalengPailProducts = [
     berat: "365 GR",
     deskripsi:
       "Pail plastik 10 kg sangat cocok untuk kebutuhan industri skala menengah. Kapasitasnya cukup besar untuk menyimpan cat, bahan bangunan, margarin, hingga produk kimia cair maupun padat. Terbuat dari plastik tebal yang kuat, pail ini tahan terhadap benturan, mudah ditumpuk, serta aman untuk transportasi jarak jauh.",
-    imagePath: "/images/product/kaleng&pail/10kg.png",
+    imagePath: "/products2/14. Kaleng & Pail Plastik/pail-10kg-panjang-putih-susu.jpg",
   },
   {
     title: "PAIL 25 KG MB5",
@@ -666,7 +666,7 @@ export const kalengPailProducts = [
     berat: "760 GR",
     deskripsi:
       "Pail plastik 25 kg dirancang untuk kebutuhan industri berskala besar. Kapasitas besar ini ideal digunakan untuk penyimpanan cat, bahan kimia, bahan baku makanan, atau produk pabrikan lainnya. Dengan material plastik berkualitas tinggi, pail ini memiliki kekuatan ekstra, tidak mudah pecah, dan mampu melindungi isi dari kebocoran. Desainnya memungkinkan penyimpanan efisien di gudang maupun kontainer, menjadikannya solusi ideal untuk distribusi massal.",
-    imagePath: "/images/product/kaleng&pail/25kg.png",
+    imagePath: "/products2/14. Kaleng & Pail Plastik/pail-25kg-putih-susu.jpg",
   },
 ];
 
@@ -677,7 +677,7 @@ export const perikananProducts = [
     berat: "1300 GR",
     deskripsi:
       "Pelampung plastik berdiameter 30 cm yang kuat dan tahan cuaca, cocok untuk kebutuhan perikanan, tambak, dan aplikasi perairan ringan.",
-    imagePath: "/images/product/perikanan/30cm.png",
+    imagePath: "/products2/15. Perikanan dan Kelautan/Float Ball 30 cm.jpg",
   },
   {
     title: "FLOAT BALL 36 CM",
@@ -685,7 +685,7 @@ export const perikananProducts = [
     berat: "2000 GR",
     deskripsi:
       "Pelampung 36 cm dengan daya apung stabil, dirancang untuk penggunaan outdoor dan area perairan jangka panjang.",
-    imagePath: "/images/product/perikanan/36cm.png",
+    imagePath: "/products2/15. Perikanan dan Kelautan/Float Ball 36 cm.jpg",
   },
   {
     title: "FLOAT BALL 40 CM",
@@ -693,7 +693,7 @@ export const perikananProducts = [
     berat: "2300 GR",
     deskripsi:
       "Pelampung besar 40 cm yang memberikan daya apung maksimal, ideal untuk tambak, keramba, atau kebutuhan industri perairan.",
-    imagePath: "/images/product/perikanan/40cm.png",
+    imagePath: "/products2/15. Perikanan dan Kelautan/Float Ball 40 cm.jpg",
   },
   {
     title: "CONTAINER SOFT SHELLED CRAB",
@@ -701,7 +701,7 @@ export const perikananProducts = [
     berat: "232 GR",
     deskripsi:
       "Wadah khusus untuk penyimpanan dan transportasi kepiting lunak menggunakan material plastik berkualitas, aman, kuat, dan mudah dibersihkan.",
-    imagePath: "/images/product/perikanan/crab.png",
+    imagePath: "/products2/15. Perikanan dan Kelautan/HDPE Crab container.jpg",
   },
   {
     title: "CLAM BASKET TYPE 01",
@@ -709,7 +709,7 @@ export const perikananProducts = [
     berat: "1,41 KG",
     deskripsi:
       "Keranjang kerang berdimensi 700x200x200 mm dengan ventilasi optimal untuk sortir, panen, dan penyimpanan hasil laut.",
-    imagePath: "/images/product/perikanan/type1.png",
+    imagePath: "/products2/15. Perikanan dan Kelautan/Clam Basket Type 01.jpg",
   },
   {
     title: "CLAM BASKET TYPE 02",
@@ -717,7 +717,7 @@ export const perikananProducts = [
     berat: "1,2 KG",
     deskripsi:
       "Keranjang kerang ukuran 850x150x150 mm yang ramping dan ringan, cocok untuk budidaya serta penanganan hasil panen di area perairan.",
-    imagePath: "/images/product/perikanan/type2.png",
+    imagePath: "/products2/15. Perikanan dan Kelautan/Clam Basket Type 02.jpg",
   },
 ];
 

@@ -72,7 +72,7 @@ const palletProductData = {
   bebanStatis: "3.000 KG",
   deskripsi:
     "Palet plastik dari Asia Plastik dirancang khusus untuk memenuhi kebutuhan industri dan logistik modern. Dibuat dari material berkualitas tinggi, Palet Plastik ini menawarkan ketahanan luar biasa terhadap beban berat, benturan, serta kondisi lingkungan ekstrem. Tidak seperti palet kayu, Palet Plastik bebas dari serpihan, tidak menyerap air, dan lebih tahan terhadap serangan hama.",
-  imagePath: "/images/product/Pallet/pallet-floating.png",
+  imagePath: "/products2/1. Palet Industri/palet-plastik.jpg",
 };
 
 // Pemetaan data produk per kategori

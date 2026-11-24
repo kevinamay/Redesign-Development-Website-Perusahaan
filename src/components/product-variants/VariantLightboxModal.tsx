@@ -165,19 +165,17 @@ export default function VariantLightboxModal({
             </button>
           </div>
 
-          {/* Product Photo: Sharp & Centered */}
-          <div className="relative w-full h-48 sm:h-56 flex items-center justify-center my-2">
-            <div className="relative w-full h-full max-w-[260px] sm:max-w-[320px] max-h-[90%] flex items-center justify-center mx-auto">
+          {/* Product Photo: Sharp & Centered with clean frame for unretouched studio photos */}
+          <div className="relative w-full flex items-center justify-center my-2">
+            <div className="relative w-48 h-48 sm:w-56 sm:h-56 aspect-square rounded-2xl overflow-hidden border border-slate-200/90 dark:border-slate-700 shadow-md bg-slate-100 dark:bg-slate-800">
               <Image
                 src={imagePath}
                 alt={cleanTitle}
                 fill
                 priority={priority}
                 quality={95}
-                sizes="(max-width: 640px) 260px, 320px"
-                className={`object-contain transition-transform duration-500 group-hover:scale-105 ${
-                  isPng ? "drop-shadow-md" : "mix-blend-multiply dark:mix-blend-normal"
-                }`}
+                sizes="(max-width: 640px) 192px, 224px"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
             </div>
           </div>
@@ -294,17 +292,15 @@ export default function VariantLightboxModal({
             onClick={(e) => e.stopPropagation()}
           >
             {/* Foto Produk di Atas Modal (Proporsional untuk layar hp pendek maupun lebar) */}
-            <div className="relative w-full h-44 sm:h-56 md:h-60 bg-slate-50/70 dark:bg-slate-800/40 flex items-center justify-center p-4 sm:p-6 select-none border-b border-slate-100 dark:border-slate-800/60 shrink-0">
-              <div className="relative w-full h-full max-w-[300px] sm:max-w-[360px] max-h-[88%] flex items-center justify-center mx-auto">
+            <div className="relative w-full h-48 sm:h-60 md:h-64 bg-slate-50/70 dark:bg-slate-800/40 flex items-center justify-center p-4 sm:p-6 select-none border-b border-slate-100 dark:border-slate-800/60 shrink-0">
+              <div className="relative w-40 h-40 sm:w-48 sm:h-48 aspect-square rounded-2xl overflow-hidden border border-slate-200/90 dark:border-slate-700 shadow-md bg-slate-100 dark:bg-slate-800">
                 <Image
                   src={imagePath}
                   alt={cleanTitle}
                   fill
                   quality={95}
-                  sizes="(max-width: 640px) 300px, 360px"
-                  className={`object-contain ${
-                    isPng ? "drop-shadow-md" : "mix-blend-multiply dark:mix-blend-normal"
-                  }`}
+                  sizes="(max-width: 640px) 160px, 192px"
+                  className="object-cover"
                 />
               </div>
 
