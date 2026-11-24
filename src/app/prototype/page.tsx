@@ -1,16 +1,24 @@
 import React from "react";
 import Link from "next/link";
-import { Sparkles, Layers, Video, ArrowRight, Shapes, Film } from "lucide-react";
+import { Sparkles, Layers, Video, ArrowRight, Shapes, Film, BrainCircuit, Package } from "lucide-react";
 
 export default function PrototypeIndexPage() {
   const labs = [
+    {
+      title: "Desain Produk Jerigen HDPE 20L - Foto Asli Tanpa Remove BG (5 Desain)",
+      desc: "5 eksplorasi desain panggung produk: Studio Shadow-Box, Technical Blueprint CAD, B2B Tier Configurator, Stress-Test Bento, dan Swiss Editorial Monograph.",
+      href: "/prototype/jerigen",
+      badge: "Eksplorasi Baru (5 Desain)",
+      icon: Package,
+      highlight: true,
+    },
     {
       title: "Video Showcase Kategori Produk (5 Desain Hasil Scraping)",
       desc: "5 format presentasi video pengujian resmi hasil scraping dari web asiaplastik.com untuk diletakkan di bawah foto & deskripsi produk setiap kategori.",
       href: "/prototype/category-videos",
       badge: "Baru (Local)",
       icon: Film,
-      highlight: true,
+      highlight: false,
     },
     {
       title: "Bentuk Container Kartu Produk (5 Desain Non-Persegi)",
@@ -18,14 +26,6 @@ export default function PrototypeIndexPage() {
       href: "/prototype/container",
       badge: "Desain Baru (Local)",
       icon: Shapes,
-      highlight: false,
-    },
-    {
-      title: "Desain Halaman Produk (7 Pilihan Mode Terang)",
-      desc: "Eksplorasi 7 konsep radikal desain kartu produk Pallet Industri & kemasan B2B dengan switcher interaktif (Default Mode Terang).",
-      href: "/prototype/products",
-      badge: "Katalog Lab",
-      icon: Layers,
       highlight: false,
     },
     {
