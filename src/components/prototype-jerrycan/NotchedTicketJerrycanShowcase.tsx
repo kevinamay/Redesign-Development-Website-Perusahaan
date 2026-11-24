@@ -227,7 +227,7 @@ export default function NotchedTicketJerrycanShowcase({
               <div className="relative w-full flex items-center justify-center my-2" suppressHydrationWarning>
                 {/* Treatment 1: Square Fit 1:1 - Photo fills the exact square container */}
                 {treatment === "square-fit" && (
-                  <div className="relative w-56 h-56 sm:w-64 sm:h-64 aspect-square rounded-2xl overflow-hidden border border-slate-200/90 dark:border-slate-700 shadow-md">
+                  <div className="relative w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 aspect-square rounded-2xl overflow-hidden border border-slate-200/90 dark:border-slate-700 shadow-md">
                     <Image
                       src={product.imagePath}
                       alt={product.title}

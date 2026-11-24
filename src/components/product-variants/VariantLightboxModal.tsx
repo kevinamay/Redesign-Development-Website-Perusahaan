@@ -166,15 +166,15 @@ export default function VariantLightboxModal({
           </div>
 
           {/* Product Photo: Sharp & Centered with clean frame for unretouched studio photos */}
-          <div className="relative w-full flex items-center justify-center my-2">
-            <div className="relative w-48 h-48 sm:w-56 sm:h-56 aspect-square rounded-2xl overflow-hidden border border-slate-200/90 dark:border-slate-700 shadow-md bg-slate-100 dark:bg-slate-800">
+          <div className="relative w-full flex items-center justify-center my-3 sm:my-4">
+            <div className="relative w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 aspect-square rounded-2xl overflow-hidden border border-slate-200/90 dark:border-slate-700 shadow-md bg-slate-100 dark:bg-slate-800">
               <Image
                 src={imagePath}
                 alt={cleanTitle}
                 fill
                 priority={priority}
                 quality={95}
-                sizes="(max-width: 640px) 192px, 224px"
+                sizes="(max-width: 640px) 240px, (max-width: 768px) 288px, 320px"
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
             </div>
@@ -292,14 +292,14 @@ export default function VariantLightboxModal({
             onClick={(e) => e.stopPropagation()}
           >
             {/* Foto Produk di Atas Modal (Proporsional untuk layar hp pendek maupun lebar) */}
-            <div className="relative w-full h-48 sm:h-60 md:h-64 bg-slate-50/70 dark:bg-slate-800/40 flex items-center justify-center p-4 sm:p-6 select-none border-b border-slate-100 dark:border-slate-800/60 shrink-0">
-              <div className="relative w-40 h-40 sm:w-48 sm:h-48 aspect-square rounded-2xl overflow-hidden border border-slate-200/90 dark:border-slate-700 shadow-md bg-slate-100 dark:bg-slate-800">
+            <div className="relative w-full h-64 sm:h-72 md:h-80 bg-slate-50/70 dark:bg-slate-800/40 flex items-center justify-center p-4 sm:p-6 select-none border-b border-slate-100 dark:border-slate-800/60 shrink-0">
+              <div className="relative w-52 h-52 sm:w-60 sm:h-60 md:w-64 md:h-64 aspect-square rounded-2xl overflow-hidden border border-slate-200/90 dark:border-slate-700 shadow-md bg-slate-100 dark:bg-slate-800">
                 <Image
                   src={imagePath}
                   alt={cleanTitle}
                   fill
                   quality={95}
-                  sizes="(max-width: 640px) 160px, 192px"
+                  sizes="(max-width: 640px) 208px, (max-width: 768px) 240px, 256px"
                   className="object-cover"
                 />
               </div>
